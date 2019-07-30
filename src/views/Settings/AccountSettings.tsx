@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 
-class Modules extends Component {
+class AccountSettings extends Component {
     state = {
 
     }
 
-    constructor(props) {
+    constructor(props: any) {
         super(props);
     }
 
@@ -25,4 +25,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export { Modules };
+export { AccountSettings };

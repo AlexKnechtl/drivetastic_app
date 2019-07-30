@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "index": "cti ./src/ -e ['@types', 'typings', '__test__', '__tests__', 'img', 'icons']"
   },
   "dependencies": {
     "react": "16.8.6",

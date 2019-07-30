@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 
-class Bereiche extends Component {
+class Reg_Tutorial extends Component {
     state = {
 
     }
 
-    constructor(props) {
+    constructor(props: any) {
         super(props);
     }
 
@@ -25,4 +25,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export { Bereiche };
+export { Reg_Tutorial };

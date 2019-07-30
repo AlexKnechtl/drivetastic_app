@@ -4,7 +4,7 @@ import Modal from 'react-native-modalbox';
 import { Fonts } from '../../utils/Fonts';
 
 class InfoPopup extends Component {
-    constructor(props) {
+    constructor(props: any) {
         super(props);
     }
 

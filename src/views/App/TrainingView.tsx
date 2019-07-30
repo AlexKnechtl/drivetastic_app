@@ -6,7 +6,7 @@ class TrainingView extends Component {
 
     }
 
-    constructor(props) {
+    constructor(props: any) {
         super(props);
     }
 
