@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 
 class Reg_UserData extends Component {
     state = {
@@ -13,7 +13,7 @@ class Reg_UserData extends Component {
     render() {
         return (
             <View>
-
+                <Text>Reg_UserData</Text>
             </View>
         )
     }

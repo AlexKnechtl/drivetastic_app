@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { ReactChild, ReactNode } from 'react'
 import { StyleSheet, View, ImageBackground } from 'react-native';
 
 type BackgroundProps = {
     colorFilter: string,
     image: object,
+    children: ReactChild | ReactNode
 }
 
 const ImageBg = ({ image, colorFilter, children }: BackgroundProps) => {

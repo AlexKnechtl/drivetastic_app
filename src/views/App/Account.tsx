@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 
 class Account extends Component {
     state = {
@@ -13,7 +13,7 @@ class Account extends Component {
     render() {
         return (
             <View>
-
+                <Text>Account</Text>
             </View>
         )
     }

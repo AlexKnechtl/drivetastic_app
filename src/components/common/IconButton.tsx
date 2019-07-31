@@ -1,6 +1,6 @@
 import React from 'react'
 import { TouchableOpacity, StyleSheet, Image, Text } from 'react-native';
-import { padding } from '../../base';
+import { padding } from 'base';
 
 type ButtonProps = {
     color: string,
