@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, Image } from 'react-native';
 
-import { IconButton, ImageBg } from 'components/common'
-import { padding, colors } from 'base';
+import { IconButton, ImageBg } from '../../components'
+import { padding, colors } from '../../base';
 
-import { HighFive, AddPeople, Car, Truck, Motorcycle } from 'icons';
-import { BackgroundMain } from 'img';
+import { HighFive, AddPeople, Car, Truck, Motorcycle } from '../../icons';
+import { BackgroundMain } from '../../img';
 
 class Start extends Component {
     render() {

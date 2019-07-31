@@ -10,7 +10,14 @@
     "noEmit": true,
     "strict": true,
     "target": "esnext",
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "paths": {
+      "components/*": ["./components/*"],
+      "app/*": ["./app/*"],
+      "icons/*": ["./icons/*"],
+      "img/*": ["./img/*"],
+      "views/*": ["./views/*"],
+    }
   },
   "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"]
 }

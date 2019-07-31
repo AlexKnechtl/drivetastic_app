@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Exam } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 class Exam extends Component {
     state = {
