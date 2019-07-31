@@ -1,3 +1,4 @@
 // created from 'create-ts-index'
 
-export * from './Popups';
+export * from './IconButton';
+export * from './ImageBg';
