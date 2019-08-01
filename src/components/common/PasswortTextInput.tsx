@@ -33,7 +33,7 @@ const PasswortTextInput = ({ hint, password, value, onChangeText, marginVertical
 const styles = StyleSheet.create({
     inputContainer: {
         flexDirection: "row-reverse",
-        backgroundColor: colors.softGray,
+        backgroundColor: colors.bgGray,
         borderRadius: 10,
         width: "100%",
         paddingHorizontal: 8,

@@ -24,7 +24,7 @@ class Reg_DriveCode extends Component {
                         <IconButton color={colors.lightBlue} icon={QrCode} text="QR-Code scannen" />
                     </View>
                 </HideWithKeyboard>
-                <FAB icon={Continue} color={"#fff"} borderColor={colors.softGray} />
+                <FAB marginLeft={4} icon={Continue} color={"#fff"} borderColor={colors.bgGray} />
             </View>
         )
     }

@@ -6,4 +6,7 @@ export const HighFive = require('./high_five.png');
 export const Continue = require('./continue.png'); 
 export const QrCode = require('./qr_code.png'); 
 export const Check = require('./check.png'); 
+export const CircleCheck = require('./circle_check.png'); 
 export const Eye = require('./eye.png'); 
+export const World = require('./world.png'); 
+export const Info = require('./info.png'); 

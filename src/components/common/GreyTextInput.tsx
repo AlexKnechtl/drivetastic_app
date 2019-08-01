@@ -25,7 +25,7 @@ const GreyTextInput = ({ hint, value, onChangeText, marginVertical }: InputProps
 const styles = StyleSheet.create({
     inputContainer: {
         flexDirection: "row",
-        backgroundColor: colors.softGray,
+        backgroundColor: colors.bgGray,
         borderRadius: 10,
         width: "100%",
         paddingHorizontal: 8,

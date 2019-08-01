@@ -32,7 +32,7 @@ class Reg_UserData extends Component {
                         borderColor={"#D5D5D5"}
                         borderWidth={1} />
                 </HideWithKeyboard>
-                <FAB icon={Continue} color={"#fff"} borderColor={colors.softGray} />
+                <FAB marginLeft={4} icon={Continue} color={"#fff"} borderColor={colors.bgGray} />
             </View>
         )
     }
@@ -43,12 +43,11 @@ const styles = StyleSheet.create({
         flex: 1
     },
     text: {
-        color: colors.darkerGray,
+        color: colors.bgGray,
         fontSize: fonts.lg,
         width: "100%",
         textAlign: "center",
         marginVertical: 16
-
     },
     buttonContainer: {
         marginLeft: "22%",

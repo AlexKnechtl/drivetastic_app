@@ -10,7 +10,9 @@ export const colors = {
     lightPurple: '#8F8FA4',
     lightGreen: '#83B47E',
     darkerGray: '#5B5B5B',
-    softGray: '#EFEFEF'
+    middleGray: "#858585",
+    softGray: '#D5D5D5',
+    bgGray: '#EFEFEF'
 }
 
 export const padding = {
