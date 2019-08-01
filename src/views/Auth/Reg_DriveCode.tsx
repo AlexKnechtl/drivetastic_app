@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
 import { IconHeadline, GreyTextInput, TextInputContainer, FAB, IconButton } from 'components/common';
-import { colors, fonts, padding } from 'base';
+import { colors, fonts } from 'base';
 import { AddPeople, Continue, QrCode } from '../../icons';
+
+import HideWithKeyboard from 'react-native-hide-with-keyboard';
 
 class Reg_DriveCode extends Component {
     state = {
@@ -18,9 +20,11 @@ class Reg_DriveCode extends Component {
                 <TextInputContainer margin={12}>
                     <GreyTextInput hint="Gib hier deinen 12-stelligen Code ein." />
                 </TextInputContainer>
-                <View style={styles.buttonContainer}>
-                    <IconButton color={colors.lightBlue} icon={QrCode} text="QR-Code scannen"/>
-                </View>
+                <HideWithKeyboard>
+                    <View style={styles.buttonContainer}>
+                        <IconButton color={colors.lightBlue} icon={QrCode} text="QR-Code scannen" />
+                    </View>
+                </HideWithKeyboard>
                 <FAB icon={Continue} color={"#fff"} borderColor={colors.softGray} />
             </View>
         )
