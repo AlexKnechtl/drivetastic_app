@@ -1,5 +1,5 @@
 import React from 'react'
-import { TouchableOpacity, StyleSheet, Image, Text } from 'react-native';
+import { TouchableOpacity, StyleSheet, Image, Text, View } from 'react-native';
 import { padding } from 'base';
 
 type ButtonProps = {
@@ -10,7 +10,7 @@ type ButtonProps = {
 
 const IconButton = ({ color, icon, text }: ButtonProps) => {
     return (
-        <TouchableOpacity style={{ backgroundColor: color, borderRadius: 10, flex: 1, alignItems: "center", margin: 7, padding: padding.md }}>
+        <TouchableOpacity activeOpacity={.7} style={{ ...styles.buttton, backgroundColor: color, }}>
             <Image resizeMode="contain" style={styles.icon} source={icon} />
             <Text style={styles.text}>
                 {text}
@@ -20,6 +20,13 @@ const IconButton = ({ color, icon, text }: ButtonProps) => {
 };
 
 const styles = StyleSheet.create({
+    buttton: {
+        borderRadius: 10,
+        flex: 1,
+        alignItems: "center",
+        margin: 7,
+        padding: padding.md
+    },
     icon: {
         width: "70%",
         height: "70%",

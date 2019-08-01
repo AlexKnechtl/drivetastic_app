@@ -2,3 +2,7 @@
 
 export * from './IconButton';
 export * from './ImageBg';
+export * from './IconHeadline';
+export * from './GreyTextInput';
+export * from './TextInputContainer';
+export * from './FAB';
