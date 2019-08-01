@@ -2,13 +2,14 @@ import React, { ReactNode, ReactChild } from 'react'
 import { View, StyleSheet } from 'react-native';
 
 type ContainerProps = {
-    margin: number,
+    marginHorizontal: number,
+    marginVertical: number,
     children: ReactNode | ReactChild,
 }
 
-const TextInputContainer = ({ margin, children }: ContainerProps) => {
+const TextInputContainer = ({ marginHorizontal, marginVertical, children }: ContainerProps) => {
     return (
-        <View style={{ ...styles.inputContainer, paddingHorizontal: margin }}>
+        <View style={{ ...styles.inputContainer, paddingHorizontal: marginHorizontal, marginVertical: marginVertical }}>
             {children}
         </View>
     );

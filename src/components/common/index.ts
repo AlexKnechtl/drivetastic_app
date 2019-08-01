@@ -6,3 +6,4 @@ export * from './IconHeadline';
 export * from './GreyTextInput';
 export * from './TextInputContainer';
 export * from './FAB';
+export * from './AgbCheck';

@@ -10,7 +10,7 @@ type InputProps = {
 
 const FAB = ({ color, icon, action, borderColor }: InputProps) => {
     return (
-        <TouchableOpacity onPress={action} style={{ ...styles.fabStyle, backgroundColor: color, borderColor: borderColor }}>
+        <TouchableOpacity activeOpacity={.7} onPress={action} style={{ ...styles.fabStyle, backgroundColor: color, borderColor: borderColor }}>
             <Image style={styles.icon} resizeMode="contain" source={icon} />
         </TouchableOpacity>
     );

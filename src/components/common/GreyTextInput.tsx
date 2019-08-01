@@ -6,13 +6,15 @@ type InputProps = {
     hint: string,
     password: boolean,
     value: string,
-    onChangeText: object
+    onChangeText: object,
+    marginVertical: number
 }
 
-const GreyTextInput = ({ hint, password, value, onChangeText }: InputProps) => {
+const GreyTextInput = ({ hint, password, value, onChangeText, marginVertical }: InputProps) => {
     return (
-        <View style={{ ...styles.inputContainer }}>
+        <View style={{ ...styles.inputContainer, marginVertical: marginVertical }}>
             <TextInput
+                style={{ width: "100%" }}
                 placeholder={hint}
                 secureTextEntry={password}
                 value={value}

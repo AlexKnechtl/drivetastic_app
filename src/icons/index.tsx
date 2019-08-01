@@ -5,3 +5,4 @@ export const AddPeople = require('./add_people.png');
 export const HighFive = require('./high_five.png'); 
 export const Continue = require('./continue.png'); 
 export const QrCode = require('./qr_code.png'); 
+export const Check = require('./check.png'); 
