@@ -6,10 +6,6 @@ class Reg_Tutorial extends Component {
 
     }
 
-    constructor(props: any) {
-        super(props);
-    }
-
     render() {
         return (
             <View>

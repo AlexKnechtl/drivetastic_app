@@ -2,3 +2,10 @@
 
 export * from './IconButton';
 export * from './ImageBg';
+export * from './IconHeadline';
+export * from './GreyTextInput';
+export * from './PasswortTextInput';
+export * from './TextInputContainer';
+export * from './FAB';
+export * from './AgbCheck';
+export * from './ForgotPassword';

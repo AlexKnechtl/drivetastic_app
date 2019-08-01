@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Text, Image } from 'react-native';
 
 import { IconButton, ImageBg } from '../../components'
-import { padding, colors } from '../../base';
+import { padding, colors, fonts, margin } from '../../base';
 
 import { HighFive, AddPeople, Car, Truck, Motorcycle } from '../../icons';
 import { BackgroundMain } from '../../img';
@@ -46,22 +46,13 @@ const styles = StyleSheet.create({
         alignContent: "stretch",
         padding: padding.sm
     },
-    background: {
-        flex: 1
-    },
-    innerFrame: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#0002',
-    },
     logoTextBold: {
-        fontSize: 52,
+        fontSize: fonts.xl,
         color: "#fff",
         fontWeight: "bold"
     },
     logoText: {
-        fontSize: 52,
+        fontSize: fonts.xl,
         color: "#fff",
         fontWeight: "100"
     },
@@ -72,7 +63,7 @@ const styles = StyleSheet.create({
     icon: {
         width: 45,
         height: 45,
-        marginHorizontal: 8
+        marginHorizontal: margin.md
     }
 });
 
