@@ -1,22 +1,20 @@
 import React from 'react'
 import { View, StyleSheet, TextInput } from 'react-native';
-import { fonts, margin, colors, padding } from 'base';
+import { fonts, colors } from 'base';
 
 type InputProps = {
     hint: string,
-    password: boolean,
     value: string,
     onChangeText: object,
     marginVertical: number
 }
 
-const GreyTextInput = ({ hint, password, value, onChangeText, marginVertical }: InputProps) => {
+const GreyTextInput = ({ hint, value, onChangeText, marginVertical }: InputProps) => {
     return (
         <View style={{ ...styles.inputContainer, marginVertical: marginVertical }}>
             <TextInput
                 style={{ width: "100%" }}
                 placeholder={hint}
-                secureTextEntry={password}
                 value={value}
                 autoCorrect={false}
             />

@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import HideWithKeyboard from 'react-native-hide-with-keyboard';
 
-import { IconHeadline, GreyTextInput, TextInputContainer, FAB, AgbCheck } from 'components/common';
+import { IconHeadline, GreyTextInput, TextInputContainer, FAB, AgbCheck, PasswortTextInput } from 'components/common';
 import { colors, fonts } from 'base';
 import { AddPeople, Continue } from '../../icons';
 
 class Reg_UserData extends Component {
     state = {
-        checked: false
+        checked: false,
+        passwortVisible: false
     }
 
     render() {
@@ -18,7 +19,11 @@ class Reg_UserData extends Component {
                 <TextInputContainer marginHorizontal={20} marginVertical={12}>
                     <GreyTextInput marginVertical={8} hint="E-Mail" />
                     <GreyTextInput marginVertical={8} hint="Vorname" />
-                    <GreyTextInput marginVertical={8} hint="Passwort" />
+                    <PasswortTextInput
+                        onPress={() => { this.setState({ passwortVisible: !this.state.passwortVisible }) }}
+                        password={this.state.passwortVisible}
+                        marginVertical={8}
+                        hint="Passwort" />
                 </TextInputContainer>
                 <HideWithKeyboard>
                     <AgbCheck
