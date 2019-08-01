@@ -13,7 +13,7 @@ class Account extends Component {
     render() {
         return (
             <View>
-                <Text>Account</Text>
+                <Text style={{fontSize: 100}}>Account</Text>
             </View>
         )
     }

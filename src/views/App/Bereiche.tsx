@@ -13,7 +13,7 @@ class Bereiche extends Component {
     render() {
         return (
             <View>
-                <Text>Bereiche</Text>
+                <Text style={{fontSize: 100}}>Bereiche</Text>
             </View>
         )
     }

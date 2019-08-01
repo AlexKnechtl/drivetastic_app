@@ -13,7 +13,7 @@ class Home extends Component {
     render() {
         return (
             <View>
-                <Text>Home</Text>
+                <Text style={{fontSize: 100}}>Home</Text>
             </View>
         )
     }

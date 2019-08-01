@@ -11,6 +11,7 @@
     "strict": true,
     "target": "esnext",
     "baseUrl": "src",
+    "inlineSourceMap": true,
     "paths": {
       "components/*": ["./components/*"],
       "app/*": ["./app/*"],

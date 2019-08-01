@@ -1,5 +1,9 @@
-import { createStackNavigator, createAppContainer, createSwitchNavigator } from "react-navigation";
-import { Account, Bereiche, Login, Reg_DriveCode, Reg_Tutorial, Reg_UserData, ExamView, ExamStatistics, TrainingView, Exam, AccountSettings, AGB, Impressum, Modules, Home, Question } from 'views';
+import React from 'react'
+import { View, Text } from 'react-native'
+
+import { createStackNavigator, createAppContainer, createSwitchNavigator, createBottomTabNavigator, createMaterialTopTabNavigator } from "react-navigation";
+import { Account, Bereiche, Login, Reg_DriveCode, Reg_Tutorial, Reg_UserData, ExamView, ExamStatistics, TrainingView, Exam, AccountSettings, AGB, Impressum, Modules, Home, Question } from '../views';
+import TabBar from 'components/specific/TabBar';
 
 const auth = createStackNavigator({
     Login,
@@ -17,7 +21,7 @@ const main = createStackNavigator({
     Home,
     TrainingView
 },{
-    headerMode: "none"
+headerMode: "none"
 });
 
 const learning = createStackNavigator({
@@ -26,9 +30,23 @@ const learning = createStackNavigator({
     Question
 });
 
+const home = createMaterialTopTabNavigator({
+    Home: Home,
+    Bereiche,
+    Account
+},{
+    swipeEnabled: true,
+    tabBarComponent: (props=> (<TabBar {...props}/>))
+})
+
 
 const rootNavigator = createSwitchNavigator({
     auth,
+    main,
+    learning,
+    home
+},{
+    initialRouteName: "home"
 });
 
 export const Router = createAppContainer(rootNavigator);
@@ -64,3 +82,5 @@ export const Router = createAppContainer(rootNavigator);
 //             return state;
 //     }
 // }
+
+
