@@ -31,7 +31,7 @@ const TabBar = (props: Props) => {
     var routes = navigation.state.routes;
     return (
         <View>
-            <View>
+            <Animated.View>
                 <ImageBackground source={BackgroundMain} style={{ aspectRatio: 5 / 3, width: "100%", }}>
                     <View style={{ backgroundColor: "#9999", flex: 1, flexDirection: "column", alignItems: "stretch"}}>
                         <View style={{ flex: 1, justifyContent: "center", alignItems: "center", shadowColor: "#000"}}>
@@ -55,7 +55,7 @@ const TabBar = (props: Props) => {
                         </LinearGradient>
                     </View>
                 </ImageBackground>
-            </View>
+            </Animated.View>
         </View>
     )
 }
