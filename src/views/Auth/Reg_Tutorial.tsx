@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { SafeAreaView, StyleSheet, Text } from 'react-native';
 
 class Reg_Tutorial extends Component {
     state = {
@@ -8,9 +8,9 @@ class Reg_Tutorial extends Component {
 
     render() {
         return (
-            <View>
+            <SafeAreaView>
                 <Text>Reg_Tutorial</Text>
-            </View>
+            </SafeAreaView>
         )
     }
 }

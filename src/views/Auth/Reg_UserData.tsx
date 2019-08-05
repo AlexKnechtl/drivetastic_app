@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet, SafeAreaView } from 'react-native';
 import HideWithKeyboard from 'react-native-hide-with-keyboard';
 
 import { IconHeadline, GreyTextInput, TextInputContainer, FAB, AgbCheck, PasswortTextInput } from 'components/common';
@@ -14,7 +14,7 @@ class Reg_UserData extends Component {
 
     render() {
         return (
-            <View style={styles.view}>
+            <SafeAreaView style={styles.view}>
                 <IconHeadline color={colors.lightBlue} icon={AddPeople} text="Registration" />
                 <TextInputContainer marginHorizontal={20} marginVertical={12}>
                     <GreyTextInput marginVertical={8} hint="E-Mail" />
@@ -33,7 +33,7 @@ class Reg_UserData extends Component {
                         borderWidth={1} />
                 </HideWithKeyboard>
                 <FAB marginLeft={4} icon={Continue} color={"#fff"} borderColor={colors.bgGray} />
-            </View>
+            </SafeAreaView>
         )
     }
 }

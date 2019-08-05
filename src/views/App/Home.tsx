@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
+import { Training, Exam } from '../../icons';
+import { padding, colors } from 'base';
+import { IconButton, LearnButton } from '../../components';
 
 class Home extends Component {
     state = {
@@ -13,7 +16,11 @@ class Home extends Component {
     render() {
         return (
             <View>
-                <Text style={{fontSize: 100}}>Home</Text>
+                <LearnButton />
+                <View style={styles.buttonLayout}>
+                    <IconButton color={colors.lightBlue} icon={Training} text="Training" />
+                    <IconButton color={colors.lightPurple} icon={Exam} text="Prüfung" />
+                </View>
             </View>
         )
     }
@@ -22,7 +29,13 @@ class Home extends Component {
 const styles = StyleSheet.create({
     view: {
         flex: 1
-    }
+    },
+    buttonLayout: {
+        flexDirection: "row",
+        width: "100%",
+        height: 150,
+        padding: padding.sm
+    },
 });
 
 export { Home };

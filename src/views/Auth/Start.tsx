@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, Image } from 'react-native';
+import { View, StyleSheet, Text, Image, SafeAreaView, StatusBar } from 'react-native';
 
 import { IconButton, ImageBg } from '../../components'
 import { padding, colors, fonts, margin } from '../../base';
@@ -11,6 +11,8 @@ class Start extends Component {
     render() {
         return (
             <View style={styles.view}>
+                <StatusBar barStyle="light-content" />
+                <SafeAreaView />
                 <View style={styles.bottomLayout}>
                     <IconButton color={colors.lightBlue} icon={AddPeople} text="Neu hier?" />
                     <IconButton color={colors.lightPurple} icon={HighFive} text="Einloggen" />

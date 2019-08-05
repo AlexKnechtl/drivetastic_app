@@ -7,4 +7,4 @@ import { App, Router } from "./src/app";
 import { Reg_Languages } from './src/views/Auth';
 import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => Reg_Languages);
+AppRegistry.registerComponent(appName, () => Router);

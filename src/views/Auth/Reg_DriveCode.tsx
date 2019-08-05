@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, SafeAreaView, StyleSheet, Text } from 'react-native';
 import HideWithKeyboard from 'react-native-hide-with-keyboard';
 
 import { IconHeadline, GreyTextInput, TextInputContainer, FAB, IconButton } from 'components/common';
@@ -13,7 +13,7 @@ class Reg_DriveCode extends Component {
 
     render() {
         return (
-            <View style={styles.view}>
+            <SafeAreaView style={styles.view}>
                 <IconHeadline color={colors.lightBlue} icon={AddPeople} text="Registration" />
                 <Text style={styles.text}>Dein Drive-Code</Text>
                 <TextInputContainer marginHorizontal={12}>
@@ -25,7 +25,7 @@ class Reg_DriveCode extends Component {
                     </View>
                 </HideWithKeyboard>
                 <FAB marginLeft={4} icon={Continue} color={"#fff"} borderColor={colors.bgGray} />
-            </View>
+            </SafeAreaView>
         )
     }
 }
