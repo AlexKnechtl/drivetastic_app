@@ -36,7 +36,19 @@ const home = createMaterialTopTabNavigator({
     Account
 },{
     swipeEnabled: true,
-    tabBarComponent: (props=> (<TabBar {...props}/>))
+    tabBarComponent: (props=> (<TabBar {...props}/>)),
+    tabBarOptions:{
+        style:{
+            backgroundColor: "#0000"
+        },
+        labelStyle:{
+            fontSize: 15,
+            fontWeight: "bold"
+        },
+        tabStyle:{
+            borderBottomColor: "#fff"
+        }
+    }
 })
 
 
