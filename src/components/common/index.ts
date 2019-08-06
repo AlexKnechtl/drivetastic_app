@@ -9,3 +9,4 @@ export * from './TextInputContainer';
 export * from './FAB';
 export * from './AgbCheck';
 export * from './ForgotPassword';
+export * from './Language';

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Image, Text, SafeAreaView } from 'react-native';
+import { StyleSheet, Image, Text, SafeAreaView } from 'react-native';
 
-import { IconHeadline, FAB } from 'components/common';
+import { IconHeadline, FAB, Language } from 'components/common';
 import { colors, fonts, dimensions } from 'base';
 import { AddPeople, Continue, World } from '../../icons';
+import { Austria } from '../../img';
 
 class Reg_Languages extends Component {
     state = {
-
+        pressed: false
     }
 
     render() {
@@ -16,6 +17,13 @@ class Reg_Languages extends Component {
                 <IconHeadline color={colors.lightBlue} icon={AddPeople} text="Registration" />
                 <Image resizeMode="contain" style={styles.icon} source={World} />
                 <Text style={styles.text}>Wähle deine Sprache</Text>
+                <Language
+                    onPress={() => { this.setState({ pressed: !this.state.pressed }) }}
+                    color={this.state.pressed ? colors.lightBlue : colors.bgGray}
+                    textColor={this.state.pressed ? "#fff" : colors.darkerGray}
+                    checkVisibility={this.state.pressed ? 1 : 0}
+                    text="Deutsch"
+                    icon={Austria} />
                 <FAB marginLeft={4} icon={Continue} color={"#fff"} borderColor={colors.bgGray} />
             </SafeAreaView>
         )
@@ -30,7 +38,9 @@ const styles = StyleSheet.create({
         color: colors.middleGray,
         fontSize: fonts.lg,
         width: "100%",
-        textAlign: "center"
+        fontWeight: "bold",
+        textAlign: "center",
+        marginBottom: 4
     },
     icon: {
         width: "22%",
