@@ -1,7 +1,6 @@
 import React from 'react'
-import { View, Text } from 'react-native'
 
-import { createStackNavigator, createAppContainer, createSwitchNavigator, createBottomTabNavigator, createMaterialTopTabNavigator } from "react-navigation";
+import { createStackNavigator, createAppContainer, createSwitchNavigator, createMaterialTopTabNavigator } from "react-navigation";
 import { Account, Bereiche, Login, Reg_DriveCode, Reg_Tutorial, Reg_UserData, ExamView, ExamStatistics, TrainingView, Exam, AccountSettings, AGB, Impressum, Modules, Home, Question } from '../views';
 import TabBar from 'components/specific/TabBar';
 
@@ -10,9 +9,9 @@ const auth = createStackNavigator({
     Reg_DriveCode,
     Reg_Tutorial,
     Reg_UserData
-},{
-    headerMode: "none"
-});
+}, {
+        headerMode: "none"
+    });
 
 const main = createStackNavigator({
     Account,
@@ -20,9 +19,9 @@ const main = createStackNavigator({
     ExamView,
     Home,
     TrainingView
-},{
-headerMode: "none"
-});
+}, {
+        headerMode: "none"
+    });
 
 const learning = createStackNavigator({
     Exam,
@@ -57,9 +56,9 @@ const rootNavigator = createSwitchNavigator({
     main,
     learning,
     home
-},{
-    initialRouteName: "home"
-});
+}, {
+        initialRouteName: "home"
+    });
 
 export const Router = createAppContainer(rootNavigator);
 
@@ -94,5 +93,3 @@ export const Router = createAppContainer(rootNavigator);
 //             return state;
 //     }
 // }
-
-

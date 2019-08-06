@@ -1,5 +1,5 @@
 import React from 'react'
-import { TouchableOpacity, StyleSheet, Image, Text, View } from 'react-native';
+import { TouchableOpacity, StyleSheet, Image, Text } from 'react-native';
 import { padding } from 'base';
 
 type ButtonProps = {
@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         margin: 7,
-        padding: padding.md
+        paddingTop: 12,
+        paddingBottom: 24,
     },
     icon: {
         width: "70%",

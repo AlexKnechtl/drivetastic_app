@@ -28,8 +28,15 @@ const styles = StyleSheet.create({
         alignItems: "center",
         bottom: 22,
         right: 22,
-        elevation: 8,
-        borderWidth: 1
+        borderWidth: 1,
+        elevation: 6,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
     },
     icon: {
         height: 32,

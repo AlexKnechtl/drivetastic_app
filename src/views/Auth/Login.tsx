@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
-import HideWithKeyboard from 'react-native-hide-with-keyboard';
+import { StyleSheet, SafeAreaView } from 'react-native';
 
-import { IconHeadline, GreyTextInput, TextInputContainer, FAB, AgbCheck, PasswortTextInput, ForgotPassword } from 'components/common';
+import { IconHeadline, GreyTextInput, TextInputContainer, FAB, PasswortTextInput, ForgotPassword } from 'components/common';
 import { colors, fonts } from 'base';
 import { Continue, HighFive } from '../../icons';
 
@@ -14,7 +13,7 @@ class Login extends Component {
 
     render() {
         return (
-            <View style={styles.view}>
+            <SafeAreaView style={styles.view}>
                 <IconHeadline color={colors.lightPurple} icon={HighFive} text="Login" />
                 <TextInputContainer marginHorizontal={20} marginVertical={14}>
                     <GreyTextInput marginVertical={8} hint="E-Mail" />
@@ -26,7 +25,7 @@ class Login extends Component {
                 </TextInputContainer>
                 <ForgotPassword color={colors.darkerGray} borderColor={colors.softGray} borderWidth={1} />
                 <FAB marginLeft={4} icon={Continue} color={"#fff"} borderColor={colors.bgGray} />
-            </View>
+            </SafeAreaView>
         )
     }
 }

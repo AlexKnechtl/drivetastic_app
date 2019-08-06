@@ -10,3 +10,6 @@ export const CircleCheck = require('./circle_check.png');
 export const Eye = require('./eye.png'); 
 export const World = require('./world.png'); 
 export const Info = require('./info.png'); 
+export const Training = require('./training.png'); 
+export const Exam = require('./exam.png'); 
+export const Learn = require('./learn.png'); 
