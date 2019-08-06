@@ -4,7 +4,7 @@
 
 import {AppRegistry} from 'react-native';
 import { App, Router } from "./src/app";
-import { Reg_Multilanguage } from './src/views/Auth';
+import { Reg_EasyLearn } from './src/views/Auth';
 import {name as appName} from './app.json';
 import storybook from './storybook'
 
