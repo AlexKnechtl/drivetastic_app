@@ -11,9 +11,13 @@ describe('GreyDriveCodeInput', () => {
     }),
     it('should remove non alphaNum chars', () => {
         var text = "asadq _ - 324-";
-        expect(MaskText(text)).toEqual("ASAD - Q324 - ");
+        expect(MaskText(text)).toEqual("ASAD - Q324");
     }),
-    it('should be not too long ', () => {
+    it('should not be longer than 12 Chars ', () => {
+        var text = "asad - qsdfa - asdfafw";
+        expect(MaskText(text)).toEqual("ASAD - QSDF - AASD");
+    }),
+    it('should let you delete', () => {
         var text = "asad - qsdfa - asdfafw";
         expect(MaskText(text)).toEqual("ASAD - QSDF - AASD");
     })

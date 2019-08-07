@@ -5,12 +5,13 @@ import { padding } from 'base';
 type ButtonProps = {
     color: string,
     icon: object,
-    text: string
+    text: string,
+    onPress: ()=> void
 }
 
-const IconButton = ({ color, icon, text }: ButtonProps) => {
+const IconButton = ({ color, icon, text, onPress = ()=>null }: ButtonProps) => {
     return (
-        <TouchableOpacity activeOpacity={.7} style={{ ...styles.buttton, backgroundColor: color, }}>
+        <TouchableOpacity onPress={onPress} activeOpacity={.7} style={{ ...styles.buttton, backgroundColor: color, }}>
             <Image resizeMode="contain" style={styles.icon} source={icon} />
             <Text style={styles.text}>
                 {text}

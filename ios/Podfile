@@ -30,6 +30,9 @@ target 'drivetastic_app' do
 
 
 
+
+  pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions'
+
   target 'drivetastic_appTests' do
     inherit! :search_paths
     # Pods for testing
