@@ -18,6 +18,8 @@
     "react-native-hide-with-keyboard": "^1.2.0",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-modalbox": "^1.7.1",
+    "react-native-permissions": "^1.2.0",
+    "react-native-qrcode-scanner": "^1.2.1",
     "react-native-reanimated": "^1.1.0",
     "react-navigation": "^3.11.1"
   },
@@ -48,8 +50,8 @@
     "preset": "react-native"
   },
   "config": {
-    "react-native-storybook-loader":{
-      "searchDir":[
+    "react-native-storybook-loader": {
+      "searchDir": [
         "./src"
       ],
       "pattern": "**/*.stories.js"

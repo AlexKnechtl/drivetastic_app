@@ -5,10 +5,15 @@ import HideWithKeyboard from 'react-native-hide-with-keyboard';
 import { IconHeadline, GreyTextInput, TextInputContainer, FAB, IconButton } from 'components/common';
 import { colors, fonts } from 'base';
 import { AddPeople, Continue, QrCode } from '../../icons';
+import { GreyDrivecodeInput } from 'components/specific';
 
 class Reg_DriveCode extends Component {
     state = {
         driveCode: null
+    }
+
+    requestCameraPermission= () => {
+        
     }
 
     render() {
@@ -17,7 +22,7 @@ class Reg_DriveCode extends Component {
                 <IconHeadline color={colors.lightBlue} icon={AddPeople} text="Registration" />
                 <Text style={styles.text}>Dein Drive-Code</Text>
                 <TextInputContainer marginHorizontal={12}>
-                    <GreyTextInput hint="Gib hier deinen 12-stelligen Code ein." />
+                    <GreyDrivecodeInput hint="Gib hier deinen 12-stelligen Code ein." />
                 </TextInputContainer>
                 <HideWithKeyboard>
                     <View style={styles.buttonContainer}>
