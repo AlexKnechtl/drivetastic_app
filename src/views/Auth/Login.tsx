@@ -1,14 +1,32 @@
 import React, { Component } from 'react';
-import { StyleSheet, SafeAreaView } from 'react-native';
+import { StyleSheet, SafeAreaView, Text } from 'react-native';
 
 import { IconHeadline, GreyTextInput, TextInputContainer, FAB, PasswortTextInput, ForgotPassword } from 'components/common';
 import { colors, fonts } from 'base';
 import { Continue, HighFive } from '../../icons';
+import { connect } from 'react-redux';
+import { StateType, StartSignupAction, StartLoginAction } from 'core';
+import { NavigationScreenProps } from 'react-navigation';
 
-class Login extends Component {
+const mapStateToProps = (state: StateType) => ({
+    success: state.auth.login.success,
+    error: state.auth.error,
+    token: state.auth.token
+})
+
+const mapDispatchToProps = {
+    dispatchSignin: StartLoginAction
+    
+}
+type props = NavigationScreenProps & ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps;
+const enhance = connect(mapStateToProps, mapDispatchToProps);
+
+export const Login = enhance(class Login extends Component<props> {
     state = {
         checked: false,
-        passwortVisible: false
+        passwortVisible: false,
+        email: "",
+        password: ""
     }
 
     render() {
@@ -16,19 +34,22 @@ class Login extends Component {
             <SafeAreaView style={styles.view}>
                 <IconHeadline color={colors.lightPurple} icon={HighFive} text="Login" />
                 <TextInputContainer marginHorizontal={20} marginVertical={14}>
-                    <GreyTextInput marginVertical={8} hint="E-Mail" />
+                    <GreyTextInput marginVertical={8} hint="E-Mail" onChangeText={(t)=> this.setState({email: t.trim()})}/>
                     <PasswortTextInput
+                        onChangeText={(t)=> this.setState({password: t.trim()})}
                         onPress={() => { this.setState({ passwortVisible: !this.state.passwortVisible }) }}
                         password={this.state.passwortVisible}
                         marginVertical={8}
                         hint="Passwort" />
                 </TextInputContainer>
-                <ForgotPassword color={colors.darkerGray} borderColor={colors.softGray} borderWidth={1} />
-                <FAB marginLeft={4} icon={Continue} color={"#fff"} borderColor={colors.bgGray} />
+                <ForgotPassword color={colors.darkerGray} borderColor={colors.softGray} borderWidth={1} />                
+                <Text style={{color: "#f00"}}>{this.props.error||(this.props.success&&this.props.navigation.navigate("tutorial"))}</Text>
+                <FAB marginLeft={4} icon={Continue} color={"#fff"} borderColor={colors.bgGray} action={()=>{this.props.dispatchSignin({email: this.state.email, password: this.state.password});
+                this.props.success&&this.props.navigation.navigate("home");}}/>
             </SafeAreaView>
         )
     }
-}
+});
 
 const styles = StyleSheet.create({
     view: {
@@ -51,5 +72,3 @@ const styles = StyleSheet.create({
         maxHeight: 160
     }
 });
-
-export { Login };

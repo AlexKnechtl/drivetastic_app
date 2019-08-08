@@ -1,4 +1,4 @@
-import { ERROR, LOGIN_SUCCESS, SIGNUP_SUCCESS, CHECK_DRIVECODE_SUCCESS } from "./actiontypes";
+import { ERROR, LOGIN_SUCCESS, SIGNUP_SUCCESS, CHECK_DRIVECODE_SUCCESS, START_CHECK_DRIVECODE } from "./actiontypes";
 import { AuthActionTypes } from "./actions";
 
 export interface AuthState {
@@ -12,6 +12,7 @@ export interface AuthState {
   tokenCheck: {
     success: boolean;
   };
+  token: string
 }
 
 const initialState: AuthState = {
@@ -24,7 +25,8 @@ const initialState: AuthState = {
   },
   tokenCheck: {
     success: false
-  }
+  },
+  token:''
 };
 
 export function authReducer(
@@ -34,6 +36,8 @@ export function authReducer(
   switch (type) {
     case ERROR:
       return { ...state, error: payload as string };
+      case START_CHECK_DRIVECODE:
+      return { ...state, token: payload as string, error:"" };
 
       case LOGIN_SUCCESS:
         return { ...state, error: "", login: { success: true } };

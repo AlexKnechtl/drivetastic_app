@@ -5,7 +5,7 @@ import { fonts, colors } from 'base';
 type InputProps = {
     hint: string,
     value: string,
-    onChangeText: object,
+    onChangeText: (text:string)=>void,
     marginVertical: number
 }
 
@@ -16,6 +16,7 @@ const GreyTextInput = ({ hint, value, onChangeText, marginVertical }: InputProps
                 style={{ width: "100%" }}
                 placeholder={hint}
                 value={value}
+                onChangeText={onChangeText}
                 autoCorrect={false}
             />
         </View>

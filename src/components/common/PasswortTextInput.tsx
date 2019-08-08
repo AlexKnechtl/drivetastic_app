@@ -7,7 +7,7 @@ type PasswortProps = {
     hint: string,
     password: boolean,
     value: string,
-    onChangeText: object,
+    onChangeText: (text: string)=>void,
     marginVertical: number,
     type: string,
     onPress: () => void
@@ -25,6 +25,7 @@ const PasswortTextInput = ({ hint, password, value, onChangeText, marginVertical
                 secureTextEntry={password ? false : true}
                 value={value}
                 autoCorrect={false}
+                onChangeText={onChangeText}
             />
         </View>
     );
