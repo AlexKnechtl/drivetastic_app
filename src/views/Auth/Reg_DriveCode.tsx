@@ -9,8 +9,24 @@ import { GreyDrivecodeInput } from 'components/specific';
 
 import QRCodeScanner from "react-native-qrcode-scanner";
 import Permissions from 'react-native-permissions';
+import { connect } from "react-redux";
+import { StateType } from 'core';
+import { NavigationScreenProps } from 'react-navigation';
+import { StartCheckDrivecodeAction } from "core";
 
-class Reg_DriveCode extends Component {
+const mapStateToProps = (state: StateType) => ({
+    codeValid: state.auth.tokenCheck.success,
+    error: state.auth.error
+})
+
+const mapDispatchToProps = {
+    dispatchCheckToken: StartCheckDrivecodeAction
+    
+}
+type props = NavigationScreenProps & ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps;
+const enhance = connect(mapStateToProps, mapDispatchToProps);
+
+export const Reg_DriveCode =  enhance(class Reg_DriveCode extends Component<props> {
     state = {
         driveCode: "",
         showQrcodeReader: false,
@@ -38,12 +54,13 @@ class Reg_DriveCode extends Component {
                     </View>
                 </HideWithKeyboard>
                 {this.state.showQrcodeReader && 
-                <QRCodeScanner onRead={(e)=> this.setState({driveCode: e.data, showQrcodeReader: false})}/>}
-                <FAB marginLeft={4} icon={Continue} color={"#fff"} borderColor={colors.bgGray} />
+                <QRCodeScanner onRead={(e)=> {this.setState({driveCode: e.data, showQrcodeReader: false}); this.props.dispatchCheckToken(e.data)}}/>}
+                <Text style={{color: "#f00"}}>{this.props.error||(this.props.codeValid&&"Code valid!!")}</Text>
+                <FAB action={()=> {this.props.dispatchCheckToken(this.state.driveCode); this.props.codeValid&&this.props.navigation.navigate("enterDetails")}} marginLeft={4} icon={Continue} color={"#fff"} borderColor={colors.bgGray} />
             </SafeAreaView>
         )
     }
-}
+})
 
 const styles = StyleSheet.create({
     view: {
@@ -66,5 +83,3 @@ const styles = StyleSheet.create({
         maxHeight: 160
     }
 });
-
-export { Reg_DriveCode };

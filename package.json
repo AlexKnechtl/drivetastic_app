@@ -8,11 +8,15 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "index": "cti ./src/ -e ['@types', 'typings', '__test__', '__tests__', 'img', 'icons']",
-    "storybook": "start-storybook -p 7007",
+    "storybook": "start-storybook -p 8081",
     "prestorybook": "rnstl"
   },
   "dependencies": {
+    "@babel/plugin-proposal-decorators": "^7.4.4",
     "@react-native-community/async-storage": "^1.6.1",
+    "@types/react-redux": "^7.1.1",
+    "child_process": "^1.0.2",
+    "firebase": "^6.3.4",
     "react": "16.8.6",
     "react-native": "0.60.4",
     "react-native-camera": "^3.0.1",
@@ -23,7 +27,10 @@
     "react-native-permissions": "^1.2.0",
     "react-native-qrcode-scanner": "^1.2.1",
     "react-native-reanimated": "^1.1.0",
-    "react-navigation": "^3.11.1"
+    "react-navigation": "^3.11.1",
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.4",
+    "redux-saga": "^1.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.5.0",
@@ -46,6 +53,7 @@
     "react-dom": "16.8.6",
     "react-native-storybook-loader": "^1.8.0",
     "react-test-renderer": "16.8.6",
+    "redux-logger": "^3.0.6",
     "typescript": "^3.5.3"
   },
   "jest": {

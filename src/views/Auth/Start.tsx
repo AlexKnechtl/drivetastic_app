@@ -6,16 +6,17 @@ import { padding, colors, fonts, margin } from '../../base';
 
 import { HighFive, AddPeople, Car, Truck, Motorcycle } from '../../icons';
 import { BackgroundMain } from '../../img';
+import { NavigationScreenProps } from 'react-navigation';
 
-class Start extends Component {
+class Start extends Component<NavigationScreenProps> {
     render() {
         return (
             <View style={styles.view}>
                 <StatusBar barStyle="light-content" />
                 <SafeAreaView />
                 <View style={styles.bottomLayout}>
-                    <IconButton color={colors.lightBlue} icon={AddPeople} text="Neu hier?" />
-                    <IconButton color={colors.lightPurple} icon={HighFive} text="Einloggen" />
+                    <IconButton onPress={()=> this.props.navigation.navigate("signup")} color={colors.lightBlue} icon={AddPeople} text="Neu hier?" />
+                    <IconButton onPress={()=> this.props.navigation.navigate("login")} color={colors.lightPurple} icon={HighFive} text="Einloggen" />
                 </View>
                 <ImageBg image={BackgroundMain} colorFilter="#0003">
                     <View style={{ backgroundColor: colors.lightBlue, borderRadius: 10, paddingHorizontal: 26, paddingVertical: 8 }}>

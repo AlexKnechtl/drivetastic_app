@@ -20,6 +20,12 @@ module.exports = {
           "components": ["./src/components/"]
         }
       }
-    ]
+    ],
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
   ]
 };
