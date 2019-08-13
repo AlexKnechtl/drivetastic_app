@@ -5,14 +5,15 @@ import { START_LOGIN, START_SIGNUP, START_CHECK_DRIVECODE } from './actiontypes'
 
 function* trySignIn({ payload }: ReturnType<typeof StartLoginAction>) {
     try {
-        var user = yield new AuthService().signInWithCredential(payload.email, payload.password);
+        var auth = new AuthService();
+        var user = yield auth.signInWithCredential(payload.email, payload.password);
         if (user)
             yield put(LoginSuccessAction(user))
         else
-            yield put(ErrorAction("ERROR: No User"))
+            yield put(ErrorAction("ERROR: No User", "signin"))
     }
     catch (e) {
-        yield put(ErrorAction(e.message));
+        yield put(ErrorAction(e.message, "signin"));
     }
 }
 
@@ -25,12 +26,11 @@ function* trySignUp({ payload }: ReturnType<typeof StartSignupAction>) {
             throw new Error(response.message);
     }
     catch (e) {
-        yield put(ErrorAction(e.message));
+        yield put(ErrorAction(e.message, "signup"));
     }
 }
 
 function* tryCheckToken({ payload }: ReturnType<typeof StartCheckDrivecodeAction>) {
-    console.log("tokenchecking...")
     try {
         var auth = new AuthService();
         var response = yield auth.checkToken(payload);
@@ -41,7 +41,7 @@ function* tryCheckToken({ payload }: ReturnType<typeof StartCheckDrivecodeAction
             throw new Error(response.message);
     }
     catch (e) {
-        yield put(ErrorAction(e.message));
+        yield put(ErrorAction(e.message, "checktoken"));
     }
 }
 

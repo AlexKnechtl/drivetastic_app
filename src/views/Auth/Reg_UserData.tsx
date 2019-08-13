@@ -4,14 +4,14 @@ import HideWithKeyboard from 'react-native-hide-with-keyboard';
 
 import { IconHeadline, GreyTextInput, TextInputContainer, FAB, AgbCheck, PasswortTextInput } from 'components/common';
 import { colors, fonts } from 'base';
-import { AddPeople, Continue } from '../../icons';
+import { icons } from '../../icons';
 import { NavigationScreenProps } from 'react-navigation';
 import { StateType, StartSignupAction } from 'core';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state: StateType) => ({
     success: state.auth.signup.success,
-    error: state.auth.error,
+    error: state.auth.signup.error,
     token: state.auth.token
 })
 
@@ -35,7 +35,7 @@ export const Reg_UserData =  enhance(class Reg_UserData extends Component<props>
     render() {
         return (
             <SafeAreaView style={styles.view}>
-                <IconHeadline color={colors.lightBlue} icon={AddPeople} text="Registration" />
+                <IconHeadline color={colors.lightBlue} icon={icons.AddPeople} text="Registration" />
                 <TextInputContainer marginHorizontal={20} marginVertical={12}>
                     <GreyTextInput marginVertical={8} hint="E-Mail" onChangeText={(t)=> this.setState({email: t.trim()})} />
                     <GreyTextInput marginVertical={8} hint="Vorname" onChangeText={(t)=> this.setState({name: t.trim()})} />
@@ -53,7 +53,7 @@ export const Reg_UserData =  enhance(class Reg_UserData extends Component<props>
                         borderWidth={1} />
                 </HideWithKeyboard>
                 <Text style={{color: "#f00"}}>{this.props.error||(this.props.success&&this.props.navigation.navigate("tutorial"))}</Text>
-                <FAB marginLeft={4} icon={Continue} color={"#fff"} borderColor={colors.bgGray} 
+                <FAB marginLeft={4} icon={icons.Continue} color={"#fff"} borderColor={colors.bgGray} 
                 action={()=>{ console.log({email: this.state.email, password: this.state.password, name: this.state.name, driveCode: this.props.token}); this.props.dispatchSignUp({email: this.state.email, password: this.state.password, name: this.state.name, driveCode: this.props.token});
                 this.props.success&&this.props.navigation.navigate("tutorial");}}/>
             </SafeAreaView>

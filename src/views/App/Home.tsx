@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import { Training, Exam } from '../../icons';
+import { icons } from '../../icons';
 import { padding, colors } from 'base';
 import { IconButton, LearnButton } from '../../components';
 
@@ -18,8 +18,8 @@ class Home extends Component {
             <View>
                 <LearnButton />
                 <View style={styles.buttonLayout}>
-                    <IconButton color={colors.lightBlue} icon={Training} text="Training" />
-                    <IconButton color={colors.lightPurple} icon={Exam} text="Prüfung" />
+                    <IconButton color={colors.lightBlue} icon={icons.Training} text="Training"/>
+                    <IconButton color={colors.lightPurple} icon={icons.Exam} text="Prüfung" />
                 </View>
             </View>
         )

@@ -2,9 +2,9 @@ import firebase from "firebase";
 import { User } from "core";
 
 export class AuthService {
-  async signInWithCredential(email: string, password: string) {
+  async signInWithCredential(email: string, password: string): Promise<User> {
     try {
-      var u = await firebase.auth().signInWithEmailAndPassword(email, password);
+      var u = await new Promise<firebase.auth.UserCredential>((resolve, reject)=> {firebase.auth().signInWithEmailAndPassword(email, password).then(v => resolve(v)).catch(r=> reject(r));});
       if (u.user) {
         var name = (await firebase
           .database()
@@ -16,7 +16,7 @@ export class AuthService {
       }
       throw new Error("User cannot be fetched");
     } catch (e) {
-      throw e;
+      throw new Error(e.message);
     }
   }
 
@@ -87,7 +87,7 @@ export class AuthService {
 
     if (response.ok) {
       return { success: true, message: text };
-    } else return { success: false, message: text };
+    } else throw new Error("TEST ERROR");//return { success: false, message: text };
   }
 
   async sendPasswordResetEmail(email: string) {

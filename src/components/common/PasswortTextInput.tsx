@@ -1,29 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, StyleSheet, TextInput, Image, TouchableOpacity } from 'react-native';
 import { fonts, colors } from 'base';
-import { Eye } from '../../icons';
+import { icons } from '../../icons';
 
 type PasswortProps = {
     hint: string,
-    password: boolean,
-    value: string,
+    value?: string,
     onChangeText: (text: string)=>void,
     marginVertical: number,
-    type: string,
-    onPress: () => void
+    type?: string //TODO: evualuate if needed at all
 }
 
-const PasswortTextInput = ({ hint, password, value, onChangeText, marginVertical, onPress }: PasswortProps) => {
+const PasswortTextInput = ({ hint, value, onChangeText, marginVertical }: PasswortProps) => {
+    const [passwordVisible, setPasswordVisible] = useState(false);
     return (
         <View style={{ ...styles.inputContainer, marginVertical: marginVertical }}>
-            <TouchableOpacity activeOpacity={.6} onPress={onPress}>
-                <Image resizeMode="contain" style={styles.icon} source={Eye} />
+            <TouchableOpacity activeOpacity={.6} onPress={()=> setPasswordVisible(!passwordVisible)}>
+                <Image resizeMode="contain" style={styles.icon} source={icons.Eye} />
             </TouchableOpacity>
             <TextInput
                 style={{ flex: 1 }}
                 placeholder={hint}
-                secureTextEntry={password ? false : true}
+                secureTextEntry={true}
                 value={value}
+                keyboardType={passwordVisible ? "visible-password" : "default" }
+                autoCapitalize="none"
                 autoCorrect={false}
                 onChangeText={onChangeText}
             />

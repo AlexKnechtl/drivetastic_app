@@ -1,7 +1,7 @@
 import React from 'react'
 import { TouchableOpacity, StyleSheet, Image, Text, View } from 'react-native';
 import { fonts, margin } from 'base';
-import { CircleCheck } from '../../icons';
+import { icons } from '../../icons';
 
 type LanguageProps = {
     color: string,
@@ -21,7 +21,7 @@ const Language = ({ color, textColor, icon, text, onPress, checkVisibility }: La
                     {text}
                 </Text>
             </View>
-            <Image resizeMode="contain" style={{ height: 30, width: 30, opacity: checkVisibility }} source={CircleCheck} />
+            <Image resizeMode="contain" style={{ height: 30, width: 30, opacity: checkVisibility }} source={icons.CircleCheck} />
         </TouchableOpacity>
     );
 };

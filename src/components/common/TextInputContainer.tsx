@@ -2,8 +2,8 @@ import React, { ReactNode, ReactChild } from 'react'
 import { View, StyleSheet } from 'react-native';
 
 type ContainerProps = {
-    marginHorizontal: number,
-    marginVertical: number,
+    marginHorizontal?: number,
+    marginVertical?: number,
     children: ReactNode | ReactChild,
 }
 

@@ -3,7 +3,7 @@ import { StyleSheet, Image, Text, SafeAreaView } from 'react-native';
 
 import { IconHeadline, FAB, Language } from 'components/common';
 import { colors, fonts, dimensions } from 'base';
-import { AddPeople, Continue, World } from '../../icons';
+import { icons } from '../../icons';
 import { Austria } from '../../img';
 
 class Reg_Languages extends Component {
@@ -14,8 +14,8 @@ class Reg_Languages extends Component {
     render() {
         return (
             <SafeAreaView style={styles.view}>
-                <IconHeadline color={colors.lightBlue} icon={AddPeople} text="Registration" />
-                <Image resizeMode="contain" style={styles.icon} source={World} />
+                <IconHeadline color={colors.lightBlue} icon={icons.AddPeople} text="Registration" />
+                <Image resizeMode="contain" style={styles.icon} source={icons.World} />
                 <Text style={styles.text}>Wähle deine Sprache</Text>
                 <Language
                     onPress={() => { this.setState({ pressed: !this.state.pressed }) }}
@@ -24,7 +24,7 @@ class Reg_Languages extends Component {
                     checkVisibility={this.state.pressed ? 1 : 0}
                     text="Deutsch"
                     icon={Austria} />
-                <FAB marginLeft={4} icon={Continue} color={"#fff"} borderColor={colors.bgGray} />
+                <FAB marginLeft={4} icon={icons.Continue} color={"#fff"} borderColor={colors.bgGray} />
             </SafeAreaView>
         )
     }

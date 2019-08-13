@@ -4,7 +4,7 @@ import HideWithKeyboard from 'react-native-hide-with-keyboard';
 
 import { IconHeadline, GreyTextInput, TextInputContainer, FAB, IconButton } from 'components/common';
 import { colors, fonts } from 'base';
-import { AddPeople, Continue, QrCode } from '../../icons';
+import { icons } from '../../icons';
 import { GreyDrivecodeInput } from 'components/specific';
 
 import QRCodeScanner from "react-native-qrcode-scanner";
@@ -16,7 +16,7 @@ import { StartCheckDrivecodeAction } from "core";
 
 const mapStateToProps = (state: StateType) => ({
     codeValid: state.auth.tokenCheck.success,
-    error: state.auth.error
+    error: state.auth.tokenCheck.error
 })
 
 const mapDispatchToProps = {
@@ -37,13 +37,13 @@ export const Reg_DriveCode =  enhance(class Reg_DriveCode extends Component<prop
         this.setState({error: "working..."})
         Permissions.request('camera').then(response=>{
             this.setState({showQrcodeReader: true, error: response });
-        }).catch(reaseon => this.setState({error: reaseon}));
+        }).catch(reason => this.setState({error: reason}));
     }
 
     render() {
         return (
             <SafeAreaView style={styles.view}>
-                <IconHeadline color={colors.lightBlue} icon={AddPeople} text="Registration" />
+                <IconHeadline color={colors.lightBlue} icon={icons.AddPeople} text="Registration" />
                 <Text style={styles.text}>Dein Drive-Code</Text>
                 <TextInputContainer marginHorizontal={12}>
                     <GreyDrivecodeInput onChangeText={t=> this.setState({driveCode: t})} text={this.state.driveCode} hint="Gib hier deinen 12-stelligen Code ein." />
@@ -51,12 +51,12 @@ export const Reg_DriveCode =  enhance(class Reg_DriveCode extends Component<prop
                 <Text style={styles.errorText}>{this.props.error||(this.props.codeValid&&"Code valid!!")}</Text>
                 <HideWithKeyboard>
                     <View style={styles.buttonContainer}>
-                        <IconButton onPress={this.requestCameraPermission} color={colors.lightBlue} icon={QrCode} text="QR-Code scannen" />
+                        <IconButton onPress={this.requestCameraPermission} color={colors.lightBlue} icon={icons.QrCode} text="QR-Code scannen" />
                     </View>
                 </HideWithKeyboard>
                 {this.state.showQrcodeReader && 
                 <QRCodeScanner onRead={(e)=> {this.setState({driveCode: e.data, showQrcodeReader: false}); this.props.dispatchCheckToken(e.data)}}/>}
-                <FAB action={()=> {this.props.dispatchCheckToken(this.state.driveCode); this.props.codeValid&&this.props.navigation.navigate("enterDetails")}} marginLeft={4} icon={Continue} color={"#fff"} borderColor={colors.bgGray} />
+                <FAB action={()=> {this.props.dispatchCheckToken(this.state.driveCode); this.props.codeValid&&this.props.navigation.navigate("enterDetails")}} marginLeft={4} icon={icons.Continue} color={"#fff"} borderColor={colors.bgGray} />
             </SafeAreaView>
         )
     }

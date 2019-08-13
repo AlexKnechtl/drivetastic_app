@@ -1,18 +1,18 @@
 import React from 'react'
 import { TouchableOpacity, StyleSheet, Image, Text, View } from 'react-native';
 import { padding } from 'base';
-import { Learn } from '../../icons';
+import { icons } from '../../icons';
 
 type ButtonProps = {
-    color: string,
-    icon: object,
-    text: string
+    color?: string, //TODO: determine if actually needed
+    icon?: object,
+    text?: string //TODO: determine if actually needed
 }
 
 const LearnButton = ({ icon }: ButtonProps) => {
     return (
         <TouchableOpacity activeOpacity={.7} style={{ ...styles.buttton }}>
-            <Image resizeMode="contain" style={styles.icon} source={Learn} />
+            <Image resizeMode="contain" style={styles.icon} source={icons.Learn} />
             <View style={{ flex: 1 }}>
                 <Text style={styles.title}>Lernerfahrung fortsetzen</Text>
                 <Text style={styles.text}>1.1 Verkehrsschilder</Text>

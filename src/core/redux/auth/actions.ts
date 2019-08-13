@@ -31,9 +31,11 @@ export const CheckDriveCodeSuccessAction = (payload: string) => ({
     payload
 })
 
-export const ErrorAction = (payload: string) => ({
+export type ErrorType = "signin"|"signup"|"checktoken";
+
+export const ErrorAction = (payload: string, type: ErrorType) => ({
     type: ERROR,
-    payload
+    payload: {message: payload, type}
 })
 
 
@@ -41,8 +43,8 @@ export type AuthActionTypes = ReturnType<typeof StartLoginAction> |
 ReturnType<typeof StartLoginAction> |
 ReturnType<typeof LoginSuccessAction> |
 ReturnType<typeof StartSignupAction> |
+ReturnType<typeof ErrorAction> |
 ReturnType<typeof SignUpSuccessAction> |
 ReturnType<typeof StartCheckDrivecodeAction> |
 ReturnType<typeof StartCheckDrivecodeAction> |
-ReturnType<typeof CheckDriveCodeSuccessAction> |
-ReturnType<typeof ErrorAction>;
+ReturnType<typeof CheckDriveCodeSuccessAction>;

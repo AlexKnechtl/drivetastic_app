@@ -1,30 +1,34 @@
 import { ERROR, LOGIN_SUCCESS, SIGNUP_SUCCESS, CHECK_DRIVECODE_SUCCESS, START_CHECK_DRIVECODE } from "./actiontypes";
-import { AuthActionTypes } from "./actions";
+import { AuthActionTypes, ErrorType, ErrorAction } from "./actions";
 
 export interface AuthState {
-  error: string;
   login: {
     success: boolean;
+    error: string;
   };
   signup: {
     success: boolean;
+    error: string;
   };
   tokenCheck: {
     success: boolean;
+    error: string;
   };
   token: string
 }
 
 const initialState: AuthState = {
-  error: "",
   login: {
-    success: false
+    success: false,
+    error: ""
   },
   signup: {
-    success: false
+    success: false,
+    error: ""
   },
   tokenCheck: {
-    success: false
+    success: false,
+    error:""
   },
   token:''
 };
@@ -35,18 +39,23 @@ export function authReducer(
 ): AuthState {
   switch (type) {
     case ERROR:
-      return { ...state, error: payload as string };
+      payload = (payload as {message: string, type: ErrorType});
+      switch(payload.type){
+        case "checktoken": return { ...state, tokenCheck:{...state.tokenCheck, error: payload.message} };
+        case "signin": return { ...state, login:{...state.login, error: payload.message} };
+        case "signup": return { ...state, signup:{...state.signup, error: payload.message} };
+      }
       case START_CHECK_DRIVECODE:
-      return { ...state, token: payload as string, error:"" };
+      return { ...state, token: payload as string };
 
       case LOGIN_SUCCESS:
-        return { ...state, error: "", login: { success: true } };
+        return { ...state, login: { success: true, error: "" } };
         
       case SIGNUP_SUCCESS:
-        return { ...state, error: "", signup: { success: true } };
+        return { ...state, signup: { success: true, error: "" } };
 
       case CHECK_DRIVECODE_SUCCESS:
-        return { ...state, error: "", tokenCheck: { success: true } };
+        return { ...state, tokenCheck: { success: true, error: "" } };
       default:
       return state;
   }

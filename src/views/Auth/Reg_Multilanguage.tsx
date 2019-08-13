@@ -3,7 +3,7 @@ import { StyleSheet, Image, ScrollView, SafeAreaView, Text } from 'react-native'
 
 import { IconHeadline, FAB, Language } from 'components/common';
 import { colors, fonts, dimensions } from 'base';
-import { AddPeople, Continue } from '../../icons';
+import { icons } from '../../icons';
 import { Austria, MultiLanguage1, MultiLanguage2, } from '../../img';
 
 class Reg_Multilanguage extends Component {
@@ -15,7 +15,7 @@ class Reg_Multilanguage extends Component {
         return (
             <SafeAreaView style={styles.view}>
                 <ScrollView>
-                    <IconHeadline color={colors.lightBlue} icon={AddPeople} text="Registration" />
+                    <IconHeadline color={colors.lightBlue} icon={icons.AddPeople} text="Registration" />
                     <Language
                         color={colors.lightBlue}
                         textColor="#fff"
@@ -33,7 +33,7 @@ class Reg_Multilanguage extends Component {
                     <Text style={styles.text}>Mit unserem Multilingualem Lernmodus kannst du mit deiner Sprache trotz Nichtunterstüzung in der offiziellen Prüfung lernen.{"\n"}Mit diesem Modus kannst du alle Fragen einfach in einer zweiten Prüfungssprache deiner Wahl anzeigen lassen.</Text>
                     <Image style={styles.icon2} source={MultiLanguage2} />
                 </ScrollView>
-                <FAB marginLeft={4} icon={Continue} color={"#fff"} borderColor={colors.bgGray} />
+                <FAB marginLeft={4} icon={icons.Continue} color={"#fff"} borderColor={colors.bgGray} />
             </SafeAreaView>
         )
     }

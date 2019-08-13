@@ -5,12 +5,12 @@ type InputProps = {
     color: string,
     borderColor: string,
     icon: object,
-    marginLeft: number,
-    marginRight: number,
+    marginLeft?: number,
+    marginRight?: number,
     action: () => void
 }
 
-const FAB = ({ color, icon, action, borderColor, marginLeft, marginRight }: InputProps) => {
+const FAB = ({ color, icon, action, borderColor, marginLeft = 0, marginRight = 0 }: InputProps) => {
     return (
         <TouchableOpacity activeOpacity={.7} onPress={action} style={{ ...styles.fabStyle, backgroundColor: color, borderColor: borderColor }}>
             <Image style={{ ...styles.icon, marginLeft: marginLeft, marginRight: marginRight }} resizeMode="contain" source={icon} />

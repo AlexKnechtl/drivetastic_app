@@ -4,7 +4,7 @@ import { View, StyleSheet, Text, Image, SafeAreaView, StatusBar } from 'react-na
 import { IconButton, ImageBg } from '../../components'
 import { padding, colors, fonts, margin } from '../../base';
 
-import { HighFive, AddPeople, Car, Truck, Motorcycle } from '../../icons';
+import { icons } from '../../icons';
 import { BackgroundMain } from '../../img';
 import { NavigationScreenProps } from 'react-navigation';
 
@@ -15,8 +15,8 @@ class Start extends Component<NavigationScreenProps> {
                 <StatusBar barStyle="light-content" />
                 <SafeAreaView />
                 <View style={styles.bottomLayout}>
-                    <IconButton onPress={()=> this.props.navigation.navigate("signup")} color={colors.lightBlue} icon={AddPeople} text="Neu hier?" />
-                    <IconButton onPress={()=> this.props.navigation.navigate("login")} color={colors.lightPurple} icon={HighFive} text="Einloggen" />
+                    <IconButton onPress={()=> this.props.navigation.navigate("signup")} color={colors.lightBlue} icon={icons.AddPeople} text="Neu hier?" />
+                    <IconButton onPress={()=> this.props.navigation.navigate("login")} color={colors.lightPurple} icon={icons.HighFive} text="Einloggen" />
                 </View>
                 <ImageBg image={BackgroundMain} colorFilter="#0003">
                     <View style={{ backgroundColor: colors.lightBlue, borderRadius: 10, paddingHorizontal: 26, paddingVertical: 8 }}>
@@ -25,9 +25,9 @@ class Start extends Component<NavigationScreenProps> {
                             <Text style={styles.logoText}>tastic</Text>
                         </Text>
                         <View style={styles.row}>
-                            <Image style={styles.icon} resizeMode="contain" source={Motorcycle}/>
-                            <Image style={styles.icon} resizeMode="contain" source={Car}/>
-                            <Image style={styles.icon} resizeMode="contain" source={Truck}/>
+                            <Image style={styles.icon} resizeMode="contain" source={icons.Motorcycle}/>
+                            <Image style={styles.icon} resizeMode="contain" source={icons.Car}/>
+                            <Image style={styles.icon} resizeMode="contain" source={icons.Truck}/>
                         </View>
                     </View>
                 </ImageBg>

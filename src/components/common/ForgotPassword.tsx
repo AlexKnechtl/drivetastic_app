@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
-import { Info } from '../../icons';
+import { icons } from '../../icons';
 import { colors, fonts, dimensions } from 'base';
 
 type CheckProps = {
@@ -13,7 +13,7 @@ type CheckProps = {
 const ForgotPassword = ({ color, borderColor, borderWidth, onPress }: CheckProps) => {
     return (
         <TouchableOpacity activeOpacity={.6} onPress={onPress} style={{ ...styles.checkContainer, borderColor: borderColor, borderWidth: borderWidth }}>
-            <Image resizeMode="contain" style={styles.icon} source={Info} />
+            <Image resizeMode="contain" style={styles.icon} source={icons.Info} />
             <Text style={{ ...styles.text, color: color }}>Passwort vergessen / ändern</Text>
         </TouchableOpacity>
     );

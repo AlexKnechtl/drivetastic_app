@@ -1,23 +1,18 @@
 import React from 'react'
-import { View, StyleSheet, TextInput } from 'react-native';
+import { View, StyleSheet, TextInput, Keyboard, TextInputProps } from 'react-native';
 import { fonts, colors } from 'base';
 
 type InputProps = {
-    hint: string,
-    value: string,
-    onChangeText: (text:string)=>void,
     marginVertical: number
-}
+} & TextInputProps;
 
-const GreyTextInput = ({ hint, value, onChangeText, marginVertical }: InputProps) => {
+const GreyTextInput = ({ marginVertical, ...restprops }: InputProps) => {
     return (
         <View style={{ ...styles.inputContainer, marginVertical: marginVertical }}>
             <TextInput
                 style={{ width: "100%" }}
-                placeholder={hint}
-                value={value}
-                onChangeText={onChangeText}
                 autoCorrect={false}
+                {...restprops}
             />
         </View>
     );

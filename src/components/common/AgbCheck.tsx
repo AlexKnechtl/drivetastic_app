@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native';
-import { Check } from '../../icons';
+import { icons } from '../../icons';
 import { colors, fonts } from 'base';
 
 type CheckProps = {
@@ -14,7 +14,7 @@ const AgbCheck = ({ color, borderColor, borderWidth, onPress }: CheckProps) => {
     return (
         <View style={{ ...styles.checkContainer, borderColor: borderColor, borderWidth: borderWidth }}>
             <TouchableOpacity onPress={onPress} activeOpacity={.6} style={{ ...styles.checkbox, backgroundColor: color, borderWidth: borderWidth, borderColor: borderColor }} >
-                <Image style={styles.checkIcon} source={Check} />
+                <Image style={styles.checkIcon} source={icons.Check} />
             </TouchableOpacity>
             <Text>
                 <Text style={styles.text}>Ich habe die{" "}</Text>
