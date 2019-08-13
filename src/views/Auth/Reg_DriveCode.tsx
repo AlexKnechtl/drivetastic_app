@@ -48,6 +48,7 @@ export const Reg_DriveCode =  enhance(class Reg_DriveCode extends Component<prop
                 <TextInputContainer marginHorizontal={12}>
                     <GreyDrivecodeInput onChangeText={t=> this.setState({driveCode: t})} text={this.state.driveCode} hint="Gib hier deinen 12-stelligen Code ein." />
                 </TextInputContainer>
+                <Text style={styles.errorText}>{this.props.error||(this.props.codeValid&&"Code valid!!")}</Text>
                 <HideWithKeyboard>
                     <View style={styles.buttonContainer}>
                         <IconButton onPress={this.requestCameraPermission} color={colors.lightBlue} icon={QrCode} text="QR-Code scannen" />
@@ -55,7 +56,6 @@ export const Reg_DriveCode =  enhance(class Reg_DriveCode extends Component<prop
                 </HideWithKeyboard>
                 {this.state.showQrcodeReader && 
                 <QRCodeScanner onRead={(e)=> {this.setState({driveCode: e.data, showQrcodeReader: false}); this.props.dispatchCheckToken(e.data)}}/>}
-                <Text style={{color: "#f00"}}>{this.props.error||(this.props.codeValid&&"Code valid!!")}</Text>
                 <FAB action={()=> {this.props.dispatchCheckToken(this.state.driveCode); this.props.codeValid&&this.props.navigation.navigate("enterDetails")}} marginLeft={4} icon={Continue} color={"#fff"} borderColor={colors.bgGray} />
             </SafeAreaView>
         )
@@ -68,6 +68,14 @@ const styles = StyleSheet.create({
     },
     text: {
         color: colors.darkerGray,
+        fontSize: fonts.lg,
+        width: "100%",
+        textAlign: "center",
+        marginVertical: 16
+
+    },
+    errorText: {
+        color: colors.errorRed,
         fontSize: fonts.lg,
         width: "100%",
         textAlign: "center",

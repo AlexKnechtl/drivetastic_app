@@ -13,7 +13,8 @@ export const colors = {
     darkerGray: '#5B5B5B',
     middleGray: "#858585",
     softGray: '#D5D5D5',
-    bgGray: '#EFEFEF'
+    bgGray: '#EFEFEF',
+    errorRed: "#a00"
 }
 
 export const padding = {

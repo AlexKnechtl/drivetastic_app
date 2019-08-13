@@ -16,7 +16,7 @@ export class AuthService {
       }
       throw new Error("User cannot be fetched");
     } catch (e) {
-      Promise.reject({ message: "Username oder Passwort ist falsch" });
+      throw e;
     }
   }
 

@@ -42,8 +42,8 @@ export const Login = enhance(class Login extends Component<props> {
                         marginVertical={8}
                         hint="Passwort" />
                 </TextInputContainer>
+                <Text style={styles.errorText}>{this.props.error||(this.props.success&&this.props.navigation.navigate("tutorial"))}</Text>
                 <ForgotPassword color={colors.darkerGray} borderColor={colors.softGray} borderWidth={1} />                
-                <Text style={{color: "#f00"}}>{this.props.error||(this.props.success&&this.props.navigation.navigate("tutorial"))}</Text>
                 <FAB marginLeft={4} icon={Continue} color={"#fff"} borderColor={colors.bgGray} action={()=>{this.props.dispatchSignin({email: this.state.email, password: this.state.password});
                 this.props.success&&this.props.navigation.navigate("home");}}/>
             </SafeAreaView>
@@ -57,6 +57,15 @@ const styles = StyleSheet.create({
     },
     text: {
         color: colors.darkerGray,
+        fontSize: fonts.lg,
+        width: "100%",
+        textAlign: "center",
+        marginVertical: 16
+
+    },
+
+    errorText: {
+        color: colors.errorRed,
         fontSize: fonts.lg,
         width: "100%",
         textAlign: "center",
