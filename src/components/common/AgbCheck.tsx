@@ -14,7 +14,7 @@ const AgbCheck = ({ color, borderColor, borderWidth, onPress }: CheckProps) => {
     return (
         <View style={{ ...styles.checkContainer, borderColor: borderColor, borderWidth: borderWidth }}>
             <TouchableOpacity onPress={onPress} activeOpacity={.6} style={{ ...styles.checkbox, backgroundColor: color, borderWidth: borderWidth, borderColor: borderColor }} >
-                <Image style={styles.checkIcon} source={icons.Check} />
+                <Image resizeMode="contain" style={styles.checkIcon} source={icons.Check} />
             </TouchableOpacity>
             <Text>
                 <Text style={styles.text}>Ich habe die{" "}</Text>
@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
         borderRadius: 4
     },
     checkIcon: {
-        height: 12,
-        width: 12
+        height: 13,
+        width: 15
     },
     textUnderline: {
         color: colors.darkerGray,

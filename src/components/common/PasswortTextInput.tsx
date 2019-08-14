@@ -6,7 +6,7 @@ import { icons } from '../../icons';
 type PasswortProps = {
     hint: string,
     value?: string,
-    onChangeText: (text: string)=>void,
+    onChangeText: (text: string) => void,
     marginVertical: number,
     type?: string //TODO: evualuate if needed at all
 }
@@ -15,7 +15,7 @@ const PasswortTextInput = ({ hint, value, onChangeText, marginVertical }: Passwo
     const [passwordVisible, setPasswordVisible] = useState(false);
     return (
         <View style={{ ...styles.inputContainer, marginVertical: marginVertical }}>
-            <TouchableOpacity activeOpacity={.6} onPress={()=> setPasswordVisible(!passwordVisible)}>
+            <TouchableOpacity activeOpacity={.6} onPress={() => setPasswordVisible(!passwordVisible)}>
                 <Image resizeMode="contain" style={styles.icon} source={icons.Eye} />
             </TouchableOpacity>
             <TextInput
@@ -23,7 +23,7 @@ const PasswortTextInput = ({ hint, value, onChangeText, marginVertical }: Passwo
                 placeholder={hint}
                 secureTextEntry={true}
                 value={value}
-                keyboardType={passwordVisible ? "visible-password" : "default" }
+                keyboardType={passwordVisible ? "visible-password" : "default"}
                 autoCapitalize="none"
                 autoCorrect={false}
                 onChangeText={onChangeText}
