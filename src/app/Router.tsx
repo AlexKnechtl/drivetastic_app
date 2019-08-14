@@ -39,11 +39,16 @@ const home = createMaterialTopTabNavigator({
     swipeEnabled: true,
     tabBarComponent: (props=> (<TabBar {...props}/>)),
     tabBarOptions:{
+        upperCaseLabel: false,
+        indicatorStyle: {
+            backgroundColor: "#fff",
+            height: 4
+        },
         style:{
             backgroundColor: "#0000"
         },
         labelStyle:{
-            fontSize: 15,
+            fontSize: 20,
             fontWeight: "bold"
         },
         tabStyle:{
