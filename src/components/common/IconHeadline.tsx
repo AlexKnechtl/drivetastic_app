@@ -30,8 +30,8 @@ const styles = StyleSheet.create({
     },
     icon: {
         height: "60%",
-        width: 50,
-        marginRight: 16
+        width: 45,
+        marginRight: 8
     },
     text: {
         color: '#fff',

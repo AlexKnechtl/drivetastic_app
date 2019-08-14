@@ -8,3 +8,4 @@ export * from './Reg_Multilanguage';
 export * from './Reg_Tutorial';
 export * from './Reg_UserData';
 export * from './Start';
+export * from './Password_Reset';

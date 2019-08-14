@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, SafeAreaView, StyleSheet, Text, TouchableOpacity, PermissionsAndroid, Alert } from 'react-native';
+import { View, SafeAreaView, StyleSheet, Text, Image } from 'react-native';
 import HideWithKeyboard from 'react-native-hide-with-keyboard';
 
 import { IconHeadline, GreyTextInput, TextInputContainer, FAB, IconButton } from 'components/common';
@@ -21,23 +21,23 @@ const mapStateToProps = (state: StateType) => ({
 
 const mapDispatchToProps = {
     dispatchCheckToken: StartCheckDrivecodeAction
-    
+
 }
 type props = NavigationScreenProps & ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps;
 const enhance = connect(mapStateToProps, mapDispatchToProps);
 
-export const Reg_DriveCode =  enhance(class Reg_DriveCode extends Component<props> {
+export const Reg_DriveCode = enhance(class Reg_DriveCode extends Component<props> {
     state = {
         driveCode: "",
         showQrcodeReader: false,
         error: "asdf"
     }
 
-    requestCameraPermission= () => {
-        this.setState({error: "working..."})
-        Permissions.request('camera').then(response=>{
-            this.setState({showQrcodeReader: true, error: response });
-        }).catch(reason => this.setState({error: reason}));
+    requestCameraPermission = () => {
+        this.setState({ error: "working..." })
+        Permissions.request('camera').then(response => {
+            this.setState({ showQrcodeReader: true, error: response });
+        }).catch(reason => this.setState({ error: reason }));
     }
 
     render() {
@@ -46,17 +46,21 @@ export const Reg_DriveCode =  enhance(class Reg_DriveCode extends Component<prop
                 <IconHeadline color={colors.lightBlue} icon={icons.AddPeople} text="Registration" />
                 <Text style={styles.text}>Dein Drive-Code</Text>
                 <TextInputContainer marginHorizontal={12}>
-                    <GreyDrivecodeInput onChangeText={t=> this.setState({driveCode: t})} text={this.state.driveCode} hint="Gib hier deinen 12-stelligen Code ein." />
+                    <GreyDrivecodeInput onChangeText={t => this.setState({ driveCode: t })} text={this.state.driveCode} hint="Gib hier deinen 12-stelligen Code ein." />
                 </TextInputContainer>
-                <Text style={styles.errorText}>{this.props.error||(this.props.codeValid&&"Code valid!!")}</Text>
+                <Text style={styles.errorText}>{this.props.error || (this.props.codeValid && "Code valid!!")}</Text>
                 <HideWithKeyboard>
                     <View style={styles.buttonContainer}>
                         <IconButton onPress={this.requestCameraPermission} color={colors.lightBlue} icon={icons.QrCode} text="QR-Code scannen" />
                     </View>
                 </HideWithKeyboard>
-                {this.state.showQrcodeReader && 
-                <QRCodeScanner onRead={(e)=> {this.setState({driveCode: e.data, showQrcodeReader: false}); this.props.dispatchCheckToken(e.data)}}/>}
-                <FAB action={()=> {this.props.dispatchCheckToken(this.state.driveCode); this.props.codeValid&&this.props.navigation.navigate("enterDetails")}} marginLeft={4} icon={icons.Continue} color={"#fff"} borderColor={colors.bgGray} />
+                {this.state.showQrcodeReader &&
+                    <QRCodeScanner onRead={(e) => { this.setState({ driveCode: e.data, showQrcodeReader: false }); this.props.dispatchCheckToken(e.data) }} />}
+                <Image
+                    source={require('../../animations/button_pulse2.gif')}
+                    style={{ width: 70, height: 70 }}
+                />
+                <FAB action={() => { this.props.dispatchCheckToken(this.state.driveCode); this.props.codeValid && this.props.navigation.navigate("enterDetails") }} marginLeft={4} icon={icons.Continue} color={"#fff"} borderColor={colors.bgGray} />
             </SafeAreaView>
         )
     }

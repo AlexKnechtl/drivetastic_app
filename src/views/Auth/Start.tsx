@@ -18,7 +18,7 @@ class Start extends Component<NavigationScreenProps> {
                     <IconButton onPress={()=> this.props.navigation.navigate("signup")} color={colors.lightBlue} icon={icons.AddPeople} text="Neu hier?" />
                     <IconButton onPress={()=> this.props.navigation.navigate("login")} color={colors.lightPurple} icon={icons.HighFive} text="Einloggen" />
                 </View>
-                <ImageBg image={BackgroundMain} colorFilter="#0003">
+                <ImageBg image={BackgroundMain} colorFilter="#0002">
                     <View style={{ backgroundColor: colors.lightBlue, borderRadius: 10, paddingHorizontal: 26, paddingVertical: 8 }}>
                         <Text>
                             <Text style={styles.logoTextBold}>Drive</Text>

@@ -1,12 +1,13 @@
 import React from 'react'
 
 import { createStackNavigator, createAppContainer, createSwitchNavigator, createMaterialTopTabNavigator } from "react-navigation";
-import { Account, Bereiche, Login, Reg_DriveCode, Reg_Tutorial, Reg_UserData, ExamView, ExamStatistics, Start, TrainingView, Exam, AccountSettings, AGB, Impressum, Modules, Home, Question } from '../views';
+import { Account, Bereiche, Login, Reg_DriveCode, Reg_Tutorial, Reg_UserData, ExamView, ExamStatistics, Start, TrainingView, Exam, AccountSettings, AGB, Impressum, Modules, Home, Question, PasswordReset } from '../views';
 import TabBar from 'components/specific/TabBar';
 
 const auth = createStackNavigator({
     Start,
     login: Login,
+    passwordReset: PasswordReset,
     signup: Reg_DriveCode,
     tutorial: Reg_Tutorial,
     enterDetails:Reg_UserData
