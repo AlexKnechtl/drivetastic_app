@@ -47,6 +47,8 @@ export class AuthService {
     name: string,
     token: string
   ): Promise<{ success: boolean; message: string }> {
+    if(!name || name.length<3)
+      throw new Error("Name cannot be shorter than 3 characters!")
     token = token.replace(/[\W\-_ ]/g, "").toUpperCase();
     var url = "https://drivetastic-cb039.web.app/api/v1/users/signup";
     var response = await fetch(url, {
@@ -66,7 +68,11 @@ export class AuthService {
 
     if (response.ok) {
       return { success: true, message: text };
-    } else return { success: false, message: text };
+    }
+    var val = JSON.parse(text);
+    if(val.message)
+      return { success: false, message: val.message };
+    return { success: false, message: text };
   }
 
   async checkToken(
@@ -87,7 +93,7 @@ export class AuthService {
 
     if (response.ok) {
       return { success: true, message: text };
-    } else throw new Error("TEST ERROR");//return { success: false, message: text };
+    } else return { success: false, message: text };
   }
 
   async sendPasswordResetEmail(email: string) {

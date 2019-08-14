@@ -23,9 +23,15 @@ function* trySignUp({ payload }: ReturnType<typeof StartSignupAction>) {
         if (response.success)
             yield put(SignUpSuccessAction(response.message))
         else
-            throw new Error(response.message);
+        yield put(ErrorAction(response.message, "signup"));
+        console.log('====================================');
+        console.log(response);
+        console.log('====================================');
     }
     catch (e) {
+        console.log('====================================');
+        console.log(e);
+        console.log('====================================');
         yield put(ErrorAction(e.message, "signup"));
     }
 }

@@ -4,13 +4,13 @@ describe('AuthService', () => {
     it('should work', async () => {
         expect.assertions(1);
         var res = await new AuthService()
-        .checkToken("OR8DC8CF88DC");
+        .checkToken("OR082AF5EAC7");
         return expect(res.success).toBeTruthy();
     }),
     it('should work', async () => {
         expect.assertions(1);
         var res = await new AuthService()
-        .checkToken("OR8D-C8CF-88DC");
+        .checkToken("OR08-2AF5-EAC7");
         return expect(res.success).toBeTruthy();
     }),
     it('should be able to login', async () => {

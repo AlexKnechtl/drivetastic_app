@@ -25,23 +25,20 @@ const enhance = connect(mapStateToProps, mapDispatchToProps);
 export const Reg_UserData =  enhance(class Reg_UserData extends Component<props> {
     state = {
         checked: false,
-        passwortVisible: false,
         email: "",
         password: "",
         name:""
-
     }
 
     render() {
+        this.props.success&&this.props.navigation.navigate("tutorial");
         return (
             <SafeAreaView style={styles.view}>
                 <IconHeadline color={colors.lightBlue} icon={icons.AddPeople} text="Registration" />
                 <TextInputContainer marginHorizontal={20} marginVertical={12}>
-                    <GreyTextInput marginVertical={8} hint="E-Mail" onChangeText={(t)=> this.setState({email: t.trim()})} />
-                    <GreyTextInput marginVertical={8} hint="Vorname" onChangeText={(t)=> this.setState({name: t.trim()})} />
+                    <GreyTextInput marginVertical={8} hint="E-Mail" keyboardType="email-address" autoCapitalize="none" onChangeText={(t)=> this.setState({email: t.trim()})} />
+                    <GreyTextInput marginVertical={8} hint="Vorname" keyboardType="visible-password" autoCapitalize="words" onChangeText={(t)=> this.setState({name: t.trim()})} />
                     <PasswortTextInput
-                        onPress={() => { this.setState({ passwortVisible: !this.state.passwortVisible }) }}
-                        password={this.state.passwortVisible}
                         marginVertical={8}
                         hint="Passwort" onChangeText={(t)=> this.setState({password: t.trim()})}/>
                 </TextInputContainer>
@@ -54,8 +51,7 @@ export const Reg_UserData =  enhance(class Reg_UserData extends Component<props>
                 </HideWithKeyboard>
                 <Text style={{color: "#f00"}}>{this.props.error||(this.props.success&&this.props.navigation.navigate("tutorial"))}</Text>
                 <FAB marginLeft={4} icon={icons.Continue} color={"#fff"} borderColor={colors.bgGray} 
-                action={()=>{ console.log({email: this.state.email, password: this.state.password, name: this.state.name, driveCode: this.props.token}); this.props.dispatchSignUp({email: this.state.email, password: this.state.password, name: this.state.name, driveCode: this.props.token});
-                this.props.success&&this.props.navigation.navigate("tutorial");}}/>
+                action={()=> this.state.checked&&this.props.dispatchSignUp({email: this.state.email, password: this.state.password, name: this.state.name, driveCode: this.props.token})}/>
             </SafeAreaView>
         )
     }
