@@ -5,18 +5,16 @@ import { IconHeadline, GreyTextInput, TextInputContainer, FAB } from 'components
 import { colors, fonts } from 'base';
 import { icons } from '../../icons';
 import { connect } from 'react-redux';
-import { StateType, StartLoginAction } from 'core';
+import { StateType, SendPasswordResetEmailAction } from 'core';
 import { NavigationScreenProps } from 'react-navigation';
 
 const mapStateToProps = (state: StateType) => ({
-    success: state.auth.login.success,
-    error: state.auth.login.error,
-    token: state.auth.token
+    success: state.auth.passwordReset.success,
+    error: state.auth.passwordReset.error,
 })
 
 const mapDispatchToProps = {
-    dispatchSignin: StartLoginAction
-
+    dispatchSendEmail: SendPasswordResetEmailAction
 }
 type props = NavigationScreenProps & ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps;
 const enhance = connect(mapStateToProps, mapDispatchToProps);
@@ -34,8 +32,8 @@ export const PasswordReset = enhance(class Login extends Component<props> {
                     <GreyTextInput marginVertical={8} placeholder="E-Mail" keyboardType="email-address" autoCapitalize="none" onChangeText={(t) => this.setState({ email: t.trim() })} />
                     <Text style={styles.text}>Gib die E-Mail-Adresse ein, mit der du dein Drivetastic Konto erstellt hast. So können wir dir einen Link zum Zurücksetzen schicken.</Text>
                 </TextInputContainer>
-                <Text style={styles.errorText}>{this.props.error || (this.props.success && this.props.navigation.navigate("home"))}</Text>
-                <FAB marginLeft={4} icon={icons.Continue} color={"#fff"} borderColor={colors.bgGray} action={() => { /* ToDo: Add Password Reset Feature */ }} />
+                <Text style={styles.errorText}>{this.props.error || (this.props.success && "Email sent!")}</Text>
+                <FAB marginLeft={4} icon={icons.Continue} color={"#fff"} borderColor={colors.bgGray} action={() => this.props.dispatchSendEmail(this.state.email)} />
             </SafeAreaView>
         )
     }

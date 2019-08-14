@@ -1,4 +1,4 @@
-import { START_LOGIN, LOGIN_SUCCESS, START_SIGNUP, SIGNUP_SUCCESS, START_CHECK_DRIVECODE, CHECK_DRIVECODE_SUCCESS, ERROR } from "./actiontypes";
+import { START_LOGIN, LOGIN_SUCCESS, START_SIGNUP, SIGNUP_SUCCESS, START_CHECK_DRIVECODE, CHECK_DRIVECODE_SUCCESS, ERROR, SEND_PASSWORD_RESET_EMAIL, SEND_PASSWORD_RESET_EMAIL_SUCCESS } from "./actiontypes";
 import { User } from "core/entities";
 
 export const StartLoginAction = (payload: {email: string, password: string}) => ({
@@ -31,7 +31,16 @@ export const CheckDriveCodeSuccessAction = (payload: string) => ({
     payload
 })
 
-export type ErrorType = "signin"|"signup"|"checktoken";
+export const SendPasswordResetEmailAction = (email: string) => ({
+    type: SEND_PASSWORD_RESET_EMAIL,
+    payload: email
+})
+
+export const SendPasswordResetEmailSuccessAction = () => ({
+    type: SEND_PASSWORD_RESET_EMAIL_SUCCESS
+})
+
+export type ErrorType = "signin"|"signup"|"checktoken"|"emailreset";
 
 export const ErrorAction = (payload: string, type: ErrorType) => ({
     type: ERROR,
@@ -46,5 +55,6 @@ ReturnType<typeof StartSignupAction> |
 ReturnType<typeof ErrorAction> |
 ReturnType<typeof SignUpSuccessAction> |
 ReturnType<typeof StartCheckDrivecodeAction> |
-ReturnType<typeof StartCheckDrivecodeAction> |
+ReturnType<typeof SendPasswordResetEmailSuccessAction> |
+ReturnType<typeof SendPasswordResetEmailAction> |
 ReturnType<typeof CheckDriveCodeSuccessAction>;

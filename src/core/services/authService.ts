@@ -97,6 +97,6 @@ export class AuthService {
   }
 
   async sendPasswordResetEmail(email: string) {
-    return firebase.auth().sendPasswordResetEmail(email);
+    return new Promise<firebase.auth.UserCredential>((resolve, reject)=> {firebase.auth().sendPasswordResetEmail(email).then(v => resolve()).catch(r=> reject(r));});
   }
 }

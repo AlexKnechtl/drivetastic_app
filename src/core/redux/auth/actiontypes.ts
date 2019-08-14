@@ -5,3 +5,5 @@ export const SIGNUP_SUCCESS = "auth/signup_success";
 export const START_CHECK_DRIVECODE = "auth/start_check_drivecode";
 export const CHECK_DRIVECODE_SUCCESS = "auth/check_drivecode_success";
 export const ERROR = "auth/error";
+export const SEND_PASSWORD_RESET_EMAIL = "auth/send_password_reset_email";
+export const SEND_PASSWORD_RESET_EMAIL_SUCCESS = "auth/send_password_reset_email_success";
