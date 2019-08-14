@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { SafeAreaView, StyleSheet, Text } from 'react-native';
 
-class Reg_Tutorial extends Component {
+export class Reg_Tutorial3 extends Component {
     state = {
 
     }
@@ -9,7 +9,7 @@ class Reg_Tutorial extends Component {
     render() {
         return (
             <SafeAreaView>
-                <Text>Reg_Tutorial</Text>
+                <Text style={{fontSize: 30}}>Reg_Tutorial3</Text>
             </SafeAreaView>
         )
     }
@@ -20,5 +20,3 @@ const styles = StyleSheet.create({
         flex: 1
     }
 });
-
-export { Reg_Tutorial };
