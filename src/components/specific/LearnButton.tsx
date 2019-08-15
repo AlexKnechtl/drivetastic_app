@@ -3,13 +3,7 @@ import { TouchableOpacity, StyleSheet, Image, Text, View } from 'react-native';
 import { padding } from 'base';
 import { icons } from '../../icons';
 
-type ButtonProps = {
-    color?: string, //TODO: determine if actually needed
-    icon?: object,
-    text?: string //TODO: determine if actually needed
-}
-
-const LearnButton = ({ icon }: ButtonProps) => {
+const LearnButton = () => {
     return (
         <TouchableOpacity activeOpacity={.7} style={{ ...styles.buttton }}>
             <Image resizeMode="contain" style={styles.icon} source={icons.Learn} />

@@ -3,7 +3,6 @@ import { View, Text, Button, ImageBackground, TouchableOpacity, Animated } from 
 import { MaterialTopTabBarProps, MaterialTopTabBar } from 'react-navigation'
 import { BackgroundMain } from '../../img/';
 import { colors } from 'base';
-import LinearGradient from 'react-native-linear-gradient';
 
 const TabBar = (props: any) => {
     const {index} = props.navigationState;
