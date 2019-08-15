@@ -70,10 +70,7 @@ const home = createMaterialTopTabNavigator({
         upperCaseLabel: false,
         indicatorStyle: {
             backgroundColor: "#fff",
-            height: 4
-        },
-        style:{
-            backgroundColor: "#0000"
+            height: 2
         },
         labelStyle:{
             fontSize: 20,
@@ -93,7 +90,7 @@ const rootNavigator = createSwitchNavigator({
     home,
     tutorial
 }, {
-        initialRouteName: "tutorial"
+        initialRouteName: "home"
     });
 
 export const Router = createAppContainer(rootNavigator);
