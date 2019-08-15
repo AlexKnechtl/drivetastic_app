@@ -73,7 +73,8 @@ const home = createMaterialTopTabNavigator({
             height: 2
         },
         labelStyle:{
-            fontSize: 20,
+            fontSize: 18,
+            marginBottom: 0,
             fontWeight: "bold"
         },
         tabStyle:{
