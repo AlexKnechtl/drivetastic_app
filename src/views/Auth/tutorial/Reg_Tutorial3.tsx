@@ -18,7 +18,7 @@ export class Reg_Tutorial3 extends Component {
                     <TouchableOpacity onPress={() => this.props.navigation.navigate("tutorial2")} style={styles.circle} />
                     <TouchableOpacity style={{ ...styles.circle, backgroundColor: colors.lightBlue }} />
                 </View>
-                <FAB color="#fff" borderColor={colors.bgGray} marginLeft={4} icon={Continue} />
+                <FAB color="#fff" borderColor={colors.bgGray} marginLeft={4} icon={Continue} onPress={()=> this.props.navigation.navigate("home")}/>
             </SafeAreaView>
         )
     }
