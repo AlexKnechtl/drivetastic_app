@@ -1,27 +1,46 @@
 import React from 'react'
-import { View, Text, Button, ImageBackground, TouchableOpacity, Animated } from 'react-native'
-import { MaterialTopTabBarProps, MaterialTopTabBar } from 'react-navigation'
-import { BackgroundMain } from '../../img';
-import { colors } from 'base';
-import LinearGradient from 'react-native-linear-gradient';
+import { View, Text, StyleSheet } from 'react-native'
+import { dimensions, colors } from 'base';
+import { Logo } from './Logo';
 
 export const TabBarTutorial = (props: any) => {
     return (
-        <>
-            <Animated.View>
-                <ImageBackground source={BackgroundMain} style={{ aspectRatio: 5 / 3, width: "100%", }}>
-                    <View style={{ backgroundColor: "#9999", flex: 1, flexDirection: "column", alignItems: "stretch"}}>
-                        <View style={{ flex: 1, justifyContent: "center", alignItems: "center", shadowColor: "#000"}}>
-                            <View style={{ backgroundColor: colors.lightBlue, borderRadius: 10, paddingHorizontal: 26, paddingVertical: 8, shadowOffset: { width: 0, height: 2, }, shadowOpacity: 0.25, shadowRadius: 3.84, elevation: 5  }}>
-                                <Text>
-                                    <Text style={{ fontSize: 52, color: "#fff", fontWeight: "bold" }}>Drive</Text>
-                                    <Text style={{ fontSize: 52, color: "#fff", fontWeight: "100" }}>tastic</Text>
-                                </Text>
-                            </View>
-                        </View>
-                    </View>
-                </ImageBackground>
-            </Animated.View>
-        </>
+        <View>
+            <View style={styles.background}>
+                <Logo fontSize={dimensions.fullHeight * 0.035} paddingHorizontal={22} paddingVertical={8} />
+            </View>
+            <View>
+                <Text style={styles.title}>Hallo Florian!</Text>
+                <Text style={styles.text}>Bevor wir starten zeige ich dir, was dich in Drivetastic erwartet:</Text>
+            </View>
+        </View>
     )
 }
+
+const styles = StyleSheet.create({
+    background: {
+        height: dimensions.fullHeight * 0.15,
+        backgroundColor: "rgba(112, 178, 174, 0.3)",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    title: {
+        color: colors.darkerGray,
+        marginTop: 12,
+        marginBottom: 8,
+        width: "90%",
+        alignSelf: "center",
+        textAlign: "center",
+        fontSize: 28,
+        fontWeight: "bold"
+    },
+    text: {
+        color: colors.darkerGray,
+        width: "90%",
+        marginBottom: 8,
+        alignSelf: "center",
+        textAlign: "center",
+        fontSize: 20,
+        fontWeight: "bold"
+    }
+});

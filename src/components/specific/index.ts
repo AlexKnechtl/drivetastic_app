@@ -5,3 +5,4 @@ export * from './LearnButton';
 export * from './LearnSpeedBtn';
 export * from './Logo';
 export * from './TabBar';
+export * from './TutorialIconView';
