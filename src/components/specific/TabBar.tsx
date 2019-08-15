@@ -6,6 +6,8 @@ import { colors } from 'base';
 import LinearGradient from 'react-native-linear-gradient';
 
 const TabBar = (props: any) => {
+    const {index} = props.navigationState;
+    const color = index === 0 ? colors.turquoise : index === 1 ? colors.lightBlue : colors.middleGray;
     return (
         <>
             <Animated.View>
@@ -19,9 +21,9 @@ const TabBar = (props: any) => {
                                 </Text>
                             </View>
                         </View>
-                        <LinearGradient colors={['#0000','#000B']} start={{x: 0, y:0.2}} end={{x:0, y:1}} style={{flex: 1, position: "absolute", paddingBottom: 10, bottom: 0, left: 0, right: 0}}>
-                            <MaterialTopTabBar {...props}/>
-                        </LinearGradient>
+                        <View style={{flex: 1, position: "absolute", paddingBottom: 10, bottom: 0, left: 0, right: 0, backgroundColor: color}}>
+                            <MaterialTopTabBar {...props} style={{backgroundColor: color,shadowOffset: 0, elevation: 0}}/>
+                        </View>
                     </View>
                 </ImageBackground>
             </Animated.View>
