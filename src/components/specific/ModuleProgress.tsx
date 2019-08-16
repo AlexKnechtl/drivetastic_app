@@ -15,7 +15,7 @@ const ModuleProgress = ({ text1, text2 }: LogoProps) => {
                 <Text style={styles.text}>{text1}</Text>
                 <Text style={styles.text}>{text2 + "% Richtig"}</Text>
             </View>
-            <Progress.Bar borderRadius={12} width={null} height={14} borderWidth={0} style={styles.progressBar} color={"#fff"} unfilledColor={"rgba(255, 255, 255, 0.2)"} />
+            <Progress.Bar borderRadius={12} width={null} height={12} borderWidth={0} style={styles.progressBar} color={"#fff"} unfilledColor={"rgba(255, 255, 255, 0.2)"} />
         </TouchableOpacity>
     );
 };

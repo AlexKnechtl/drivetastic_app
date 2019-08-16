@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, Image, ScrollView, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, StyleSheet, Text, ScrollView, TouchableOpacity, ImageBackground } from 'react-native';
 import { icons } from 'icons';
 import { colors } from 'base';
 import { IconButton, LearnButton } from '../../components';
@@ -23,9 +23,7 @@ class Home extends Component {
                     </View>
                     <View style={styles.statisticsView}>
                         <View style={{ flexDirection: "row", marginBottom: 8, paddingLeft: 12 }}>
-                            {/*  */}
                             <ImageBackground source={icons.Statistic} style={{ aspectRatio: 1, marginVertical: 7 }}>
-                                {/* <Image source={icons.Statistic} resizeMethod="scale" resizeMode="stretch" style={{ aspectRatio: 1 }} /> */}
                             </ImageBackground>
                             <View style={{marginLeft: 12}}>
                                 <Text style={{ ...styles.statisticText, fontSize: 20, fontWeight: "bold" }}>Deine aktuelle</Text>
@@ -52,13 +50,13 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         width: "100%",
         height: 140,
-        paddingHorizontal: 13,
+        paddingHorizontal: 7,
         paddingVertical: 12
     },
     statisticsView: {
         flex: 0,
         backgroundColor: colors.lightGreen,
-        marginHorizontal: 20,
+        marginHorizontal: 14,
         borderRadius: 10,
         padding: 12
     },
