@@ -91,7 +91,7 @@ const rootNavigator = createSwitchNavigator({
     home,
     tutorial
 }, {
-        initialRouteName: "auth"
+        initialRouteName: "home"
     });
 
 export const Router = createAppContainer(rootNavigator);

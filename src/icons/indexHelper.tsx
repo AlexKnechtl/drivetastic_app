@@ -24,3 +24,4 @@ export const Lock = require('./lock.png');
 export const Tutorial_1 = require('./tutorial_1.png'); 
 export const Tutorial_2 = require('./tutorial_2.png'); 
 export const Tutorial_3 = require('./tutorial_3.png'); 
+export const Statistic = require('./statistic.png'); 
