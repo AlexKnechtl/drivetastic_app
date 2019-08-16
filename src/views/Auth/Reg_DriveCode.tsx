@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, SafeAreaView, StyleSheet, Text, Image, Dimensions, RegisteredStyle, ViewStyle } from 'react-native';
+import { View, SafeAreaView, StyleSheet, Text, Image, Dimensions, RegisteredStyle, ViewStyle, StatusBar } from 'react-native';
 import HideWithKeyboard from 'react-native-hide-with-keyboard';
 
 import { IconHeadline, GreyTextInput, TextInputContainer, FAB, IconButton, DismissKeyboard } from 'components/common';
@@ -45,6 +45,7 @@ export const Reg_DriveCode = enhance(class Reg_DriveCode extends Component<props
         return (
             <SafeAreaView style={styles.view}>
                 <DismissKeyboard>
+                    <StatusBar translucent={false} barStyle="dark-content" backgroundColor="#fff" />
                     <IconHeadline color={colors.lightBlue} icon={icons.AddPeople} text="Registration" />
                     <Text style={styles.text}>Dein Drive-Code</Text>
                     <TextInputContainer marginHorizontal={12}>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, SafeAreaView, Text, Platform } from 'react-native';
+import { StyleSheet, SafeAreaView, Text, Platform, StatusBar } from 'react-native';
 import HideWithKeyboard from 'react-native-hide-with-keyboard';
 
 import { IconHeadline, GreyTextInput, TextInputContainer, FAB, AgbCheck, PasswortTextInput, DismissKeyboard } from 'components/common';
@@ -35,6 +35,8 @@ export const Reg_UserData = enhance(class Reg_UserData extends Component<props> 
         return (
             <SafeAreaView style={styles.view}>
                 <DismissKeyboard>
+                    <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+                    <StatusBar barStyle="dark-content" backgroundColor="#fff" />
                     <IconHeadline color={colors.lightBlue} icon={icons.AddPeople} text="Registration" />
                     <TextInputContainer marginHorizontal={20} marginVertical={12}>
                         <GreyTextInput marginVertical={8} hint="E-Mail" keyboardType="email-address" autoCapitalize="none" onChangeText={(t) => this.setState({ email: t.trim() })} />

@@ -12,7 +12,7 @@ class Start extends Component<NavigationScreenProps> {
     render() {
         return (
             <View style={styles.view}>
-                <StatusBar barStyle="light-content" />
+                <StatusBar animated={true} translucent={true} backgroundColor="#0000" barStyle="light-content" />
                 <SafeAreaView />
                 <View style={styles.bottomLayout}>
                     <IconButton onPress={()=> this.props.navigation.navigate("signup")} color={colors.lightBlue} icon={icons.AddPeople} text="Neu hier?" />

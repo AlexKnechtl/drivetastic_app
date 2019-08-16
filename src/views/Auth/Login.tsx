@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, SafeAreaView, Text } from 'react-native';
+import { StyleSheet, SafeAreaView, Text, StatusBar } from 'react-native';
 
 import { IconHeadline, GreyTextInput, TextInputContainer, FAB, PasswortTextInput, ForgotPassword, DismissKeyboard } from 'components/common';
 import { colors, fonts } from 'base';
@@ -32,6 +32,7 @@ export const Login = enhance(class Login extends Component<props> {
         return (
             <SafeAreaView style={styles.view}>
                 <DismissKeyboard>
+                    <StatusBar translucent={false} barStyle="dark-content" backgroundColor="#fff" />
                     <IconHeadline color={colors.lightPurple} icon={icons.HighFive} text="Login" />
                     <TextInputContainer marginHorizontal={20} marginVertical={14}>
                         <GreyTextInput marginVertical={8} placeholder="E-Mail" keyboardType="email-address" autoCapitalize="none" onChangeText={(t) => this.setState({ email: t.trim() })} />
