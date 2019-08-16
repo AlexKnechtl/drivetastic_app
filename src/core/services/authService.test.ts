@@ -4,18 +4,18 @@ describe('AuthService', () => {
     it('should work', async () => {
         expect.assertions(1);
         var res = await new AuthService()
-        .checkToken("OR082AF5EAC7");
+        .checkToken("OR9BCD66BED5");
         return expect(res.success).toBeTruthy();
     }),
     it('should work', async () => {
         expect.assertions(1);
         var res = await new AuthService()
-        .checkToken("OR08-2AF5-EAC7");
+        .checkToken("OR9B-CD66-BED5");
         return expect(res.success).toBeTruthy();
     }),
     it('should be able to login', async () => {
         expect.assertions(1);
-        var res = await new AuthService().signInWithCredential("fmoretti981@gmail.com", "12345678");
+        var res = await new AuthService().signInWithCredential("test@test.com", "password");
         return expect(res).toBeTruthy();
     })
 });

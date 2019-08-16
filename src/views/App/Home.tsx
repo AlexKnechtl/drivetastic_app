@@ -4,8 +4,9 @@ import { icons } from '../../icons';
 import { colors } from 'base';
 import { IconButton, LearnButton } from '../../components';
 import { ModuleProgress } from 'components/specific/ModuleProgress';
+import { NavigationScreenProps } from 'react-navigation';
 
-class Home extends Component {
+class Home extends Component<NavigationScreenProps> {
     constructor(props: any) {
         super(props);
     }
@@ -28,7 +29,7 @@ class Home extends Component {
                             <Text>Lern-Statistik</Text>
                         </View>
                     </View>
-                    <ModuleProgress text1={moduleName} text2={(ModulePercentage * 100).toFixed(0)} />
+                    <ModuleProgress text1={moduleName} text2={(ModulePercentage * 100).toFixed(0)}/>
                     <ModuleProgress text1={moduleName} text2={(ModulePercentage * 100).toFixed(0)} />
                 </View>
             </View>

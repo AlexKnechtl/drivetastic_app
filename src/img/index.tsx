@@ -7,3 +7,4 @@ export const Ungarn = require('./ungarn.png');
 export const MultiLanguage1 = require('./multiLanguage1.png');
 export const MultiLanguage2 = require('./multiLanguage2.png');
 export const TabbarBg = require('./tabbar_bg.png');
+export const Exchange = require('./exchange.png');

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { createStackNavigator, createAppContainer, createSwitchNavigator, createMaterialTopTabNavigator } from "react-navigation";
-import { Account, Bereiche, Login, Reg_DriveCode, Reg_Tutorial1, Reg_Tutorial2, Reg_Tutorial3, Reg_UserData, ExamView, ExamStatistics, Start, TrainingView, Exam, AccountSettings, AGB, Impressum, Modules, Home, Question, PasswordReset } from '../views';
+import { Account, Bereiche, Login, Reg_DriveCode, Reg_Tutorial1, Reg_Tutorial2, Reg_Tutorial3, Reg_UserData, ExamView, ExamStatistics, Start, TrainingView, Exam, AccountSettings, AGB, Impressum, Modules, Home, Question, PasswordReset, Reg_Languages, Reg_Multilanguage } from '../views';
 import TabBar from 'components/specific/TabBar';
 import { TabBarTutorial } from 'components/specific/TabBarTutorial';
 
@@ -30,6 +30,13 @@ const tutorial = createMaterialTopTabNavigator({
         }
     }
 })
+
+const languageSelector =  createStackNavigator({
+    selectLanguage: Reg_Languages,
+    multiLanguage: Reg_Multilanguage
+}, {
+    headerMode: "none"
+});
 
 
 const auth = createStackNavigator({
@@ -62,7 +69,7 @@ const learning = createStackNavigator({
 const home = createMaterialTopTabNavigator({
     Home: Home,
     Bereiche,
-    Account
+    Account: tutorial
 },{
     swipeEnabled: true,
     tabBarComponent: (props=> (<TabBar {...props}/>)),
@@ -89,9 +96,9 @@ const rootNavigator = createSwitchNavigator({
     main,
     learning,
     home,
-    tutorial
+    tutorial,
 }, {
-        initialRouteName: "auth"
+        initialRouteName: "home"
     });
 
 export const Router = createAppContainer(rootNavigator);

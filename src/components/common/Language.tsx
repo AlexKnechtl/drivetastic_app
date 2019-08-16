@@ -7,7 +7,7 @@ type LanguageProps = {
     color: string,
     textColor: string,
     icon: object,
-    checkVisibility: number,
+    checkVisibility: boolean,
     onPress: () => void,
     text: string
 }
@@ -21,7 +21,7 @@ const Language = ({ color, textColor, icon, text, onPress, checkVisibility }: La
                     {text}
                 </Text>
             </View>
-            <Image resizeMode="contain" style={{ height: 30, width: 30, opacity: checkVisibility }} source={icons.CircleCheck} />
+            <Image resizeMode="contain" style={{ height: 30, width: 30, opacity: checkVisibility?1: 0 }} source={icons.CircleCheck} />
         </TouchableOpacity>
     );
 };
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         borderRadius: 10,
         alignItems: "center",
-        margin: margin.lg,
+        marginVertical: 5,
         paddingHorizontal: 14,
         paddingVertical: 10,
         marginHorizontal: 20
