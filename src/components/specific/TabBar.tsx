@@ -1,5 +1,5 @@
 import React from 'react'
-import { ImageBackground, StyleSheet, SafeAreaView, View, StatusBar, Animated } from 'react-native'
+import { ImageBackground, StyleSheet, SafeAreaView, View, StatusBar, Animated, Image, Dimensions } from 'react-native'
 import { MaterialTopTabBar } from 'react-navigation'
 import { TabbarBg } from '../../img/';
 import { colors } from 'base';
@@ -10,14 +10,20 @@ const TabBar = (props: any) => {
         inputRange: [0, 1, 2],
         outputRange: [colors.turquoise, colors.lightBlue, colors.middleGray]
     });
+    const deviceWidth = Dimensions.get('window').width;
+    const position = props.position.interpolate({
+        inputRange: [0, 2],
+        outputRange: [0, -deviceWidth*0.2]
+    });
     return (
         <View>
             <StatusBar barStyle="light-content" translucent={true} backgroundColor="#0000" />
-            <ImageBackground source={TabbarBg} style={styles.background}>
-                <SafeAreaView style={styles.innerView}>
+            <View style={[styles.background]}>
+                <Animated.Image source={TabbarBg} style={{flex: 1, width: deviceWidth*1.2, transform: [{translateX: position}] }} />
+                <SafeAreaView style={[styles.innerView, styles.background, styles.fixed]}>
                     <Logo paddingHorizontal={20} fontSize={36} paddingVertical={6} />
                 </SafeAreaView>
-            </ImageBackground>
+            </View>
             <MaterialTopTabBar {...props} style={{ ...styles.materialTopBar, backgroundColor: backgroundColor }} />
         </View>
     )
@@ -27,6 +33,10 @@ const styles = StyleSheet.create({
     background: {
         aspectRatio: 5 / 2.5,
         width: "100%"
+    },
+    fixed:{
+        top: 0,
+        position: "absolute"
     },
     innerView: {
         backgroundColor: "#9999",
