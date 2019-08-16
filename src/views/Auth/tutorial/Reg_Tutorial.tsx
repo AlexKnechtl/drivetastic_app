@@ -5,18 +5,14 @@ import { Tutorial_1 } from 'icons/indexHelper';
 import { colors } from 'base';
 
 export class Reg_Tutorial1 extends Component {
-    state = {
-
-    }
-
     render() {
         return (
             <SafeAreaView style={styles.view}>
-                <TutorialIconView title="Einfaches Lernen" icon={Tutorial_1} text="Durch unsere geführte Lernerfahrung kannst du dich vollständig von uns Führen lassen. Wir lernen mit dir jedes Kapitel Schritt für Schritt durch bis du dir zu 100% sicher bist."/>
+                <TutorialIconView title="Einfaches Lernen" icon={Tutorial_1} text="Durch unsere geführte Lernerfahrung kannst du dich vollständig von uns Führen lassen. Wir lernen mit dir jedes Kapitel Schritt für Schritt durch bis du dir zu 100% sicher bist." />
                 <View style={styles.bottomLayout}>
                     <TouchableOpacity style={{ ...styles.circle, backgroundColor: colors.lightBlue }} />
-                    <TouchableOpacity onPress={()=> this.props.navigation.navigate("tutorial2")} style={styles.circle} />
-                    <TouchableOpacity onPress={()=> this.props.navigation.navigate("tutorial3")} style={styles.circle} />
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate("tutorial2")} style={styles.circle} />
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate("tutorial3")} style={styles.circle} />
                 </View>
             </SafeAreaView>
         )

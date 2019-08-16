@@ -5,10 +5,6 @@ import { Tutorial_2 } from 'icons/indexHelper';
 import { colors } from 'base';
 
 export class Reg_Tutorial2 extends Component {
-    state = {
-
-    }
-
     render() {
         return (
             <SafeAreaView style={styles.view}>

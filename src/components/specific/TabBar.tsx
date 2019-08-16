@@ -1,5 +1,5 @@
 import React from 'react'
-import { ImageBackground, StyleSheet, SafeAreaView, View } from 'react-native'
+import { ImageBackground, StyleSheet, SafeAreaView, View, StatusBar } from 'react-native'
 import { MaterialTopTabBar } from 'react-navigation'
 import { TabbarBg } from '../../img/';
 import { colors } from 'base';
@@ -12,6 +12,7 @@ const TabBar = (props: any) => {
     })
     return (
         <View>
+            <StatusBar barStyle="light-content" />
             <ImageBackground source={TabbarBg} style={styles.background}>
                 <SafeAreaView style={styles.innerView}>
                     <Logo paddingHorizontal={20} fontSize={36} paddingVertical={6} />
@@ -24,7 +25,7 @@ const TabBar = (props: any) => {
 
 const styles = StyleSheet.create({
     background: {
-        aspectRatio: 5 / 2,
+        aspectRatio: 5 / 2.5,
         width: "100%"
     },
     innerView: {
