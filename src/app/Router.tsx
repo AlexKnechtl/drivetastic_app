@@ -70,11 +70,11 @@ const home = createMaterialTopTabNavigator({
         upperCaseLabel: false,
         indicatorStyle: {
             backgroundColor: "#fff",
-            height: 2
+            height: 2,
+            marginBottom: 8
         },
         labelStyle:{
             fontSize: 18,
-            marginBottom: 0,
             fontWeight: "bold"
         },
         tabStyle:{
