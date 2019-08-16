@@ -15,7 +15,7 @@ const ModuleProgress = ({ text1, text2 }: LogoProps) => {
                 <Text style={styles.text}>{text1}</Text>
                 <Text style={styles.text}>{text2 + "% Richtig"}</Text>
             </View>
-            <Progress.Bar borderRadius={12} borderWidth={0} style={styles.progressBar} color={"#fff"} unfilledColor={"rgba(255, 255, 255, 0.2)"} animated={true} />
+            <Progress.Bar borderRadius={12} width={null} height={12} borderWidth={0} style={styles.progressBar} color={"#fff"} unfilledColor={"rgba(255, 255, 255, 0.2)"} />
         </TouchableOpacity>
     );
 };
@@ -23,15 +23,14 @@ const ModuleProgress = ({ text1, text2 }: LogoProps) => {
 const styles = StyleSheet.create({
     buttton: {
         borderRadius: 10,
-        marginTop: 14,
+        marginBottom: 12,
         paddingHorizontal: 14,
         paddingVertical: 8,
         borderWidth: 2,
         borderColor: "white"
     },
     progressBar: {
-        width: "100%",
-        height: 14
+        width: "100%"
     },
     text: {
         color: '#fff',

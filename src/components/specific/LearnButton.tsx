@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: "#547876",
         flexDirection: "row-reverse",
-        marginHorizontal: 20,
+        marginHorizontal: 14,
         marginTop: 18,
         alignItems: "center",
         paddingHorizontal: padding.sm,
