@@ -1,6 +1,7 @@
 // created from 'create-ts-index'
 
 export * from './AgbCheck';
+export * from './DismissKeyboard';
 export * from './FAB';
 export * from './ForgotPassword';
 export * from './GreyTextInput';

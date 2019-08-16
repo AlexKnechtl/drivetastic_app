@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, StyleSheet, TextInput } from 'react-native';
+import { View, StyleSheet, TextInput, Platform } from 'react-native';
 import { fonts, colors } from 'base';
 
 type InputProps = {
@@ -27,7 +27,7 @@ export const GreyDrivecodeInput = ({ text = "", hint, onChangeText = a=>null, ma
                 placeholder={hint}
                 value={MaskText(text||value)}
                 autoCorrect={false}
-                keyboardType="visible-password"
+                keyboardType={Platform.OS == "ios" ? "default" : "visible-password"}
                 onChangeText={(t)=> { text = ""; onChangeText(MaskText(t));}}
             />
         </View>
