@@ -9,34 +9,34 @@ const tutorial = createMaterialTopTabNavigator({
     tutorial1: Reg_Tutorial1,
     tutorial2: Reg_Tutorial2,
     tutorial3: Reg_Tutorial3,
-},{
-    swipeEnabled: true,
-    tabBarComponent: (props=> (<TabBarTutorial {...props}/>)),
-    tabBarOptions:{
-        upperCaseLabel: false,
-        indicatorStyle: {
-            backgroundColor: "#fff",
-            height: 4
-        },
-        style:{
-            backgroundColor: "#0000"
-        },
-        labelStyle:{
-            fontSize: 20,
-            fontWeight: "bold"
-        },
-        tabStyle:{
-            borderBottomColor: "#fff"
+}, {
+        swipeEnabled: true,
+        tabBarComponent: (props => (<TabBarTutorial {...props} />)),
+        tabBarOptions: {
+            upperCaseLabel: false,
+            indicatorStyle: {
+                backgroundColor: "#fff",
+                height: 4
+            },
+            style: {
+                backgroundColor: "#0000"
+            },
+            labelStyle: {
+                fontSize: 20,
+                fontWeight: "bold"
+            },
+            tabStyle: {
+                borderBottomColor: "#fff"
+            }
         }
-    }
-})
+    })
 
-const languageSelector =  createStackNavigator({
+const languageSelector = createStackNavigator({
     selectLanguage: Reg_Languages,
     multiLanguage: Reg_Multilanguage
 }, {
-    headerMode: "none"
-});
+        headerMode: "none"
+    });
 
 
 const auth = createStackNavigator({
@@ -45,20 +45,11 @@ const auth = createStackNavigator({
     passwordReset: PasswordReset,
     signup: Reg_DriveCode,
     tutorial,
-    enterDetails:Reg_UserData
+    enterDetails: Reg_UserData
 }, {
         headerMode: "none"
     });
 
-const main = createStackNavigator({
-    Account,
-    Bereiche,
-    ExamView,
-    Home,
-    TrainingView
-}, {
-        headerMode: "none"
-    });
 
 const learning = createStackNavigator({
     Exam,
@@ -69,36 +60,43 @@ const learning = createStackNavigator({
 const home = createMaterialTopTabNavigator({
     Home: Home,
     Bereiche,
-    Account: tutorial
-},{
-    swipeEnabled: true,
-    tabBarComponent: (props=> (<TabBar {...props}/>)),
-    tabBarOptions:{
-        upperCaseLabel: false,
-        indicatorStyle: {
-            backgroundColor: "#fff",
-            height: 2,
-            marginBottom: 8
-        },
-        labelStyle:{
-            fontSize: 18,
-            fontWeight: "bold"
-        },
-        tabStyle:{
-            borderBottomColor: "#fff"
+    Account
+}, {
+        swipeEnabled: true,
+        tabBarComponent: (props => (<TabBar {...props} />)),
+        tabBarOptions: {
+            upperCaseLabel: false,
+            indicatorStyle: {
+                backgroundColor: "#fff",
+                height: 2,
+                marginBottom: 8
+            },
+            labelStyle: {
+                fontSize: 18,
+                fontWeight: "bold"
+            },
+            tabStyle: {
+                borderBottomColor: "#fff"
+            }
         }
-    }
-})
+    })
 
+const main = createStackNavigator({
+    home,
+    ExamView,
+    TrainingView
+},
+{
+    headerMode: "none"
+});
 
 const rootNavigator = createSwitchNavigator({
     auth,
-    main,
     learning,
-    home,
+    main,
     tutorial,
 }, {
-        initialRouteName: "home"
+        initialRouteName: "main"
     });
 
 export const Router = createAppContainer(rootNavigator);
