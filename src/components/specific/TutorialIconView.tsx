@@ -5,11 +5,10 @@ import { colors, dimensions } from 'base';
 type ButtonProps = {
     title: string,
     icon: object,
-    text: string,
-    onPress: () => void
+    text: string
 }
 
-const TutorialIconView = ({ title, icon, text, onPress = () => null }: ButtonProps) => {
+const TutorialIconView = ({ title, icon, text }: ButtonProps) => {
     return (
         <View style={styles.background}>
             <Image resizeMode="contain" style={styles.icon} source={icon} />

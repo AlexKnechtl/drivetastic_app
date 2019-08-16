@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { TutorialIconView, FAB } from '../../../components';
-import { SafeAreaView, StyleSheet, TouchableOpacity, View, ScrollView } from 'react-native';
+import { SafeAreaView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Tutorial_3, Continue } from 'icons/indexHelper';
 import { colors } from 'base';
+import { NavigationScreenProps } from 'react-navigation';
 
-export class Reg_Tutorial3 extends Component {
-    state = {
-
-    }
-
+export class Reg_Tutorial3 extends Component<NavigationScreenProps> {
     render() {
         return (
             <SafeAreaView style={styles.view}>
@@ -18,7 +15,7 @@ export class Reg_Tutorial3 extends Component {
                     <TouchableOpacity onPress={() => this.props.navigation.navigate("tutorial2")} style={styles.circle} />
                     <TouchableOpacity style={{ ...styles.circle, backgroundColor: colors.lightBlue }} />
                 </View>
-                <FAB color="#fff" borderColor={colors.bgGray} marginLeft={4} icon={Continue} onPress={()=> this.props.navigation.navigate("home")}/>
+                <FAB color="#fff" borderColor={colors.bgGray} marginLeft={4} icon={Continue} action={() => this.props.navigation.navigate("home")} />
             </SafeAreaView>
         )
     }

@@ -17,7 +17,7 @@ const TabBar = (props: any) => {
     });
     return (
         <View>
-            <StatusBar translucent={true} backgroundColor="#0000" />
+            <StatusBar barStyle="light-content" translucent={true} backgroundColor="#0000" />
             <View style={[styles.background]}>
                 <Animated.Image source={TabbarBg} style={{flex: 1, width: deviceWidth*1.2, transform: [{translateX: position}] }} />
                 <SafeAreaView style={[styles.innerView, styles.background, styles.fixed]}>
