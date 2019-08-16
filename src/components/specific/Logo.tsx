@@ -4,9 +4,9 @@ import { colors } from 'base';
 
 type LogoProps = {
     fontSize: number,
-    paddingVertical: number,
-    paddingHorizontal: number,
-    marginTop: number
+    paddingVertical?: number,
+    paddingHorizontal?: number,
+    marginTop?: number
 }
 
 const Logo = ({ fontSize, paddingVertical, paddingHorizontal, marginTop }: LogoProps) => {

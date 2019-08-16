@@ -1,5 +1,5 @@
 import React from 'react'
-import { ImageBackground, StyleSheet, SafeAreaView, View } from 'react-native'
+import { ImageBackground, StyleSheet, SafeAreaView, View, StatusBar, Animated } from 'react-native'
 import { MaterialTopTabBar } from 'react-navigation'
 import { TabbarBg } from '../../img/';
 import { colors } from 'base';
@@ -9,9 +9,10 @@ const TabBar = (props: any) => {
     const backgroundColor = props.position.interpolate({
         inputRange: [0, 1, 2],
         outputRange: [colors.turquoise, colors.lightBlue, colors.middleGray]
-    })
+    });
     return (
         <View>
+            <StatusBar translucent={true} backgroundColor="#0000" />
             <ImageBackground source={TabbarBg} style={styles.background}>
                 <SafeAreaView style={styles.innerView}>
                     <Logo paddingHorizontal={20} fontSize={36} paddingVertical={6} />

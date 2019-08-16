@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, StyleSheet, TextInput, Image, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TextInput, Image, TouchableOpacity, Platform } from 'react-native';
 import { fonts, colors } from 'base';
 import { icons } from '../../icons';
 
@@ -21,9 +21,9 @@ const PasswortTextInput = ({ hint, value, onChangeText, marginVertical }: Passwo
             <TextInput
                 style={{ flex: 1 }}
                 placeholder={hint}
-                secureTextEntry={true}
+                secureTextEntry={Platform.OS == "ios" ? !passwordVisible : true}
                 value={value}
-                keyboardType={passwordVisible ? "visible-password" : "default"}
+                keyboardType={Platform.OS == "ios" ? "default" : passwordVisible ? "visible-password" : "default"}
                 autoCapitalize="none"
                 autoCorrect={false}
                 onChangeText={onChangeText}
