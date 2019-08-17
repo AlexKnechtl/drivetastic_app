@@ -8,7 +8,7 @@ import { Logo } from '../specific';
 const TabBar = (props: any) => {
     const backgroundColor = props.position.interpolate({
         inputRange: [0, 1, 2],
-        outputRange: [colors.turquoise, colors.lightBlue, colors.middleGray]
+        outputRange: [colors.turquoise, colors.accentGreen, colors.middleGray]
     });
     const deviceWidth = Dimensions.get('window').width;
     const position = props.position.interpolate({
@@ -47,12 +47,8 @@ const styles = StyleSheet.create({
     },
     materialTopBar: {
         elevation: 0,
-        height: 56,
+        height: 52,
         width: "100%"
-    },
-    view: {
-        width: "100%",
-        height: 56
     }
 })
 
