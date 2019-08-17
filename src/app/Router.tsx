@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { createStackNavigator, createAppContainer, createSwitchNavigator, createMaterialTopTabNavigator } from "react-navigation";
-import { Account, Bereiche, Login, Reg_DriveCode, Reg_Tutorial1, Reg_Tutorial2, Reg_Tutorial3, Reg_UserData, ExamView, ExamStatistics, Start, TrainingView, Exam, AccountSettings, AGB, Impressum, Modules, Home, Question, PasswordReset, Reg_Languages, Reg_Multilanguage } from '../views';
+import { Account, Bereiche, Login, Reg_DriveCode, Reg_Tutorial1, Reg_Tutorial2, Reg_Tutorial3, Reg_UserData, ExamView, ExamStatistics, Start, TrainingView, Exam, AccountSettings, Impressum, Modules, Home, Question, PasswordReset, Reg_Languages, Reg_Multilanguage } from '../views';
 import TabBar from 'components/specific/TabBar';
 import { TabBarTutorial } from 'components/specific/TabBarTutorial';
 
@@ -73,8 +73,7 @@ const home = createMaterialTopTabNavigator({
             },
             labelStyle: {
                 fontSize: 18,
-                fontWeight: "bold",
-                textAlignVertical: "center"
+                fontWeight: "bold"
             }
         }
     })
@@ -94,7 +93,7 @@ const rootNavigator = createSwitchNavigator({
     main,
     tutorial,
 }, {
-        initialRouteName: "tutorial"
+        initialRouteName: "main"
     });
 
 export const Router = createAppContainer(rootNavigator);

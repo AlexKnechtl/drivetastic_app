@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, ScrollView, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, StyleSheet, Text, ScrollView, TouchableOpacity, ImageBackground, SafeAreaView } from 'react-native';
 import { icons } from 'icons';
 import { colors } from 'base';
 import { IconButton, LearnButton } from '../../components';
@@ -15,7 +15,7 @@ class Home extends Component<NavigationScreenProps> {
         const moduleName = "Grundwissen";
         const ModulePercentage = 0.7365;
         return (
-            <View style={styles.view}>
+            <SafeAreaView style={styles.view}>
                 <ScrollView>
                     <LearnButton />
                     <View style={styles.buttonLayout}>
@@ -38,14 +38,15 @@ class Home extends Component<NavigationScreenProps> {
                         </TouchableOpacity>
                     </View>
                 </ScrollView>
-            </View>
+            </SafeAreaView>
         )
     }
 }
 
 const styles = StyleSheet.create({
     view: {
-        flex: 1
+        flex: 1,
+        paddingBottom: 25
     },
     buttonLayout: {
         flexDirection: "row",

@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
-class AGB extends Component {
-    state = {
-
-    }
-
+class VisualChanges extends Component {
     constructor(props: any) {
         super(props);
     }
@@ -13,7 +9,7 @@ class AGB extends Component {
     render() {
         return (
             <View>
-                <Text>AGB</Text>
+                <Text>VisualChanges</Text>
             </View>
         )
     }
@@ -25,4 +21,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export { AGB };
+export { VisualChanges };

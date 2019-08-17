@@ -29,3 +29,5 @@ export const Settings1 = require('./settings_1.png');
 export const Settings2 = require('./settings_2.png'); 
 export const Settings3 = require('./settings_3.png'); 
 export const Settings4 = require('./settings_4.png'); 
+export const Settings5 = require('./settings_5.png'); 
+export const Settings6 = require('./settings_6.png'); 
