@@ -73,10 +73,8 @@ const home = createMaterialTopTabNavigator({
             },
             labelStyle: {
                 fontSize: 18,
-                fontWeight: "bold"
-            },
-            tabStyle: {
-                borderBottomColor: "#fff"
+                fontWeight: "bold",
+                textAlignVertical: "center"
             }
         }
     })
@@ -96,7 +94,7 @@ const rootNavigator = createSwitchNavigator({
     main,
     tutorial,
 }, {
-        initialRouteName: "main"
+        initialRouteName: "tutorial"
     });
 
 export const Router = createAppContainer(rootNavigator);

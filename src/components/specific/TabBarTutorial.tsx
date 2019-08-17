@@ -1,32 +1,31 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, SafeAreaView } from 'react-native'
 import { dimensions, colors } from 'base';
 import { Logo } from './Logo';
 
 export const TabBarTutorial = (props: any) => {
     return (
-        <View>
+        <SafeAreaView style={{ backgroundColor: "rgba(112, 178, 174, 0.3)" }}>
             <View style={styles.background}>
                 <Logo fontSize={dimensions.fullHeight * 0.035} paddingHorizontal={22} paddingVertical={8} />
             </View>
-            <View>
+            <View style={{ backgroundColor: "#fff" }}>
                 <Text style={styles.title}>Hallo Florian!</Text>
                 <Text style={styles.text}>Bevor wir starten zeige ich dir, was dich in Drivetastic erwartet:</Text>
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
     background: {
-        height: dimensions.fullHeight * 0.15,
-        backgroundColor: "rgba(112, 178, 174, 0.3)",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        padding: dimensions.fullHeight*0.04
     },
     title: {
         color: colors.darkerGray,
-        marginTop: 12,
+        marginTop: 14,
         marginBottom: 8,
         width: "90%",
         alignSelf: "center",

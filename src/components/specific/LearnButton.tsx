@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
         backgroundColor: "#547876",
         flexDirection: "row-reverse",
         marginHorizontal: 14,
-        marginTop: 18,
         alignItems: "center",
         paddingHorizontal: padding.sm,
         paddingVertical: 8

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { StyleSheet, ScrollView, SafeAreaView } from 'react-native';
 import { colors } from 'base';
 import { SettingsCategory } from 'components/common/SettingsCategory';
 import { icons } from 'icons';
@@ -15,21 +15,24 @@ class Account extends Component {
 
     render() {
         return (
-            <View>
-                <Text style={styles.title}>Einstellungen</Text>
-                <SettingsCategory title="Persönliche Daten" text="Account-Daten überarbeiten" icon={icons.Settings1} />
-                <SettingsCategory title="Module" text="Andere Module wählen" icon={icons.Settings2}/>
-                <SettingsCategory title="Optische Anpassung" text="Anpassungen in der App" icon={icons.Settings3}/>
-                <SettingsCategory title="Sprachen" text="Andere Sprache wählen" icon={icons.Settings3}/>
-                <SettingsCategory title="Impressum" text="und AGB" icon={icons.Settings4}/>
-            </View>
+            <SafeAreaView style={styles.view}>
+                <ScrollView>
+                    <SettingsCategory title="Persönliche Daten" text="Account-Daten überarbeiten" icon={icons.Settings1} />
+                    <SettingsCategory title="Lernerfahrung" text="Account-Daten überarbeiten" icon={icons.Settings1} />
+                    <SettingsCategory title="Module" text="Andere Module wählen" icon={icons.Settings2} />
+                    <SettingsCategory title="Optische Anpassungen" text="Anpassungen in der App" icon={icons.Settings3} />
+                    <SettingsCategory title="Sprachen" text="Andere Sprache wählen" icon={icons.Settings3} />
+                    <SettingsCategory title="Impressum" text="und AGB" icon={icons.Settings4} />
+                </ScrollView>
+            </SafeAreaView>
         )
     }
 }
 
 const styles = StyleSheet.create({
     view: {
-        flex: 1
+        flex: 1,
+        paddingBottom: 20
     },
     title: {
         fontSize: 18,
