@@ -16,7 +16,7 @@ const TabBar = (props: any) => {
         outputRange: [0, -deviceWidth * 0.2]
     });
     return (
-        <View style={{ marginBottom: 20 }}>
+        <View >
             <StatusBar barStyle="light-content" translucent={true} backgroundColor="#0000" />
             <View style={[styles.background]}>
                 <Animated.Image source={TabbarBg} style={{ flex: 1, width: deviceWidth * 1.2, transform: [{ translateX: position }] }} />

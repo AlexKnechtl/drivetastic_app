@@ -15,8 +15,8 @@ class Home extends Component<NavigationScreenProps> {
         const moduleName = "Grundwissen";
         const ModulePercentage = 0.7365;
         return (
-            <SafeAreaView style={styles.view}>
-                <ScrollView>
+            <ScrollView>
+                <SafeAreaView style={styles.view}>
                     <LearnButton />
                     <View style={styles.buttonLayout}>
                         <IconButton onPress={() => this.props.navigation.navigate("TrainingView")} color={colors.lightBlue} icon={icons.Training} text="Training" />
@@ -26,7 +26,7 @@ class Home extends Component<NavigationScreenProps> {
                         <View style={{ flexDirection: "row", marginBottom: 8, paddingLeft: 12 }}>
                             <ImageBackground source={icons.Statistic} style={{ aspectRatio: 1, marginVertical: 7 }}>
                             </ImageBackground>
-                            <View style={{marginLeft: 12}}>
+                            <View style={{ marginLeft: 12 }}>
                                 <Text style={{ ...styles.statisticText, fontSize: 20, fontWeight: "bold" }}>Deine aktuelle</Text>
                                 <Text style={{ ...styles.statisticText, fontSize: 30, marginTop: -2 }}>Lern-Statistik</Text>
                             </View>
@@ -37,8 +37,8 @@ class Home extends Component<NavigationScreenProps> {
                             <Text style={styles.buttonText}>Mehr erfahren</Text>
                         </TouchableOpacity>
                     </View>
-                </ScrollView>
-            </SafeAreaView>
+                </SafeAreaView>
+            </ScrollView>
         )
     }
 }
@@ -46,7 +46,8 @@ class Home extends Component<NavigationScreenProps> {
 const styles = StyleSheet.create({
     view: {
         flex: 1,
-        paddingBottom: 25
+        paddingBottom: 14,
+        paddingTop: 18
     },
     buttonLayout: {
         flexDirection: "row",
