@@ -21,7 +21,8 @@ export class Reg_Tutorial1 extends Component {
 
 const styles = StyleSheet.create({
     view: {
-        flex: 1
+        flex: 1,
+        backgroundColor: "white"
     },
     bottomLayout: {
         width: "100%",

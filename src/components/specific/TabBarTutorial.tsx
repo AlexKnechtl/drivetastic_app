@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native'
-import { dimensions, colors } from 'base';
-import { Logo } from './Logo';
+import { dimensions, colors } from 'base'
+import { Logo } from './Logo'
 
 export const TabBarTutorial = (props: any) => {
     return (
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     background: {
         justifyContent: "center",
         alignItems: "center",
-        padding: dimensions.fullHeight*0.04
+        padding: dimensions.fullHeight*0.05
     },
     title: {
         color: colors.darkerGray,
