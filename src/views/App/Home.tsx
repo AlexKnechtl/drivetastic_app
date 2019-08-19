@@ -31,8 +31,8 @@ class Home extends Component<NavigationScreenProps> {
                                 <Text style={{ ...styles.statisticText, fontSize: 30, marginTop: -2 }}>Lern-Statistik</Text>
                             </View>
                         </View>
-                        <ModuleProgress text1={moduleName} text2={(ModulePercentage * 100).toFixed(0)} />
-                        <ModuleProgress text1={moduleName} text2={(ModulePercentage * 100).toFixed(0)} />
+                        <ModuleProgress text1={moduleName} percentage={ModulePercentage} percentage2={ModulePercentage*0.5} />
+                        <ModuleProgress text1={moduleName} percentage={ModulePercentage} percentage2={ModulePercentage *0.5} />
                         <TouchableOpacity style={styles.button}>
                             <Text style={styles.buttonText}>Mehr erfahren</Text>
                         </TouchableOpacity>
