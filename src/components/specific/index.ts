@@ -7,3 +7,5 @@ export * from './Logo';
 export * from './TabBar';
 export * from './TutorialIconView';
 export * from './ModuleProgress';
+export * from './MainProgress';
+export * from './BereichProgress';

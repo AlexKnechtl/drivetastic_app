@@ -12,7 +12,7 @@ class AccountSettings extends Component {
 
     render() {
         return (
-            <View>
+            <View style={styles.view}>
                 <Text>AccountSettings</Text>
             </View>
         )

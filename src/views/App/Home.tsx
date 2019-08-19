@@ -16,7 +16,7 @@ class Home extends Component<NavigationScreenProps> {
         const ModulePercentage = 0.7365;
         return (
             <ScrollView>
-                <SafeAreaView style={styles.view}>
+                <View style={styles.view}>
                     <LearnButton />
                     <View style={styles.buttonLayout}>
                         <IconButton onPress={() => this.props.navigation.navigate("TrainingView")} color={colors.lightBlue} icon={icons.Training} text="Training" />
@@ -37,7 +37,7 @@ class Home extends Component<NavigationScreenProps> {
                             <Text style={styles.buttonText}>Mehr erfahren</Text>
                         </TouchableOpacity>
                     </View>
-                </SafeAreaView>
+                </View>
             </ScrollView>
         )
     }
@@ -45,9 +45,7 @@ class Home extends Component<NavigationScreenProps> {
 
 const styles = StyleSheet.create({
     view: {
-        flex: 1,
-        paddingBottom: 14,
-        paddingTop: 18
+        paddingVertical: 14
     },
     buttonLayout: {
         flexDirection: "row",

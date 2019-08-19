@@ -31,3 +31,6 @@ export const Settings3 = require('./settings_3.png');
 export const Settings4 = require('./settings_4.png'); 
 export const Settings5 = require('./settings_5.png'); 
 export const Settings6 = require('./settings_6.png'); 
+export const Fortschritt = require('./fortschritt.png'); 
+export const Erfolgschance = require('./erfolgschance.png'); 
+export const ErfolgschanceWhite = require('./erfolgschance_white.png'); 

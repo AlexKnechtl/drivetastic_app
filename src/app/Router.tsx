@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { createStackNavigator, createAppContainer, createSwitchNavigator, createMaterialTopTabNavigator } from "react-navigation";
-import { Account, Bereiche, Login, Reg_DriveCode, Reg_Tutorial1, Reg_Tutorial2, Reg_Tutorial3, Reg_UserData, ExamView, ExamStatistics, Start, TrainingView, Exam, AccountSettings, Impressum, Languages, Home, Question, PasswordReset, Reg_Languages, Reg_Multilanguage } from '../views';
+import { AccountView, Bereiche, Login, Reg_DriveCode, Reg_Tutorial1, Reg_Tutorial2, Reg_Tutorial3, Reg_UserData, ExamView, ExamStatistics, Start, TrainingView, Exam, AccountSettings, Impressum, Languages, Home, Question, PasswordReset, Reg_Languages, Reg_Multilanguage } from '../views';
 import TabBar from 'components/specific/TabBar';
 import { TabBarTutorial } from 'components/specific/TabBarTutorial';
 
-const settings = createStackNavigator({
-    Account,
+const Account = createStackNavigator({
+    AccountView,
     AccountSettings,
     Impressum,
     Languages
@@ -69,10 +69,7 @@ const learning = createStackNavigator({
 const home = createMaterialTopTabNavigator({
     Home: Home,
     Bereiche,
-    accountsettings: {
-        screen: settings,
-        label: "Account"
-    }
+    Account
 }, {
         swipeEnabled: true,
         tabBarComponent: (props => (<TabBar {...props} />)),
@@ -105,7 +102,7 @@ const rootNavigator = createSwitchNavigator({
     main,
     tutorial,
 }, {
-        initialRouteName: "tutorial"
+        initialRouteName: "main"
     });
 
 export const Router = createAppContainer(rootNavigator);

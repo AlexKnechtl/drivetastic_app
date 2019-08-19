@@ -15,7 +15,13 @@ export const colors = {
     middleGray: "#858585",
     softGray: '#D5D5D5',
     bgGray: '#EFEFEF',
-    errorRed: "#a00"
+    errorRed: "#a00",
+    fortschritt: '#7EBE95',
+    fortschrittUnfilled: 'rgba(126, 190, 149, 0.3)',
+    fortschrittDark: '#6AAE82',
+    erfolgschance: '#578E8B',
+    erfolgschanceUnfilled: 'rgba(87, 142, 139, 0.3)',
+    erfolgschanceDark: '#427A77'
 }
 
 export const padding = {

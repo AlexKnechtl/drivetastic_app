@@ -1,6 +1,5 @@
 import React from 'react'
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
-import { padding, colors } from 'base';
 import * as Progress from 'react-native-progress';
 
 type LogoProps = {

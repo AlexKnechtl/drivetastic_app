@@ -1,6 +1,6 @@
 // created from 'create-ts-index'
 
-export * from './Account';
+export * from './AccountView';
 export * from './Bereiche';
 export * from './ExamView';
 export * from './Home';

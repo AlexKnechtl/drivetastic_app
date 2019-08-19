@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 14,
         alignItems: "center",
         paddingHorizontal: padding.sm,
-        paddingVertical: 8
+        paddingVertical: 10
     },
     icon: {
         height: 40,
@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontWeight: "bold",
         fontSize: 18,
+        marginBottom : 2,
         width: "100%",
         textAlign: "left"
     },

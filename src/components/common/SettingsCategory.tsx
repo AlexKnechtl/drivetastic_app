@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
         backgroundColor: colors.bgGray,
         flexDirection: "row-reverse",
         borderRadius: 10,
-        marginHorizontal: 14,
         marginBottom: 12,
         paddingVertical: 12,
         paddingHorizontal: 12,
