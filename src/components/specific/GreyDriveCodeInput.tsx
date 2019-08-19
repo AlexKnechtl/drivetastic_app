@@ -23,7 +23,7 @@ export const GreyDrivecodeInput = ({ text = "", hint, onChangeText = a=>null, ma
     return (
         <View style={{ ...styles.inputContainer, marginVertical }}>
             <TextInput
-                style={{ width: "100%", textAlign: "center" }}
+                style={{ width: "100%", textAlign: "center", height: "100%" }}
                 placeholder={hint}
                 value={MaskText(text||value)}
                 autoCorrect={false}

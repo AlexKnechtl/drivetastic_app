@@ -11,3 +11,4 @@ export * from './ImageBg';
 export * from './Language';
 export * from './PasswortTextInput';
 export * from './TextInputContainer';
+export * from './InputWithTitle';

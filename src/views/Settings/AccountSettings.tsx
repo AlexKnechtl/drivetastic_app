@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
+import { InputWithTitle, DismissKeyboard } from 'components';
 
 class AccountSettings extends Component {
-    state = {
-
-    }
-
     constructor(props: any) {
         super(props);
     }
@@ -13,7 +10,12 @@ class AccountSettings extends Component {
     render() {
         return (
             <View style={styles.view}>
-                <Text>AccountSettings</Text>
+                <DismissKeyboard>
+                    <Text style={styles.title}>Persönliche Daten</Text>
+                    <InputWithTitle title="E-Mail" value="alex.knechtl13@gmx.at" />
+                    <InputWithTitle title="Vorname" value="Alexander" />
+                    <InputWithTitle title="Passwort" value="*********" />
+                </DismissKeyboard>
             </View>
         )
     }
@@ -21,7 +23,15 @@ class AccountSettings extends Component {
 
 const styles = StyleSheet.create({
     view: {
-        flex: 1
+        flex: 1,
+        padding: 14
+    },
+    title: {
+        fontSize: 16,
+        color: '#AFAFAF',
+        marginBottom: 12,
+        width: "100%",
+        textAlign: "center"
     }
 });
 

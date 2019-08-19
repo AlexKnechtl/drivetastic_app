@@ -31,8 +31,7 @@ class AccountView extends Component {
 
 const styles = StyleSheet.create({
     view: {
-        paddingVertical: 14,
-        paddingHorizontal: 14
+        padding: 14
     },
     title: {
         fontSize: 18,

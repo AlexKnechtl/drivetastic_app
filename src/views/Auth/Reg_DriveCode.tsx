@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { View, SafeAreaView, StyleSheet, Text, Image, Dimensions, RegisteredStyle, ViewStyle, StatusBar } from 'react-native';
+import { View, SafeAreaView, StyleSheet, Text, Dimensions, StatusBar } from 'react-native';
 import HideWithKeyboard from 'react-native-hide-with-keyboard';
 
-import { IconHeadline, GreyTextInput, TextInputContainer, FAB, IconButton, DismissKeyboard } from 'components/common';
+import { IconHeadline, TextInputContainer, FAB, IconButton, DismissKeyboard } from 'components/common';
 import { colors, fonts } from 'base';
 import { icons } from '../../icons';
 import { GreyDrivecodeInput } from 'components/specific';
@@ -67,10 +67,6 @@ export const Reg_DriveCode = enhance(class Reg_DriveCode extends Component<props
                                 />
                             </View>
                         </View>}
-                    {/* <Image
-                    source={require('../../animations/button_pulse2.gif')}
-                    style={{ width: 70, height: 70 }}
-                /> */}
                     <FAB action={() => { this.props.dispatchCheckToken(this.state.driveCode); this.props.codeValid && this.props.navigation.navigate("enterDetails") }} marginLeft={4} icon={icons.Continue} color={"#fff"} borderColor={colors.bgGray} />
                 </DismissKeyboard>
             </SafeAreaView>

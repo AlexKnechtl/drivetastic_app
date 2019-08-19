@@ -1,20 +1,20 @@
 import React from 'react'
-import { View, StyleSheet, TextInput, Keyboard, TextInputProps } from 'react-native';
+import { View, StyleSheet, TextInput, Text } from 'react-native';
 import { fonts, colors } from 'base';
 
 type InputProps = {
-    marginVertical: number
-    hint?: string;
-} & TextInputProps;
+    title: string,
+    value: string
+}
 
-const GreyTextInput = ({ marginVertical, hint, placeholder, ...restprops }: InputProps) => {
+const InputWithTitle = ({ value, title }: InputProps) => {
     return (
-        <View style={{ ...styles.inputContainer, marginVertical: marginVertical }}>
+        <View style={{ ...styles.inputContainer }}>
+            <Text style={styles.title}>{title}</Text>
             <TextInput
-                style={{ width: "100%", height: "100%" }}
-                placeholder={hint||placeholder}
+                style={{ width: "70%", height: "100%" }}
                 autoCorrect={false}
-                {...restprops}
+                placeholder={value}
             />
         </View>
     );
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         width: "100%",
         paddingHorizontal: 8,
+        marginBottom: 12,
         alignItems: "center",
         height: 50
     },
@@ -40,6 +41,11 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: fonts.lg,
     },
+    title: {
+        fontSize: 16,
+        color: '#BEBEBE',
+        width: '30%'
+    }
 });
 
-export { GreyTextInput };
+export { InputWithTitle };
