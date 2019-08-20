@@ -1,14 +1,17 @@
 import React from 'react'
 
 import { createStackNavigator, createAppContainer, createSwitchNavigator, createMaterialTopTabNavigator } from "react-navigation";
-import { AccountView, Bereiche, Login, Reg_DriveCode, Reg_Tutorial1, Reg_Tutorial2, Reg_Tutorial3, Reg_UserData, ExamView, ExamStatistics, Start, TrainingView, Exam, AccountSettings, Impressum, Languages, Home, Question, PasswordReset, Reg_Languages, Reg_Multilanguage } from '../views';
+import { AccountView, Bereiche, Login, Reg_DriveCode, Reg_Tutorial1, Reg_Tutorial2, Reg_Tutorial3, Modules, Reg_UserData, ExamView, ExamStatistics, Start, VisualChanges, LearnAlgorithm, TrainingView, Exam, AccountSettings, Impressum, Languages, Home, Question, PasswordReset, Reg_Languages, Reg_Multilanguage } from '../views';
 import TabBar from 'components/specific/TabBar';
 import { TabBarTutorial } from 'components/specific/TabBarTutorial';
 
 const Account = createStackNavigator({
     AccountView,
     AccountSettings,
+    LearnAlgorithm,
+    VisualChanges,
     Impressum,
+    Modules,
     Languages
 }, {
         headerMode: "none"

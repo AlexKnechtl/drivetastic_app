@@ -11,12 +11,10 @@ const InputWithTitle = ({ value, title }: InputProps) => {
     return (
         <View style={{ ...styles.inputContainer }}>
             <Text style={styles.title}>{title}</Text>
-            <TextInput
-                style={{ width: "70%", height: "100%" }}
-                autoCorrect={false}
-                placeholder={value}
-            />
-        </View>
+            <TextInput style={{ width: "70%", height: "100%" }} autoCorrect={false}>
+                {value}
+            </TextInput>
+        </View >
     );
 };
 

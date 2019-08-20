@@ -7,13 +7,14 @@ type InputProps = {
     icon: object,
     marginLeft?: number,
     marginRight?: number,
+    rotation?: number,
     action: () => void
 }
 
-const FAB = ({ color, icon, action, borderColor, marginLeft = 0, marginRight = 0 }: InputProps) => {
+const FAB = ({ color, icon, action, borderColor, marginLeft = 0, marginRight = 0, rotation = 0 }: InputProps) => {
     return (
         <TouchableOpacity activeOpacity={.7} onPress={action} style={{ ...styles.fabStyle, backgroundColor: color, borderColor: borderColor }}>
-            <Image style={{ ...styles.icon, marginLeft: marginLeft, marginRight: marginRight }} resizeMode="contain" source={icon} />
+            <Image style={{ ...styles.icon, marginLeft: marginLeft, marginRight: marginRight, transform: [{ rotate: rotation+'deg'}] }} resizeMode="contain" source={icon} />
         </TouchableOpacity>
     );
 };
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
     fabStyle: {
         width: 64,
         height: 64,
-        borderRadius: 30,
+        borderRadius: 35,
         position: "absolute",
         justifyContent: "center",
         alignItems: "center",

@@ -9,7 +9,7 @@ class VisualChanges extends Component {
     render() {
         return (
             <View>
-                <Text>VisualChanges</Text>
+                <Text style={styles.title}>Optische Anpassungen</Text> 
             </View>
         )
     }
@@ -18,6 +18,13 @@ class VisualChanges extends Component {
 const styles = StyleSheet.create({
     view: {
         flex: 1
+    },
+    title: {
+        fontSize: 16,
+        color: '#AFAFAF',
+        marginBottom: 12,
+        width: "100%",
+        textAlign: "center"
     }
 });
 
