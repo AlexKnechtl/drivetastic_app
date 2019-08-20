@@ -7,7 +7,7 @@
     "test": "jest",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "index": "cti ./src/ -e ['@types', 'typings', '__test__', '__tests__', 'img', 'icons']",
+    "index": "cti ./src/ ",
     "storybook": "start-storybook -p 7007",
     "prestorybook": "rnstl --pattern **/*.stories.tsx",
     "menu": "adb shell input keyevent 82",
