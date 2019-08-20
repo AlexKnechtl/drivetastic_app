@@ -17,7 +17,8 @@ class VisualChanges extends Component {
 
 const styles = StyleSheet.create({
     view: {
-        flex: 1
+        flex: 1,
+        padding: 14
     },
     title: {
         fontSize: 16,

@@ -52,7 +52,6 @@ const s = StyleSheet.create({
     container:{
         height: 10,
         backgroundColor: "#aaa",
-        marginHorizontal: 20,
         borderRadius: 5
     },
     barBase:{

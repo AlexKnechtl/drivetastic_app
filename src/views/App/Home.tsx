@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, ScrollView, TouchableOpacity, ImageBackground, SafeAreaView } from 'react-native';
-import { icons } from 'icons';
+import { View, StyleSheet, Text, ScrollView, TouchableOpacity, ImageBackground } from 'react-native';
+import { icons } from '../../icons';
 import { colors } from 'base';
 import { IconButton, LearnButton } from '../../components';
 import { ModuleProgress } from 'components/specific/ModuleProgress';
@@ -31,8 +31,8 @@ class Home extends Component<NavigationScreenProps> {
                                 <Text style={{ ...styles.statisticText, fontSize: 30, marginTop: -2 }}>Lern-Statistik</Text>
                             </View>
                         </View>
-                        <ModuleProgress text1={moduleName} percentage={ModulePercentage} percentage2={ModulePercentage*0.5} />
-                        <ModuleProgress text1={moduleName} percentage={ModulePercentage} percentage2={ModulePercentage *0.5} />
+                        <ModuleProgress text1={moduleName} percentage={ModulePercentage} />
+                        <ModuleProgress text1={moduleName} percentage={ModulePercentage} />
                         <TouchableOpacity style={styles.button}>
                             <Text style={styles.buttonText}>Mehr erfahren</Text>
                         </TouchableOpacity>
