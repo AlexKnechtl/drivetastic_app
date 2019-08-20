@@ -3,6 +3,8 @@
 // import Modal from 'react-native-modalbox';
 // // import { Fonts } from '../../utils/Fonts';
 
+export const InfoPopup = "TODO";
+
 // class InfoPopup extends Component {
 //     constructor(props: any) {
 //         super(props);

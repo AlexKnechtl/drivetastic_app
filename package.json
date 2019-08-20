@@ -8,8 +8,10 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "index": "cti ./src/ -e ['@types', 'typings', '__test__', '__tests__', 'img', 'icons']",
-    "storybook": "start-storybook -p 8081",
-    "prestorybook": "rnstl"
+    "storybook": "start-storybook -p 7007",
+    "prestorybook": "rnstl --pattern **/*.stories.tsx",
+    "menu": "adb shell input keyevent 82",
+    "reconnect": "adb reverse tcp:8081 tcp:8081" 
   },
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.4.4",
