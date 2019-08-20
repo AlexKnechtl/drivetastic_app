@@ -27,7 +27,7 @@ export const MultiProgressBar = ({progressbars = [], barStyle}:MultiProgressBarP
                 return new Animated.Value(a.progress);
             var val = new Animated.Value(0);
             Animated.timing(val, {
-                duration: a.animationDuration|| 1000,
+                duration: (a.animationDuration|| 1000)*a.progress,
                 toValue: a.progress
             }).start();
             return val;
@@ -43,7 +43,7 @@ export const MultiProgressBar = ({progressbars = [], barStyle}:MultiProgressBarP
                     inputRange: [0,0.01],
                     outputRange: ["0%","1%"]
                 }):0, backgroundColor: p.color},
-                {borderRadius: ((barStyle||{}).height||10)/2}]}></Animated.View>)}
+                {borderRadius: 0}]}></Animated.View>)}
         </View>
     )
 }
@@ -52,7 +52,8 @@ const s = StyleSheet.create({
     container:{
         height: 10,
         backgroundColor: "#aaa",
-        borderRadius: 5
+        borderRadius: 5,
+        overflow: "hidden"
     },
     barBase:{
         top: 0,
