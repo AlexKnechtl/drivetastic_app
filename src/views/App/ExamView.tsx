@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import { colors } from 'base';
+import { ColoredIconHeader } from 'components';
+import { icons } from 'icons';
 
 class ExamView extends Component {
     state = {
@@ -12,17 +15,18 @@ class ExamView extends Component {
 
     render() {
         return (
-            <View>
-                <Text>ExamView</Text>
+            <View style={styles.safeArea}>
+                <ColoredIconHeader text="Prüfung" color={colors.lightPurple} icon={icons.Exam} />
             </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    view: {
-        flex: 1
-    }
+    safeArea: {
+        flex: 1,
+        backgroundColor: "white"
+    },
 });
 
 export { ExamView };
