@@ -14,3 +14,4 @@ export * from './MultiProgressBar';
 export * from './PasswortTextInput';
 export * from './SettingsCategory';
 export * from './TextInputContainer';
+export * from './SwitchView';

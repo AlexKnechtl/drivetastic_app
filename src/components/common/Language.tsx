@@ -1,6 +1,6 @@
 import React from 'react'
 import { TouchableOpacity, StyleSheet, Image, Text, View } from 'react-native';
-import { fonts, margin } from 'base';
+import { fonts } from 'base';
 import { icons } from '../../icons';
 
 type LanguageProps = {

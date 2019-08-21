@@ -1,10 +1,8 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Image, Text, SafeAreaView, Animated, StatusBar } from 'react-native';
-
 import { IconHeadline, FAB, Language } from 'components/common';
 import { colors, fonts, dimensions, LANGUAGES } from 'base';
 import { icons } from '../../icons';
-import { Reg_Multilanguage } from './Reg_Multilanguage';
 import { NavigationScreenProps } from 'react-navigation';
 import { DataService } from 'core/services/dataService';
 
