@@ -10,3 +10,4 @@ export * from './ModuleProgress';
 export * from './TabBar';
 export * from './TabBarTutorial';
 export * from './TutorialIconView';
+export * from './BereichSmall';

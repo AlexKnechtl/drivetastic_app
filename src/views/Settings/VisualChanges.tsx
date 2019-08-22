@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { SwitchView, FAB } from 'components';
+import { colors } from 'base';
+import { NavigationScreenProps } from 'react-navigation';
+import { icons } from 'icons';
 
-class VisualChanges extends Component {
+class VisualChanges extends Component<NavigationScreenProps> {
     constructor(props: any) {
         super(props);
     }
 
     render() {
         return (
-            <View>
+            <View style={styles.view}>
                 <Text style={styles.title}>Optische Anpassungen</Text> 
+                <SwitchView textColor={colors.darkerGray} bgColor={colors.bgGray} title="Dunkler Modus"  />
+                <SwitchView textColor={colors.darkerGray} bgColor={colors.bgGray} title="Deuteranopie Modus"  />
+                <SwitchView textColor={colors.darkerGray} bgColor={colors.bgGray} title="Protonapie Modus"  />
+                <FAB action={() => { this.props.navigation.navigate("AccountView") }} rotation={180} marginRight={6} icon={icons.Continue} color={"#fff"} borderColor={colors.bgGray} />
             </View>
         )
     }

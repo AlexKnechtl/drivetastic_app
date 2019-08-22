@@ -8,3 +8,5 @@ export const MultiLanguage1 = require('./multiLanguage1.png');
 export const MultiLanguage2 = require('./multiLanguage2.png');
 export const TabbarBg = require('./tabbar_bg.png');
 export const Exchange = require('./exchange.png');
+export const BgImpressum = require('./bg_impressum.jpg');
+export const SeekInnovationLogo = require('./seek_innovation_logo.png');

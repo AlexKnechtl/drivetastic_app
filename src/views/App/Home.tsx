@@ -33,7 +33,7 @@ class Home extends Component<NavigationScreenProps> {
                         </View>
                         <ModuleProgress text1={moduleName} percentage={ModulePercentage} />
                         <ModuleProgress text1={moduleName} percentage={ModulePercentage} />
-                        <TouchableOpacity style={styles.button}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate("Statistics")} style={styles.button}>
                             <Text style={styles.buttonText}>Mehr erfahren</Text>
                         </TouchableOpacity>
                     </View>

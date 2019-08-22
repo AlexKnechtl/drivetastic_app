@@ -2,13 +2,13 @@ import React from 'react'
 import { View, StyleSheet, Switch, Text } from 'react-native';
 
 type SwitchProps = {
-    marginBottom: number,
+    marginBottom?: number,
     bgColor: string,
     textColor: string,
-    title?: string;
+    title: string;
 }
 
-const GreyTextInput = ({ marginBottom = 12, title = " Test", bgColor, textColor }: SwitchProps) => {
+const SwitchView = ({ marginBottom = 12, title = " Test", bgColor, textColor }: SwitchProps) => {
     return (
         <View style={{ ...styles.switchContainer, marginBottom: marginBottom, backgroundColor: bgColor }}>
             <Text style={{...styles.text, color: textColor}}>{title}</Text>
@@ -35,4 +35,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export { GreyTextInput };
+export { SwitchView };

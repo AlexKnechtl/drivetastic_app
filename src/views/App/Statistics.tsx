@@ -4,11 +4,7 @@ import { colors } from 'base';
 import { ColoredIconHeader } from 'components';
 import { icons } from 'icons';
 
-class ExamView extends Component {
-    state = {
-
-    }
-
+class Statistics extends Component {
     constructor(props: any) {
         super(props);
     }
@@ -16,7 +12,7 @@ class ExamView extends Component {
     render() {
         return (
             <View style={styles.safeArea}>
-                <ColoredIconHeader text="Prüfung" color={colors.lightPurple} icon={icons.Exam} />
+                <ColoredIconHeader text="Lern-Statistik" color={colors.lightGreen} icon={icons.Statistic} />
             </View>
         )
     }
@@ -29,4 +25,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export { ExamView };
+export { Statistics };
