@@ -30,8 +30,9 @@ const styles = StyleSheet.create({
         width: 50
     },
     title: {
-        color: '#fff',
+        fontFamily: "SFUIDisplay-Medium",
         fontWeight: "bold",
+        color: '#fff',
         fontSize: 18,
         marginBottom : 2,
         width: "100%",
