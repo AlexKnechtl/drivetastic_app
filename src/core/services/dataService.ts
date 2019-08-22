@@ -11,7 +11,7 @@ export class DataService {
   async setLanguage(language: string) {
     var user = firebase.auth().currentUser
     if(user)
-      return firebase.database().ref("/users/").child(user.uid).update({language: language, secondLanguage: false});
+      return firebase.database().ref("/users/").child(user.uid).child("userdata").update({language: language, secondLanguage: false});
     else
     throw new Error("No user is logged in!!");
   }
@@ -19,7 +19,7 @@ export class DataService {
   async setMultiLanguage(mainLanguage: string, secondLanguage: string) {
     var user = firebase.auth().currentUser
     if(user)
-      return firebase.database().ref("/users/").child(user.uid).update({language: mainLanguage, secondLanguage});
+      return firebase.database().ref("/users/").child(user.uid).child("userdata").update({language: mainLanguage, secondLanguage});
     else
     throw new Error("No user is logged in!!");
   }
@@ -27,8 +27,10 @@ export class DataService {
   async getUserData(): Promise<UserDataType>{
     var user = firebase.auth().currentUser
     if(user){
-      var sn = await firebase.database().ref("/users/").child(user.uid).once("value");
+      var sn = await firebase.database().ref("/users/").child(user.uid).child("userdata").once("value");
+      var name = await firebase.database().ref("/users/").child(user.uid).child("name").once("value");
       var data: UserDataType = sn.val();
+      data.name = name.val();
       if(!data.secondLanguage)
         data.secondLanguage = false;
       return data;

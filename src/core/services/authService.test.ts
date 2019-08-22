@@ -1,5 +1,9 @@
 import { AuthService } from "./authService";
 
+export async function signInAsTestUser(){
+    return await new AuthService().signInWithCredential("jest@test.com", "jesttest");
+}
+
 describe('AuthService', () => {
     it('should work', async () => {
         expect.assertions(1);
@@ -15,7 +19,7 @@ describe('AuthService', () => {
     }),
     it('should be able to login', async () => {
         expect.assertions(1);
-        var res = await new AuthService().signInWithCredential("test@test.com", "password");
+        var res = signInAsTestUser();
         return expect(res).toBeTruthy();
     })
 });
