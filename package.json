@@ -11,7 +11,7 @@
     "storybook": "start-storybook -p 7007",
     "prestorybook": "rnstl --pattern **/*.stories.tsx",
     "menu": "adb shell input keyevent 82",
-    "reconnect": "adb reverse tcp:8081 tcp:8081" 
+    "reconnect": "adb reverse tcp:8081 tcp:8081"
   },
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.4.4",
@@ -34,6 +34,7 @@
     "react-navigation": "^3.11.1",
     "react-redux": "^7.1.0",
     "redux": "^4.0.4",
+    "redux-actions": "^2.6.5",
     "redux-saga": "^1.0.5"
   },
   "devDependencies": {

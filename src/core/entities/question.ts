@@ -1,4 +1,10 @@
 import { Answer, IAnswer } from "./answer";
+import { TypedEvent } from "./TypedEvent";
+
+export interface ChangingEventArgs<T>{
+    previousValue: T,
+    newValue: T
+}
 
 export interface IQuestion{
     answers: IAnswer[];
@@ -6,9 +12,13 @@ export interface IQuestion{
     Id: string;
     learnState: number;
     isRight: (selectedAnswers: boolean[]) => boolean;
+    onLearnStateChanging: TypedEvent<ChangingEventArgs<number>>;
 }
 
 export class Question implements IQuestion{
+    
+    onLearnStateChanging: TypedEvent<ChangingEventArgs<number>> = new TypedEvent();
+
     isRight = (selectedAnswers: boolean[]) => {
         if(selectedAnswers.length != this.answers.length)
             throw new Error("ArgumentException: selected answers.length != available answers.length ");
@@ -22,6 +32,7 @@ export class Question implements IQuestion{
         return this._learnState;
     }
     public set learnState(value: number) {
+        this.onLearnStateChanging.emit({previousValue: this._learnState, newValue: value});
         this._learnState = value;
     }
 
