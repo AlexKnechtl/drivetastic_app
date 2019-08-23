@@ -3,7 +3,7 @@ import { View, StyleSheet, ScrollView, Text } from 'react-native';
 import { MainProgress, BereichProgress, Explanation } from '../../components'
 import { icons } from 'icons';
 import { colors } from 'base';
-import { ButtonPulse } from 'animations';
+import { PulseFortschritt, PulseErfolgschance } from 'animations';
 
 class Bereiche extends Component {
     state = {
@@ -29,18 +29,19 @@ class Bereiche extends Component {
                     visible={this.state.visibleFortschritt}
                     icon={icons.FortschrittWhite}
                     title="Lernfortschritt"
-                    color={colors.lightGreen}
+                    color={colors.fortschritt}
                     text1="Der Lernfortschritt zeigt dir deinen Fortschritt im Bezug auf Richtig beantwortete Fragen innerhalb eines Bereichs."
                     text2="Sobald du alle Fragen eines Bereiches einmal richtig beantwortet hast erreichst du 100%."
-                    gif={ButtonPulse} />
+                    gif={PulseFortschritt} />
                 <Explanation
                     onPress={() => this.setState({ visibleErfolgschance: !this.state.visibleErfolgschance })}
                     visible={this.state.visibleErfolgschance}
                     icon={icons.StrategyWhite}
+                    color={colors.erfolgschance}
                     title="Erfolgschance"
                     text1="Die Erfolgschance gibt dir einen groben Überblick auf die Wahrscheinlichkeit deines Prüfungserfolges."
                     text2="Diese Kennzahl wird anhand deiner richtig beantworteten Fragen und Prüfungen berechnet."
-                    gif={ButtonPulse} />
+                    gif={PulseErfolgschance} />
             </ScrollView>
         )
     }
