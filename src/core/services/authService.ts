@@ -20,7 +20,7 @@ export class AuthService {
     }
   }
 
-  async signIn() {
+  async signIn(): Promise<User> {
     return new Promise((resolve, reject) => {
       firebase.auth().onAuthStateChanged(async user => {
         if (user) {
@@ -46,7 +46,7 @@ export class AuthService {
     password: string,
     name: string,
     token: string
-  ): Promise<{ success: boolean; message: string }> {
+  ): Promise<{ success: boolean; message: string, user?: User }> {
     if(!name || name.length<3)
       throw new Error("Name cannot be shorter than 3 characters!")
     token = token.replace(/[\W\-_ ]/g, "").toUpperCase();
@@ -67,7 +67,7 @@ export class AuthService {
     var text = await response.text();
 
     if (response.ok) {
-      return { success: true, message: text };
+      return { success: true, message: text, user: await this.signInWithCredential(email, password) };
     }
     var val = JSON.parse(text);
     if(val.message)
@@ -79,7 +79,7 @@ export class AuthService {
     token: string
   ): Promise<{ success: boolean; message: string }> {
     token = token.replace(/[\W\-_ ]/g, "").toUpperCase();
-    console.log(token);
+    // console.log(token);
     var url = "https://drivetastic-cb039.web.app/api/v1/tokens/check";
     var response = await fetch(url, {
       method: "POST",

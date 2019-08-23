@@ -6,7 +6,9 @@ describe('DataService', () => {
   it('should not work', async () => {
     expect.assertions(1);
     try {
-      await new DataService().setLanguage("OR082AF5EAC7");
+      new AuthService().signOut();
+      var res = await new DataService().setLanguage("OR082AF5EAC7");
+      expect(res.message).toBeTruthy();
     } catch (error) {
       expect(true).toBeTruthy();
     }
@@ -31,11 +33,10 @@ describe('DataService', () => {
       expect(true).toBeTruthy();
     }),
     it('should get Userserdata with valid multi language', async (done) => {
-      expect.assertions(3);
+      expect.assertions(2);
       await signInAsTestUser();
       var userData = await new DataService().getUserData();
       expect(userData.secondLanguage).toBe("###LANGUAGE###");
-      expect(userData.name).toBe("####TESTNAME####");
       expect(userData.language).toBe("###MULTI_LANGUAGE###");
       done();
     })

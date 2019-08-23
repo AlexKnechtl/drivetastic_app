@@ -1,7 +1,9 @@
 import { AuthService } from "./authService";
+import { User } from "../entities";
 
-export async function signInAsTestUser(){
-    return await new AuthService().signInWithCredential("jest@test.com", "jesttest");
+export async function signInAsTestUser(): Promise<User> {
+    var auth = new AuthService();
+    return auth.signInWithCredential("jest@test.com", "jesttest");
 }
 
 describe('AuthService', () => {
@@ -17,9 +19,10 @@ describe('AuthService', () => {
         .checkToken("OR9B-CD66-BED5");
         return expect(res.success).toBeTruthy();
     }),
-    it('should be able to login', async () => {
+    it('should be able to login', async done => {
         expect.assertions(1);
-        var res = signInAsTestUser();
-        return expect(res).toBeTruthy();
+        var res = await signInAsTestUser();
+        expect(res.name).toBe("####TESTNAME####");
+        done();
     })
 });

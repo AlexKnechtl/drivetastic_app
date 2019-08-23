@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Button } from 'react-native';
+
+import DeviceInfo from "react-native-device-info"
 
 class Exam extends Component {
     state = {
-
+        devID: ""
     }
 
     constructor(props: any) {
@@ -13,7 +15,8 @@ class Exam extends Component {
     render() {
         return (
             <View>
-                <Text>Exam</Text>
+                <Text>Dev ID: {this.state.devID}</Text>
+                <Button title="ShowID" onPress={()=> this.setState({devID: DeviceInfo.getUniqueID()})} />
             </View>
         )
     }

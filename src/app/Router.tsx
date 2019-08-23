@@ -72,7 +72,8 @@ const learning = createStackNavigator({
 const home = createMaterialTopTabNavigator({
     Home: Home,
     Bereiche,
-    Account
+    Account,
+    Exam
 }, {
         swipeEnabled: true,
         tabBarComponent: (props => (<TabBar {...props} />)),
