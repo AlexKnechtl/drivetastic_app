@@ -29,6 +29,7 @@ class Bereiche extends Component {
                     visible={this.state.visibleFortschritt}
                     icon={icons.FortschrittWhite}
                     title="Lernfortschritt"
+                    color={colors.lightGreen}
                     text1="Der Lernfortschritt zeigt dir deinen Fortschritt im Bezug auf Richtig beantwortete Fragen innerhalb eines Bereichs."
                     text2="Sobald du alle Fragen eines Bereiches einmal richtig beantwortet hast erreichst du 100%."
                     gif={ButtonPulse} />
@@ -36,9 +37,9 @@ class Bereiche extends Component {
                     onPress={() => this.setState({ visibleErfolgschance: !this.state.visibleErfolgschance })}
                     visible={this.state.visibleErfolgschance}
                     icon={icons.StrategyWhite}
-                    title="Lernfortschritt"
-                    text1="Der Lernfortschritt zeigt dir deinen Fortschritt im Bezug auf Richtig beantwortete Fragen innerhalb eines Bereichs."
-                    text2="Sobald du alle Fragen eines Bereiches einmal richtig beantwortet hast erreichst du 100%."
+                    title="Erfolgschance"
+                    text1="Die Erfolgschance gibt dir einen groben Überblick auf die Wahrscheinlichkeit deines Prüfungserfolges."
+                    text2="Diese Kennzahl wird anhand deiner richtig beantworteten Fragen und Prüfungen berechnet."
                     gif={ButtonPulse} />
             </ScrollView>
         )

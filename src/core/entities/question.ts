@@ -1,12 +1,12 @@
-import { Answer, IAnswer } from "./answer";
+import { IAnswer } from "./answer";
 import { TypedEvent } from "./TypedEvent";
 
-export interface ChangingEventArgs<T>{
+export interface ChangingEventArgs<T> {
     previousValue: T,
     newValue: T
 }
 
-export interface IQuestion{
+export interface IQuestion {
     answers: IAnswer[];
     question: string;
     Id: string;
@@ -15,14 +15,14 @@ export interface IQuestion{
     onLearnStateChanging: TypedEvent<ChangingEventArgs<number>>;
 }
 
-export class Question implements IQuestion{
-    
+export class Question implements IQuestion {
+
     onLearnStateChanging: TypedEvent<ChangingEventArgs<number>> = new TypedEvent();
 
     isRight = (selectedAnswers: boolean[]) => {
-        if(selectedAnswers.length != this.answers.length)
+        if (selectedAnswers.length != this.answers.length)
             throw new Error("ArgumentException: selected answers.length != available answers.length ");
-        return this.answers.every((a,i)=>a.isRight == selectedAnswers[i]);
+        return this.answers.every((a, i) => a.isRight == selectedAnswers[i]);
     };
     answers: IAnswer[];
     question: string;
@@ -32,11 +32,11 @@ export class Question implements IQuestion{
         return this._learnState;
     }
     public set learnState(value: number) {
-        this.onLearnStateChanging.emit({previousValue: this._learnState, newValue: value});
+        this.onLearnStateChanging.emit({ previousValue: this._learnState, newValue: value });
         this._learnState = value;
     }
 
-    constructor(question: string, Id: string, answers: IAnswer[], learnState: number = 0){
+    constructor(question: string, Id: string, answers: IAnswer[], learnState: number = 0) {
         this.answers = answers;
         this.question = question;
         this.Id = Id;

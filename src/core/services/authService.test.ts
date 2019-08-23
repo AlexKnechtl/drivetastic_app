@@ -9,8 +9,7 @@ export async function signInAsTestUser(): Promise<User> {
 describe('AuthService', () => {
     it('should work', async () => {
         expect.assertions(1);
-        var res = await new AuthService()
-        .checkToken("OR9BCD66BED5");
+        var res = await new AuthService().checkToken("OR9BCD66BED5");
         return expect(res.success).toBeTruthy();
     }),
     it('should work', async () => {

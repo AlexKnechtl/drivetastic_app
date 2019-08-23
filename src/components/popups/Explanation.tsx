@@ -1,7 +1,6 @@
 import React from 'react'
-import { StyleSheet, Image, Text, View } from 'react-native';
+import { StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native';
 import Modal from "react-native-modal";
-import { colors } from 'base';
 
 type ButtonProps = {
     visible: boolean,
@@ -10,21 +9,24 @@ type ButtonProps = {
     text1: string,
     text2: string,
     title: string,
+    color: string,
     onPress: () => void
 }
 
-const Explanation = ({ visible = false, icon, text1, text2, title, onPress, gif }: ButtonProps) => {
+const Explanation = ({ visible = false, icon, text1, text2, title, onPress, gif, color }: ButtonProps) => {
     return (
         <Modal style={styles.modal} useNativeDriver={true} isVisible={visible} onBackdropPress={onPress} >
-            <View style={styles.view}>
+            <View style={{...styles.view, backgroundColor: color}}>
                 <Image resizeMode="contain" style={styles.icon} source={icon} />
                 <Text style={styles.title}>
                     {title}
                 </Text>
                 <Text style={styles.text}>{text1}</Text>
                 <Text style={styles.text}>{text2}</Text>
-                <Image resizeMode="contain" style={styles.gif} source={gif} />
-                <Text style={styles.smallText}>Tippe um fortzufahren </Text>
+                <TouchableOpacity onPress={onPress} activeOpacity={1}>
+                    <Image resizeMode="contain" style={styles.gif} source={gif} />
+                    <Text style={styles.smallText}>Tippe um fortzufahren </Text>
+                </TouchableOpacity>
             </View>
         </Modal>
     );
@@ -38,7 +40,6 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: colors.lightGreen,
         width: 280,
         paddingHorizontal: 14,
         paddingVertical: 20,
@@ -52,7 +53,8 @@ const styles = StyleSheet.create({
     gif: {
         width: 60,
         height: 60,
-        marginTop: 4
+        marginTop: 4,
+        alignSelf: "center"
     },
     title: {
         color: '#fff',

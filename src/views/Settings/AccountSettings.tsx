@@ -15,8 +15,8 @@ class AccountSettings extends Component<NavigationScreenProps> {
             <View style={styles.view}>
                 <DismissKeyboard>
                     <Text style={styles.title}>Persönliche Daten</Text>
-                    <InputWithTitle title="E-Mail" value="alex.knechtl13@gmx.at" />
                     <InputWithTitle title="Vorname" value="Alexander" />
+                    <InputWithTitle title="Nachname" value="Knechtl" />
                     <InputWithTitle title="Passwort" value="*********" />
                     <TouchableOpacity onPress={() => { this.props.navigation.navigate("auth") }} activeOpacity={.8} style={styles.logout}>
                         <Text style={styles.logoutText}>Logout</Text>
