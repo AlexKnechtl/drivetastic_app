@@ -8,12 +8,13 @@ type ProgressProps = {
     percentage: number,
     color: string,
     unfilled: string
-    icon: object
+    icon: object,
+    onPress: () => void
 }
 
-const MainProgress = ({ title, percentage, icon, color, unfilled }: ProgressProps) => {
+const MainProgress = ({ title, percentage, icon, color, unfilled, onPress }: ProgressProps) => {
     return (
-        <TouchableOpacity activeOpacity={.8} style={{ ...styles.buttton, borderColor: color }}>
+        <TouchableOpacity onPress={onPress} activeOpacity={.8} style={{ ...styles.buttton, borderColor: color }}>
             <View style={styles.row}>
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                     <Image resizeMode="contain" style={styles.icon} source={icon} />

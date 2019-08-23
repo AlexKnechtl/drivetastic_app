@@ -36,3 +36,5 @@ export const Erfolgschance = require('./erfolgschance.png');
 export const ErfolgschanceWhite = require('./erfolgschance_white.png'); 
 export const Dumbbell = require('./dumbbell.png'); 
 export const Exchange = require('./exchange.png'); 
+export const StrategyWhite = require('./strategy_white.png'); 
+export const FortschrittWhite = require('./fortschritt_white.png'); 
