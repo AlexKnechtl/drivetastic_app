@@ -3,7 +3,7 @@ import { View, StyleSheet, ScrollView, Text } from 'react-native';
 import { MainProgress, BereichProgress, Explanation } from '../../components'
 import { icons } from 'icons';
 import { colors } from 'base';
-import { PulseFortschritt, PulseErfolgschance } from 'animations';
+import { PulseFortschritt, PulseErfolgschance, Pulse } from 'animations';
 
 class Bereiche extends Component {
     state = {
@@ -41,7 +41,7 @@ class Bereiche extends Component {
                     title="Erfolgschance"
                     text1="Die Erfolgschance gibt dir einen groben Überblick auf die Wahrscheinlichkeit deines Prüfungserfolges."
                     text2="Diese Kennzahl wird anhand deiner richtig beantworteten Fragen und Prüfungen berechnet."
-                    gif={PulseErfolgschance} />
+                    gif={Pulse} />
             </ScrollView>
         )
     }

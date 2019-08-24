@@ -1,21 +1,21 @@
 import React from 'react'
-import { TouchableOpacity, StyleSheet, Image, Text } from 'react-native';
-import { padding } from 'base';
+import { TouchableOpacity, StyleSheet, Image, Text, View } from 'react-native';
 
 type ButtonProps = {
     color: string,
     icon: object,
     text: string,
-    onPress: ()=> void
+    iconWidth: string,
+    onPress: () => void
 }
 
-const IconButton = ({ color, icon, text, onPress = ()=>null }: ButtonProps) => {
+const IconButton = ({ color, icon, text, onPress = () => null, iconWidth = "50%" }: ButtonProps) => {
     return (
-        <TouchableOpacity onPress={onPress} activeOpacity={.7} style={{ ...styles.buttton, backgroundColor: color, }}>
-            <Image resizeMode="contain" style={styles.icon} source={icon} />
-            <Text style={styles.text}>
-                {text}
-            </Text>
+        <TouchableOpacity onPress={onPress} activeOpacity={.7} style={{ ...styles.buttton, backgroundColor: color }}>
+            <Text style={styles.text}>{text}</Text>
+            <View style={styles.view}>
+                <Image resizeMode="contain" style={{ ...styles.icon, width: iconWidth }} source={icon} />
+            </View>
         </TouchableOpacity>
     );
 };
@@ -24,20 +24,23 @@ const styles = StyleSheet.create({
     buttton: {
         borderRadius: 10,
         flex: 1,
-        alignItems: "center",
-        marginHorizontal: 7,
-        paddingTop: 12,
-        paddingBottom: 24,
+        flexDirection: "column-reverse",
+        marginHorizontal: 7
+    },
+    view: {
+        justifyContent: "center",
+        alignItems: "center"
     },
     icon: {
-        width: "70%",
+        width: "40%",
         height: "70%",
-        marginBottom: 12
+        alignSelf: "center"
     },
     text: {
         color: '#fff',
         fontWeight: "bold",
         fontSize: 20,
+        marginBottom: 6,
         width: "100%",
         textAlign: "center"
     },
