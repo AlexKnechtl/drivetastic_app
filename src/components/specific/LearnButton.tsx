@@ -3,9 +3,13 @@ import { TouchableOpacity, StyleSheet, Image, Text, View } from 'react-native';
 import { padding } from 'base';
 import { icons } from '../../icons';
 
-const LearnButton = () => {
+type LearnProps = {
+    onPress: () => void
+}
+
+const LearnButton = ({ onPress }: LearnProps) => {
     return (
-        <TouchableOpacity activeOpacity={.7} style={{ ...styles.buttton }}>
+        <TouchableOpacity onPress={onPress} activeOpacity={.7} style={{ ...styles.buttton }}>
             <Image resizeMode="contain" style={styles.icon} source={icons.Learn} />
             <View style={{ flex: 1 }}>
                 <Text style={styles.title}>Lernerfahrung fortsetzen</Text>

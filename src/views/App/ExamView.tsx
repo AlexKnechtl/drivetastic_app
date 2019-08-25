@@ -17,7 +17,7 @@ class ExamView extends Component<NavigationScreenProps> {
                 <ColoredIconHeader text="Prüfung" color={colors.lightPurple} icon={icons.Exam} />
                 <Text style={styles.title}>Module</Text>
                 <View style={{ marginHorizontal: 14 }}>
-                    <LongIconButton title="Alle Bereiche" text="Volle Prüfungssimulation" bgColor={colors.lightGreen} icon={icons.Test} />
+                    <LongIconButton title="Alle Bereiche" text="Volle Prüfungssimulation" bgColor={colors.lightPurple} icon={icons.Test} />
                 </View>
                 <View style={styles.buttonLayout}>
                     <IconButton onPress={() => this.props.navigation.navigate("TrainingView")} color={colors.grundwissen} icon={icons.Grundwissen} text="Grundwissen" />
@@ -26,9 +26,8 @@ class ExamView extends Component<NavigationScreenProps> {
                 <Text style={styles.title}>Beste Ergebnisse</Text>
                 <BestResult title="Grundwissen" color={colors.grundwissen} score={0.2} />
                 <BestResult title="Bereich B" color={colors.bFührerschein} score={0.2} />
-                <BestResult title="Alle Bereiche" color={colors.alleBereiche} score={0.2} />
-                <View style={{ width: "100%", backgroundColor: colors.lightPurple, paddingTop: 10, marginTop: 20, paddingHorizontal: 14 }}>
-                    <Text style={{ color: "white", textAlign: "center", fontSize: 16, marginBottom: 10 }}>Historie</Text>
+                <View style={styles.historyView}>
+                    <Text style={{ color: "white", textAlign: "center", fontSize: 18, marginBottom: 14 }}>Prüfungshistorie</Text>
                     <ModuleProgress text1="Grundwissen" percentage={0.5} />
                     <ModuleProgress text1="B Bereich" percentage={0.2} />
                     <TouchableOpacity onPress={() => this.props.navigation.navigate("Statistics")} style={styles.button}>
@@ -71,7 +70,6 @@ const styles = StyleSheet.create({
         paddingVertical: 8,
         paddingHorizontal: 18,
         marginTop: 8,
-        marginBottom: 20,
         alignSelf: "center",
         borderRadius: 8
     },
@@ -79,6 +77,14 @@ const styles = StyleSheet.create({
         color: colors.lightPurple,
         fontSize: 16,
         fontWeight: "bold"
+    },
+    historyView: {
+        backgroundColor: colors.lightPurple,
+        padding: 14,
+        marginTop: 20,
+        marginHorizontal: 14,
+        marginBottom: 20,
+        borderRadius: 10
     }
 });
 

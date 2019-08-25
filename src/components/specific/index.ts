@@ -13,3 +13,6 @@ export * from './TutorialIconView';
 export * from './BereichSmall';
 export * from './BestResult';
 export * from './QuestionPicture';
+export * from './QuestionLayout';
+export * from './Answer';
+export * from './QuestionFAB';

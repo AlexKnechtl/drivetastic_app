@@ -17,7 +17,7 @@ class Home extends Component<NavigationScreenProps> {
         return (
             <ScrollView>
                 <View style={styles.view}>
-                    <LearnButton />
+                    <LearnButton onPress={() => this.props.navigation.navigate("Question")} />
                     <View style={styles.buttonLayout}>
                         <IconButton onPress={() => this.props.navigation.navigate("TrainingView")} color={colors.lightBlue} icon={icons.Training} text="Training" />
                         <IconButton onPress={() => this.props.navigation.navigate("ExamView")} color={colors.lightPurple} icon={icons.Exam} text="Prüfung" />

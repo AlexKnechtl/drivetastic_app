@@ -10,3 +10,4 @@ export const TabbarBg = require('./tabbar_bg.png');
 export const Exchange = require('./exchange.png');
 export const BgImpressum = require('./bg_impressum.jpg');
 export const SeekInnovationLogo = require('./seek_innovation_logo.png');
+export const Bild = require('./bild.png');

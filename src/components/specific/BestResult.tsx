@@ -12,12 +12,12 @@ type LogoProps = {
 
 const BestResult = ({ title, color, score }: LogoProps) => {
     return (
-        <TouchableOpacity activeOpacity={.8} style={{...styles.buttton, backgroundColor: colors.fortschrittDark}}>
+        <TouchableOpacity activeOpacity={.8} style={{ ...styles.buttton, backgroundColor: colors.lightGreen }}>
             <View style={styles.row}>
                 <Text style={styles.text}>{title}</Text>
-                <View style={{ flexDirection: "row" }}>
+                <View style={{ flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+                    <Text style={{ ...styles.text, marginRight: 6, marginBottom: 0 }}>{(score * 100).toFixed(0) + "%"}</Text>
                     <Image style={styles.icon} source={icons.ErfolgschanceWhite} />
-                    <Text style={styles.text}>{(score * 100).toFixed(0) + "%"}</Text>
                 </View>
             </View>
             <Progress.Bar progress={score} borderRadius={12} width={null} height={12} borderWidth={0} style={styles.progressBar} color={"#fff"} unfilledColor={"rgba(255, 255, 255, 0.2)"} />
@@ -51,8 +51,7 @@ const styles = StyleSheet.create({
     },
     icon: {
         width: 30,
-        height: 20,
-        marginRight: 6
+        height: 20
     }
 });
 

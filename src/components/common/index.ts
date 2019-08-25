@@ -17,3 +17,4 @@ export * from './TextInputContainer';
 export * from './SwitchView';
 export * from './ColoredIconHeader';
 export * from './LongIconButton';
+export * from './TransparentLayout';

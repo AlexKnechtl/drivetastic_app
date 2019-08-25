@@ -67,6 +67,9 @@ const learning = createStackNavigator({
     Exam,
     ExamStatistics,
     Question
+},
+{
+    headerMode: "none"
 });
 
 const home = createMaterialTopTabNavigator({

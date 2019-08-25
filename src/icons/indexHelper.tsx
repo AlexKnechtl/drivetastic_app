@@ -40,3 +40,5 @@ export const StrategyWhite = require('./strategy_white.png');
 export const FortschrittWhite = require('./fortschritt_white.png'); 
 export const Grundwissen = require('./grundwissen.png'); 
 export const Test = require('./test.png'); 
+export const Fullscreen = require('./fullscreen.png'); 
+export const False = require('./false.png'); 
