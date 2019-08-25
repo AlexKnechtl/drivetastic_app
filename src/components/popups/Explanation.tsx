@@ -1,11 +1,11 @@
 import React from 'react'
-import { StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Image, Text, View, TouchableOpacity, Animated } from 'react-native';
 import Modal from "react-native-modal";
+import { Pulse } from 'animations';
 
 type ButtonProps = {
     visible: boolean,
     icon: object,
-    gif: object,
     text1: string,
     text2: string,
     title: string,
@@ -13,7 +13,7 @@ type ButtonProps = {
     onPress: () => void
 }
 
-const Explanation = ({ visible = false, icon, text1, text2, title, onPress, gif, color }: ButtonProps) => {
+const Explanation = ({ visible = false, icon, text1, text2, title, onPress, color }: ButtonProps) => {
     return (
         <Modal style={styles.modal} useNativeDriver={true} isVisible={visible} onBackdropPress={onPress} >
             <View style={{...styles.view, backgroundColor: color}}>
@@ -24,7 +24,7 @@ const Explanation = ({ visible = false, icon, text1, text2, title, onPress, gif,
                 <Text style={styles.text}>{text1}</Text>
                 <Text style={styles.text}>{text2}</Text>
                 <TouchableOpacity onPress={onPress} activeOpacity={1}>
-                    <Image resizeMode="contain" style={styles.gif} source={gif} />
+                    <Animated.Image resizeMode="contain" style={styles.gif} source={Pulse} />
                     <Text style={styles.smallText}>Tippe um fortzufahren </Text>
                 </TouchableOpacity>
             </View>

@@ -12,7 +12,7 @@ type LogoProps = {
 
 const BestResult = ({ title, color, score }: LogoProps) => {
     return (
-        <TouchableOpacity activeOpacity={.8} style={{ ...styles.buttton, backgroundColor: color }}>
+        <TouchableOpacity activeOpacity={.8} style={{...styles.buttton, backgroundColor: colors.fortschrittDark}}>
             <View style={styles.row}>
                 <Text style={styles.text}>{title}</Text>
                 <View style={{ flexDirection: "row" }}>
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 12,
         marginHorizontal: 14,
         paddingVertical: 10,
-        backgroundColor: colors.lightBlue
+        backgroundColor: colors.lightPurple
     },
     progressBar: {
         width: "100%"

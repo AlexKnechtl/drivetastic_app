@@ -24,11 +24,10 @@ class Home extends Component<NavigationScreenProps> {
                     </View>
                     <View style={styles.statisticsView}>
                         <View style={{ flexDirection: "row", marginBottom: 8, paddingLeft: 12 }}>
-                            <ImageBackground source={icons.Statistic} style={{ aspectRatio: 1, marginVertical: 7 }}>
-                            </ImageBackground>
+                            <ImageBackground source={icons.Statistic} style={{ aspectRatio: 1, marginVertical: 7 }} />
                             <View style={{ marginLeft: 12 }}>
                                 <Text style={{ ...styles.statisticText, fontSize: 20, fontWeight: "bold" }}>Deine aktuelle</Text>
-                                <Text style={{ ...styles.statisticText, fontSize: 30, marginTop: -2 }}>Lern-Statistik</Text>
+                                <Text style={{ ...styles.statisticText, fontSize: 30 }}>Lern-Statistik</Text>
                             </View>
                         </View>
                         <ModuleProgress text1={moduleName} percentage={ModulePercentage} />

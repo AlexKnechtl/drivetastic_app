@@ -12,7 +12,7 @@ type LogoProps = {
 const BereichSmall = ({ title, color, erfolgschance }: LogoProps) => {
     return (
         <TouchableOpacity activeOpacity={.8} style={{ ...styles.buttton, backgroundColor: color }}>
-            <View style={{ flexDirection: "row" }}>
+            <View style={{ flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
                 <Image style={styles.icon} source={icons.ErfolgschanceWhite} />
                 <Text style={styles.percentageText}>{erfolgschance + "%"}</Text>
             </View>
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
         width: 30,
         height: 20,
         marginRight: 6,
-        marginLeft: 8
+        marginLeft: 12
     }
 });
 

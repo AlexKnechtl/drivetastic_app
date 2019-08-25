@@ -9,9 +9,9 @@ type ButtonProps = {
     onPress: () => void
 }
 
-const IconButton = ({ color, icon, text, onPress = () => null, iconWidth = "50%" }: ButtonProps) => {
+const IconButton = ({ color, icon, text, onPress = () => null, iconWidth = "35%" }: ButtonProps) => {
     return (
-        <TouchableOpacity onPress={onPress} activeOpacity={.7} style={{ ...styles.buttton, backgroundColor: color }}>
+        <TouchableOpacity onPress={onPress} activeOpacity={.8} style={{ ...styles.buttton, backgroundColor: color }}>
             <Text style={styles.text}>{text}</Text>
             <View style={styles.view}>
                 <Image resizeMode="contain" style={{ ...styles.icon, width: iconWidth }} source={icon} />
@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     buttton: {
         borderRadius: 10,
         flex: 1,
+        paddingVertical: 6,
         flexDirection: "column-reverse",
         marginHorizontal: 7
     },
@@ -32,16 +33,12 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     icon: {
-        width: "40%",
-        height: "70%",
-        alignSelf: "center"
+        height: "70%"
     },
     text: {
         color: '#fff',
         fontWeight: "bold",
         fontSize: 20,
-        marginBottom: 6,
-        width: "100%",
         textAlign: "center"
     },
 });

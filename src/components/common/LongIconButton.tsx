@@ -12,7 +12,7 @@ type CategoryProps = {
 const LongIconButton = ({ title, text, icon, bgColor, onPress = () => null }: CategoryProps) => {
     return (
         <TouchableOpacity onPress={onPress} activeOpacity={.6} style={{...styles.buttton, backgroundColor: bgColor}}>
-            <Image style={styles.icon} resizeMode={"contain"} source={icon} />
+            <Image resizeMode="contain" style={styles.icon} source={icon} />
             <View style={{ flex: 1 }}>
                 <Text style={styles.title}>{title}</Text>
                 <Text style={styles.text}>{text}</Text>
@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     icon: {
-        height: "80%",
-        width: 70
+        height: "100%",
+        width: 65
     },
     title: {
         color: "white",
