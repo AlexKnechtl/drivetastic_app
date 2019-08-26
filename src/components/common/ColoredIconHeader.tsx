@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, Image, Text, SafeAreaView } from 'react-native';
+import { View, StyleSheet, Image, Text, SafeAreaView, Platform } from 'react-native';
 import { dimensions } from 'base';
 
 type HeadlineProps = {
@@ -23,8 +23,9 @@ const ColoredIconHeader = ({ color, icon, text }: HeadlineProps) => {
 const styles = StyleSheet.create({
     icon: {
         width: "18%",
-        height: dimensions.fullWidth*0.19,
-        marginVertical: 12
+        height: dimensions.fullWidth * 0.19,
+        marginTop: Platform.OS === 'android' ? 30 : 12,
+        marginBottom: 12
     },
     text: {
         color: 'white',

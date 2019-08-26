@@ -3,7 +3,6 @@ import { View, StyleSheet, ScrollView, Text } from 'react-native';
 import { MainProgress, BereichProgress, Explanation } from '../../components'
 import { icons } from 'icons';
 import { colors } from 'base';
-import { ButtonPulse } from 'animations';
 
 class Bereiche extends Component {
     state = {
@@ -24,22 +23,16 @@ class Bereiche extends Component {
                     <Text style={styles.bereichTitle}>Grundwissen</Text>
                     <BereichProgress title="1 Umgebungskunde" erfolgschance={100} color={colors.lightBlue} />
                 </View>
-                <Explanation
-                    onPress={() => this.setState({ visibleFortschritt: !this.state.visibleFortschritt })}
-                    visible={this.state.visibleFortschritt}
-                    icon={icons.FortschrittWhite}
+                <Explanation onPress={() => this.setState({ visibleFortschritt: !this.state.visibleFortschritt })} visible={this.state.visibleFortschritt}
+                    icon={icons.FortschrittWhite} color={colors.fortschritt}
                     title="Lernfortschritt"
                     text1="Der Lernfortschritt zeigt dir deinen Fortschritt im Bezug auf Richtig beantwortete Fragen innerhalb eines Bereichs."
-                    text2="Sobald du alle Fragen eines Bereiches einmal richtig beantwortet hast erreichst du 100%."
-                    gif={ButtonPulse} />
-                <Explanation
-                    onPress={() => this.setState({ visibleErfolgschance: !this.state.visibleErfolgschance })}
-                    visible={this.state.visibleErfolgschance}
-                    icon={icons.StrategyWhite}
-                    title="Lernfortschritt"
-                    text1="Der Lernfortschritt zeigt dir deinen Fortschritt im Bezug auf Richtig beantwortete Fragen innerhalb eines Bereichs."
-                    text2="Sobald du alle Fragen eines Bereiches einmal richtig beantwortet hast erreichst du 100%."
-                    gif={ButtonPulse} />
+                    text2="Sobald du alle Fragen eines Bereiches einmal richtig beantwortet hast erreichst du 100%."/>
+                <Explanation onPress={() => this.setState({ visibleErfolgschance: !this.state.visibleErfolgschance })} visible={this.state.visibleErfolgschance}
+                    icon={icons.StrategyWhite} color={colors.erfolgschance}
+                    title="Erfolgschance" 
+                    text1="Die Erfolgschance gibt dir einen groben Überblick auf die Wahrscheinlichkeit deines Prüfungserfolges."
+                    text2="Diese Kennzahl wird anhand deiner richtig beantworteten Fragen und Prüfungen berechnet." />
             </ScrollView>
         )
     }

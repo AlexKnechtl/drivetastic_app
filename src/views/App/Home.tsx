@@ -21,11 +21,10 @@ const Home = ({navigation}: NavigationScreenProps) => {
                     </View>
                     <View style={styles.statisticsView}>
                         <View style={{ flexDirection: "row", marginBottom: 8, paddingLeft: 12 }}>
-                            <ImageBackground source={icons.Statistic} style={{ aspectRatio: 1, marginVertical: 7 }}>
-                            </ImageBackground>
+                            <ImageBackground source={icons.Statistic} style={{ aspectRatio: 1, marginVertical: 7 }} />
                             <View style={{ marginLeft: 12 }}>
                                 <Text style={{ ...styles.statisticText, fontSize: 20, fontWeight: "bold" }}><Trans>Deine aktuelle</Trans></Text>
-                                <Text style={{ ...styles.statisticText, fontSize: 30, marginTop: -2 }}><Trans>Lern-Statistik</Trans></Text>
+                                <Text style={{ ...styles.statisticText, fontSize: 30 }}><Trans>Lern-Statistik</Trans></Text>
                             </View>
                         </View>
                         <ModuleProgress text1={moduleName} percentage={ModulePercentage} />

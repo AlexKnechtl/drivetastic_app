@@ -38,3 +38,5 @@ export const Dumbbell = require('./dumbbell.png');
 export const Exchange = require('./exchange.png'); 
 export const StrategyWhite = require('./strategy_white.png'); 
 export const FortschrittWhite = require('./fortschritt_white.png'); 
+export const Grundwissen = require('./grundwissen.png'); 
+export const Test = require('./test.png'); 

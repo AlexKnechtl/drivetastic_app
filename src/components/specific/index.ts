@@ -11,3 +11,5 @@ export * from './TabBar';
 export * from './TabBarTutorial';
 export * from './TutorialIconView';
 export * from './BereichSmall';
+export * from './BestResult';
+export * from './QuestionPicture';

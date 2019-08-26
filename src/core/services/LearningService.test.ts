@@ -38,7 +38,7 @@ describe('LearningService test', () => {
             ls.answerCurrentQuestion(!q.Id.includes("3"));
             ids.push(q.Id);
         }
-        // console.log(ids);
+        console.log(ids);
     });
     it('should throw an error', async () => {
         expect.assertions(1);
