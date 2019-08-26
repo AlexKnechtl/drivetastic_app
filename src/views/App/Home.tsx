@@ -5,43 +5,39 @@ import { colors } from 'base';
 import { IconButton, LearnButton } from '../../components';
 import { ModuleProgress } from 'components/specific/ModuleProgress';
 import { NavigationScreenProps } from 'react-navigation';
+import { Trans, useTranslation } from 'react-i18next';
 
-class Home extends Component<NavigationScreenProps> {
-    constructor(props: any) {
-        super(props);
-    }
-
-    render() {
+const Home = ({navigation}: NavigationScreenProps) => {
         const moduleName = "Grundwissen";
         const ModulePercentage = 0.7365;
+        const [t, i18n] = useTranslation();
         return (
             <ScrollView>
                 <View style={styles.view}>
                     <LearnButton />
                     <View style={styles.buttonLayout}>
-                        <IconButton onPress={() => this.props.navigation.navigate("TrainingView")} color={colors.lightBlue} icon={icons.Training} text="Training" />
-                        <IconButton onPress={() => this.props.navigation.navigate("ExamView")} color={colors.lightPurple} icon={icons.Exam} text="Prüfung" />
+                        <IconButton onPress={() => navigation.navigate("TrainingView")} color={colors.lightBlue} icon={icons.Training} text={t("Training")} />
+                        <IconButton onPress={() => navigation.navigate("ExamView")} color={colors.lightPurple} icon={icons.Exam} text={t("exam")} />
                     </View>
                     <View style={styles.statisticsView}>
                         <View style={{ flexDirection: "row", marginBottom: 8, paddingLeft: 12 }}>
                             <ImageBackground source={icons.Statistic} style={{ aspectRatio: 1, marginVertical: 7 }}>
                             </ImageBackground>
                             <View style={{ marginLeft: 12 }}>
-                                <Text style={{ ...styles.statisticText, fontSize: 20, fontWeight: "bold" }}>Deine aktuelle</Text>
-                                <Text style={{ ...styles.statisticText, fontSize: 30, marginTop: -2 }}>Lern-Statistik</Text>
+                                <Text style={{ ...styles.statisticText, fontSize: 20, fontWeight: "bold" }}><Trans>Deine aktuelle</Trans></Text>
+                                <Text style={{ ...styles.statisticText, fontSize: 30, marginTop: -2 }}><Trans>Lern-Statistik</Trans></Text>
                             </View>
                         </View>
                         <ModuleProgress text1={moduleName} percentage={ModulePercentage} />
                         <ModuleProgress text1={moduleName} percentage={ModulePercentage} />
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate("Statistics")} style={styles.button}>
-                            <Text style={styles.buttonText}>Mehr erfahren</Text>
+                        <TouchableOpacity onPress={() => navigation.navigate("Statistics")} style={styles.button}>
+                            <Text style={styles.buttonText}><Trans i18nKey="moreInfos">Mehr erfahren</Trans></Text>
                         </TouchableOpacity>
                     </View>
                 </View>
             </ScrollView>
         )
     }
-}
 
 const styles = StyleSheet.create({
     view: {

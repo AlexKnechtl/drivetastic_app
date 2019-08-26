@@ -2,13 +2,14 @@ import React from 'react'
 import { TouchableOpacity, StyleSheet, Image, Text, View } from 'react-native';
 import { padding } from 'base';
 import { icons } from '../../icons';
+import { Trans } from 'react-i18next';
 
 const LearnButton = () => {
     return (
         <TouchableOpacity activeOpacity={.7} style={{ ...styles.buttton }}>
             <Image resizeMode="contain" style={styles.icon} source={icons.Learn} />
             <View style={{ flex: 1 }}>
-                <Text style={styles.title}>Lernerfahrung fortsetzen</Text>
+                <Text style={styles.title}><Trans i18nKey="resumeLearning">Lernerfahrung fortsetzen</Trans></Text>
                 <Text style={styles.text}>1.1 Verkehrsschilder</Text>
             </View>
         </TouchableOpacity>
