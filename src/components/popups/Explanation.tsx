@@ -34,7 +34,7 @@ const Explanation = ({ visible = false, icon, text1, text2, title, onPress, colo
 
 const styles = StyleSheet.create({
     modal: {
-        height: null
+        height: undefined
     },
     view: {
         alignSelf: "center",
