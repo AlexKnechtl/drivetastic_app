@@ -5,17 +5,6 @@ import { AccountView, Bereiche, Login, Reg_DriveCode, Reg_Tutorial1, Reg_Tutoria
 import TabBar from 'components/specific/TabBar';
 import { TabBarTutorial } from 'components/specific/TabBarTutorial';
 
-const Account = createStackNavigator({
-    AccountView,
-    AccountSettings,
-    LearnAlgorithm,
-    VisualChanges,
-    Impressum,
-    Modules,
-    Languages
-}, {
-        headerMode: "none"
-    });
 
 const tutorial = createMaterialTopTabNavigator({
     tutorial1: Reg_Tutorial1,
@@ -68,6 +57,18 @@ const learning = createStackNavigator({
     ExamStatistics,
     Question
 });
+
+const Account = createStackNavigator({
+    AccountView,
+    AccountSettings,
+    LearnAlgorithm,
+    VisualChanges,
+    Impressum,
+    Modules,
+    Languages
+}, {
+        headerMode: "none"
+    });
 
 const home = createMaterialTopTabNavigator({
     Home: Home,
