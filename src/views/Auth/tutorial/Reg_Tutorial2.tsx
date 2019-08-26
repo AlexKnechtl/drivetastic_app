@@ -3,8 +3,9 @@ import { TutorialIconView } from '../../../components';
 import { SafeAreaView, StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Tutorial_2 } from 'icons/indexHelper';
 import { colors } from 'base';
+import { NavigationScreenProps } from 'react-navigation';
 
-export class Reg_Tutorial2 extends Component {
+export class Reg_Tutorial2 extends Component<NavigationScreenProps> {
     render() {
         return (
             <SafeAreaView style={styles.view}>

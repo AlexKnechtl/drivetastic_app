@@ -5,7 +5,7 @@ type ButtonProps = {
     color: string,
     icon: object,
     text: string,
-    iconWidth: string,
+    iconWidth?: string,
     onPress: () => void
 }
 
