@@ -16,8 +16,8 @@ const Home = ({navigation}: NavigationScreenProps) => {
                 <View style={styles.view}>
                     <LearnButton />
                     <View style={styles.buttonLayout}>
-                        <IconButton onPress={() => navigation.navigate("TrainingView")} color={colors.lightBlue} icon={icons.Training} text={t("Training")} />
-                        <IconButton onPress={() => navigation.navigate("ExamView")} color={colors.lightPurple} icon={icons.Exam} text={t("exam")} />
+                        <IconButton onPress={() => navigation.navigate("TrainingView")} color={colors.lightBlue} icon={icons.Training} text={t("training", {defaultValue: "Training"})} />
+                        <IconButton onPress={() => navigation.navigate("ExamView")} color={colors.lightPurple} icon={icons.Exam} text={t("exam",  {defaultValue: "Prüfung"})} />
                     </View>
                     <View style={styles.statisticsView}>
                         <View style={{ flexDirection: "row", marginBottom: 8, paddingLeft: 12 }}>
