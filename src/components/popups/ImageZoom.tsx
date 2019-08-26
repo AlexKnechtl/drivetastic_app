@@ -1,8 +1,9 @@
 import React from 'react'
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Image, View } from 'react-native';
 import Modal from "react-native-modal";
-import ImageViewer from 'react-native-image-zoom-viewer';
 import { Bild } from 'img';
+import ImageViewer from 'react-native-image-zoom-viewer';
+import { IImageInfo } from 'react-native-image-zoom-viewer/built/image-viewer.type';
 
 type ButtonProps = {
     visible: boolean,
@@ -11,19 +12,22 @@ type ButtonProps = {
 
 const ImageZoom = ({ visible = false, onPress }: ButtonProps) => {
     return (
-        <Modal style={styles.modal} useNativeDriver={true} isVisible={visible} onBackdropPress={onPress} >
-            <ImageViewer style={styles.image} imageUrls={Bild} />
+        <Modal style={styles.modal} useNativeDriver={true} onBackButtonPress={onPress} isVisible={visible} onBackdropPress={onPress} >
+            {/* <View style={styles.image} >
+                
+            </View> */}
+
         </Modal>
     );
 };
 
 const styles = StyleSheet.create({
     modal: {
-        height: null
+        height: undefined
     },
     image: {
-        aspectRatio: 1 / 0.65,
-        width: "100%"
+        // aspectRatio: 1 / 0.65,
+        width: "100%",
     }
 });
 

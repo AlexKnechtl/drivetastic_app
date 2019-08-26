@@ -14,7 +14,7 @@ const Home = ({navigation}: NavigationScreenProps) => {
         return (
             <ScrollView>
                 <View style={styles.view}>
-                    <LearnButton onPress={() => this.props.navigation.navigate("Question")} />
+                    <LearnButton onPress={() => navigation.navigate("Question")} />
                     <View style={styles.buttonLayout}>
                         <IconButton onPress={() => navigation.navigate("TrainingView")} color={colors.lightBlue} icon={icons.Training} text={t("training", {defaultValue: "Training"})} />
                         <IconButton onPress={() => navigation.navigate("ExamView")} color={colors.lightPurple} icon={icons.Exam} text={t("exam",  {defaultValue: "Prüfung"})} />
