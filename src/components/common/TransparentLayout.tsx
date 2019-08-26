@@ -3,13 +3,13 @@ import { StyleSheet, Image, TouchableOpacity, View } from 'react-native';
 import { icons } from 'icons';
 
 type HeadlineProps = {
-    visible: boolean
+    onPress: () => void
 }
 
-const TransparentLayout = ({ visible }: HeadlineProps) => {
+const TransparentLayout = ({ onPress }: HeadlineProps) => {
     return (
         <View style={{ width: "100%", aspectRatio: 1 / 0.65 }}>
-            <TouchableOpacity style={styles.iconContainer}>
+            <TouchableOpacity onPress={onPress} style={styles.iconContainer}>
                 <Image style={styles.icon} source={icons.Fullscreen} />
             </TouchableOpacity>
         </View>

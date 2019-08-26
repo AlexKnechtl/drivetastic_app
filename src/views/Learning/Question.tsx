@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
-import { QuestionPicture, QuestionLayout, Answer, QuestionFAB, TransparentLayout } from 'components';
+import { QuestionPicture, QuestionLayout, Answer, QuestionFAB, TransparentLayout, ImageZoom } from 'components';
 import { Bild } from 'img';
 import { icons } from 'icons';
 
@@ -9,7 +9,8 @@ class Question extends Component {
         answer1Pressed: false,
         answer2Pressed: false,
         answer3Pressed: false,
-        answer4Pressed: false
+        answer4Pressed: false,
+        imageZoom: false
     }
 
     answer1Pressed() {
@@ -33,17 +34,12 @@ class Question extends Component {
             <View style={styles.view}>
                 <QuestionPicture image={Bild} />
                 <ScrollView style={{ flex: 1 }}>
-                    <TransparentLayout visible={true} />
+                    <TransparentLayout onPress={() => this.setState({ imageZoom: !this.state.imageZoom })} visible={true} />
                     <QuestionLayout count={1} text="Wie werden Sie sich hier verhalten?" difficulty="Leicht" />
                     <View style={{ flex: 1, padding: 14, backgroundColor: '#fff' }}>
                         <Answer text="Ich muss hier anhalten" />
                         <Answer text="Bis zu den Personen fahre ich auf Gefahrensicht" />
                         <Answer text="Ich muss hier aufgrund der Kinder mein Tempo auf Schrittgeschwindigkeit reduzieren und den Dick in die Hand nehmen." />
-                        <Answer text="Antwort 4" />
-                        <Answer text="Antwort 4" />
-                        <Answer text="Antwort 4" />
-                        <Answer text="Antwort 4" />
-                        <Answer text="Antwort 4" />
                         <Answer text="Antwort 4" />
                     </View>
                 </ScrollView>
@@ -51,6 +47,7 @@ class Question extends Component {
                     <QuestionFAB icon={icons.Continue} />
                     <QuestionFAB marginRight={12} iconSize={20} size={40} icon={icons.Continue} />
                 </View>
+                <ImageZoom visible={this.state.imageZoom} />
             </View>
         )
     }

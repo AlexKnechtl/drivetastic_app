@@ -8947,10 +8947,22 @@ react-native-hide-with-keyboard@^1.2.0:
   resolved "https://registry.yarnpkg.com/react-native-hide-with-keyboard/-/react-native-hide-with-keyboard-1.2.0.tgz#aa9da6d1eae85fe8ca2dbab6c16f05af9b71974c"
   integrity sha512-sCbZfdOscTAATw9L2hXLj1jJ+UBjgZCxmtMNlxHKsxgVhgHq4AOQPDkLc+CrpnGg5bim5MKv4dYXM8C+m54wsQ==
 
+react-native-image-pan-zoom@^2.1.9:
+  version "2.1.11"
+  resolved "https://registry.yarnpkg.com/react-native-image-pan-zoom/-/react-native-image-pan-zoom-2.1.11.tgz#61bcb69219d95e76a9797d23e4a2e8e0bd654ae9"
+  integrity sha512-ZCisGUFpPchHXsjT7ZI0anlSLPgcTmjRKXqpVnPu3RDWFXfKjuL4zpY57DX4Y8YgGZCpbf9fApN7KjVYody2Mw==
+
 react-native-image-sequence@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/react-native-image-sequence/-/react-native-image-sequence-0.7.0.tgz#f71c6bfb14a39d46cc9049611c35da23dc9f3c03"
   integrity sha512-XrF39jQUtI+X2B52ownAk0WW5YZEQc9Z4JSDr2X+3os4S3Awpowl00s3N1IIYb7kegfuUg3p/uLgj5l1kHVL0g==
+
+react-native-image-zoom-viewer@^2.2.26:
+  version "2.2.26"
+  resolved "https://registry.yarnpkg.com/react-native-image-zoom-viewer/-/react-native-image-zoom-viewer-2.2.26.tgz#c6f070abb094cfbe1b3b7d8a38ad979a5facbdc5"
+  integrity sha512-Mh4+CJQCDcAumLFXLlDk8nQ5iMxNnupc9HwktsZ3I/v4HULcFPmTLDQ0HGAxjLa5foZRPnKDN06iKGsEb9raoA==
+  dependencies:
+    react-native-image-pan-zoom "^2.1.9"
 
 react-native-linear-gradient@^2.5.6:
   version "2.5.6"
