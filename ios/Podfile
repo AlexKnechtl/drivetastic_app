@@ -33,7 +33,6 @@ target 'drivetastic_app' do
 
   pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions'
 
-  pod 'react-native-image-sequence', :path => '../node_modules/react-native-image-sequence'
 
   pod 'RNTouchThroughView', :path => '../node_modules/react-native-touch-through-view'
 
