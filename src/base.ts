@@ -21,6 +21,7 @@ export const colors = {
     softGray: '#D5D5D5',
     bgGray: '#EFEFEF',
     errorRed: "#a00",
+    darkRed: "#900",
     fortschritt: '#7EBE95',
     fortschrittUnfilled: 'rgba(126, 190, 149, 0.3)',
     fortschrittDark: '#6AAE82',

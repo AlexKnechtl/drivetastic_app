@@ -1,8 +1,15 @@
 {
   "Deine aktuelle": "Deine aktuelle",
+  "Frage {{count}}": "Frage {{count}}",
   "Lern-Statistik": "Lern-Statistik",
+  "difficulty": {
+    "Easy": "Leicht",
+    "Hard": "Schwer",
+    "Medium": "Mittel"
+  },
   "exam": "Prüfung",
   "moreInfos": "Mehr erfahren",
-  "training": "Training",
-  "Easy": "Leicht"
+  "question": "Frage {{count}}",
+  "resumeLearning": "Lernerfahrung fortsetzen",
+  "training": "Training"
 }

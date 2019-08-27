@@ -43,7 +43,7 @@ export class Question extends Component {
                         <ScrollView style={{ flex: 1 }} >
                             {/* <TransparentLayout onPress={() => this.setState({ imageZoom: !this.state.imageZoom })} visible={true} /> */}
                             <TouchThroughView style={{ height: Dimensions.get('window').width * 0.66, width: "100%" }} />
-                            <QuestionLayout count={1} text={question.question} difficulty={question.difficulty} />
+                            <QuestionLayout count={question.Id} text={question.question} difficulty={question.difficulty} />
                             <View style={{ flex: 1, padding: 14, backgroundColor: '#fff' }}>
                                 {question.answers.map((a, i)=>
                                     <Answer key={i} 

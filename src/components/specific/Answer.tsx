@@ -1,21 +1,20 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
 import { colors } from 'base';
+import { IAnswer } from 'core';
 
 type HeadlineProps = {
-    textColor: string,
-    text: string,
-    backgroundColor: string,
-    borderWidth: number,
-    icon: object,
+    answer: IAnswer,
+    selected?: boolean,
+    shouldValidate?: boolean,
     onPress: () => void
 }
 
-const Answer = ({ textColor, backgroundColor = colors.questionBG, borderWidth = 0, icon, onPress, text }: HeadlineProps) => {
+const Answer = ({ onPress, selected = false, shouldValidate = false, answer }: HeadlineProps) => {
     return (
-        <TouchableOpacity onPress={onPress} activeOpacity={0.6} style={{ ...styles.view, borderWidth: borderWidth, backgroundColor: backgroundColor }}>
-            <Image style={styles.icon} source={icon} />
-            <Text style={{ ...styles.text, color: textColor, flex: 1, alignSelf: "center" }}>{text}</Text>
+        <TouchableOpacity onPress={onPress} activeOpacity={0.6} style={{ ...styles.view, }}>
+            <Image style={styles.icon} source={undefined} />
+            <Text style={{ ...styles.text,  flex: 1, alignSelf: "center" }}>{answer.answer}</Text>
         </TouchableOpacity>
     );
 };

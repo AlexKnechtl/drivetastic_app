@@ -11,13 +11,25 @@ type HeadlineProps = {
     difficulty: Difficulty
 }
 
+
+function MapDifficultyToColor(difficulty: Difficulty){
+    switch (difficulty) {
+        case "Easy": return colors.lightGreen;
+        case "Medium": return colors.lightBlue;
+        case "Hard": return colors.darkRed;
+        default:
+            break;
+    }
+}
+
 const QuestionLayout = ({ count, text, difficulty }: HeadlineProps) => {
     const [t, i18n] = useTranslation();
     return (
         <View style={styles.container}>
             <View style={styles.row}>
-                <Text style={styles.title}><Trans i18nKey="question">Frage {count}</Trans></Text>
-                <Text style={styles.difficultyText}>{t(`difficulty.${difficulty}`)}</Text>
+                <Text style={styles.title}><Trans i18nKey="question" i18n={i18n}>Frage </Trans>{count}</Text>
+                {/* i18next-extract-disable-next-line */}
+                <Text style={[styles.difficultyText, {backgroundColor: MapDifficultyToColor(difficulty)}]}>{t(`difficulty.${difficulty}`)}</Text>
             </View>
             <Text style={styles.text}>{text}</Text>
         </View>
@@ -43,7 +55,6 @@ const styles = StyleSheet.create({
         marginLeft: 12,
         fontSize: 12,
         borderRadius: 8,
-        backgroundColor: colors.lightGreen,
         paddingVertical: 2,
         paddingHorizontal: 8,
         alignSelf: "center"
