@@ -48,6 +48,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.5.0",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.4.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
     "@babel/runtime": "^7.5.0",
     "@react-native-community/eslint-config": "^0.0.3",
     "@storybook/addon-actions": "^5.1.10",

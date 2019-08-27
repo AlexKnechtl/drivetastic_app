@@ -1,6 +1,7 @@
 // created from 'create-ts-index'
 
 export * from './AgbCheck';
+export * from './ColoredIconHeader';
 export * from './DismissKeyboard';
 export * from './FAB';
 export * from './ForgotPassword';
@@ -10,11 +11,10 @@ export * from './IconHeadline';
 export * from './ImageBg';
 export * from './InputWithTitle';
 export * from './Language';
+export * from './LongIconButton';
 export * from './MultiProgressBar';
 export * from './PasswortTextInput';
 export * from './SettingsCategory';
-export * from './TextInputContainer';
 export * from './SwitchView';
-export * from './ColoredIconHeader';
-export * from './LongIconButton';
+export * from './TextInputContainer';
 export * from './TransparentLayout';

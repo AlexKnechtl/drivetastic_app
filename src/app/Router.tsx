@@ -111,7 +111,7 @@ const rootNavigator = createSwitchNavigator({
     tutorial,
     custom: Question
 }, {
-        initialRouteName: "custom"
+        initialRouteName: "main"
     });
 
 export const Router = createAppContainer(rootNavigator);

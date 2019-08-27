@@ -8,6 +8,8 @@ import ImageViewer from 'react-native-image-zoom-viewer';
 //@ts-ignore
 import { InstagramProvider, ElementContainer } from "@postillon/react-native-instagram-zoomable";
 import { TouchThroughWrapper, TouchThroughView } from "react-native-touch-through-view";
+import { IQuestion } from 'core';
+import { useTranslation } from 'react-i18next';
 
 interface State{
     answerStates: {selected: boolean}[],
@@ -15,7 +17,7 @@ interface State{
     shouldValidate: boolean
 }
 
-class Question extends Component {
+export class Question extends Component {
     state: State = {
         answerStates: [],
         imageZoom: false,
@@ -23,25 +25,25 @@ class Question extends Component {
     }
 
     render() {
-        const question = new core.Question("Wie werden Sie sich hier verhalten?", "ID: 01", [
+        const question:IQuestion = new core.Question("Wie werden Sie sich hier verhalten?",3981, [
             new core.Answer("Ich muss hier anhalten", false),
             new core.Answer("Bis zu den Personen fahre ich auf Gefahrensicht", true),
             new core.Answer("Ich muss hier aufgrund der Kinder mein Tempo auf Schrittgeschwindigkeit reduzieren und den Dick in die Hand nehmen.", false),
             new core.Answer("Noch eine geile Antwort", false)
-        ], 2);
+        ], 2, "B", 4, "Hard");
         if(this.state.answerStates.length < question.answers.length)
             this.setState({answerStates: question.answers.map(a=> ({selected: false}))});
         return (
             <View style={styles.view}>
                 <InstagramProvider>
-                    <ElementContainer style={{ position: "absolute", zIndex: 100 }}>
+                    <ElementContainer style={{ position: "absolute" }}>
                         <QuestionPicture image={Bild} />
                     </ElementContainer>
                     <TouchThroughWrapper style={{ flex: 1 }} >
                         <ScrollView style={{ flex: 1 }} >
                             {/* <TransparentLayout onPress={() => this.setState({ imageZoom: !this.state.imageZoom })} visible={true} /> */}
                             <TouchThroughView style={{ height: Dimensions.get('window').width * 0.66, width: "100%" }} />
-                            <QuestionLayout count={1} text="Wie werden Sie sich hier verhalten?" difficulty="Leicht" />
+                            <QuestionLayout count={1} text={question.question} difficulty={question.difficulty} />
                             <View style={{ flex: 1, padding: 14, backgroundColor: '#fff' }}>
                                 {question.answers.map((a, i)=>
                                     <Answer key={i} 
@@ -80,5 +82,3 @@ const styles = StyleSheet.create({
         right: 24
     }
 });
-
-export { Question };

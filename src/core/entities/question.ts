@@ -1,21 +1,43 @@
 import { IAnswer } from "./answer";
 import { TypedEvent } from "./TypedEvent";
+import { ModuleTypes } from "core/Interfaces";
 
 export interface ChangingEventArgs<T> {
     previousValue: T,
     newValue: T
 }
 
+export class LearnStateToQuestionIDMapping{
+    questionID: number;
+    learningState: number;
+
+    constructor(questionID: number, learningState: number){
+        this.learningState = learningState;
+        this.questionID = questionID;
+    }
+}
+
+export type Difficulty = "Easy" | "Medium" | "Hard";
+
 export interface IQuestion {
     answers: IAnswer[];
     question: string;
-    Id: string;
+    Id: number;
+    Module: ModuleTypes;
+    SectionId: number;
     learnState: number;
+    isMainQuestion: boolean;
+    difficulty: Difficulty;
     isRight: (selectedAnswers: boolean[]) => boolean;
     onLearnStateChanging: TypedEvent<ChangingEventArgs<number>>;
 }
 
 export class Question implements IQuestion {
+    isMainQuestion: boolean = false;
+    difficulty: Difficulty;
+    
+    Module: ModuleTypes;
+    SectionId: number;
 
     onLearnStateChanging: TypedEvent<ChangingEventArgs<number>> = new TypedEvent();
 
@@ -26,7 +48,7 @@ export class Question implements IQuestion {
     };
     answers: IAnswer[];
     question: string;
-    Id: string;
+    Id: number;
     private _learnState: number = 0;
     public get learnState(): number {
         return this._learnState;
@@ -36,10 +58,19 @@ export class Question implements IQuestion {
         this._learnState = value;
     }
 
-    constructor(question: string, Id: string, answers: IAnswer[], learnState: number = 0) {
+    constructor(question: string, 
+        Id: number, 
+        answers: IAnswer[], 
+        learnState: number = 0, 
+        module: ModuleTypes, 
+        sectionId: number,
+        difficulty: Difficulty) {
         this.answers = answers;
         this.question = question;
         this.Id = Id;
         this.learnState = learnState;
+        this.Module = module;
+        this.SectionId = sectionId;
+        this.difficulty = difficulty;
     }
 }

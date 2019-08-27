@@ -2,19 +2,22 @@ import React from 'react'
 import { StyleSheet, View, Text } from 'react-native';
 import { typeAlias } from '@babel/types';
 import { colors } from 'base';
+import { Difficulty } from 'core';
+import { Trans, useTranslation } from 'react-i18next';
 
 type HeadlineProps = {
     count: number,
     text: string,
-    difficulty: string
+    difficulty: Difficulty
 }
 
 const QuestionLayout = ({ count, text, difficulty }: HeadlineProps) => {
+    const [t, i18n] = useTranslation();
     return (
         <View style={styles.container}>
             <View style={styles.row}>
-                <Text style={styles.title}>{"Frage " + count}</Text>
-                <Text style={styles.difficultyText}>{difficulty}</Text>
+                <Text style={styles.title}><Trans i18nKey="question">Frage {count}</Trans></Text>
+                <Text style={styles.difficultyText}>{t(`difficulty.${difficulty}`)}</Text>
             </View>
             <Text style={styles.text}>{text}</Text>
         </View>

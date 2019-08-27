@@ -27,8 +27,6 @@ module.exports = {
         "legacy": true
       }
     ],
-    ["i18next-extract", {locales: ['de'], useI18nextDefaultValue: true}],
-    "@babel/plugin-proposal-nullish-coalescing-operator",
-    "@babel/plugin-proposal-optional-chaining"
+    ["i18next-extract", {locales: ['de'], useI18nextDefaultValue: ['de']}]
   ]
 };
