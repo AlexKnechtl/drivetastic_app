@@ -28,6 +28,5 @@ module.exports = {
       }
     ],
     ["i18next-extract", {locales: ['de'], useI18nextDefaultValue: ['de']}]
-  ],
-  ignore: ["**/node_modules/**"]
+  ]
 };
