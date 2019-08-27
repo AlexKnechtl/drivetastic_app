@@ -9094,6 +9094,11 @@ react-native-tab-view@^1.2.0, react-native-tab-view@^1.4.1:
   dependencies:
     prop-types "^15.6.1"
 
+react-native-touch-through-view@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-touch-through-view/-/react-native-touch-through-view-1.1.1.tgz#7d9cc7b69854f36f018c00e30167519ee830c8a7"
+  integrity sha512-7aR/EJ8nh4rntJ4BYLbX8XyrBcXjUc7VtsTuuja5dNvIuPv2WawZjwB9VckdpVEREq2hEsXaGXhLH9L2l2Q5FA==
+
 react-native@0.60.4:
   version "0.60.4"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.60.4.tgz#4378171e63dd5310497e15e54ec9185cb470752d"

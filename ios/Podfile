@@ -35,6 +35,8 @@ target 'drivetastic_app' do
 
   pod 'react-native-image-sequence', :path => '../node_modules/react-native-image-sequence'
 
+  pod 'RNTouchThroughView', :path => '../node_modules/react-native-touch-through-view'
+
   target 'drivetastic_appTests' do
     inherit! :search_paths
     # Pods for testing
