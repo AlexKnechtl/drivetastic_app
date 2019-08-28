@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, ImageBackground, Image, ScrollView, View, Linking } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { SeekInnovationLogo, BgImpressum } from 'img'
+import { StyleSheet, Image, ScrollView, View, Linking, Text } from 'react-native';
+import { icons } from 'icons';
+import { TransparentLayout } from 'components';
+import { dimensions } from 'base';
 
 class Impressum extends Component {
 
@@ -11,97 +12,59 @@ class Impressum extends Component {
 
     render() {
         return (
-            <ImageBackground
-                style={styles.containerStyle}
-                source={BgImpressum}
-                resizeMode='cover'>
-                <ScrollView style={styles.containerStyle}>
-                    <View style={{ flex: 1 }} >
-                        <Image style={styles.logoBig} source={SeekInnovationLogo} />
-                        <Text style={styles.smallHeader}>
-                            made with Passion.
-                        </Text>
-                        <Text style={styles.header}>
-                            by SeekInnovation
-                        </Text>
-                        <Text style={styles.subHeader}>
-                            Kontakt
-                        </Text>
-                        <View style={styles.borderedView}>
-                            <Text style={styles.detailedText}>
-                                Probleme, Fragen und {"\n"}
-                                Anregungen an folgende E-Mail:
-                            </Text>
-                            <Text style={styles.informationText}>
-                                office@seekinnovation.at
-                            </Text>
+            <View>
+                <View style={styles.header}>
+                    <Image style={styles.logo} source={icons.SeekInnovationLogo} />
+                    <Text style={{ color: '#fff', fontWeight: "bold", fontSize: 22 }}>Made with Passion.</Text>
+                    <Text style={{ color: '#fff', fontSize: 30 }}>by SeekInnovation</Text>
+                </View>
+                <ScrollView >
+                    <TransparentLayout />
+                    <View style={{ flex: 1, paddingHorizontal: 14, paddingVertical: 36, backgroundColor: '#fff' }}>
+                        <View style={{ flexDirection: "row-reverse", width: '100%', marginBottom: 36 }}>
+                            <Image resizeMode="contain" style={{ width: '35%', height: dimensions.fullWidth * 0.29 }} source={icons.CodingMagic} />
+                            <View style={{ flex: 1 }}>
+                                <Text style={{ color: '#0C3351', fontWeight: "bold", fontSize: 18 }}>Coding Magic</Text>
+                                <Text style={{ color: '#0C3351', fontSize: 16, marginBottom: 12 }}>conducted by</Text>
+                                <Text style={{ color: '#0C3351', fontWeight: "bold", fontSize: 20 }}>Alexander Knechtl</Text>
+                                <Text style={{ color: '#0C3351', fontWeight: "bold", fontSize: 20 }}>Fabio Moretti</Text>
+                            </View>
                         </View>
-                        <View style={styles.borderedView}>
-                            <Text style={styles.detailedText}>
-                                Besuchen Sie unsere Website:
-                            </Text>
-                            <TouchableOpacity onPress={this.websitePress.bind(this)}>
-                                <Text style={styles.link}>
-                                    www.seekinnovation.at
-                            </Text>
-                            </TouchableOpacity>
+                        <View style={{ flexDirection: "row", width: '100%', marginBottom: 36 }}>
+                            <Image resizeMode="contain" style={{ width: '35%', height: dimensions.fullWidth * 0.29 }} source={icons.Design} />
+                            <View style={{ flex: 1, alignItems: "flex-end" }}>
+                                <Text style={{ color: '#3F0C51', fontWeight: "bold", fontSize: 18 }}>Breathtaking Design</Text>
+                                <Text style={{ color: '#3F0C51', fontSize: 16, marginBottom: 12 }}>envisioned by</Text>
+                                <Text style={{ color: '#3F0C51', fontWeight: "bold", fontSize: 20 }}>Florian Gerstner</Text>
+                                <Text style={{ color: '#3F0C51', fontWeight: "bold", fontSize: 20 }}>Alexander Knechtl</Text>
+                            </View>
                         </View>
-                        <Text style={styles.subHeader}>
-                            Anschrift
-                        </Text>
-                        <View style={styles.borderedView}>
-                            <Text style={styles.informationText}>
-                                Seek Innovation OG
-                            </Text>
-                            <Text style={styles.detailedText}>
-                                Harmsdorfgasse 48B/6 {"\n"}
-                                8042 Graz {"\n"}
-                                Austria
-                            </Text>
+                        <View style={{ flexDirection: "row-reverse", width: '100%', marginBottom: 36 }}>
+                            <Image resizeMode="contain" style={{ width: '35%', height: dimensions.fullWidth * 0.29 }} source={icons.Company} />
+                            <View style={{ flex: 1 }}>
+                                <Text style={{ color: '#8E4200', fontWeight: "bold", fontSize: 18 }}>Company</Text>
+                                <Text style={{ color: '#8E4200', fontSize: 16, marginBottom: 12 }}>in Charge</Text>
+                                <Text style={{ color: '#8E4200', fontWeight: "bold", fontSize: 20 }}>SeekInnovation OG</Text>
+                                <Text style={{ color: '#8E4200', fontWeight: "bold", fontSize: 20 }}>8042 Graz</Text>
+                            </View>
                         </View>
-                        <Text style={styles.subHeader}>
-                            Credits
-                        </Text>
-                        <View style={styles.borderedView}>
-                            <Text style={styles.informationText}>
-                                Alexander Knechtl
-                            </Text>
-                            <Text style={{ color: '#fff', fontSize: 22, marginBottom: 8 }}>
-                                Organisation, Programmierung
-                            </Text>
-                            <Text style={styles.informationText}>
-                                Florian Gerstner
-                            </Text>
-                            <Text style={{ color: '#fff', fontSize: 22, marginBottom: 8 }}>
-                                Design, Konzept
-                            </Text>
-                            <Text style={styles.informationText}>
-                                Fabio Moretti
-                            </Text>
-                            <Text style={styles.detailedText}>
-                                Programmierung
-                            </Text>
-                        </View>
-                        <Text style={styles.subHeader}>
-                            Danksagung
-                        </Text>
-                        <View style={styles.borderedView}>
-                            <Text style={styles.informationText}>
-                                Margit Eidenhammer
-                            </Text>
-                            <Text style={{ color: '#fff', fontSize: 22, marginBottom: 8 }}>
-                                für Ihre tatkräftige Unterstützung.
-                            </Text>
-                            <Text style={styles.informationText}>
-                                Barnabas Kiss
-                            </Text>
-                            <Text style={styles.detailedText}>
-                                für die Idee.
-                            </Text>
+                        <View style={{ flexDirection: "row", width: "100%", alignItems: "center", justifyContent: "center" }}>
+                            <View style={{ justifyContent: "center", alignItems: "center", marginRight: 36}}>
+                                <View style={{ borderWidth: 2, borderColor: '#D5D5D5', borderRadius: 50, width: 72, height: 72, justifyContent: "center", alignItems: "center" }}>
+                                    <Image resizeMode="contain" style={{ width: 52, height: 52 }} source={icons.Website} />
+                                </View>
+                                <Text style={{ color: '#707070', fontSize: 22, textAlign: "center" }}>Visit our{"\n"}Website</Text>
+                            </View>
+                            <View style={{ justifyContent: "center", alignItems: "center"}}>
+                                <View style={{ borderWidth: 2, borderColor: '#D5D5D5', borderRadius: 50, width: 72, height: 72, justifyContent: "center", alignItems: "center" }}>
+                                    <Image resizeMode="contain" style={{ width: 52, height: 52 }} source={icons.Support} />
+                                </View>
+                                <Text style={{ color: '#707070', fontSize: 22, textAlign: "center" }}>Get{"\n"}Support</Text>
+                            </View>
                         </View>
                     </View>
                 </ScrollView>
-            </ImageBackground>
+            </View>
         );
     }
 }
@@ -111,54 +74,17 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     header: {
-        color: '#fff',
-        fontSize: 30,
-        marginTop: 6,
-        marginBottom: 12,
-        alignSelf: 'center',
+        backgroundColor: '#147377',
+        position: "absolute",
+        width: '100%',
+        justifyContent: "center",
+        alignItems: "center",
+        paddingVertical: 42
     },
-    smallHeader: {
-        color: '#fff',
-        fontSize: 24,
-        marginTop: 18,
-        alignSelf: 'center'
-    },
-    subHeader: {
-        color: '#fff',
-        fontSize: 22,
-        marginLeft: 16,
-        marginBottom: 4,
-        marginTop: 12,
-    },
-    borderedView: {
-        flex: 1,
-        borderWidth: 2,
-        paddingHorizontal: 14,
-        paddingVertical: 10,
-        borderColor: "#fff8",
-        marginHorizontal: 10,
-        marginBottom: 12
-    },
-    detailedText: {
-        color: '#fff',
-        fontSize: 22,
-    },
-    informationText: {
-        color: '#fff',
-        fontSize: 24,
-        marginTop: 2,
-    },
-    link: {
-        color: '#fff',
-        fontSize: 24,
-        marginTop: 2,
-        textDecorationLine: 'underline'
-    },
-    logoBig: {
-        marginTop: 22,
-        resizeMode: "contain",
-        height: 124,
-        alignSelf: "center",
+    logo: {
+        width: 125,
+        height: 125,
+        marginBottom: 20
     }
 });
 

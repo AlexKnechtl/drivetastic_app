@@ -15,12 +15,12 @@ const QuestionMenu = ({ visible = false, backPress }: MenuProps) => {
         <Modal style={styles.modal} useNativeDriver={true} isVisible={visible} onBackButtonPress={backPress} onBackdropPress={backPress} >
             <View style={styles.view}>
                 <ProgressQuestionMenu percentage={0.7} />
-                <View style={{ flexDirection: "row", marginBottom: 12 }}>
-                    <RowIconButton marginRight={8} color='#000' icon={icons.Continue} text="Lernen beenden" />
+                <View style={{ flexDirection: "row", marginBottom: 12, justifyContent: "space-between" }}>
+                    <RowIconButton marginRight={8} color='#000' rotation={90} icon={icons.ArrowDown} text="Lernen beenden" />
                     <RowIconButton flex={1} rowDirection="row-reverse" text="Video zur Frage" icon={icons.Video} />
                 </View>
                 <View style={{ flexDirection: "row-reverse", width: "100%" }}>
-                    <TouchableOpacity style={styles.closeButton}>
+                    <TouchableOpacity onPress={backPress} style={styles.closeButton}>
                         <Image style={styles.closeIcon} source={icons.ArrowDown} />
                     </TouchableOpacity>
                     <View style={{ flex: 1 }}>
@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
         height: 28
     },
     closeButton: {
-        width: 50,
-        height: 50,
+        width: 52,
+        height: 52,
         borderRadius: 10,
         backgroundColor: '#fff',
         alignItems: "center",
