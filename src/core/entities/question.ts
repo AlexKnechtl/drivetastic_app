@@ -1,7 +1,7 @@
 import { IAnswer } from "./answer";
 import { TypedEvent } from "./TypedEvent";
-import { ModuleTypes } from "core/Interfaces";
 
+export type ModuleTypes = "A"|"B"|"C"|"D"|"E"|"BE"|"F"|"G";;
 export interface ChangingEventArgs<T> {
     previousValue: T,
     newValue: T
@@ -19,20 +19,20 @@ export class LearnStateToQuestionIDMapping{
 
 export type Difficulty = "Easy" | "Medium" | "Hard";
 
-export interface IQuestion {
-    answers: IAnswer[];
-    question: string;
-    Id: number;
-    Module: ModuleTypes;
-    SectionId: number;
-    learnState: number;
-    isMainQuestion: boolean;
-    difficulty: Difficulty;
-    isRight: (selectedAnswers: boolean[]) => boolean;
-    onLearnStateChanging: TypedEvent<ChangingEventArgs<number>>;
-}
+// export interface IQuestion {
+//     answers: IAnswer[];
+//     question: string;
+//     Id: number;
+//     Module: ModuleTypes;
+//     SectionId: number;
+//     learnState: number;
+//     isMainQuestion: boolean;
+//     difficulty: Difficulty;
+//     isRight: (selectedAnswers: boolean[]) => boolean;
+//     onLearnStateChanging: TypedEvent<ChangingEventArgs<number>>;
+// }
 
-export class Question implements IQuestion {
+export class Question {
     isMainQuestion: boolean = false;
     difficulty: Difficulty;
     
@@ -50,10 +50,10 @@ export class Question implements IQuestion {
     question: string;
     Id: number;
     private _learnState: number = 0;
-    public get learnState(): number {
+    public getLearnState= (): number => {
         return this._learnState;
     }
-    public set learnState(value: number) {
+    public setLearnState = (value: number) => {
         this.onLearnStateChanging.emit({ previousValue: this._learnState, newValue: value });
         this._learnState = value;
     }
@@ -68,7 +68,7 @@ export class Question implements IQuestion {
         this.answers = answers;
         this.question = question;
         this.Id = Id;
-        this.learnState = learnState;
+        this._learnState = learnState;
         this.Module = module;
         this.SectionId = sectionId;
         this.difficulty = difficulty;

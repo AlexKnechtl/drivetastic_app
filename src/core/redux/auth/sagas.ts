@@ -34,7 +34,7 @@ function* tryCheckToken({ payload }: ReturnType<typeof StartCheckDrivecodeAction
     try {
         var auth = new AuthService();
         var response = yield auth.checkToken(payload);
-        console.log(response);
+        // console.log(response);
         if (response.success)
             yield put(CheckDriveCodeSuccessAction(response.message))
         else
