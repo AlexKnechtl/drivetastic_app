@@ -13,7 +13,7 @@ type HeadlineProps = {
 }
 
 const Answer = ({ onPress, selected = false, shouldValidate, answer }: HeadlineProps) => {
-    let background = colors.questionBG, icon = undefined, borderWidth = 0, fontColor = "#000", test = true;
+    let background = colors.questionBG, icon = undefined, borderWidth = 0, fontColor = "#000";
 
     if (selected) {
         background = colors.questionSelcted;

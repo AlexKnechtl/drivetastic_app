@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, ScrollView, Dimensions } from 'react-native';
-import { QuestionPicture, QuestionLayout, Answer, QuestionFAB } from 'components';
+import { QuestionPicture, QuestionLayout, Answer, QuestionFAB, QuestionMenu } from 'components';
 import * as core from "core";
 import { Bild } from 'img';
 import { icons } from 'icons';
@@ -13,14 +13,16 @@ import { useTranslation } from 'react-i18next';
 interface State {
     answerStates: { selected: boolean }[],
     imageZoom: boolean,
-    shouldValidate: boolean
+    shouldValidate: boolean,
+    showMenu: boolean
 }
 
 export class Question extends Component {
     state: State = {
         answerStates: [],
         imageZoom: false,
-        shouldValidate: false
+        shouldValidate: false,
+        showMenu: false,
     }
 
     render() {
@@ -59,10 +61,11 @@ export class Question extends Component {
                         </ScrollView>
                     </TouchThroughWrapper>
                     <View style={styles.fabContainer}>
-                        <QuestionFAB onPress={() => this.setState({ shouldValidate: true })} icon={icons.Continue} />
-                        <QuestionFAB marginRight={12} iconSize={20} size={40} icon={icons.Continue} />
+                        <QuestionFAB iconLeft={3} onPress={() => this.setState({ shouldValidate: true })} icon={icons.Continue} />
+                        <QuestionFAB onPress={() => this.setState({ showMenu: true })} marginRight={12} iconSize={24} size={40} icon={icons.Menu} />
                     </View>
                 </InstagramProvider>
+                <QuestionMenu backPress={() => this.setState({ showMenu: !this.state.showMenu })} visible={this.state.showMenu} />
             </View>
         )
     }

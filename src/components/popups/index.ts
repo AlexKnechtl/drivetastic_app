@@ -3,3 +3,4 @@
 export * from './Explanation';
 export * from './ImageZoom';
 export * from './InfoPopup';
+export * from './QuestionMenu';
