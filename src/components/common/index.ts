@@ -18,3 +18,4 @@ export * from './SettingsCategory';
 export * from './SwitchView';
 export * from './TextInputContainer';
 export * from './TransparentLayout';
+export * from './RowIconButton';

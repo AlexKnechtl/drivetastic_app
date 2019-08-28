@@ -7,14 +7,15 @@ type InputProps = {
     size?: number,
     color: string,
     marginRight: number,
+    iconLeft: number,
     icon: object,
     onPress: () => void
 }
 
-const QuestionFAB = ({ marginRight, icon, onPress, size = 64, iconSize = 32 }: InputProps) => {
+const QuestionFAB = ({ marginRight, icon, iconLeft, onPress, size = 64, iconSize = 32 }: InputProps) => {
     return (
         <TouchableOpacity activeOpacity={.7} onPress={onPress} style={{ ...styles.fabStyle, height: size, width: size, marginRight: marginRight }}>
-            <Image style={{ ...styles.icon, height: iconSize, width: iconSize }} resizeMode="contain" source={icon} />
+            <Image style={{ ...styles.icon, height: iconSize, width: iconSize, marginLeft: iconLeft }} resizeMode="contain" source={icon} />
         </TouchableOpacity>
     );
 };
@@ -38,8 +39,7 @@ const styles = StyleSheet.create({
     },
     icon: {
         height: 32,
-        width: 32,
-        marginLeft: 4
+        width: 32
     }
 });
 

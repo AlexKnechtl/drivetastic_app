@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, ScrollView, Dimensions } from 'react-native';
-import { QuestionPicture, QuestionLayout, Answer, QuestionFAB, TransparentLayout, ImageZoom } from 'components';
+import { QuestionPicture, QuestionLayout, Answer, QuestionFAB, QuestionMenu } from 'components';
 import * as core from "core";
 import { Bild } from 'img';
 import { icons } from 'icons';
-import ImageViewer from 'react-native-image-zoom-viewer';
 //@ts-ignore
 import { InstagramProvider, ElementContainer } from "@postillon/react-native-instagram-zoomable";
 //@ts-ignore
@@ -12,17 +11,19 @@ import { TouchThroughWrapper, TouchThroughView } from "react-native-touch-throug
 import { Question as QuestionEntity } from 'core';
 import { useTranslation } from 'react-i18next';
 
-interface State{
-    answerStates: {selected: boolean}[],
+interface State {
+    answerStates: { selected: boolean }[],
     imageZoom: boolean,
-    shouldValidate: boolean
+    shouldValidate: boolean,
+    showMenu: boolean
 }
 
 export class Question extends Component {
     state: State = {
         answerStates: [],
         imageZoom: false,
-        shouldValidate: false
+        shouldValidate: false,
+        showMenu: false,
     }
 
     render() {
@@ -32,8 +33,8 @@ export class Question extends Component {
             new core.Answer("Ich muss hier aufgrund der Kinder mein Tempo auf Schrittgeschwindigkeit reduzieren und den Dick in die Hand nehmen.", false),
             new core.Answer("Noch eine geile Antwort", false)
         ], 2, "B", 4, "Hard");
-        if(this.state.answerStates.length < question.answers.length)
-            this.setState({answerStates: question.answers.map(a=> ({selected: false}))});
+        if (this.state.answerStates.length < question.answers.length)
+            this.setState({ answerStates: question.answers.map(a => ({ selected: false })) });
         return (
             <View style={styles.view}>
                 <InstagramProvider>
@@ -46,26 +47,26 @@ export class Question extends Component {
                             <TouchThroughView style={{ height: Dimensions.get('window').width * 0.66, width: "100%" }} />
                             <QuestionLayout count={question.Id} text={question.question} difficulty={question.difficulty} />
                             <View style={{ flex: 1, padding: 14, backgroundColor: '#fff' }}>
-                                {question.answers.map((a, i)=>
-                                    <Answer key={i} 
-                                        answer={a} 
-                                        selected={this.state.answerStates[i]&&this.state.answerStates[i].selected}
+                                {question.answers.map((a, i) =>
+                                    <Answer key={i}
+                                        answer={a}
+                                        selected={this.state.answerStates[i] && this.state.answerStates[i].selected}
                                         shouldValidate={this.state.shouldValidate}
-                                        onPress={()=> {
-                                            var {answerStates} = this.state;
+                                        onPress={() => {
+                                            var { answerStates } = this.state;
                                             answerStates[i].selected = !answerStates[i].selected;
-                                            this.setState({answerStates});
-                                        }}/>
-                                    )}
+                                            this.setState({ answerStates });
+                                        }} />
+                                )}
                             </View>
-                            {/* <View style={{ height: Dimensions.get('window').width, width: 20, backgroundColor: "#ff0" }} /> */}
                         </ScrollView>
                     </TouchThroughWrapper>
                     <View style={styles.fabContainer}>
-                        <QuestionFAB icon={icons.Continue} />
-                        <QuestionFAB marginRight={12} iconSize={20} size={40} icon={icons.Continue} />
+                        <QuestionFAB iconLeft={3} onPress={() => this.setState({ shouldValidate: true })} icon={icons.Continue} />
+                        <QuestionFAB onPress={() => this.setState({ showMenu: true })} marginRight={12} iconSize={24} size={40} icon={icons.Menu} />
                     </View>
                 </InstagramProvider>
+                <QuestionMenu backPress={() => this.setState({ showMenu: !this.state.showMenu })} visible={this.state.showMenu} />
             </View>
         )
     }
@@ -73,7 +74,8 @@ export class Question extends Component {
 
 const styles = StyleSheet.create({
     view: {
-        flex: 1
+        flex: 1,
+        backgroundColor: '#fff'
     },
     fabContainer: {
         flexDirection: "row-reverse",

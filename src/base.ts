@@ -14,7 +14,6 @@ export const colors = {
     darkerGray: '#5B5B5B',
     middleGray: "#858585",
     settingsGray: "#AFAFAF",
-    questionBG: "#F0F0F0",
     grundwissen: "#AE73AB",
     bFührerschein: "#7884AE",
     alleBereiche: "#7EAC79",
@@ -27,7 +26,15 @@ export const colors = {
     fortschrittDark: '#6AAE82',
     erfolgschance: '#578E8B',
     erfolgschanceUnfilled: 'rgba(87, 142, 139, 0.3)',
-    erfolgschanceDark: '#427A77'
+    erfolgschanceDark: '#427A77',
+    questionBG: "#F0F0F0",
+    questionSelcted: '#BFBFBF',
+    questionRight: '#2EB174',
+    questionWrong: '#B85555',
+    questionLightRed: 'rgba(164, 35, 35, 0.15)',
+    questionLightGreen: 'rgba(46, 177, 116, 0.15)',
+    questionGreenAccent: '#258056',
+    questionRedAccent: '#7B1111',
 }
 
 export const padding = {
