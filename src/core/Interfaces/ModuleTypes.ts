@@ -1,1 +1,0 @@
-export type ModuleTypes = "A"|"B"|"C"|"D"|"E"|"BE"|"F"|"G";

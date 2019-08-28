@@ -19,4 +19,12 @@ describe('DeviceTokenServiceTest', () => {
         expect(await dts2.setDeviceToken("DEVICETOKEN02")).toEqual(true);
         expect(await dts.setDeviceToken("DEVICETOKEN01")).toEqual(true);
     });
+    it('should return "token not changed"', async () => {
+        expect.assertions(3);
+        await signInAsTestUser();
+        var dts = new DeviceTokenService(true);
+        expect(await dts.setDeviceToken("DEVICETOKEN01")).toEqual(true);
+        expect(await dts.hasTokenChanged("DEVICETOKEN01")).toBe(false);
+        expect(await dts.hasTokenChanged("DEVICETOKEN02")).toBe(true);
+    });
 })

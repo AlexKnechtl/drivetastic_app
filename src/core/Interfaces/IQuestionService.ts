@@ -1,9 +1,9 @@
-import { ModuleTypes } from "./ModuleTypes";
-import { IQuestion, LearnStateToQuestionIDMapping } from "core/entities";
+import { Question, LearnStateToQuestionIDMapping, ModuleTypes } from "core/entities";
 
 export interface IQuestionService{
-    getQuestionForModule(moduleID: ModuleTypes): IQuestion[];
-    getQuestionForSection(sectionId: number): IQuestion[];
-    updateLearnStates(mappings: LearnStateToQuestionIDMapping): void;
-    getQuestionById(questionId: number): IQuestion;
+    getAllQuestions(): Question[];
+    getQuestionsForModule(moduleID: ModuleTypes): Question[];
+    getQuestionsForSection(sectionId: number): Question[];
+    updateLearnStates(mappings: LearnStateToQuestionIDMapping[]): void;
+    getQuestionById(questionId: number): Question;
 }

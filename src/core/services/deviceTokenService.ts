@@ -2,6 +2,18 @@ import firebase from "firebase"
 import { TypedEvent, Disposable } from "core/entities";
 
 export class DeviceTokenService implements Disposable{
+    
+    async hasTokenChanged(deviceToken: string): Promise<boolean> {
+        var user = firebase.auth().currentUser;
+        if(user){
+            const data = await firebase.database().ref("/users/").child(user.uid).child("currentDevice").once("value");
+            var currToken = Object.keys(data.val())[0];
+            return currToken != deviceToken;
+        }
+        else
+            throw new Error("User is not authenticated");
+    }
+
     dispose(): void {
         if(this.currentDeviceDBRef)
             this.currentDeviceDBRef.off("child_added", this.tokenListener);
@@ -13,7 +25,7 @@ export class DeviceTokenService implements Disposable{
     currentDeviceDBRef: firebase.database.Reference | null;
     private tokenListener(sn: firebase.database.DataSnapshot){
         var val = sn.key;
-        console.log(val);
+        // console.log(val);
         if(!val)
             throw new Error("No device token!!");
         else

@@ -1,4 +1,4 @@
-import { IQuestion, TypedEvent } from "../entities"
+import { Question, TypedEvent } from "../entities"
 
 export type LearningQueueOptions = {
     length?: number,
@@ -11,9 +11,9 @@ export type MinimumQuestionState = {
 
 export class LearningService {
 
-    private questions: IQuestion[] = [];
+    private questions: Question[] = [];
 
-    private learningQueue: IQuestion[] = [];
+    private learningQueue: Question[] = [];
 
 
     private learningQueueLength = 10;
@@ -25,7 +25,7 @@ export class LearningService {
 
     }
 
-    async loadQuestions(questions: IQuestion[]) {
+    async loadQuestions(questions: Question[]) {
         if (this.learningQueueLength > questions.length)
             throw new Error("To few questions provided!!");
         this.questions = questions;
@@ -39,8 +39,8 @@ export class LearningService {
 
     private incrementIndex = () => this.learningQueueIndex = (this.learningQueueIndex + 1) % this.learningQueueLength;
 
-    private compare(a: IQuestion, b: IQuestion){
-        var x = a.learnState - b.learnState;
+    private compare(a: Question, b: Question){
+        var x = a.getLearnState() - b.getLearnState();
         if(x == 0)
         {
             x = ([a.Id, b.Id].sort()[0] == a.Id)? -1: 1;
@@ -51,7 +51,7 @@ export class LearningService {
     answerCurrentQuestion(answeredRight: boolean) {
         if (answeredRight) {
             var q = this.getQuestion();
-            q.learnState = q.learnState < 0 ? 1 : q.learnState + 1;
+            q.setLearnState(q.getLearnState() < 0 ? 1 : q.getLearnState() + 1);
             var newQuestion = this.questions.sort(this.compare).find(v=> this.learningQueue.every(v1=> v1.Id != v.Id));
             if(newQuestion)
                 this.learningQueue[this.learningQueueIndex] = newQuestion;
@@ -59,7 +59,7 @@ export class LearningService {
         }
         else {
             var q = this.getQuestion();
-            q.learnState = q.learnState > 0 ? -1 : q.learnState - 1;
+            q.setLearnState(q.getLearnState() > 0 ? -1 : q.getLearnState() - 1);
         }
         this.incrementIndex();
     }
@@ -67,7 +67,7 @@ export class LearningService {
     minimumQuestionState = 0;
     private async checkIfAllLearned() {
         var minimumState = 1000;
-        this.questions.forEach(q => minimumState > q.learnState && (minimumState = q.learnState) );
+        this.questions.forEach(q => minimumState > q.getLearnState() && (minimumState = q.getLearnState()) );
         if (minimumState != this.minimumQuestionState) {
             this.minimumQuestionState = minimumState;
             this.onMinimumQuestionStateChanged.emit({minimumState: minimumState});
