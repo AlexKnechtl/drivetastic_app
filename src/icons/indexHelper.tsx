@@ -42,6 +42,7 @@ export const Grundwissen = require('./grundwissen.png');
 export const Test = require('./test.png'); 
 export const Fullscreen = require('./fullscreen.png'); 
 export const False = require('./false.png'); 
+export const ThumbsUp = require('./thumbs_up.png'); 
 export const Menu = require('./menu.png'); 
 export const Video = require('./video.png'); 
 export const ArrowDown = require('./arrow_down.png'); 

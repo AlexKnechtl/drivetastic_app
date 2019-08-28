@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
 import { colors } from 'base';
 import { IAnswer } from 'core';
-import { CircleCheck, False } from 'icons/indexHelper';
+import { CircleCheck, False, ThumbsUp } from 'icons/indexHelper';
 
 
 type HeadlineProps = {
@@ -13,18 +13,22 @@ type HeadlineProps = {
 }
 
 const Answer = ({ onPress, selected = false, shouldValidate, answer }: HeadlineProps) => {
-    let background = colors.questionBG, icon = undefined, borderWidth = 0, fontColor = "#000";
+    let background = colors.questionBG, icon = undefined, borderWidth = 0, fontColor = "#000", iconSize = 24;
 
     if (selected) {
         background = colors.questionSelcted;
+        icon = CircleCheck;
+        iconSize = 24;
         if (answer.isRight && shouldValidate) {
             background = colors.questionRight;
             fontColor = "white";
-            icon = CircleCheck;
+            icon = ThumbsUp;
+            iconSize = 28;
         } else if (!answer.isRight && shouldValidate) {
             background = colors.questionWrong;
             fontColor = '#fff';
             icon = False;
+            iconSize = 20;
         }
     } else {
         background = colors.questionBG;
@@ -40,7 +44,7 @@ const Answer = ({ onPress, selected = false, shouldValidate, answer }: HeadlineP
 
     return (
         <TouchableOpacity onPress={onPress} activeOpacity={0.6} style={{ ...styles.view, backgroundColor: background, borderWidth: borderWidth }}>
-            <Image style={styles.icon} source={icon} />
+            <Image resizeMode="contain" style={{ ...styles.icon, height: iconSize, width: iconSize }} source={icon} />
             <Text style={{ ...styles.text, color: fontColor }}>{answer.answer}</Text>
         </TouchableOpacity>
     );
@@ -63,7 +67,6 @@ const styles = StyleSheet.create({
     },
     icon: {
         width: 24,
-        height: 24,
         marginLeft: 12,
         alignSelf: "center"
     }

@@ -26,7 +26,6 @@ module.exports = {
       {
         "legacy": true
       }
-    ],
-    ["i18next-extract", {locales: ['de'], useI18nextDefaultValue: ['de']}]
+    ]
   ]
 };

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, Image, ScrollView, View, Linking, Text } from 'react-native';
+import { StyleSheet, Image, ScrollView, View, Linking, Text, TouchableOpacity } from 'react-native';
 import { icons } from 'icons';
 import { TransparentLayout } from 'components';
 import { dimensions } from 'base';
 
 class Impressum extends Component {
-
     websitePress() {
         Linking.openURL("https://www.seekinnovation.at");
     }
@@ -49,18 +48,18 @@ class Impressum extends Component {
                             </View>
                         </View>
                         <View style={{ flexDirection: "row", width: "100%", alignItems: "center", justifyContent: "center" }}>
-                            <View style={{ justifyContent: "center", alignItems: "center", marginRight: 36}}>
+                            <TouchableOpacity onPress={() => this.websitePress()} style={{ justifyContent: "center", alignItems: "center", marginRight: 36 }}>
                                 <View style={{ borderWidth: 2, borderColor: '#D5D5D5', borderRadius: 50, width: 72, height: 72, justifyContent: "center", alignItems: "center" }}>
                                     <Image resizeMode="contain" style={{ width: 52, height: 52 }} source={icons.Website} />
                                 </View>
                                 <Text style={{ color: '#707070', fontSize: 22, textAlign: "center" }}>Visit our{"\n"}Website</Text>
-                            </View>
-                            <View style={{ justifyContent: "center", alignItems: "center"}}>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{ justifyContent: "center", alignItems: "center" }}>
                                 <View style={{ borderWidth: 2, borderColor: '#D5D5D5', borderRadius: 50, width: 72, height: 72, justifyContent: "center", alignItems: "center" }}>
                                     <Image resizeMode="contain" style={{ width: 52, height: 52 }} source={icons.Support} />
                                 </View>
                                 <Text style={{ color: '#707070', fontSize: 22, textAlign: "center" }}>Get{"\n"}Support</Text>
-                            </View>
+                            </TouchableOpacity>
                         </View>
                     </View>
                 </ScrollView>

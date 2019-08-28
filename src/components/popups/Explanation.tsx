@@ -17,7 +17,7 @@ type ButtonProps = {
 
 const Explanation = ({ visible = false, icon, text1, text2, title, onPress, color }: ButtonProps) => {
     return (
-        <Modal style={styles.modal} useNativeDriver={true} isVisible={visible} onBackdropPress={onPress} >
+        <Modal style={styles.modal} useNativeDriver={true} isVisible={visible} onBackButtonPress={onPress} onBackdropPress={onPress} >
             <View style={{ ...styles.view, backgroundColor: color }}>
                 <Image resizeMode="contain" style={styles.icon} source={icon} />
                 <Text style={styles.title}>

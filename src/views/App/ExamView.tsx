@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     },
     historyView: {
-        backgroundColor: colors.lightPurple,
+        backgroundColor: '#787DAE',
         padding: 14,
         marginTop: 20,
         marginHorizontal: 14,
