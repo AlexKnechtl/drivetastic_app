@@ -7,8 +7,9 @@ import { icons } from 'icons';
 import ImageViewer from 'react-native-image-zoom-viewer';
 //@ts-ignore
 import { InstagramProvider, ElementContainer } from "@postillon/react-native-instagram-zoomable";
+//@ts-ignore
 import { TouchThroughWrapper, TouchThroughView } from "react-native-touch-through-view";
-import { IQuestion } from 'core';
+import { Question as QuestionEntity } from 'core';
 import { useTranslation } from 'react-i18next';
 
 interface State{
@@ -25,7 +26,7 @@ export class Question extends Component {
     }
 
     render() {
-        const question:IQuestion = new core.Question("Wie werden Sie sich hier verhalten?",3981, [
+        const question:QuestionEntity = new core.Question("Wie werden Sie sich hier verhalten?",3981, [
             new core.Answer("Ich muss hier anhalten", false),
             new core.Answer("Bis zu den Personen fahre ich auf Gefahrensicht", true),
             new core.Answer("Ich muss hier aufgrund der Kinder mein Tempo auf Schrittgeschwindigkeit reduzieren und den Dick in die Hand nehmen.", false),
