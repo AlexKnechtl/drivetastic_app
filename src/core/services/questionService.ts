@@ -8,7 +8,7 @@ export class QuestionProvider implements IQuestionService{
     }
 
     private moduleQuestionMappings: {[module: string]: Question[]} = {};
-    private questionIdQuestionMappings: {[id: number]: Question} = {};
+    private questionIdQuestionMappings: {[id: string]: Question} = {};
     private sectionQuestionMappings: {[sectionID: number]: Question[]} = {};
     private questions: Question[];
     

@@ -8,10 +8,10 @@ export interface ChangingEventArgs<T> {
 }
 
 export class LearnStateToQuestionIDMapping{
-    questionID: number;
+    questionID: string;
     learningState: number;
 
-    constructor(questionID: number, learningState: number){
+    constructor(questionID: string, learningState: number){
         this.learningState = learningState;
         this.questionID = questionID;
     }
@@ -48,7 +48,7 @@ export class Question {
     };
     answers: IAnswer[];
     question: string;
-    Id: number;
+    Id: string;
     private _learnState: number = 0;
     public getLearnState= (): number => {
         return this._learnState;
@@ -59,7 +59,7 @@ export class Question {
     }
 
     constructor(question: string, 
-        Id: number, 
+        Id: string, 
         answers: IAnswer[], 
         learnState: number = 0, 
         module: ModuleTypes, 

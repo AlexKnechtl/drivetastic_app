@@ -16,7 +16,7 @@ export class MockQuestionProvider implements IQuestionProvider{
                 var rand = Math.random();
                 var answers = Array.apply(null, Array(4)).map(a=> Math.random()).map((a,i)=> new Answer("Answer"+(i+1), a>0.5));
                 qs.push(new Question("QuestionText"+i, 
-                    i+sId*settings.questionCountPerSection,
+                    (i+sId*settings.questionCountPerSection).toString(),
                     answers,
                     0,
                     settings.modules as ModuleTypes, 
