@@ -1,76 +1,126 @@
-import { ERROR, LOGIN_SUCCESS, SIGNUP_SUCCESS, CHECK_DRIVECODE_SUCCESS, START_CHECK_DRIVECODE, SEND_PASSWORD_RESET_EMAIL, SEND_PASSWORD_RESET_EMAIL_SUCCESS } from "./actiontypes";
-import { AuthActionTypes, ErrorType, ErrorAction } from "./actions";
+import { ERROR, LOGIN_SUCCESS, SIGNUP_SUCCESS, CHECK_DRIVECODE_SUCCESS, START_CHECK_DRIVECODE, SEND_PASSWORD_RESET_EMAIL, SEND_PASSWORD_RESET_EMAIL_SUCCESS, LOGOUT } from "./actiontypes";
+import { AuthActionTypes, ErrorType, ErrorAction, LoginSuccessAction, SignUpSuccessAction, CheckDriveCodeSuccessAction, SendPasswordResetEmailSuccessAction, SendPasswordResetEmailAction, LogOutAction } from "./actions";
+import { User } from "core/entities";
+import { combineReducers } from 'redux';
 
-export interface AuthState {
-  login: {
-    success: boolean;
-    error: string;
-  };
-  signup: {
-    success: boolean;
-    error: string;
-  };
-  tokenCheck: {
-    success: boolean;
-    error: string;
-  };
-  passwordReset: {
-    success: boolean;
-    error: string;
-  };
-  token: string
+interface GenericSEState {
+  success: boolean;
+  error: string;
 }
 
-const initialState: AuthState = {
-  login: {
-    success: false,
-    error: ""
-  },
-  signup: {
-    success: false,
-    error: ""
-  },
-  tokenCheck: {
-    success: false,
-    error:""
-  },
-  passwordReset:{
-    success: false,
-    error:""
-  },
-  token:''
-};
+interface DataState {
+  token: string,
+  user: User|null
+}
 
-export function authReducer(
-  state = initialState,
-  { type, payload }: AuthActionTypes
-): AuthState {
-  switch (type) {
-    case ERROR:
-      payload = (payload as {message: string, type: ErrorType});
-      switch(payload.type){
-        case "checktoken": return { ...state, tokenCheck:{...state.tokenCheck, error: payload.message} };
-        case "signin": return { ...state, login:{...state.login, error: payload.message} };
-        case "signup": return { ...state, signup:{...state.signup, error: payload.message} };
-        case "emailreset": return {...state, passwordReset:{...state.passwordReset, error: payload.message}}
-      }
-      case START_CHECK_DRIVECODE:
-      return { ...state, token: payload as string };
+const initialGenericSeState: GenericSEState = {
+  error: "",
+  success: false
+}
 
-      case LOGIN_SUCCESS:
-        return { ...state, login: { success: true, error: "" } };
-        
-      case SIGNUP_SUCCESS:
-        return { ...state, signup: { success: true, error: "" } };
+const initialDataState: DataState = {
+  token:'',
+  user: null
+}
 
-      case CHECK_DRIVECODE_SUCCESS:
-        return { ...state, tokenCheck: { success: true, error: "" } };
-      case SEND_PASSWORD_RESET_EMAIL: 
-        return {...state, passwordReset:{success: false, error: ""}}
-      case SEND_PASSWORD_RESET_EMAIL_SUCCESS: 
-        return {...state, passwordReset:{success: true, error: ""}}
-      
-      default:
+function loginReducer(
+  state = initialGenericSeState,
+  action: AuthActionTypes
+): GenericSEState{
+  switch (action.type) {
+    case LOGIN_SUCCESS:
+      return { ...state, success: true, error: "" };
+    case ERROR: 
+      return action.errorType =="signin"? {...state, success: false, error: action.error.message }: state;
+    case LOGOUT: 
+      return initialGenericSeState;
+    default:
       return state;
   }
 }
+
+function signUpReducer(
+  state = initialGenericSeState,
+  action: AuthActionTypes
+): GenericSEState{
+  switch (action.type) {
+    case SIGNUP_SUCCESS:
+        return { ...state, success: true, error: "" };
+    case ERROR: 
+      return action.errorType =="signup"? {...state, success: false, error: action.error.message }: state;
+    case LOGOUT: 
+      return initialGenericSeState;
+    default:
+      return state;
+  }
+}
+
+function checkTokenReducer(
+  state = initialGenericSeState,
+  action: AuthActionTypes
+): GenericSEState{
+  switch (action.type) {
+    case CHECK_DRIVECODE_SUCCESS:
+        return { ...state, success: true, error: "" };
+    case ERROR: 
+      return action.errorType =="checktoken"? {...state, success: false, error: action.error.message }: state;
+    case LOGOUT: 
+      return initialGenericSeState;
+    default:
+      return state;
+  }
+}
+
+function emailResetReduer(
+  state = initialGenericSeState,
+  action: AuthActionTypes
+): GenericSEState{
+  switch (action.type) {
+    case SEND_PASSWORD_RESET_EMAIL: 
+      return {...state, success: false, error: ""};
+    case SEND_PASSWORD_RESET_EMAIL_SUCCESS: 
+      return {...state, success: true, error: ""};
+    case ERROR: 
+      return action.errorType =="checktoken"? {...state, success: false, error: action.error.message }: state;
+    case LOGOUT: 
+      return initialGenericSeState;
+    default:
+      return state;
+  }
+}
+
+function dataReducer(
+  state = initialDataState,
+  action: AuthActionTypes
+): DataState {
+  switch (action.type) {
+    case START_CHECK_DRIVECODE:
+      return { ...state, token: action.token };
+    case LOGIN_SUCCESS: 
+      return {...state, user: action.user };
+    case SIGNUP_SUCCESS: 
+      return {...state, user: action.user}
+    case LOGOUT: 
+      return initialDataState;
+    default:
+      return state;
+  }
+}
+
+export interface AuthState {
+  login: GenericSEState;
+  signup: GenericSEState;
+  tokenCheck: GenericSEState;
+  passwordReset: GenericSEState;
+  data: DataState;
+}
+
+const reducers = {
+  data: dataReducer,
+  signup: signUpReducer,
+  login: loginReducer,
+  passwordReset: emailResetReduer,
+  tokenCheck: checkTokenReducer
+}
+
+export const authReducer = combineReducers(reducers);

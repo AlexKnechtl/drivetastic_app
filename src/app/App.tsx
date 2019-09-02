@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { configureStore } from 'core';
+import { configureStore, StartAutoLoginAction } from 'core';
 import { Router } from './Router';
 import './i18n';
 //@ts-ignore
@@ -13,6 +13,8 @@ const customTextProps = {
 };
 
 const store = configureStore();
+
+store.dispatch(StartAutoLoginAction());
 
 const App = () => {
   setCustomText(customTextProps);

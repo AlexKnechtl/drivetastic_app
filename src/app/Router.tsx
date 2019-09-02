@@ -160,7 +160,7 @@ const rootNavigator = createSwitchNavigator({
     tutorial,
     custom: DebugNav
 }, {
-        initialRouteName: "custom"
+        initialRouteName: "auth"
     });
 
 export const Router = createAppContainer(rootNavigator);

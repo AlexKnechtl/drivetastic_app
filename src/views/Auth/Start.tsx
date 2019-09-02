@@ -7,9 +7,18 @@ import { padding, colors, fonts, margin } from '../../base';
 import { icons } from '../../icons';
 import { BackgroundMain } from '../../img';
 import { NavigationScreenProps } from 'react-navigation';
+import { StateType, StartAutoLoginAction } from 'core';
+import { connect } from 'react-redux';
+const mapStateToProps = (state: StateType) => ({
+    user: state.auth.data.user
+})
+type props = NavigationScreenProps & ReturnType<typeof mapStateToProps>;
 
-class Start extends Component<NavigationScreenProps> {
+// @(connect(mapStateToProps) as any)
+class Start extends Component<props> {
     render() {
+        this.props.user && this.props.navigation.navigate("home");
+
         return (
             <View style={styles.view}>
                 <StatusBar animated={true} translucent={true} backgroundColor="#0000" barStyle="light-content" />
@@ -69,5 +78,5 @@ const styles = StyleSheet.create({
         marginHorizontal: margin.md
     }
 });
-
-export { Start };
+const x = connect(mapStateToProps)(Start)
+export {x as Start};
