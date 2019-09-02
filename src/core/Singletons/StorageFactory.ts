@@ -11,9 +11,8 @@ import { IDataBaseQuestionStoreService, FirebaseQuestionStoreService } from "cor
 export class StorageFactory{
 
     private static instance: StorageFactory|null = null;
-    constructor(tokenProvider: ITokenProvider){
-        if(!StorageFactory.instance){
-            this.init(tokenProvider)
+    constructor(clearInstance = false){
+        if(!StorageFactory.instance || clearInstance){
             StorageFactory.instance = this;
         }
         return StorageFactory.instance;
@@ -24,33 +23,37 @@ export class StorageFactory{
     private tokenService: DeviceTokenService = new DeviceTokenService(true);
     private storedDataProvider: IStoredDataProvider = new MockStoredDataProvider();
     private firebaseDataService: DataService = new DataService();
-    private statisticsProvider: StatisticsProvider|undefined;
+    private statisticsProvider!: StatisticsProvider;
     private databaseQuestionStoreService: IDataBaseQuestionStoreService = new FirebaseQuestionStoreService();
+    private finishedInitialization = false;
+    private userdata: UserDataType|undefined;
+    currentUser: User|undefined;
     
+    onInitFinished = new TypedEvent<{sender: StorageFactory}>()
+
     public get QuestionService(): IQuestionService|undefined{
         return this._QuestionService;
     }
     
-    private finishedInitialization = false;
     public get FinishedInit() : boolean {
         return this.finishedInitialization
     }
-    
-    private userdata: UserDataType|undefined;
-    
+        
     public get UserData() : UserDataType|undefined {
         return this.userdata;
     }
-    
-    currentUser: User|undefined;
-    
+        
     public get CurrentUser() : User|undefined {
         return this.currentUser;
     }
     
-    onInitFinished = new TypedEvent<{sender: StorageFactory}>()
+    public get StatisticsProvider(): StatisticsProvider{
+        return this.statisticsProvider;
+    }
 
-    private async init(tokenProvider: ITokenProvider) {
+
+    async init(tokenProvider: ITokenProvider) {
+        try{
         var promises = [];
         var qp =  this.questionProvider.loadQuestions();
         var qsip = qp.then(qs=> this._QuestionService.init(qs));
@@ -69,6 +72,12 @@ export class StorageFactory{
         this.databaseQuestionStoreService.subscribeToQuestionChange(await qp);
 
         await Promise.all(promises);
+    }
+    catch (e) {
+        console.log(e);
+        console.log("ERROR!!!!!!!!!!!!!!!!!!!!!!");
+        
+    }
         this.onInitFinished.emit({sender: this});
     }
 }

@@ -6,6 +6,8 @@ import { createLogger } from 'redux-logger';
 import { authReducer, AuthState } from './auth/authReducer';
 import { all } from 'redux-saga/effects';
 import { authSagas } from './auth';
+import { StatisticsReducerState, StatisticsReducer } from './statistics';
+import { initSagas } from './init';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBVJ-y5x4Ov4Htj6X_iwMoTf1Xn0QxKNwU",
@@ -21,13 +23,15 @@ firebase.initializeApp(firebaseConfig);
 
 export interface StateType{
     auth: AuthState,
+    statistics: StatisticsReducerState
 }
 
 const reducers = {
     auth: authReducer,
+    statistics: StatisticsReducer
 }
 
-const allSagas = [...authSagas];
+const allSagas = [...authSagas, ...initSagas];
 
 
 export function configureStore(){

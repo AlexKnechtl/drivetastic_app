@@ -40,7 +40,7 @@ describe('LearningService test', () => {
         expect.assertions(1);
         var ls = new LearningService();
         try{
-            await ls.loadQuestions(Array.prototype.fill(0, 0, 9).map((v, i)=> new Question("", i, [], 0, "B", 0, "Easy")));
+            await ls.loadQuestions(Array.prototype.fill(0, 0, 9).map((v, i)=> new Question("", i.toString(), [], 0, "B", 0, "Easy")));
         }
         catch(e){
             expect(e.message).toContain("To few questions");

@@ -1,6 +1,7 @@
 import {DeviceTokenService} from "./deviceTokenService"
 
 import { signInAsTestUser } from "./authService.test";
+import { AuthService } from "./authService";
 
 describe('DeviceTokenServiceTest', () => {
     it('should set the devicetoken', async () => {
@@ -27,4 +28,11 @@ describe('DeviceTokenServiceTest', () => {
         expect(await dts.hasTokenChanged("DEVICETOKEN01")).toBe(false);
         expect(await dts.hasTokenChanged("DEVICETOKEN02")).toBe(true);
     });
+    it('should work', async () => {
+        expect.assertions(1);
+        await new AuthService().signInWithCredential("test@test.com", "password");
+        var dts = new DeviceTokenService(false);
+        expect(await dts.hasTokenChanged("DEVICETOKEN01")).toBe(false);
+    })
+    
 })

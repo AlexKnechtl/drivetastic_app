@@ -4,4 +4,5 @@ export * from './LearningService';
 export * from './authService';
 export * from './dataService';
 export * from './deviceTokenService';
+export * from './firebaseQuestionStoreService';
 export * from './questionService';
