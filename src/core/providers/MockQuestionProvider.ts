@@ -9,7 +9,7 @@ const settings = {
 
 
 export class MockQuestionProvider implements IQuestionProvider{
-    loadQuestions(): Question[] {
+    async loadQuestions(): Promise<Question[]> {
         var qs:Question[] = [];
         for (let sId = 0; sId < settings.sectionCount; sId++) {
             for (let i = 0; i < settings.questionCountPerSection; i++) {

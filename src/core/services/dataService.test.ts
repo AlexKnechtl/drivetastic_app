@@ -1,4 +1,4 @@
-import { DataService } from "./dataService";
+import { DataService, UserDataType } from "./dataService";
 import { AuthService } from "./authService";
 import { signInAsTestUser } from "./authService.test";
 
@@ -40,4 +40,24 @@ describe('DataService', () => {
       expect(userData.language).toBe("###MULTI_LANGUAGE###");
       done();
     })
+    it('should be able to set userdata and get back correct ones', async () => {
+      expect.assertions(1);
+      await signInAsTestUser();
+      var ds = await new DataService();
+      var l = "###LANGUAGE###";
+      var sl = "###ML###";
+      await ds.setMultiLanguage(l, sl);
+      var us: UserDataType = {
+        DeuteranopieMode: false,
+        ProtonapieMode: false,
+        darkMode: false,
+        enabledModules: ["B", "G"],
+        studyVelocity: 3,
+      };
+      await ds.updateUserData(us);
+      var newUs = await ds.getUserData();
+      us.language = l;
+      us.secondLanguage = sl;
+      expect(newUs).toEqual(us);
+    });
 });

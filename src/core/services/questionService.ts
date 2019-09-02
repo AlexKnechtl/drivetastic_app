@@ -10,10 +10,9 @@ export class QuestionProvider implements IQuestionService{
     private moduleQuestionMappings: {[module: string]: Question[]} = {};
     private questionIdQuestionMappings: {[id: string]: Question} = {};
     private sectionQuestionMappings: {[sectionID: number]: Question[]} = {};
-    private questions: Question[];
+    private questions: Question[] = [];
     
-
-    constructor(questions: Question[]){
+    async init(questions: Question[]){
         this.questions = questions;
         questions.forEach(question => {
             if(!this.moduleQuestionMappings[question.Module])

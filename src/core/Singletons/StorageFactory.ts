@@ -5,7 +5,7 @@ import { MockQuestionProvider, StatisticsProvider } from "core/providers";
 import { ITokenProvider } from "core/providers/ITokenProvider";
 import { IStoredDataProvider } from "core/providers/IStoredDataProvider";
 import { MockStoredDataProvider } from "core/providers/MockStoredDataProvider";
-import { User } from "core/entities";
+import { User, TypedEvent } from "core/entities";
 import { IDataBaseQuestionStoreService, FirebaseQuestionStoreService } from "core/services/firebaseQuestionStoreService";
 
 export class StorageFactory{
@@ -19,7 +19,7 @@ export class StorageFactory{
         return StorageFactory.instance;
     }
     
-    private _QuestionService: IQuestionService|undefined;
+    private _QuestionService: IQuestionService = new QuestionProvider();
     private questionProvider: IQuestionProvider = new MockQuestionProvider();
     private tokenService: DeviceTokenService = new DeviceTokenService(true);
     private storedDataProvider: IStoredDataProvider = new MockStoredDataProvider();
@@ -48,20 +48,27 @@ export class StorageFactory{
         return this.currentUser;
     }
     
-
+    onInitFinished = new TypedEvent<{sender: StorageFactory}>()
 
     private async init(tokenProvider: ITokenProvider) {
-        this._QuestionService = new QuestionProvider(this.questionProvider.loadQuestions());
+        var promises = [];
+        var qp =  this.questionProvider.loadQuestions();
+        var qsip = qp.then(qs=> this._QuestionService.init(qs));
+        promises.push(qsip);
         if(await this.tokenService.hasTokenChanged(tokenProvider.getToken())){
             this.userdata = await this.firebaseDataService.getUserData();
+            await qsip;
             this._QuestionService.updateLearnStates(await this.databaseQuestionStoreService.fetchQuestionData())
         }
         else{
             this.userdata = this.storedDataProvider.getUserData();
         }
         this.currentUser = this.storedDataProvider.getUser();
-        this.statisticsProvider = new StatisticsProvider([], 3); //TODO: Weekly Summary store, implement and store repetitions
-        this.databaseQuestionStoreService.subscribeToQuestionChange(this._QuestionService.getAllQuestions());
-        this.statisticsProvider.init(this._QuestionService.getAllQuestions());
+        this.statisticsProvider = new StatisticsProvider([], this.userdata.studyVelocity); //TODO: Weekly Summary store, implement and store repetitions
+        promises.push(this.statisticsProvider.init(await qp));
+        this.databaseQuestionStoreService.subscribeToQuestionChange(await qp);
+
+        await Promise.all(promises);
+        this.onInitFinished.emit({sender: this});
     }
 }
