@@ -63,16 +63,21 @@ export class StorageFactory{
 
     async init(tokenProvider: ITokenProvider) {
         try{
-        var promises = [];
+        var promises: Promise<any>[] = [];
         var qp =  this.questionProvider.loadQuestions();
         var qsip = qp.then(qs=> this._QuestionService.init(qs));
         promises.push(qsip);
-        if(await this.tokenService.hasTokenChanged(tokenProvider.getToken())){
+        var currDevToken = tokenProvider.getToken();
+        if(await this.tokenService.hasTokenChanged(currDevToken)){
+            console.log("TOKEN CHANGED!!");
+            
+            promises.push(this.tokenService.setDeviceToken(currDevToken));
             this.userdata = await this.firebaseDataService.getUserData();
             await qsip;
             this._QuestionService.updateLearnStates(await this.databaseQuestionStoreService.fetchQuestionData())
         }
         else{
+            console.log("TOKEN NOT CHANGED!!");
             this.userdata = this.storedDataProvider.getUserData();
         }
         this.currentUser = this.storedDataProvider.getUser();

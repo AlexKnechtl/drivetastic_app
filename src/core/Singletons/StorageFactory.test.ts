@@ -5,7 +5,7 @@ import { signInAsTestUser} from '../services/authService.test'
 
 class MockTokenProvider implements ITokenProvider{
     getToken(): string {
-        return "###TOKEN01###";
+        return "TOKEN01";
     }
 
 }

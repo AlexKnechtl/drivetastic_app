@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, ScrollView, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, StyleSheet, Text, ScrollView, TouchableOpacity, ImageBackground, StatusBar } from 'react-native';
 import { icons } from '../../icons';
 import { colors } from 'base';
 import { IconButton, LearnButton } from '../../components';
@@ -24,6 +24,7 @@ const Home = enhance(({ navigation, moduleStats }: props) => {
     const [t, i18n] = useTranslation();
     return (
         <ScrollView>
+            <StatusBar barStyle="dark-content"/>
             <View style={styles.view}>
                 <LearnButton onPress={() => navigation.navigate("Question")} />
                 <View style={styles.buttonLayout}>

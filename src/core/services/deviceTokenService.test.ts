@@ -28,11 +28,10 @@ describe('DeviceTokenServiceTest', () => {
         expect(await dts.hasTokenChanged("DEVICETOKEN01")).toBe(false);
         expect(await dts.hasTokenChanged("DEVICETOKEN02")).toBe(true);
     });
-    it('should work', async () => {
+    it('should be able to detect token change', async () => {
         expect.assertions(1);
         await new AuthService().signInWithCredential("test@test.com", "password");
         var dts = new DeviceTokenService(false);
-        expect(await dts.hasTokenChanged("DEVICETOKEN01")).toBe(false);
-    })
-    
+        expect(await dts.hasTokenChanged("DEVICETOKEN01")).toBe(true);
+    });
 })
