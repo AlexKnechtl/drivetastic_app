@@ -7,7 +7,7 @@ import { ModuleProgress } from 'components/specific/ModuleProgress';
 import { NavigationScreenProps } from 'react-navigation';
 import { Trans, useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
-import { StateType } from 'core';
+import { StateType, StorageFactory } from 'core';
 
 const mapStateToProps = (state: StateType) => ({
     moduleStats: state.statistics.modules
@@ -17,7 +17,6 @@ const mapDispatchToProps = {
 }
 type props = NavigationScreenProps & ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps;
 const enhance = connect(mapStateToProps, mapDispatchToProps);
-
 
 const Home = enhance(({ navigation, moduleStats }: props) => {
     // const moduleName = "Grundwissen";

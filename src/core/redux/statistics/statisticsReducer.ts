@@ -1,6 +1,6 @@
 import {ModuleTypes} from 'core';
-import { StatisticActionTypes, UPDATE_MODULE_STATS, UPDATE_SECTION_STATS } from './statisticActions';
-import { StatisticType } from 'core/providers';
+import { StatisticActionTypes, UPDATE_MODULE_STATS, UPDATE_SECTION_STATS, UPDATE_WEEKLY_SUMMARY } from './statisticActions';
+import { StatisticType, WeeklySummary } from 'core/providers';
 import { object } from 'prop-types';
 import {ModuleConfig} from '../../../moduleconfig'
 
@@ -16,11 +16,13 @@ export interface StatisticsReducerState {
     sections: {
         [sectionID: string]: StatisticType
     };
+    weeklySummary: {[day: string]: WeeklySummary};
 }
 
 const initialState: StatisticsReducerState = {
     modules: {},
-    sections: {}
+    sections: {},
+    weeklySummary: {}
 }
 
 export function StatisticsReducer(state = initialState, action: StatisticActionTypes): StatisticsReducerState{
@@ -41,6 +43,8 @@ export function StatisticsReducer(state = initialState, action: StatisticActionT
                         [action.sectionID]: action.statistic
                     }
                 }} };
+        case UPDATE_WEEKLY_SUMMARY: 
+                return {...state, weeklySummary: action.weeklySummary};
         default:
             return state;
     }
