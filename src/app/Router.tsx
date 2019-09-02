@@ -1,9 +1,10 @@
 import React from 'react'
 
-import { createStackNavigator, createAppContainer, createSwitchNavigator, createMaterialTopTabNavigator } from "react-navigation";
+import { createStackNavigator, createAppContainer, createSwitchNavigator, createMaterialTopTabNavigator, MaterialTopTabBarProps } from "react-navigation";
 import { AccountView, Bereiche, Login, Reg_DriveCode, Reg_Tutorial1, Reg_Tutorial2, Reg_Tutorial3, Modules, Reg_UserData, ExamView, ExamStatistics, Start, VisualChanges, LearnAlgorithm, TrainingView, Exam, AccountSettings, Impressum, Languages, Home, Question, PasswordReset, Reg_Languages, Statistics, Reg_Multilanguage } from '../views';
 import TabBar from 'components/specific/TabBar';
 import { TabBarTutorial } from 'components/specific/TabBarTutorial';
+import { View, Text } from 'react-native';
 
 
 const tutorial = createMaterialTopTabNavigator({
@@ -57,9 +58,9 @@ const learning = createStackNavigator({
     ExamStatistics,
     Question
 },
-{
-    headerMode: "none"
-});
+    {
+        headerMode: "none"
+    });
 
 const Account = createStackNavigator({
     AccountView,
@@ -98,20 +99,64 @@ const main = createStackNavigator({
     home,
     ExamView,
     TrainingView,
-    Statistics
+    Statistics,
+    learning
 },
     {
         headerMode: "none"
     });
+
+const DebugNav = createMaterialTopTabNavigator({
+    AccountView,
+    Bereiche,
+    Login,
+    Reg_DriveCode,
+    Reg_Tutorial1,
+    Reg_Tutorial2,
+    Reg_Tutorial3,
+    Modules,
+    Reg_UserData,
+    ExamView,
+    ExamStatistics,
+    Start,
+    VisualChanges,
+    LearnAlgorithm,
+    TrainingView,
+    Exam,
+    AccountSettings,
+    Impressum,
+    Languages,
+    Home,
+    Question,
+    PasswordReset,
+    Reg_Languages,
+    Statistics,
+    Reg_Multilanguage
+}, {
+    swipeEnabled: true,
+    tabBarComponent: (({navigation}: MaterialTopTabBarProps) =><View ><Text style={{alignSelf: "center", fontSize: 30}}>{navigation.state.routes[navigation.state.index].routeName}</Text></View>),
+    tabBarOptions: {
+        upperCaseLabel: false,
+        indicatorStyle: {
+            backgroundColor: "#fff",
+            height: 2,
+            marginBottom: 8
+        },
+        labelStyle: {
+            fontSize: 18,
+            fontWeight: "bold"
+        }
+    }
+})
 
 const rootNavigator = createSwitchNavigator({
     auth,
     learning,
     main,
     tutorial,
-    custom: Question
+    custom: DebugNav
 }, {
-        initialRouteName: "main"
+        initialRouteName: "custom"
     });
 
 export const Router = createAppContainer(rootNavigator);
