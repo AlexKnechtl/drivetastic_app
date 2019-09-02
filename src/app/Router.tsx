@@ -134,7 +134,11 @@ const DebugNav = createMaterialTopTabNavigator({
     Reg_Multilanguage
 }, {
     swipeEnabled: true,
-    tabBarComponent: (({navigation}: MaterialTopTabBarProps) =><View ><Text style={{alignSelf: "center", fontSize: 30}}>{navigation.state.routes[navigation.state.index].routeName}</Text></View>),
+    tabBarComponent: (({navigation}: MaterialTopTabBarProps) =>
+        <View >
+            <Text style={{alignSelf: "center", fontSize: 30}}>{navigation.state.routes[navigation.state.index].routeName}</Text>
+            <Text style={{alignSelf: "center"}}>View {navigation.state.index+1} of {navigation.state.routes.length}</Text>
+        </View>),
     tabBarOptions: {
         upperCaseLabel: false,
         indicatorStyle: {
