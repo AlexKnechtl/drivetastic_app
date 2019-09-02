@@ -1,13 +1,22 @@
 import { IQuestionService } from "core/Interfaces";
 import { QuestionProvider, DeviceTokenService, UserDataType, DataService } from "core/services";
 import { IQuestionProvider } from "core/providers/IQuestionProvider";
-import { MockQuestionProvider, StatisticsProvider } from "core/providers";
+import { MockQuestionProvider, StatisticsProvider, WeeklySummary } from "core/providers";
 import { ITokenProvider } from "core/providers/ITokenProvider";
 import { IStoredDataProvider } from "core/providers/IStoredDataProvider";
 import { MockStoredDataProvider } from "core/providers/MockStoredDataProvider";
 import { User, TypedEvent } from "core/entities";
 import { IDataBaseQuestionStoreService, FirebaseQuestionStoreService } from "core/services/firebaseQuestionStoreService";
-
+function createMockSummary(){
+    var wk: {[day: string]:WeeklySummary} = {};
+    var today = new Date();
+    for (let index = 0; index < 10; index++) {
+        today.setDate(today.getDate() - 1);
+        var date = today.getFullYear().toString()+today.getMonth().toString()+today.getDate().toString();
+        wk[date] = {questionsLearned: Math.floor(Math.random()*100)};
+    }
+    return wk;
+}
 export class StorageFactory{
 
     private static instance: StorageFactory|null = null;
@@ -67,7 +76,7 @@ export class StorageFactory{
             this.userdata = this.storedDataProvider.getUserData();
         }
         this.currentUser = this.storedDataProvider.getUser();
-        this.statisticsProvider = new StatisticsProvider([], this.userdata.studyVelocity); //TODO: Weekly Summary store, implement and store repetitions
+        this.statisticsProvider = new StatisticsProvider(createMockSummary(), this.userdata.studyVelocity); //TODO: Weekly Summary store, implement and store repetitions
         promises.push(this.statisticsProvider.init(await qp));
         this.databaseQuestionStoreService.subscribeToQuestionChange(await qp);
 
