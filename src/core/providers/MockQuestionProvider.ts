@@ -7,6 +7,13 @@ const settings = {
     sectionCount: 10
 }
 
+function generateRandomIntBetween(start: number, end: number){
+    if(end>start)
+        var space = end-start;
+    else
+        var space = start - end;
+    return Math.floor(Math.random()*space)+start;
+}
 
 export class MockQuestionProvider implements IQuestionProvider{
     async loadQuestions(): Promise<Question[]> {
@@ -18,9 +25,9 @@ export class MockQuestionProvider implements IQuestionProvider{
                 qs.push(new Question("QuestionText"+i, 
                     (i+sId*settings.questionCountPerSection).toString(),
                     answers,
-                    0,
+                    generateRandomIntBetween(-3, 6),
                     settings.modules as ModuleTypes, 
-                    sId, 
+                    settings.modules+sId, 
                     rand<0.5?"Easy":rand>0.8?"Hard":"Medium"));
             }
         }

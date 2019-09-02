@@ -37,7 +37,7 @@ export class Question {
     difficulty: Difficulty;
     
     Module: ModuleTypes;
-    SectionId: number;
+    SectionId: string;
 
     onLearnStateChanging: TypedEvent<ChangingEventArgs<number>> = new TypedEvent();
 
@@ -63,7 +63,7 @@ export class Question {
         answers: IAnswer[], 
         learnState: number = 0, 
         module: ModuleTypes, 
-        sectionId: number,
+        sectionId: string,
         difficulty: Difficulty) {
         this.answers = answers;
         this.question = question;

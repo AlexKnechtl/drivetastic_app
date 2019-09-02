@@ -39,7 +39,7 @@ const Home = enhance(({ navigation, moduleStats }: props) => {
                             <Text style={{ ...styles.statisticText, fontSize: 30 }}><Trans>Lern-Statistik</Trans></Text>
                         </View>
                     </View>
-                    {Object.entries(moduleStats).map(([id, stats])=> <ModuleProgress text1={t(id, id)} percentage={stats.progress} />)}
+                    {Object.entries(moduleStats).map(([id, stats])=> <ModuleProgress text1={t(id, id)} percentage={stats.statistics.progress} />)}
                     <TouchableOpacity onPress={() => navigation.navigate("Statistics")} style={styles.button}>
                         <Text style={styles.buttonText}><Trans i18nKey="moreInfos">Mehr erfahren</Trans></Text>
                     </TouchableOpacity>
