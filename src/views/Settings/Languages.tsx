@@ -4,17 +4,29 @@ import { FAB, Language } from 'components';
 import { icons } from 'icons';
 import { colors, LANGUAGES } from 'base';
 import { NavigationScreenProps } from 'react-navigation';
+import { StateType, LogOutAction } from 'core';
+import { connect } from 'react-redux';
+import { useTranslation, Trans } from 'react-i18next';
+import { updateUserDataAction } from 'core/redux/Settings/settingsActions';
 
-const Languages = ({ navigation }: NavigationScreenProps) => {
-    const [selectedIndex, setSelectedIndex] = useState(-1); //TODO: Save and load languages (Also MultiLanguage)
+const mapStateToProps = (state: StateType) => ({
+    user: state.auth.data.user,
+    userData: state.settings
+})
+const mapDispatchToProps = {
+    dispatchUpdateUserData: updateUserDataAction
+}
+type props = NavigationScreenProps & ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps;
+const enhance = connect(mapStateToProps, mapDispatchToProps);
+const Languages = enhance(({ navigation, userData, dispatchUpdateUserData }: props) => {
     return (
         <View style={styles.view}>
             <Text style={styles.title}>Sprache auswählen</Text>
             {LANGUAGES.map((l, i) => {
-                const selected = i == selectedIndex;
+                const selected = l.short == userData.language;
                 return <Language
                     key={i}
-                    onPress={() => setSelectedIndex(selected ? -1 : i)}
+                    onPress={() => dispatchUpdateUserData({language: l.short})}
                     color={selected ? colors.lightBlue : colors.bgGray}
                     textColor={selected ? "#fff" : colors.darkerGray}
                     checkVisibility={selected}
@@ -24,7 +36,7 @@ const Languages = ({ navigation }: NavigationScreenProps) => {
             <FAB action={() => { navigation.navigate("AccountView") }} rotation={180} marginRight={6} icon={icons.Continue} color={"#fff"} borderColor={colors.bgGray} />
         </View>
     )
-}
+})
 
 
 const styles = StyleSheet.create({

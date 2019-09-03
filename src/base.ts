@@ -60,33 +60,40 @@ export const fonts = {
     primary: 'SF UI Display'
 }
 
-export var LANGUAGES: {language: string, image: object, isMultilingual: boolean}[] = [{
+export var LANGUAGES: {language: string, image: object,short: string, isMultilingual: boolean}[] = [{
     language: "Deutsch",
+    short: "de",
     image: Austria,
     isMultilingual: false
 },{
     language: "English",
+    short: "en",
     image: English,
     isMultilingual: false
 },{
     language: "Serbisch",
     image: Serbia,
+    short: "sr",
     isMultilingual: true
 },{
     language: "Turkish",
+    short: "tr",
     image: Turkish,
     isMultilingual: false
 },{
     language: "Hungaria",
     image: Ungarn,
+    short: "hu",
     isMultilingual: true
 },{
     language: "Kroatisch",
+    short: "hr",
     image: Ungarn,
     isMultilingual: false
 },{
     language: "Slowenisch",
     image: Serbia,
+    short: "sl",
     isMultilingual: false
 }];
 
