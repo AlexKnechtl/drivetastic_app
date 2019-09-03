@@ -48,7 +48,7 @@ export const Reg_DriveCode = enhance(class Reg_DriveCode extends Component<props
                     <StatusBar translucent={false} barStyle="dark-content" backgroundColor="#fff" />
                     <IconHeadline color={colors.lightBlue} icon={icons.AddPeople} text="Registration" />
                     <Text style={styles.text}>Dein Drive-Code</Text>
-                    <TextInputContainer marginHorizontal={12}>
+                    <TextInputContainer marginHorizontal={18}>
                         <GreyDrivecodeInput onChangeText={t => this.setState({ driveCode: t })} text={this.state.driveCode} hint="Gib hier deinen 12-stelligen Code ein." />
                     </TextInputContainer>
                     <Text style={styles.errorText}>{this.props.error || (this.props.codeValid && "Code valid!!")}</Text>

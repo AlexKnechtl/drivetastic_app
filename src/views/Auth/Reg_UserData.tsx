@@ -38,7 +38,7 @@ export const Reg_UserData = enhance(class Reg_UserData extends Component<props> 
                     <StatusBar barStyle="dark-content" backgroundColor="#fff" />
                     <StatusBar barStyle="dark-content" backgroundColor="#fff" />
                     <IconHeadline color={colors.lightBlue} icon={icons.AddPeople} text="Registration" />
-                    <TextInputContainer marginHorizontal={20} marginVertical={12}>
+                    <TextInputContainer marginHorizontal={18} marginVertical={12}>
                         <GreyTextInput marginVertical={8} hint="E-Mail" keyboardType="email-address" autoCapitalize="none" onChangeText={(t) => this.setState({ email: t.trim() })} />
                         <GreyTextInput marginVertical={8} hint="Vorname" keyboardType={Platform.OS == "ios" ? "default" : "visible-password"} autoCapitalize="words" onChangeText={(t) => this.setState({ name: t.trim() })} />
                         <PasswortTextInput

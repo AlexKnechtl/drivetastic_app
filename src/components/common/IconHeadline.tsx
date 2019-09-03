@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         alignItems: "center",
         justifyContent: "center",
-        margin: margin.lg,
+        marginVertical: margin.lg,
+        marginHorizontal: 18,
         height: 55
     },
     icon: {
@@ -35,8 +36,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: '#fff',
-        fontWeight: "bold",
-        fontSize: fonts.lg,
+        fontSize: 24,
     },
 });
 

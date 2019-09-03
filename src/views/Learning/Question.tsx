@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, ScrollView, Dimensions } from 'react-native';
+import { View, StyleSheet, ScrollView, Dimensions, StatusBar } from 'react-native';
 import { QuestionPicture, QuestionLayout, Answer, QuestionFAB, QuestionMenu } from 'components';
 import * as core from "core";
 import { Bild } from 'img';
@@ -27,7 +27,7 @@ export class Question extends Component {
     }
 
     render() {
-        const question:QuestionEntity = new core.Question("Wie werden Sie sich hier verhalten?",3981, [
+        const question: QuestionEntity = new core.Question("Wie werden Sie sich hier verhalten?", 3981, [
             new core.Answer("Ich muss hier anhalten", false),
             new core.Answer("Bis zu den Personen fahre ich auf Gefahrensicht", true),
             new core.Answer("Ich muss hier aufgrund der Kinder mein Tempo auf Schrittgeschwindigkeit reduzieren und den Dick in die Hand nehmen.", false),
@@ -37,6 +37,7 @@ export class Question extends Component {
             this.setState({ answerStates: question.answers.map(a => ({ selected: false })) });
         return (
             <View style={styles.view}>
+                <StatusBar barStyle="light-content"/>
                 <InstagramProvider>
                     <ElementContainer style={{ position: "absolute" }}>
                         <QuestionPicture image={Bild} />
@@ -62,7 +63,7 @@ export class Question extends Component {
                         </ScrollView>
                     </TouchThroughWrapper>
                     <View style={styles.fabContainer}>
-                        <QuestionFAB iconLeft={3} onPress={() => this.setState({ shouldValidate: true })} icon={icons.Continue} />
+                        <QuestionFAB iconLeft={3} onPress={() => this.setState({ shouldValidate: !this.state.shouldValidate })} icon={icons.Continue} />
                         <QuestionFAB onPress={() => this.setState({ showMenu: true })} marginRight={12} iconSize={24} size={40} icon={icons.Menu} />
                     </View>
                 </InstagramProvider>

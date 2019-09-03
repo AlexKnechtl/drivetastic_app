@@ -45,9 +45,10 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         width: "100%",
         height: "25%",
-        maxHeight: 160,
+        maxHeight: 140,
         alignContent: "stretch",
-        padding: padding.sm
+        paddingHorizontal: 7,
+        paddingVertical: 12
     },
     logoTextBold: {
         fontSize: fonts.xl,

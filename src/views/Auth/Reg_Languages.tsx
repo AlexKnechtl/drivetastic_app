@@ -21,7 +21,7 @@ export const Reg_Languages = ({ navigation }: NavigationScreenProps) => {
                         key={i}
                         onPress={() => setSelectedIndex(selected ? -1 : i)}
                         color={selected ? colors.lightBlue : colors.bgGray}
-                        textColor={selected ? "#fff" : colors.darkerGray}
+                        textColor={selected ? "#fff" : colors.middleGray}
                         checkVisibility={selected}
                         text={l.language}
                         icon={l.image} />

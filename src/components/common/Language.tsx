@@ -21,7 +21,7 @@ const Language = ({ color, textColor, icon, text, onPress, checkVisibility }: La
                     {text}
                 </Text>
             </View>
-            <Image resizeMode="contain" style={{ height: 30, width: 30, opacity: checkVisibility?1: 0 }} source={icons.CircleCheck} />
+            <Image resizeMode="contain" style={{ height: 24, width: 24, opacity: checkVisibility ? 1 : 0 }} source={icons.CircleCheck} />
         </TouchableOpacity>
     );
 };
@@ -37,9 +37,9 @@ const styles = StyleSheet.create({
         marginHorizontal: 20
     },
     icon: {
-        height: 40,
-        width: 40,
-        marginRight: 12
+        height: 36,
+        width: 36,
+        marginRight: 14
     }
 });
 
