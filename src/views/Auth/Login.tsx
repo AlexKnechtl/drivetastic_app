@@ -11,7 +11,7 @@ import { NavigationScreenProps } from 'react-navigation';
 const mapStateToProps = (state: StateType) => ({
     success: state.auth.login.success,
     error: state.auth.login.error,
-    token: state.auth.token
+    token: state.auth.data.token
 })
 
 const mapDispatchToProps = {

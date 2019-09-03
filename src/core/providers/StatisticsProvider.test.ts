@@ -1,15 +1,13 @@
 import { StatisticsProvider } from "./StatisticsProvider";
 import { Question, Answer, ModuleTypes } from "../../core";
+import { TypedEvent } from "../entities";
 
 function createQuestions(count: number, { learningState = 0, module = "B", sectionid = 0}:
                                         { learningState?: number, module?: ModuleTypes, sectionid?: number} = {}): Question[]{
-    var tmpQ = new Question("QuestionText", 0, 
+    var questions = (Array.apply(null, Array(count))).map((q, id: number)=> {
+        return new Question("QuestionText", id.toString(), 
         Array.apply(null, Array(4)).map((a,i)=> new Answer(`Answer ${i}`, Math.random()>0.5)),
         learningState, module, sectionid, "Easy");
-    var questions = (Array.apply(null, Array(count))).map((q, id)=> {
-        var retQ: Question = Object.assign({}, tmpQ);
-        retQ.Id = id;
-        return retQ;
     });
     return questions;
 }
@@ -68,5 +66,10 @@ describe('StatisticsProvider Test', () => {
         expect(sp.ModuleStatistics["B"].successPropability).toBe(0);
         expect(sp.SectionStatistics[0].progress).toBe(0);
         expect(sp.SectionStatistics[0].successPropability).toBe(0);
+        qs[0].setLearnState(10);
+        expect(sp.ModuleStatistics["B"].progress).toBeGreaterThan(0);
+        expect(sp.ModuleStatistics["B"].successPropability).toBeGreaterThan(0);
+        expect(sp.SectionStatistics[0].progress).toBeGreaterThan(0);
+        expect(sp.SectionStatistics[0].successPropability).toBeGreaterThan(0);
     });
 })

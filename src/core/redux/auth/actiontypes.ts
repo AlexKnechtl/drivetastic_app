@@ -1,4 +1,5 @@
 export const START_LOGIN = "auth/start_login";
+export const START_AUTO_LOGIN = "auth/start_auto_login";
 export const LOGIN_SUCCESS = "auth/login_success";
 export const START_SIGNUP = "auth/start_signup";
 export const SIGNUP_SUCCESS = "auth/signup_success";
@@ -7,3 +8,4 @@ export const CHECK_DRIVECODE_SUCCESS = "auth/check_drivecode_success";
 export const ERROR = "auth/error";
 export const SEND_PASSWORD_RESET_EMAIL = "auth/send_password_reset_email";
 export const SEND_PASSWORD_RESET_EMAIL_SUCCESS = "auth/send_password_reset_email_success";
+export const LOGOUT = "auth/logout";

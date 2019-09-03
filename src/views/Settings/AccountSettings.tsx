@@ -4,29 +4,38 @@ import { InputWithTitle, DismissKeyboard, FAB } from 'components';
 import { NavigationScreenProps } from 'react-navigation';
 import { icons } from 'icons';
 import { colors } from 'base';
+import { StateType, LogOutAction } from 'core';
+import { connect } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
-class AccountSettings extends Component<NavigationScreenProps> {
-    constructor(props: any) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <View style={styles.view}>
-                <DismissKeyboard>
-                    <Text style={styles.title}>Persönliche Daten</Text>
-                    <InputWithTitle title="Vorname" value="Alexander" />
-                    <InputWithTitle title="Nachname" value="Knechtl" />
-                    <InputWithTitle title="Passwort" value="*********" />
-                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("auth") }} activeOpacity={.8} style={styles.logout}>
-                        <Text style={styles.logoutText}>Logout</Text>
-                    </TouchableOpacity>
-                </DismissKeyboard>
-                <FAB action={() => { this.props.navigation.navigate("AccountView") }} rotation={180} marginRight={6} icon={icons.Continue} color={"#fff"} borderColor={colors.bgGray} />
-            </View>
-        )
-    }
+const mapStateToProps = (state: StateType) => ({
+    user: state.auth.data.user,
+    userData: state.settings
+})
+const mapDispatchToProps = {
+    dispatchLogout: LogOutAction
 }
+type props = NavigationScreenProps & ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps;
+
+
+const AccountSettings = connect(mapStateToProps, mapDispatchToProps)(({navigation, dispatchLogout, user, userData}: props) => {
+    const [t, i18n] = useTranslation();
+    return (
+        <View style={styles.view}>
+            <DismissKeyboard>
+                <Text style={styles.title}>Persönliche Daten</Text>
+                <InputWithTitle title={t("Name", "Name")} value={user?user.name:""} />
+                {/*TODO: PLEASE DETERMINE THIS*/}
+                <InputWithTitle title="Other something" value="" />
+                <InputWithTitle title="Really?Passwort" value="*********" />
+                <TouchableOpacity onPress={() => { dispatchLogout(); navigation.navigate("auth"); }} activeOpacity={.8} style={styles.logout}>
+                    <Text style={styles.logoutText}>Logout</Text>
+                </TouchableOpacity>
+            </DismissKeyboard>
+            <FAB action={() => { navigation.navigate("AccountView") }} rotation={180} marginRight={6} icon={icons.Continue} color={"#fff"} borderColor={colors.bgGray} />
+        </View>
+    )
+})
 
 const styles = StyleSheet.create({
     view: {

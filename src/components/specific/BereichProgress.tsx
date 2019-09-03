@@ -18,10 +18,10 @@ const BereichProgress = ({ title, color, erfolgschance, fortschritt }: LogoProps
                 <Text style={styles.text}>{title}</Text>
                 <View style={{ flexDirection: "row" }}>
                     <Image style={styles.icon} source={icons.ErfolgschanceWhite} />
-                    <Text style={styles.text}>{erfolgschance + "%"}</Text>
+                    <Text style={styles.text}>{(erfolgschance*100).toFixed(1) + "%"}</Text>
                 </View>
             </View>
-            <Progress.Bar progress={0.4} borderRadius={12} width={null} height={12} borderWidth={0} style={styles.progressBar} color={"#fff"} unfilledColor={"rgba(255, 255, 255, 0.2)"} />
+            <Progress.Bar progress={fortschritt} borderRadius={12} width={null} height={12} borderWidth={0} style={styles.progressBar} color={"#fff"} unfilledColor={"rgba(255, 255, 255, 0.2)"} />
         </TouchableOpacity>
     );
 };

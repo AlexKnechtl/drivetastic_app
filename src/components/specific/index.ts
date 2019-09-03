@@ -10,6 +10,7 @@ export * from './LearnSpeedBtn';
 export * from './Logo';
 export * from './MainProgress';
 export * from './ModuleProgress';
+export * from './ProgressQuestionMenu';
 export * from './QuestionFAB';
 export * from './QuestionLayout';
 export * from './QuestionPicture';

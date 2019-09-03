@@ -7,6 +7,7 @@ export class DeviceTokenService implements Disposable{
         var user = firebase.auth().currentUser;
         if(user){
             const data = await firebase.database().ref("/users/").child(user.uid).child("currentDevice").once("value");
+            if(!data.val()) return true;
             var currToken = Object.keys(data.val())[0];
             return currToken != deviceToken;
         }

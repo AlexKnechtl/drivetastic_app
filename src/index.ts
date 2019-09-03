@@ -7,3 +7,4 @@ export * from './core';
 export * from './videos';
 export * from './views';
 export * from './base';
+export * from './moduleconfig';

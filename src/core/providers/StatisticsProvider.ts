@@ -1,4 +1,4 @@
-import { Question } from "core/entities";
+import { Question, TypedEvent } from "core/entities";
 
 export type StatisticType = {
     successPropability: number, 
@@ -11,15 +11,28 @@ export type StatisticType = {
 export type WeeklySummary = {
     questionsLearned: number
 };
-
+export type StatChangedType = {
+    module: {
+        moduleID: string, 
+        stats: StatisticType
+    },
+    section: {
+        sectionID: string,
+        stats: StatisticType
+    },
+    weeklySummary: {
+        [day: string]:WeeklySummary
+    }
+}
 export class StatisticsProvider{
     private moduleStatistics: {[moduleId: string]: StatisticType} = {};
-    private sectionStatistics: {[sectionId: number]: StatisticType} = {}
-    private weeklySummary: WeeklySummary[];
+    private sectionStatistics: {[sectionId: string]: StatisticType} = {}
+    private weeklySummary: {[day: string]:WeeklySummary};
     private repetitions: number;
+    private onStatisticsChanged = new TypedEvent<StatChangedType>();
 
     
-    public get WeeklySummary() : WeeklySummary[] {
+    public get WeeklySummary() : {[day: string]:WeeklySummary} {
         return this.weeklySummary;
     }
     
@@ -31,8 +44,11 @@ export class StatisticsProvider{
         return this.sectionStatistics;
     }
     
+    public get OnStatisticsChanged(){
+        return this.onStatisticsChanged;
+    }
 
-    constructor(weeklySummary: WeeklySummary[], repetitionsToHaveQuestionLearned: number){
+    constructor(weeklySummary: {[day: string]:WeeklySummary}, repetitionsToHaveQuestionLearned: number){
         this.weeklySummary = weeklySummary;
         this.repetitions = repetitionsToHaveQuestionLearned;
     }
@@ -58,6 +74,20 @@ export class StatisticsProvider{
         }
         this.calcProgressForStat(m);
         this.calcProgressForStat(s);
+        var today = new Date();
+        var date = today.getFullYear().toString()+today.getMonth().toString()+today.getDate().toString();
+        this.weeklySummary[date] ? this.weeklySummary[date].questionsLearned++: this.weeklySummary[date] = {questionsLearned: 1};
+        this.onStatisticsChanged.emit({
+            module: {
+                moduleID: question.Module,
+                stats: m
+            },
+            section:{
+                sectionID: question.SectionId,
+                stats: s
+            },
+            weeklySummary: this.weeklySummary
+        });
     }
 
     calcProgressForStat(stat: StatisticType){

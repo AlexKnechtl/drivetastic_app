@@ -1,9 +1,15 @@
 import firebase from "firebase";
 import { User } from "core";
+import { ModuleTypes } from "core/entities";
 
 export type UserDataType={
-  language: string,
-  secondLanguage: string|boolean,
+  language?: string,
+  secondLanguage?: string|boolean,
+  studyVelocity?: 2|3|4,
+  darkMode?: boolean,
+  DeuteranopieMode?: boolean,
+  ProtonapieMode?: boolean,
+  enabledModules?: ModuleTypes[]
 } 
 
 export class DataService {
@@ -19,6 +25,14 @@ export class DataService {
     var user = firebase.auth().currentUser
     if(user)
       return firebase.database().ref("/users/").child(user.uid).child("userdata").update({language: mainLanguage, secondLanguage});
+    else
+    throw new Error("No user is logged in!!");
+  }
+
+  async updateUserData(userData: UserDataType){
+    var user = firebase.auth().currentUser
+    if(user)
+      return firebase.database().ref("/users/").child(user.uid).child("userdata").update(userData);
     else
     throw new Error("No user is logged in!!");
   }
