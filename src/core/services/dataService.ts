@@ -3,13 +3,13 @@ import { User } from "core";
 import { ModuleTypes } from "core/entities";
 
 export type UserDataType={
-  language: string,
-  secondLanguage: string|boolean,
-  studyVelocity: 1|2|3,
-  darkMode: boolean,
-  DeuteranopieMode: boolean,
-  ProtonapieMode: boolean,
-  enabledModules: ModuleTypes[]
+  language?: string,
+  secondLanguage?: string|boolean,
+  studyVelocity?: 2|3|4,
+  darkMode?: boolean,
+  DeuteranopieMode?: boolean,
+  ProtonapieMode?: boolean,
+  enabledModules?: ModuleTypes[]
 } 
 
 export class DataService {

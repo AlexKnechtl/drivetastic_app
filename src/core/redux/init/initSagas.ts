@@ -7,6 +7,7 @@ import { TokenProvider } from './TokenProvider';
 import { updateModuleStatsAction, updateSectionStatsAction, updateWeeklySummaryAction } from '../statistics/statisticActions';
 import { eventChannel } from '@redux-saga/core';
 import { StatChangedType } from 'core/providers';
+import { refreshUserDataAction } from '../Settings/settingsActions';
 
 function* initializeFactory({user}: ReturnType<typeof LoginSuccessAction> | ReturnType<typeof SignUpSuccessAction>) {
     try {
@@ -21,6 +22,9 @@ function* initializeFactory({user}: ReturnType<typeof LoginSuccessAction> | Retu
             yield put(updateSectionStatsAction(id, stat));
         }
         yield put(updateWeeklySummaryAction(storageFactory.StatisticsProvider.WeeklySummary));
+        if(!storageFactory.UserData)
+            throw new Error("USERDATA is undefined!!!!");
+        yield put(refreshUserDataAction(storageFactory.UserData));
         yield call(StatsUpdateListener);
     }
     catch (e) {

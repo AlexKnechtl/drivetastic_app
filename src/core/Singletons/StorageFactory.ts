@@ -60,6 +60,10 @@ export class StorageFactory{
         return this.statisticsProvider;
     }
 
+    updateUserData(userData: UserDataType){
+        this.firebaseDataService.updateUserData(userData);
+    }
+
 
     async init(tokenProvider: ITokenProvider) {
         try{

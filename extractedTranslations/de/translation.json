@@ -1,15 +1,25 @@
 {
   "Deine aktuelle": "Deine aktuelle",
+  "Deuteranopie Modus": "Deuteranopie Modus",
+  "Dunkler Modus": "Dunkler Modus",
   "Frage {{count}}": "Frage {{count}}",
+  "Langsam": "Langsam",
   "Lern-Statistik": "Lern-Statistik",
+  "Normal": "Normal",
+  "Protonapie Modus": "Protonapie Modus",
+  "Schnell": "Schnell",
+  "customizeLearningExperience": "Lernerfahrung anpassen",
   "difficulty": {
     "Easy": "Leicht",
     "Hard": "Schwer",
     "Medium": "Mittel"
   },
   "exam": "Prüfung",
+  "learningVelocityDescription": "Die Lerngeschwindigkeit bestimmt wie oft du Fragen zur Einprägung wiederholt bekommst.",
   "moreInfos": "Mehr erfahren",
   "question": "Frage {{count}}",
   "resumeLearning": "Lernerfahrung fortsetzen",
-  "training": "Training"
+  "training": "Training",
+  "visualTweaks": "Optische Anpassungen",
+  "yourLearningVelocity": "Deine Lerngeschwindigkeit"
 }

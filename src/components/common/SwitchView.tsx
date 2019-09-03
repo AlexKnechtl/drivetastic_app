@@ -5,14 +5,16 @@ type SwitchProps = {
     marginBottom?: number,
     bgColor: string,
     textColor: string,
-    title: string;
+    title: string,
+    switched: boolean,
+    onChange:(change: boolean)=>void
 }
 
-const SwitchView = ({ marginBottom = 12, title = " Test", bgColor, textColor }: SwitchProps) => {
+const SwitchView = ({ marginBottom = 12, title = " Test", bgColor, textColor, switched, onChange }: SwitchProps) => {
     return (
         <View style={{ ...styles.switchContainer, marginBottom: marginBottom, backgroundColor: bgColor }}>
             <Text style={{...styles.text, color: textColor}}>{title}</Text>
-            <Switch />
+            <Switch value={switched} onValueChange={onChange} />
         </View>
     );
 };

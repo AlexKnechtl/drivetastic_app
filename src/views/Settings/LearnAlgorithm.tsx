@@ -4,26 +4,31 @@ import { NavigationScreenProps } from 'react-navigation';
 import { FAB, Logo, LearnSpeedBtn } from 'components';
 import { icons } from 'icons';
 import { colors } from 'base';
+import { StateType, LogOutAction } from 'core';
+import { connect } from 'react-redux';
+import { useTranslation, Trans } from 'react-i18next';
+import { updateUserDataAction } from 'core/redux/Settings/settingsActions';
 
-class LearnAlgorithm extends Component<NavigationScreenProps> {
-    state = {
-        pressedSlow: false,
-        pressedNormal: false,
-        pressedFast: false
-    }
+const mapStateToProps = (state: StateType) => ({
+    user: state.auth.data.user,
+    userData: state.settings
+})
+const mapDispatchToProps = {
+    dispatchUpdateUserData: updateUserDataAction
+}
+type props = NavigationScreenProps & ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps;
+const enhance = connect(mapStateToProps, mapDispatchToProps);
 
-    slowPress() {
-        this.setState({ pressedSlow: !this.state.pressedSlow, pressedNormal: false, pressedFast: false });
-    }
-
-    constructor(props: any) {
-        super(props);
-    }
-
-    render() {
+const LearnAlgorithm = enhance(({navigation, userData, dispatchUpdateUserData}:props)=> {
+        const selected = {
+            slow: userData.studyVelocity == 4,
+            middle: userData.studyVelocity == 3,
+            fast: userData.studyVelocity == 2
+        };
+        const [t,i18n] = useTranslation();
         return (
             <View style={styles.view}>
-                <Text style={styles.title}>Lernerfahrung anpassen</Text>
+                <Text style={styles.title}><Trans i18nKey="customizeLearningExperience">Lernerfahrung anpassen</Trans></Text>
                 <View style={styles.header}>
                     <Image style={styles.headerIcon} resizeMode="contain" source={icons.Easy_Learn} />
                     <View>
@@ -34,33 +39,29 @@ class LearnAlgorithm extends Component<NavigationScreenProps> {
                         </Text>
                     </View>
                 </View>
-                <Text style={{ ...styles.title, fontSize: 18, color: colors.darkerGray, marginVertical: 12 }}>Deine Lerngeschwindigkeit</Text>
+                <Text style={{ ...styles.title, fontSize: 18, color: colors.darkerGray, marginVertical: 12 }}><Trans i18nKey="yourLearningVelocity">Deine Lerngeschwindigkeit</Trans></Text>
                 <View style={{ flexDirection: "row" }}>
                         <LearnSpeedBtn
-                            onPress={() => { this.setState({ pressedSlow: !this.state.pressedSlow, pressedNormal: false, pressedFast: false }) }}
-                            textColor={this.state.pressedSlow ? "#fff" : colors.turquoise}
-                            backgroundColor={this.state.pressedSlow ? colors.lightBlue : "#fff"}
-                            icon={this.state.pressedSlow ? icons.SnailWhite : icons.Snail} text="Langsam" />
+                            onPress={() => dispatchUpdateUserData({studyVelocity: 4})}
+                            selected={selected.slow}
+                            icon={selected.slow ? icons.SnailWhite : icons.Snail} text={t("Langsam","Langsam")} />
                         <LearnSpeedBtn
-                            onPress={() => { this.setState({ pressedNormal: !this.state.pressedNormal, pressedSlow: false, pressedFast: false }) }}
-                            textColor={this.state.pressedNormal ? "#fff" : colors.turquoise}
-                            backgroundColor={this.state.pressedNormal ? colors.lightBlue : "#fff"}
-                            icon={this.state.pressedNormal ? icons.DogWhite : icons.Dog} text="Normal" />
+                            onPress={() => dispatchUpdateUserData({studyVelocity: 3})}
+                            selected={selected.middle}
+                            icon={selected.middle ? icons.DogWhite : icons.Dog} text={t("Normal","Normal")} />
                         <LearnSpeedBtn
-                            onPress={() => { this.setState({ pressedFast: !this.state.pressedFast, pressedNormal: false, pressedSlow: false }) }}
-                            textColor={this.state.pressedFast ? "#fff" : colors.turquoise}
-                            backgroundColor={this.state.pressedFast ? colors.lightBlue : "#fff"}
-                            icon={this.state.pressedFast ? icons.CheetahWhite : icons.Cheetah} text="Schnell" />
+                            onPress={() => dispatchUpdateUserData({studyVelocity: 2})}
+                            selected={selected.fast}
+                            icon={selected.fast ? icons.CheetahWhite : icons.Cheetah} text={t("Schnell","Schnell")} />
                     </View>
                     <View style={styles.InfoView}>
                         <Image style={{ width: 18, height: 18, marginRight: 8 }} source={icons.Info} />
-                        <Text style={{ fontSize: 14, color: colors.darkerGray, width: "90%" }}>Die Lerngeschwindigkeit bestimmt wie oft du Fragen zur Einprägung wiederholt bekommst.</Text>
+                        <Text style={{ fontSize: 14, color: colors.darkerGray, width: "90%" }}><Trans i18nKey="learningVelocityDescription">Die Lerngeschwindigkeit bestimmt wie oft du Fragen zur Einprägung wiederholt bekommst.</Trans></Text>
                     </View>
-                <FAB action={() => { this.props.navigation.navigate("AccountView") }} rotation={180} marginRight={6} icon={icons.Continue} color={"#fff"} borderColor={colors.bgGray} />
+                <FAB action={() => { navigation.navigate("AccountView") }} rotation={180} marginRight={6} icon={icons.Continue} color={"#fff"} borderColor={colors.bgGray} />
             </View>
         )
-    }
-}
+    })
 
 const styles = StyleSheet.create({
     view: {

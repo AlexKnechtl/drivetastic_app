@@ -5,12 +5,13 @@ import { colors } from 'base';
 type ButtonProps = {
     icon: object,
     text: string,
-    backgroundColor: string,
-    textColor: string,
+    selected: boolean,
     onPress: () => void
 }
 
-const LearnSpeedBtn = ({ icon, text, backgroundColor, textColor, onPress }: ButtonProps) => {
+const LearnSpeedBtn = ({ icon, text, onPress, selected }: ButtonProps) => {
+    const backgroundColor = selected ? colors.lightBlue : "#fff";
+    const textColor = selected? "#fff" : colors.turquoise;
     return (
         <TouchableOpacity onPress={onPress} activeOpacity={.8} style={{ ...styles.buttton, backgroundColor: backgroundColor }}>
             <Image resizeMode="contain" style={styles.icon} source={icon} />
