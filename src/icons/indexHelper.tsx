@@ -52,3 +52,4 @@ export const Company = require('./company.png');
 export const CodingMagic = require('./coding_magic.png'); 
 export const Website = require('./website.png'); 
 export const Support = require('./support.png'); 
+export const Motorbike = require('./motorbike.png'); 

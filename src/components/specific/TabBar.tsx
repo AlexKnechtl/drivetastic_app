@@ -4,6 +4,31 @@ import { MaterialTopTabBar } from 'react-navigation'
 import { TabbarBg } from '../../img/';
 import { colors } from 'base';
 import { Logo } from '../specific';
+import {icons} from "icons";
+
+const range = 1;
+const duration = 50;
+
+const shake = new Animated.ValueXY({x:0,y:0});
+Animated.loop(
+    Animated.sequence([
+        Animated.timing(shake, {
+            toValue: {x: range, y: range },
+            duration: duration
+        }),
+        Animated.timing(shake, {
+            toValue: {x: -range, y: -range },
+            duration: 2*duration
+        }),
+        Animated.timing(shake, {
+            toValue: {x: 0, y: 0 },
+            duration: duration
+        })
+    ])
+    , {
+        iterations: 99999
+    }
+).start();
 
 const TabBar = (props: any) => {
     const backgroundColor = props.position.interpolate({
@@ -15,11 +40,21 @@ const TabBar = (props: any) => {
         inputRange: [0, 2],
         outputRange: [0, -deviceWidth * 0.2]
     });
+    const positionM = props.position.interpolate({
+        inputRange: [0, 2],
+        outputRange: [deviceWidth *0.1
+            , deviceWidth * 0.8]
+    });
+    const rotate = shake.x.interpolate({
+        inputRange: [-range/2, range/2],
+        outputRange: ["-10deg", "10deg"]
+    })
     return (
         <View>
             <StatusBar barStyle="light-content" translucent={true} backgroundColor="#0000" />
             <View style={[styles.background]}>
                 <Animated.Image source={TabbarBg} style={{ flex: 1, width: deviceWidth * 1.2, transform: [{ translateX: position }] }} />
+                <Animated.Image source={icons.Motorbike} style={{position: "absolute", bottom: 0, width: deviceWidth * 0.1, height: "auto", aspectRatio: 1, transform: [{ translateX: positionM }, {translateY: shake.y}, {rotateX: rotate}] }} />
                 <SafeAreaView style={[styles.innerView, styles.background, styles.fixed]}>
                     <Logo paddingHorizontal={20} fontSize={36} paddingVertical={6} />
                 </SafeAreaView>
