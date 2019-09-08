@@ -133,25 +133,25 @@ const DebugNav = createMaterialTopTabNavigator({
     Statistics,
     Reg_Multilanguage
 }, {
-    swipeEnabled: true,
-    tabBarComponent: (({navigation}: MaterialTopTabBarProps) =>
-        <View >
-            <Text style={{alignSelf: "center", fontSize: 30}}>{navigation.state.routes[navigation.state.index].routeName}</Text>
-            <Text style={{alignSelf: "center"}}>View {navigation.state.index+1} of {navigation.state.routes.length}</Text>
-        </View>),
-    tabBarOptions: {
-        upperCaseLabel: false,
-        indicatorStyle: {
-            backgroundColor: "#fff",
-            height: 2,
-            marginBottom: 8
-        },
-        labelStyle: {
-            fontSize: 18,
-            fontWeight: "bold"
+        swipeEnabled: true,
+        tabBarComponent: (({ navigation }: MaterialTopTabBarProps) =>
+            <View >
+                <Text style={{ alignSelf: "center", fontSize: 30 }}>{navigation.state.routes[navigation.state.index].routeName}</Text>
+                <Text style={{ alignSelf: "center" }}>View {navigation.state.index + 1} of {navigation.state.routes.length}</Text>
+            </View>),
+        tabBarOptions: {
+            upperCaseLabel: false,
+            indicatorStyle: {
+                backgroundColor: "#fff",
+                height: 2,
+                marginBottom: 8
+            },
+            labelStyle: {
+                fontSize: 18,
+                fontWeight: "bold"
+            }
         }
-    }
-})
+    })
 
 const rootNavigator = createSwitchNavigator({
     auth,
