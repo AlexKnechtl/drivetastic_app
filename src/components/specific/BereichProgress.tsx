@@ -1,7 +1,6 @@
 import React from 'react'
 import { TouchableOpacity, StyleSheet, Text, View, Image } from 'react-native';
 import * as Progress from 'react-native-progress';
-import { colors } from 'base';
 import { icons } from 'icons';
 
 type LogoProps = {
@@ -32,7 +31,6 @@ const styles = StyleSheet.create({
         marginBottom: 12,
         paddingHorizontal: 12,
         paddingVertical: 10,
-        backgroundColor: colors.lightBlue
     },
     progressBar: {
         width: "100%"

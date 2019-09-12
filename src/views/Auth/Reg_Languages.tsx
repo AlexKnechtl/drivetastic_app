@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { StyleSheet, Image, Text, SafeAreaView, Animated, StatusBar } from 'react-native';
 import { IconHeadline, FAB, Language } from 'components/common';
-import { colors, fonts, dimensions, LANGUAGES } from 'base';
+import { fonts, dimensions, LANGUAGES, ThemeContext } from 'base';
 import { icons } from '../../icons';
 import { NavigationScreenProps } from 'react-navigation';
 import { DataService } from 'core/services/dataService';
 
 export const Reg_Languages = ({ navigation }: NavigationScreenProps) => {
     const [selectedIndex, setSelectedIndex] = useState(-1);
+    const colors = useContext(ThemeContext);
     return (
         <SafeAreaView style={styles.view}>
             <StatusBar translucent={false} />
             <IconHeadline color={colors.lightBlue} icon={icons.AddPeople} text="Registration" />
             <Image resizeMode="contain" style={styles.icon} source={icons.World} />
-            <Text style={styles.text}>Wähle deine Sprache</Text>
+            <Text style={[styles.text, {color: colors.middleGray}]}>Wähle deine Sprache</Text>
             <Animated.ScrollView>
                 {LANGUAGES.map((l, i) => {
                     const selected = i == selectedIndex;
@@ -47,7 +48,6 @@ const styles = StyleSheet.create({
         flex: 1
     },
     text: {
-        color: colors.middleGray,
         fontSize: fonts.lg,
         width: "100%",
         fontWeight: "bold",

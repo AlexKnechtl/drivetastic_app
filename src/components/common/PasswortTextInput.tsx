@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { View, StyleSheet, TextInput, Image, TouchableOpacity, Platform } from 'react-native';
-import { fonts, colors } from 'base';
+import { fonts, ThemeContext } from 'base';
 import { icons } from '../../icons';
 
 type PasswortProps = {
@@ -13,8 +13,9 @@ type PasswortProps = {
 
 const PasswortTextInput = ({ hint, value, onChangeText, marginVertical }: PasswortProps) => {
     const [passwordVisible, setPasswordVisible] = useState(false);
+    const colors = useContext(ThemeContext);
     return (
-        <View style={{ ...styles.inputContainer, marginVertical: marginVertical }}>
+        <View style={{ ...styles.inputContainer, marginVertical: marginVertical, backgroundColor: colors.bgGray }}>
             <TouchableOpacity activeOpacity={.6} onPress={() => setPasswordVisible(!passwordVisible)}>
                 <Image resizeMode="contain" style={styles.icon} source={icons.Eye} />
             </TouchableOpacity>
@@ -35,7 +36,6 @@ const PasswortTextInput = ({ hint, value, onChangeText, marginVertical }: Passwo
 const styles = StyleSheet.create({
     inputContainer: {
         flexDirection: "row-reverse",
-        backgroundColor: colors.bgGray,
         borderRadius: 10,
         width: "100%",
         paddingHorizontal: 8,

@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
-import { colors } from 'base';
 import { IAnswer } from 'core';
 import { CircleCheck, False, ThumbsUp } from 'icons/indexHelper';
+import { ThemeContext } from 'base';
 
 
 type HeadlineProps = {
@@ -13,6 +13,7 @@ type HeadlineProps = {
 }
 
 const Answer = ({ onPress, selected = false, shouldValidate, answer }: HeadlineProps) => {
+    const colors = useContext(ThemeContext);
     let background = colors.questionBG, icon = undefined, borderWidth = 0, fontColor = "#000", iconSize = 24;
 
     if (selected) {
@@ -72,4 +73,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export { Answer };
+export { Answer as AnswerView };

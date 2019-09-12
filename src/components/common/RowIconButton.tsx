@@ -2,10 +2,10 @@ import React from 'react'
 import { StyleSheet, Image, Text, TouchableOpacity, View } from 'react-native';
 
 type HeadlineProps = {
-    flex: number,
-    rowDirection?: string,
-    marginRight: number,
-    rotation: number,
+    flex?: number,
+    rowDirection?: "row" | "row-reverse" | "column" | "column-reverse",
+    marginRight?: number,
+    rotation?: number,
     icon: object,
     text: string,
     onPress: () => void

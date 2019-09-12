@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import { colors } from 'base';
 import { ColoredIconHeader } from 'components';
 import { icons } from 'icons';
 
 import { connect } from 'react-redux';
 import { StateType, StorageFactory } from 'core';
 import { NavigationScreenProps } from 'react-navigation';
+import { ThemeContext } from 'base';
 
 const mapStateToProps = (state: StateType) => ({
     weeklySummary: state.statistics.weeklySummary
@@ -18,6 +18,7 @@ type props = NavigationScreenProps & ReturnType<typeof mapStateToProps> & typeof
 const enhance = connect(mapStateToProps, mapDispatchToProps);
 
 const Statistics = enhance(({weeklySummary} : props) => {
+    const colors = useContext(ThemeContext);
     var dates = Object.keys(weeklySummary).sort(); // Das sind die Daten dazu. BSP: ["2019725", "2019726", "2019727", "2019728"...]
     const dataPoints = dates.slice(dates.length-8).map(k=> weeklySummary[k]); // Das sind die einzelnen Values... Also die Fragen Pro Tag
     return (

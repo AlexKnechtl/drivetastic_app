@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import { View, StyleSheet, Text, ScrollView, TouchableOpacity, ImageBackground, StatusBar } from 'react-native';
 import { icons } from '../../icons';
-import { colors } from 'base';
 import { IconButton, LearnButton } from '../../components';
 import { ModuleProgress } from 'components/specific/ModuleProgress';
 import { NavigationScreenProps } from 'react-navigation';
 import { Trans, useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { StateType, StorageFactory } from 'core';
+import { ThemeContext } from 'base';
 
 const mapStateToProps = (state: StateType) => ({
     moduleStats: state.statistics.modules
@@ -22,6 +22,7 @@ const Home = enhance(({ navigation, moduleStats }: props) => {
     // const moduleName = "Grundwissen";
     // const ModulePercentage = 0.7365;
     const [t, i18n] = useTranslation();
+    const colors = useContext(ThemeContext);
     return (
         <ScrollView>
             <StatusBar barStyle="dark-content"/>
@@ -31,7 +32,7 @@ const Home = enhance(({ navigation, moduleStats }: props) => {
                     <IconButton onPress={() => navigation.navigate("TrainingView")} color={colors.lightBlue} icon={icons.Training} text={t("training", { defaultValue: "Training" })} />
                     <IconButton onPress={() => navigation.navigate("ExamView")} color={colors.lightPurple} icon={icons.Exam} text={t("exam", { defaultValue: "Prüfung" })} />
                 </View>
-                <View style={styles.statisticsView}>
+                <View style={[styles.statisticsView, {backgroundColor: colors.lightGreen}]}>
                     <View style={{ flexDirection: "row", marginBottom: 8, paddingLeft: 12 }}>
                         <ImageBackground source={icons.Statistic} style={{ aspectRatio: 1, marginVertical: 7 }} />
                         <View style={{ marginLeft: 12 }}>
@@ -41,7 +42,7 @@ const Home = enhance(({ navigation, moduleStats }: props) => {
                     </View>
                     {Object.entries(moduleStats).map(([id, stats])=> <ModuleProgress text1={t(id, id)} percentage={stats.statistics.progress} />)}
                     <TouchableOpacity onPress={() => navigation.navigate("Statistics")} style={styles.button}>
-                        <Text style={styles.buttonText}><Trans i18nKey="moreInfos">Mehr erfahren</Trans></Text>
+                        <Text style={[styles.buttonText, {color: colors.lightGreen}]}><Trans i18nKey="moreInfos">Mehr erfahren</Trans></Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -62,7 +63,6 @@ const styles = StyleSheet.create({
     },
     statisticsView: {
         flex: 0,
-        backgroundColor: colors.lightGreen,
         marginHorizontal: 14,
         borderRadius: 10,
         padding: 12
@@ -84,7 +84,6 @@ const styles = StyleSheet.create({
         borderRadius: 8
     },
     buttonText: {
-        color: colors.lightGreen,
         fontSize: 16,
         fontWeight: "bold"
     }

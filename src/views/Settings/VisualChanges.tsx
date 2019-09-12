@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { SwitchView, FAB } from 'components';
-import { colors } from 'base';
 import { NavigationScreenProps } from 'react-navigation';
 import { icons } from 'icons';
 import { StateType, LogOutAction } from 'core';
 import { connect } from 'react-redux';
 import { useTranslation, Trans } from 'react-i18next';
 import { updateUserDataAction } from 'core/redux/Settings/settingsActions';
+import { ThemeContext } from 'base';
 
 const mapStateToProps = (state: StateType) => ({
     user: state.auth.data.user,
@@ -20,6 +20,7 @@ type props = NavigationScreenProps & ReturnType<typeof mapStateToProps> & typeof
 const enhance = connect(mapStateToProps, mapDispatchToProps);
 const VisualChanges = enhance(({ navigation, userData, dispatchUpdateUserData }: props) => {
     const [t] = useTranslation();
+    const colors = useContext(ThemeContext);
     return (
         <View style={styles.view}>
             <Text style={styles.title}><Trans i18nKey="visualTweaks">Optische Anpassungen</Trans></Text>

@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { View, StyleSheet, TextInput, Platform } from 'react-native';
-import { fonts, colors } from 'base';
+import { fonts, ThemeContext } from 'base';
 
 type InputProps = {
     hint: string,
@@ -20,8 +20,9 @@ export function MaskText(text: string, mask = "XXXX - XXXX - XXXX"){
 
 export const GreyDrivecodeInput = ({ text = "", hint, onChangeText = a=>null, marginVertical }: InputProps) => {
     const [value, setValue] = useState("");
+    const colors = useContext(ThemeContext);
     return (
-        <View style={{ ...styles.inputContainer, marginVertical }}>
+        <View style={{ ...styles.inputContainer, backgroundColor: colors.bgGray, marginVertical }}>
             <TextInput
                 style={{ width: "100%", textAlign: "center", height: "100%" }}
                 placeholder={hint}
@@ -37,7 +38,6 @@ export const GreyDrivecodeInput = ({ text = "", hint, onChangeText = a=>null, ma
 const styles = StyleSheet.create({
     inputContainer: {
         flexDirection: "row",
-        backgroundColor: colors.bgGray,
         borderRadius: 10,
         width: "100%",
         paddingHorizontal: 8,

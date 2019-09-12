@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { TouchableOpacity, StyleSheet, Image, Text } from 'react-native';
-import { colors } from 'base';
+import { ThemeContext } from 'index';
 
 type ButtonProps = {
     icon: object,
@@ -10,6 +10,7 @@ type ButtonProps = {
 }
 
 const LearnSpeedBtn = ({ icon, text, onPress, selected }: ButtonProps) => {
+    const colors = useContext(ThemeContext);
     const backgroundColor = selected ? colors.lightBlue : "#fff";
     const textColor = selected? "#fff" : colors.turquoise;
     return (
@@ -30,8 +31,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         margin: 7,
-        borderWidth: 3,
-        borderColor: colors.lightBlue
+        borderWidth: 3
     },
     icon: {
         height: "48%",
@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
         marginBottom: 6
     },
     text: {
-        color: colors.turquoise,
         fontWeight: "bold",
         fontSize: 18,
         width: "100%",

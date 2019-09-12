@@ -1,27 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { NavigationScreenProps } from 'react-navigation';
 import { FAB } from 'components';
 import { icons } from 'icons';
-import { colors } from 'base';
+import { ThemeContext } from 'base';
 
-class Modules extends Component<NavigationScreenProps> {
-    state = {
-
-    }
-
-    constructor(props: any) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <View style={styles.view}>
-                <Text style={styles.title}>Modules</Text>
-                <FAB action={() => { this.props.navigation.navigate("AccountView") }} rotation={180} marginRight={6} icon={icons.Continue} color={"#fff"} borderColor={colors.bgGray} />
-            </View>
-        )
-    }
+const Modules = ({ navigation }: NavigationScreenProps) => {
+    const colors = useContext(ThemeContext);
+    return (
+        <View style={styles.view}>
+            <Text style={styles.title}>Modules</Text>
+            <FAB action={() => { navigation.navigate("AccountView") }} rotation={180} marginRight={6} icon={icons.Continue} color={"#fff"} borderColor={colors.bgGray} />
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({

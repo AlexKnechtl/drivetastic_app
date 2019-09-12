@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { View, StyleSheet, TextInput, Text } from 'react-native';
-import { fonts, colors } from 'base';
+import { fonts, ThemeContext } from 'base';
 
 type InputProps = {
     title: string,
@@ -8,8 +8,9 @@ type InputProps = {
 }
 
 const InputWithTitle = ({ value, title }: InputProps) => {
+    const colors = useContext(ThemeContext);
     return (
-        <View style={{ ...styles.inputContainer }}>
+        <View style={{ ...styles.inputContainer, backgroundColor: colors.bgGray,}}>
             <Text style={styles.title}>{title}</Text>
             <TextInput style={{ width: "70%", height: "100%" }} autoCorrect={false}>
                 {value}
@@ -21,7 +22,6 @@ const InputWithTitle = ({ value, title }: InputProps) => {
 const styles = StyleSheet.create({
     inputContainer: {
         flexDirection: "row",
-        backgroundColor: colors.bgGray,
         borderRadius: 10,
         width: "100%",
         paddingHorizontal: 8,

@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
 import { icons } from '../../icons';
-import { colors, fonts, dimensions } from 'base';
+import { fonts, dimensions } from 'base';
 
 type CheckProps = {
     color: string,
@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
         maxWidth: "90%"
     },
     text: {
-        color: colors.darkerGray,
         fontSize: fonts.xs
     },
     icon: {

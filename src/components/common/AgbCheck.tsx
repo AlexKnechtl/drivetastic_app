@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native';
 import { icons } from '../../icons';
-import { colors, fonts } from 'base';
+import { fonts, ThemeContext } from 'base';
 
 type CheckProps = {
     color: string,
@@ -11,17 +11,18 @@ type CheckProps = {
 }
 
 const AgbCheck = ({ color, borderColor, borderWidth, onPress }: CheckProps) => {
+    const context = useContext(ThemeContext);
     return (
         <View style={{ ...styles.checkContainer, borderColor: borderColor, borderWidth: borderWidth }}>
             <TouchableOpacity onPress={onPress} activeOpacity={.6} style={{ ...styles.checkbox, backgroundColor: color, borderWidth: borderWidth, borderColor: borderColor }} >
                 <Image resizeMode="contain" style={styles.checkIcon} source={icons.Check} />
             </TouchableOpacity>
             <Text>
-                <Text style={styles.text}>Ich habe die{" "}</Text>
-                <Text style={styles.textUnderline}>Allgemeinen Geschäftsbedingungen{"\n"}</Text>
-                <Text style={styles.text}>und die{" "}</Text>
+                <Text style={[styles.text, {color: context.darkerGray}]}>Ich habe die{" "}</Text>
+                <Text style={[styles.textUnderline, {color: context.darkerGray, textDecorationColor: context.darkerGray}]}>Allgemeinen Geschäftsbedingungen{"\n"}</Text>
+                <Text style={[styles.text, {color: context.darkerGray}]}>und die{" "}</Text>
                 <Text style={styles.textUnderline}>Sicherheitsrichtlinien{" "}</Text>
-                <Text style={styles.text}>von Drivetastic{"\n"}gelesen, verstanden und akzeptiere sie.</Text>
+                <Text style={[styles.text, {color: context.darkerGray}]}>von Drivetastic{"\n"}gelesen, verstanden und akzeptiere sie.</Text>
             </Text>
         </View >
     );
@@ -51,14 +52,11 @@ const styles = StyleSheet.create({
         width: 15
     },
     textUnderline: {
-        color: colors.darkerGray,
         textDecorationLine: "underline",
-        textDecorationColor: colors.darkerGray,
         fontSize: fonts.xs,
         fontWeight: "bold"
     },
     text: {
-        color: colors.darkerGray,
         fontSize: fonts.xs
     }
 });

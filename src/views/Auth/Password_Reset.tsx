@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, SafeAreaView, Text } from 'react-native';
 
 import { IconHeadline, GreyTextInput, TextInputContainer, FAB } from 'components/common';
-import { colors, fonts } from 'base';
+import {  fonts, ThemeContext } from 'base';
 import { icons } from '../../icons';
 import { connect } from 'react-redux';
 import { StateType, SendPasswordResetEmailAction } from 'core';
@@ -24,16 +24,17 @@ export const PasswordReset = enhance(class Login extends Component<props> {
         email: "",
     }
 
+    static contextType = ThemeContext;
     render() {
         return (
             <SafeAreaView style={styles.view}>
-                <IconHeadline color={colors.lightPurple} icon={icons.Lock} text="Passwort zurücksetzen" />
+                <IconHeadline color={this.context.lightPurple} icon={icons.Lock} text="Passwort zurücksetzen" />
                 <TextInputContainer marginHorizontal={20} marginVertical={14}>
                     <GreyTextInput marginVertical={8} placeholder="E-Mail" keyboardType="email-address" autoCapitalize="none" onChangeText={(t) => this.setState({ email: t.trim() })} />
                     <Text style={styles.text}>Gib die E-Mail-Adresse ein, mit der du dein Drivetastic Konto erstellt hast. So können wir dir einen Link zum Zurücksetzen schicken.</Text>
                 </TextInputContainer>
-                <Text style={styles.errorText}>{this.props.error || (this.props.success && "Email sent!")}</Text>
-                <FAB marginLeft={4} icon={icons.Continue} color={"#fff"} borderColor={colors.bgGray} action={() => this.props.dispatchSendEmail(this.state.email)} />
+                <Text style={[styles.errorText, {color: this.context.errorRed}]}>{this.props.error || (this.props.success && "Email sent!")}</Text>
+                <FAB marginLeft={4} icon={icons.Continue} color={"#fff"} borderColor={this.context.bgGray} action={() => this.props.dispatchSendEmail(this.state.email)} />
             </SafeAreaView>
         )
     }
@@ -51,7 +52,6 @@ const styles = StyleSheet.create({
         marginVertical: 12
     },
     errorText: {
-        color: colors.errorRed,
         fontSize: fonts.lg,
         width: "100%",
         textAlign: "center",

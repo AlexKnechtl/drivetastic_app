@@ -3,7 +3,7 @@ import { StyleSheet, SafeAreaView, Text, Platform, StatusBar } from 'react-nativ
 import HideWithKeyboard from 'react-native-hide-with-keyboard';
 
 import { IconHeadline, GreyTextInput, TextInputContainer, FAB, AgbCheck, PasswortTextInput, DismissKeyboard } from 'components/common';
-import { colors, fonts } from 'base';
+import { fonts, ThemeContext } from 'base';
 import { icons } from '../../icons';
 import { NavigationScreenProps } from 'react-navigation';
 import { StateType, StartSignupAction } from 'core';
@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 const mapStateToProps = (state: StateType) => ({
     success: state.auth.signup.success,
     error: state.auth.signup.error,
-    token: state.auth.token
+    token: state.auth.data.token
 })
 
 const mapDispatchToProps = {
@@ -30,6 +30,8 @@ export const Reg_UserData = enhance(class Reg_UserData extends Component<props> 
         name: ""
     }
 
+    static contextType = ThemeContext;
+
     render() {
         this.props.success && this.props.navigation.navigate("tutorial");
         return (
@@ -37,7 +39,7 @@ export const Reg_UserData = enhance(class Reg_UserData extends Component<props> 
                 <DismissKeyboard>
                     <StatusBar barStyle="dark-content" backgroundColor="#fff" />
                     <StatusBar barStyle="dark-content" backgroundColor="#fff" />
-                    <IconHeadline color={colors.lightBlue} icon={icons.AddPeople} text="Registration" />
+                    <IconHeadline color={this.context.lightBlue} icon={icons.AddPeople} text="Registration" />
                     <TextInputContainer marginHorizontal={18} marginVertical={12}>
                         <GreyTextInput marginVertical={8} hint="E-Mail" keyboardType="email-address" autoCapitalize="none" onChangeText={(t) => this.setState({ email: t.trim() })} />
                         <GreyTextInput marginVertical={8} hint="Vorname" keyboardType={Platform.OS == "ios" ? "default" : "visible-password"} autoCapitalize="words" onChangeText={(t) => this.setState({ name: t.trim() })} />
@@ -48,12 +50,12 @@ export const Reg_UserData = enhance(class Reg_UserData extends Component<props> 
                     <HideWithKeyboard>
                         <AgbCheck
                             onPress={() => { this.setState({ checked: !this.state.checked }) }}
-                            color={this.state.checked ? colors.lightBlue : "#fff"}
+                            color={this.state.checked ? this.context.lightBlue : "#fff"}
                             borderColor={"#D5D5D5"}
                             borderWidth={1} />
                     </HideWithKeyboard>
                     <Text style={{ color: "#f00" }}>{this.props.error || (this.props.success && this.props.navigation.navigate("tutorial"))}</Text>
-                    <FAB marginLeft={4} icon={icons.Continue} color={"#fff"} borderColor={colors.bgGray}
+                    <FAB marginLeft={4} icon={icons.Continue} color={"#fff"} borderColor={this.context.bgGray}
                         action={() => this.state.checked && this.props.dispatchSignUp({ email: this.state.email, password: this.state.password, name: this.state.name, driveCode: this.props.token })} />
                 </DismissKeyboard>
             </SafeAreaView>
@@ -64,13 +66,6 @@ export const Reg_UserData = enhance(class Reg_UserData extends Component<props> 
 const styles = StyleSheet.create({
     view: {
         flex: 1
-    },
-    text: {
-        color: colors.bgGray,
-        fontSize: fonts.lg,
-        width: "100%",
-        textAlign: "center",
-        marginVertical: 16
     },
     buttonContainer: {
         marginLeft: "22%",

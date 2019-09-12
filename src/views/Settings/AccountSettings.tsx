@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { InputWithTitle, DismissKeyboard, FAB } from 'components';
 import { NavigationScreenProps } from 'react-navigation';
 import { icons } from 'icons';
-import { colors } from 'base';
 import { StateType, LogOutAction } from 'core';
 import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { ThemeContext } from 'base';
 
 const mapStateToProps = (state: StateType) => ({
     user: state.auth.data.user,
@@ -20,6 +20,7 @@ type props = NavigationScreenProps & ReturnType<typeof mapStateToProps> & typeof
 
 const AccountSettings = connect(mapStateToProps, mapDispatchToProps)(({navigation, dispatchLogout, user, userData}: props) => {
     const [t, i18n] = useTranslation();
+    const colors = useContext(ThemeContext);
     return (
         <View style={styles.view}>
             <DismissKeyboard>
@@ -28,7 +29,7 @@ const AccountSettings = connect(mapStateToProps, mapDispatchToProps)(({navigatio
                 {/*TODO: PLEASE DETERMINE THIS*/}
                 <InputWithTitle title="Other something" value="" />
                 <InputWithTitle title="Really?Passwort" value="*********" />
-                <TouchableOpacity onPress={() => { dispatchLogout(); navigation.navigate("auth"); }} activeOpacity={.8} style={styles.logout}>
+                <TouchableOpacity onPress={() => { dispatchLogout(); navigation.navigate("auth"); }} activeOpacity={.8} style={[styles.logout, {backgroundColor: colors.middleGray}]}>
                     <Text style={styles.logoutText}>Logout</Text>
                 </TouchableOpacity>
             </DismissKeyboard>
@@ -55,7 +56,6 @@ const styles = StyleSheet.create({
         marginTop: 12,
         paddingHorizontal: 30,
         justifyContent: "center",
-        backgroundColor: colors.middleGray,
         height: 50
     },
     logoutText: {

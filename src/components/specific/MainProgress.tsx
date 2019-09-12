@@ -1,6 +1,6 @@
 import React from 'react'
 import { TouchableOpacity, StyleSheet, Text, View, Image } from 'react-native';
-import { padding, colors } from 'base';
+import { padding } from 'base';
 import * as Progress from 'react-native-progress';
 
 type ProgressProps = {

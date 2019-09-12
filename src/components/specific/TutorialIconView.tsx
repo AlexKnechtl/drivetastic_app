@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { View, StyleSheet, Image, Text } from 'react-native';
-import { colors, dimensions } from 'base';
+import { dimensions, ThemeContext } from 'base';
 
 type ButtonProps = {
     title: string,
@@ -9,11 +9,12 @@ type ButtonProps = {
 }
 
 const TutorialIconView = ({ title, icon, text }: ButtonProps) => {
+    const colors = useContext(ThemeContext);
     return (
-        <View style={styles.background}>
+        <View style={[styles.background, {backgroundColor: colors.bgGray}]}>
             <Image resizeMode="contain" style={styles.icon} source={icon} />
-            <Text style={styles.title}>{title}</Text>
-            <Text style={styles.text}>{text}</Text>
+            <Text style={[styles.title, {color: colors.darkerGray}]}>{title}</Text>
+            <Text style={[styles.text, {color: colors.darkerGray}]}>{text}</Text>
         </View>
     );
 };
@@ -21,7 +22,6 @@ const TutorialIconView = ({ title, icon, text }: ButtonProps) => {
 const styles = StyleSheet.create({
     background: {
         borderRadius: 10,
-        backgroundColor: colors.bgGray,
         alignItems: "center",
         marginHorizontal: 24,
         marginTop: 12,
@@ -34,14 +34,12 @@ const styles = StyleSheet.create({
         marginBottom: 12
     },
     title: {
-        color: colors.darkerGray,
         fontSize: 28,
         fontWeight: "bold",
         width: "100%",
         textAlign: "center"
     },
     text: {
-        color: colors.darkerGray,
         fontSize: 16,
         width: "100%",
         textAlign: "center"

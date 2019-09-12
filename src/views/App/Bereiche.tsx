@@ -1,12 +1,12 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useContext } from 'react';
 import { View, StyleSheet, ScrollView, Text } from 'react-native';
 import { MainProgress, BereichProgress, Explanation } from '../../components'
 import { icons } from 'icons';
-import { colors } from 'base';
 import { StateType } from 'core';
 import { NavigationScreenProps } from 'react-navigation';
 import { connect } from 'react-redux';
 import { useTranslation, Trans } from 'react-i18next';
+import { ThemeContext } from 'base';
 
 
 const mapStateToProps = (state: StateType) => ({
@@ -22,6 +22,7 @@ const Bereiche = ({moduleStats,}:props) => {
     const [t, i18n] = useTranslation();
     const modules = Object.entries(moduleStats);
     const [ProgressExplanationVisible, setProgressExplanationVisible] = useState(false);
+    const colors = useContext(ThemeContext);
     const [SuccessPropabilityExplanationVisible, setSuccessPropabilityExplanationVisible] = useState(false);
     return (
         <ScrollView>

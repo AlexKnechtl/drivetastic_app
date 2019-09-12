@@ -1,20 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { colors } from 'base';
+import { ThemeContext } from 'base';
 
 type InputProps = {
     iconSize?: number,
     size?: number,
-    color: string,
-    marginRight: number,
-    iconLeft: number,
+    marginRight?: number,
+    iconLeft?: number,
     icon: object,
     onPress: () => void
 }
 
-const QuestionFAB = ({ marginRight, icon, iconLeft, onPress, size = 64, iconSize = 32 }: InputProps) => {
+const QuestionFAB = ({ marginRight = 0, icon, iconLeft = 0, onPress, size = 64, iconSize = 32 }: InputProps) => {
+    const colors = useContext(ThemeContext);
     return (
-        <TouchableOpacity activeOpacity={.7} onPress={onPress} style={{ ...styles.fabStyle, height: size, width: size, marginRight: marginRight }}>
+        <TouchableOpacity activeOpacity={.7} onPress={onPress} style={{ ...styles.fabStyle, height: size, borderColor: colors.softGray, width: size, marginRight: marginRight }}>
             <Image style={{ ...styles.icon, height: iconSize, width: iconSize, marginLeft: iconLeft }} resizeMode="contain" source={icon} />
         </TouchableOpacity>
     );
@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
         borderWidth: 1,
         elevation: 6,
-        borderColor: colors.softGray,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,

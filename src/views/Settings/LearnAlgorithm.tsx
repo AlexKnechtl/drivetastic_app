@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import { View, StyleSheet, Text, Image } from 'react-native';
 import { NavigationScreenProps } from 'react-navigation';
 import { FAB, Logo, LearnSpeedBtn } from 'components';
 import { icons } from 'icons';
-import { colors } from 'base';
 import { StateType, LogOutAction } from 'core';
 import { connect } from 'react-redux';
 import { useTranslation, Trans } from 'react-i18next';
 import { updateUserDataAction } from 'core/redux/Settings/settingsActions';
+import { ThemeContext } from 'base';
 
 const mapStateToProps = (state: StateType) => ({
     user: state.auth.data.user,
@@ -25,11 +25,12 @@ const LearnAlgorithm = enhance(({navigation, userData, dispatchUpdateUserData}:p
             middle: userData.studyVelocity == 3,
             fast: userData.studyVelocity == 2
         };
+        const colors = useContext(ThemeContext);
         const [t,i18n] = useTranslation();
         return (
             <View style={styles.view}>
-                <Text style={styles.title}><Trans i18nKey="customizeLearningExperience">Lernerfahrung anpassen</Trans></Text>
-                <View style={styles.header}>
+                <Text style={{...styles.title, color: colors.settingsGray} }><Trans i18nKey="customizeLearningExperience">Lernerfahrung anpassen</Trans></Text>
+                <View style={{...styles.header, borderColor: colors.lightBlue}}>
                     <Image style={styles.headerIcon} resizeMode="contain" source={icons.Easy_Learn} />
                     <View>
                         <Logo fontSize={18} paddingHorizontal={6} paddingVertical={2} />
@@ -54,7 +55,7 @@ const LearnAlgorithm = enhance(({navigation, userData, dispatchUpdateUserData}:p
                             selected={selected.fast}
                             icon={selected.fast ? icons.CheetahWhite : icons.Cheetah} text={t("Schnell","Schnell")} />
                     </View>
-                    <View style={styles.InfoView}>
+                    <View style={{...styles.InfoView, borderColor: colors.middleGray}}>
                         <Image style={{ width: 18, height: 18, marginRight: 8 }} source={icons.Info} />
                         <Text style={{ fontSize: 14, color: colors.darkerGray, width: "90%" }}><Trans i18nKey="learningVelocityDescription">Die Lerngeschwindigkeit bestimmt wie oft du Fragen zur Einprägung wiederholt bekommst.</Trans></Text>
                     </View>
@@ -70,7 +71,6 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 16,
-        color: colors.settingsGray,
         marginBottom: 12,
         width: "100%",
         textAlign: "center"
@@ -78,7 +78,6 @@ const styles = StyleSheet.create({
     header: {
         borderRadius: 10,
         alignSelf: "center",
-        borderColor: colors.lightBlue,
         flexDirection: "row",
         borderWidth: 2,
         paddingHorizontal: 12,
@@ -98,8 +97,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         paddingVertical: 4,
         paddingHorizontal: 8,
-        marginTop: 12,
-        borderColor: colors.middleGray
+        marginTop: 12
     }
 });
 

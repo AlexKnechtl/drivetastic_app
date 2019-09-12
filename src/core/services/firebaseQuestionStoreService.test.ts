@@ -8,7 +8,7 @@ function createQuestions(count: number, { learningState = 0, module = "B", secti
     var questions = (Array.apply(null, Array(count))).map((q, id: number)=> {
         return new Question("QuestionText", id.toString(), 
         Array.apply(null, Array(4)).map((a,i)=> new Answer(`Answer ${i}`, Math.random()>0.5)),
-        learningState, module, sectionid, "Easy");
+        learningState, module, sectionid.toString(), "Easy");
     });
     return questions;
 }

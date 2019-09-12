@@ -12,19 +12,19 @@ export class MockStoredDataProvider implements IStoredDataProvider{
         studyVelocity: 3
     }
     user: User = new User("#########TEST_UID###########", "jest@test.com", "Jest Test Name");
-    getUserData(): UserDataType {
+    async getUserData() {
         return this.userData;
     }    
 
-    setUserData(userData: UserDataType): void {
+    async setUserData(userData: UserDataType) {
         this.userData = userData;
     }
 
-    getUser(): User {
+    async getUser() {
         return this.user;
     }
     
-    setUser(user: User): void {
+    async setUser(user: User) {
         this.user = user;
     }
 

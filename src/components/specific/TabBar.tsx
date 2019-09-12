@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { StyleSheet, SafeAreaView, View, StatusBar, Animated, Image, Dimensions } from 'react-native'
 import { MaterialTopTabBar } from 'react-navigation'
 import { TabbarBg } from '../../img/';
-import { colors } from 'base';
 import { Logo } from '../specific';
+import { ThemeContext } from 'base';
 
 const TabBar = (props: any) => {
+    const colors = useContext(ThemeContext);
     const backgroundColor = props.position.interpolate({
         inputRange: [0, 1, 2],
         outputRange: [colors.turquoise, colors.accentGreen, colors.middleGray]

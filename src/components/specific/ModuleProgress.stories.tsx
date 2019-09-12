@@ -11,7 +11,7 @@ import { ModuleProgress } from './ModuleProgress';
 
 
 storiesOf('Progressbar/ModuleProgress', module).add('example', () => <View style={s.centerContainer}>
-    <ModuleProgress text1="Test text" percentage={0.5} percentage2={0.7}/></View>)
+    <ModuleProgress text1="Test text" percentage={0.5}/></View>)
 
 // storiesOf('Button', module)
 //   .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)

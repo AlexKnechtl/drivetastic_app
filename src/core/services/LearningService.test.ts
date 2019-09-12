@@ -10,7 +10,7 @@ describe('LearningService test', () => {
             var zero = places - num.toString().length + 1;
             return Array(+(zero > 0 && zero)).join("0") + num;
         }
-        qs = qs.map((v, i)=> new Question("", i, [], 0, "B", 0, "Easy"));
+        qs = qs.map((v, i)=> new Question("", i, [], 0, "B", "0", "Easy"));
         await ls.loadQuestions(qs);
         ls.onMinimumQuestionStateChanged.on((e)=> expect(e.minimumState).toBeGreaterThanOrEqual(1))
         var ids = [];
@@ -25,7 +25,7 @@ describe('LearningService test', () => {
         expect.assertions(4);
         var ls = new LearningService();
         var qs = Array.apply(null, Array(20));
-        qs = qs.map((v, i)=> new Question("", i, [], 0, "B", 0, "Easy"));
+        qs = qs.map((v, i)=> new Question("", i, [], 0, "B", "0", "Easy"));
         await ls.loadQuestions(qs);
         ls.onMinimumQuestionStateChanged.on((e)=> expect(e.minimumState).toBeLessThan(0))
         var ids = [];
@@ -40,7 +40,7 @@ describe('LearningService test', () => {
         expect.assertions(1);
         var ls = new LearningService();
         try{
-            await ls.loadQuestions(Array.prototype.fill(0, 0, 9).map((v, i)=> new Question("", i.toString(), [], 0, "B", 0, "Easy")));
+            await ls.loadQuestions(Array.prototype.fill(0, 0, 9).map((v, i)=> new Question("", i.toString(), [], 0, "B", "0", "Easy")));
         }
         catch(e){
             expect(e.message).toContain("To few questions");

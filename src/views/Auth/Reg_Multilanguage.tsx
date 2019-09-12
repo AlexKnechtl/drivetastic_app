@@ -1,8 +1,8 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useContext } from 'react';
 import { StyleSheet, Image, ScrollView, SafeAreaView, Text, View } from 'react-native';
 
 import { IconHeadline, FAB, Language } from 'components/common';
-import { colors, fonts, dimensions, LANGUAGES, STANDARD_LANGUAGES } from 'base';
+import { fonts, dimensions, LANGUAGES, STANDARD_LANGUAGES, ThemeContext } from 'base';
 import { icons } from '../../icons';
 import { Austria, MultiLanguage1, MultiLanguage2, Exchange, } from 'img';
 import { NavigationScreenProps } from 'react-navigation';
@@ -12,6 +12,7 @@ const Reg_Multilanguage = ({ navigation }: NavigationScreenProps) => {
     const index = navigation.getParam("index", 0);
     const image = LANGUAGES[index].image;
     const language = LANGUAGES[index].language;
+    const colors = useContext(ThemeContext);
     const [selectedIndex, setSelectedIndex] = useState(-1)
     return (
         <SafeAreaView style={styles.view}>
@@ -24,15 +25,15 @@ const Reg_Multilanguage = ({ navigation }: NavigationScreenProps) => {
                     checkVisibility={true}
                     text={language}
                     icon={image} />
-                <Text style={styles.title}>
+                <Text style={[styles.title, {color: colors.darkerGray}]}>
                     Achtung nur multilingual lernbar!
                     </Text>
-                <Text style={styles.text}>
+                <Text style={[styles.text, {color: colors.middleGray}]}>
                     Uns bei Drivetastic ist es wichtig, dass so viele Menschen wie möglich für Ihre Fahrprüfung lernen können.{"\n"}Daher untersützen wir auch Sprachen welche bei der offiziellen theoretischen Prüfung nicht angeboten werden.
                     </Text>
                 <Image style={styles.icon} source={MultiLanguage1} />
-                <Text style={styles.title}>Unser Multilingualmodus</Text>
-                <Text style={styles.text}>Mit unserem Multilingualem Lernmodus kannst du mit deiner Sprache trotz Nichtunterstüzung in der offiziellen Prüfung lernen.{"\n"}Mit diesem Modus kannst du alle Fragen einfach in einer zweiten Prüfungssprache deiner Wahl anzeigen lassen.</Text>
+                <Text style={[styles.title, {color: colors.darkerGray}]}>Unser Multilingualmodus</Text>
+                <Text style={[styles.text, {color: colors.middleGray}]}>Mit unserem Multilingualem Lernmodus kannst du mit deiner Sprache trotz Nichtunterstüzung in der offiziellen Prüfung lernen.{"\n"}Mit diesem Modus kannst du alle Fragen einfach in einer zweiten Prüfungssprache deiner Wahl anzeigen lassen.</Text>
                 <View style={{flexDirection: "row", justifyContent: "center"}}>
                     <Image style={styles.icon3} source={image} />
                     <Image style={styles.icon2} source={Exchange} />
@@ -65,7 +66,6 @@ const styles = StyleSheet.create({
         paddingBottom: 20
     },
     text: {
-        color: colors.middleGray,
         fontSize: fonts.md,
         width: "100%",
         textAlign: "center",
@@ -93,7 +93,6 @@ const styles = StyleSheet.create({
         alignSelf: "center"
     },
     title: {
-        color: colors.darkerGray,
         fontSize: 20,
         width: "100%",
         fontWeight: "bold",

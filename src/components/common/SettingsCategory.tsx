@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { TouchableOpacity, StyleSheet, Image, Text, View } from 'react-native';
-import { colors } from 'base';
+import { ThemeContext } from 'base';
 
 type CategoryProps = {
     title: string,
@@ -10,12 +10,13 @@ type CategoryProps = {
 }
 
 const SettingsCategory = ({ title, text, icon, onPress = () => null }: CategoryProps) => {
+    const colors = useContext(ThemeContext);
     return (
-        <TouchableOpacity onPress={onPress} activeOpacity={.6} style={styles.buttton}>
+        <TouchableOpacity onPress={onPress} activeOpacity={.6} style={[styles.buttton, {backgroundColor: colors.bgGray}]}>
             <Image style={styles.icon} resizeMode={"contain"} source={icon} />
             <View style={{ flex: 1 }}>
-                <Text style={styles.title}>{title}</Text>
-                <Text style={styles.text}>{text}</Text>
+                <Text style={{...styles.title, color: colors.darkerGray}}>{title}</Text>
+                <Text style={{...styles.text, color: colors.darkerGray}}>{text}</Text>
             </View>
         </TouchableOpacity>
     );
@@ -23,7 +24,6 @@ const SettingsCategory = ({ title, text, icon, onPress = () => null }: CategoryP
 
 const styles = StyleSheet.create({
     buttton: {
-        backgroundColor: colors.bgGray,
         flexDirection: "row-reverse",
         borderRadius: 10,
         marginBottom: 12,
@@ -36,11 +36,9 @@ const styles = StyleSheet.create({
         width: 45
     },
     title: {
-        color: colors.darkerGray,
         fontSize: 22
     },
     text: {
-        color: colors.darkerGray,
         fontSize: 14
     }
 });

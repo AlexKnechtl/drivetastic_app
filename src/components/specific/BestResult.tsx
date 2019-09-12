@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { TouchableOpacity, StyleSheet, Text, View, Image } from 'react-native';
 import * as Progress from 'react-native-progress';
-import { colors } from 'base';
 import { icons } from 'icons';
+import { ThemeContext } from 'base';
 
 type LogoProps = {
     title: string,
@@ -11,6 +11,7 @@ type LogoProps = {
 }
 
 const BestResult = ({ title, color, score }: LogoProps) => {
+    const colors = useContext(ThemeContext);
     return (
         <TouchableOpacity activeOpacity={.8} style={{ ...styles.buttton, backgroundColor: colors.lightGreen }}>
             <View style={styles.row}>
@@ -31,8 +32,7 @@ const styles = StyleSheet.create({
         marginBottom: 12,
         paddingHorizontal: 12,
         marginHorizontal: 14,
-        paddingVertical: 10,
-        backgroundColor: colors.lightPurple
+        paddingVertical: 10
     },
     progressBar: {
         width: "100%"

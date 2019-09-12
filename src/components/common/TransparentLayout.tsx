@@ -1,9 +1,9 @@
 import React from 'react'
-import { StyleSheet, Image, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Image, TouchableOpacity, View, ImageSourcePropType } from 'react-native';
 import { icons } from 'icons';
 
 type HeadlineProps = {
-    icon?: object,
+    icon: ImageSourcePropType,
     onPress?: () => void
 }
 

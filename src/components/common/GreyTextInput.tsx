@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { View, StyleSheet, TextInput, Keyboard, TextInputProps } from 'react-native';
-import { fonts, colors } from 'base';
+import { fonts, ThemeContext } from 'base';
 
 type InputProps = {
     marginVertical: number
@@ -8,8 +8,9 @@ type InputProps = {
 } & TextInputProps;
 
 const GreyTextInput = ({ marginVertical, hint, placeholder, ...restprops }: InputProps) => {
+    const colors = useContext(ThemeContext);
     return (
-        <View style={{ ...styles.inputContainer, marginVertical: marginVertical }}>
+        <View style={{ ...styles.inputContainer, backgroundColor: colors.bgGray, marginVertical: marginVertical }}>
             <TextInput
                 style={{ width: "100%", height: "100%" }}
                 placeholder={hint||placeholder}
@@ -23,7 +24,6 @@ const GreyTextInput = ({ marginVertical, hint, placeholder, ...restprops }: Inpu
 const styles = StyleSheet.create({
     inputContainer: {
         flexDirection: "row",
-        backgroundColor: colors.bgGray,
         borderRadius: 10,
         width: "100%",
         paddingHorizontal: 8,

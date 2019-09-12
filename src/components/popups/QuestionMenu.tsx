@@ -16,8 +16,9 @@ const QuestionMenu = ({ visible = false, backPress }: MenuProps) => {
             <View style={styles.view}>
                 <ProgressQuestionMenu percentage={0.7} />
                 <View style={{ flexDirection: "row", marginBottom: 12, justifyContent: "space-between" }}>
-                    <RowIconButton marginRight={8} color='#000' rotation={90} icon={icons.ArrowDown} text="Lernen beenden" />
-                    <RowIconButton flex={1} rowDirection="row-reverse" text="Video zur Frage" icon={icons.Video} />
+                    {/* TODO: Implement */}
+                    <RowIconButton marginRight={8} rotation={90} icon={icons.ArrowDown} text="Lernen beenden" onPress={()=>null}/> 
+                    <RowIconButton flex={1} rowDirection="row-reverse" text="Video zur Frage" icon={icons.Video} onPress={()=>null}/>
                 </View>
                 <View style={{ flexDirection: "row-reverse", width: "100%" }}>
                     <TouchableOpacity onPress={backPress} style={styles.closeButton}>

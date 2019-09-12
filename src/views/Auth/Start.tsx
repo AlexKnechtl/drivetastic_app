@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import { View, StyleSheet, Text, Image, SafeAreaView, StatusBar } from 'react-native';
 
 import { IconButton, ImageBg } from '../../components'
-import { padding, colors, fonts, margin } from '../../base';
+import { padding, fonts, margin, ThemeContext } from '../../base';
 
 import { icons } from '../../icons';
 import { BackgroundMain } from '../../img';
@@ -18,7 +18,7 @@ type props = NavigationScreenProps & ReturnType<typeof mapStateToProps>;
 class Start extends Component<props> {
     render() {
         this.props.user && this.props.navigation.navigate("home");
-
+        const colors = useContext(ThemeContext);
         return (
             <View style={styles.view}>
                 <StatusBar animated={true} translucent={true} backgroundColor="#0000" barStyle="light-content" />

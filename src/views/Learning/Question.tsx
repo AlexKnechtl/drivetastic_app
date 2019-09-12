@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, ScrollView, Dimensions, StatusBar } from 'react-native';
-import { QuestionPicture, QuestionLayout, Answer, QuestionFAB, QuestionMenu } from 'components';
+import { QuestionPicture, QuestionLayout, AnswerView, QuestionFAB, QuestionMenu } from 'components';
 import * as core from "core";
 import { Bild } from 'img';
 import { icons } from 'icons';
@@ -18,7 +18,7 @@ interface State {
     showMenu: boolean
 }
 
-export class Question extends Component {
+export class QuestionView extends Component {
     state: State = {
         answerStates: [],
         imageZoom: false,
@@ -27,12 +27,12 @@ export class Question extends Component {
     }
 
     render() {
-        const question: QuestionEntity = new core.Question("Wie werden Sie sich hier verhalten?", 3981, [
+        const question: QuestionEntity = new core.Question("Wie werden Sie sich hier verhalten?", "3981", [
             new core.Answer("Ich muss hier anhalten", false),
             new core.Answer("Bis zu den Personen fahre ich auf Gefahrensicht", true),
             new core.Answer("Ich muss hier aufgrund der Kinder mein Tempo auf Schrittgeschwindigkeit reduzieren und den Dick in die Hand nehmen.", false),
             new core.Answer("Noch eine geile Antwort", false)
-        ], 2, "B", 4, "Hard");
+        ], 2, "B", "4", "Hard");
         if (this.state.answerStates.length < question.answers.length)
             this.setState({ answerStates: question.answers.map(a => ({ selected: false })) });
         return (
@@ -49,7 +49,7 @@ export class Question extends Component {
                             <QuestionLayout count={question.Id} text={question.question} difficulty={question.difficulty} />
                             <View style={{ flex: 1, padding: 14, backgroundColor: '#fff' }}>
                                 {question.answers.map((a, i) =>
-                                    <Answer key={i}
+                                    <AnswerView key={i}
                                         answer={a}
                                         selected={this.state.answerStates[i] && this.state.answerStates[i].selected}
                                         shouldValidate={this.state.shouldValidate}

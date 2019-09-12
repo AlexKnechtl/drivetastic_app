@@ -1,8 +1,8 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useContext } from 'react';
 import { View, StyleSheet, Text, Animated } from 'react-native';
 import { FAB, Language } from 'components';
 import { icons } from 'icons';
-import { colors, LANGUAGES } from 'base';
+import { LANGUAGES, ThemeContext } from 'base';
 import { NavigationScreenProps } from 'react-navigation';
 import { StateType, LogOutAction } from 'core';
 import { connect } from 'react-redux';
@@ -19,6 +19,7 @@ const mapDispatchToProps = {
 type props = NavigationScreenProps & ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps;
 const enhance = connect(mapStateToProps, mapDispatchToProps);
 const Languages = enhance(({ navigation, userData, dispatchUpdateUserData }: props) => {
+    const colors = useContext(ThemeContext);
     return (
         <View style={styles.view}>
             <Text style={styles.title}>Sprache auswählen</Text>

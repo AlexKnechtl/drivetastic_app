@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { StyleSheet, ScrollView, View } from 'react-native';
-import { colors } from 'base';
 import { SettingsCategory } from 'components/common/SettingsCategory';
 import { icons } from 'icons';
 import { NavigationScreenProps } from 'react-navigation';
@@ -29,13 +28,6 @@ class AccountView extends Component<NavigationScreenProps> {
 const styles = StyleSheet.create({
     view: {
         padding: 14
-    },
-    title: {
-        fontSize: 18,
-        marginVertical: 12,
-        color: colors.middleGray,
-        width: "100%",
-        textAlign: "center"
     }
 });
 

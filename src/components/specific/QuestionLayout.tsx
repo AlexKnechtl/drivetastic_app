@@ -1,18 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { StyleSheet, View, Text } from 'react-native';
 import { typeAlias } from '@babel/types';
-import { colors } from 'base';
 import { Difficulty } from 'core';
 import { Trans, useTranslation } from 'react-i18next';
+import { colorType, ThemeContext } from 'base';
 
 type HeadlineProps = {
-    count: number,
+    count: number|string,
     text: string,
     difficulty: Difficulty
 }
 
 
-function MapDifficultyToColor(difficulty: Difficulty){
+function MapDifficultyToColor(difficulty: Difficulty, colors: colorType){
     switch (difficulty) {
         case "Easy": return colors.lightGreen;
         case "Medium": return colors.lightBlue;
@@ -23,13 +23,14 @@ function MapDifficultyToColor(difficulty: Difficulty){
 }
 
 const QuestionLayout = ({ count, text, difficulty }: HeadlineProps) => {
+    const colors = useContext(ThemeContext);
     const [t, i18n] = useTranslation();
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, {backgroundColor: colors.questionBG}]}>
             <View style={styles.row}>
                 <Text style={styles.title}><Trans i18nKey="question" i18n={i18n}>Frage </Trans>{count}</Text>
                 {/* i18next-extract-disable-next-line */}
-                <Text style={[styles.difficultyText, {backgroundColor: MapDifficultyToColor(difficulty)}]}>{t(`difficulty.${difficulty}`)}</Text>
+                <Text style={[styles.difficultyText, {backgroundColor: MapDifficultyToColor(difficulty, colors)}]}>{t(`difficulty.${difficulty}`)}</Text>
             </View>
             <Text style={styles.text}>{text}</Text>
         </View>
@@ -38,7 +39,6 @@ const QuestionLayout = ({ count, text, difficulty }: HeadlineProps) => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: colors.questionBG,
         padding: 14,
         width: "100%"
     },

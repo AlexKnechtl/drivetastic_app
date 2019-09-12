@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { createStackNavigator, createAppContainer, createSwitchNavigator, createMaterialTopTabNavigator, MaterialTopTabBarProps } from "react-navigation";
-import { AccountView, Bereiche, Login, Reg_DriveCode, Reg_Tutorial1, Reg_Tutorial2, Reg_Tutorial3, Modules, Reg_UserData, ExamView, ExamStatistics, Start, VisualChanges, LearnAlgorithm, TrainingView, Exam, AccountSettings, Impressum, Languages, Home, Question, PasswordReset, Reg_Languages, Statistics, Reg_Multilanguage } from '../views';
+import { AccountView, Bereiche, Login, Reg_DriveCode, Reg_Tutorial1, Reg_Tutorial2, Reg_Tutorial3, Modules, Reg_UserData, ExamView, ExamStatistics, Start, VisualChanges, LearnAlgorithm, TrainingView, Exam, AccountSettings, Impressum, Languages, Home, QuestionView, PasswordReset, Reg_Languages, Statistics, Reg_Multilanguage } from '../views';
 import TabBar from 'components/specific/TabBar';
 import { TabBarTutorial } from 'components/specific/TabBarTutorial';
 import { View, Text } from 'react-native';
@@ -56,7 +56,7 @@ const auth = createStackNavigator({
 const learning = createStackNavigator({
     Exam,
     ExamStatistics,
-    Question
+    QuestionView
 },
     {
         headerMode: "none"
@@ -127,7 +127,7 @@ const DebugNav = createMaterialTopTabNavigator({
     Impressum,
     Languages,
     Home,
-    Question,
+    QuestionView,
     PasswordReset,
     Reg_Languages,
     Statistics,
