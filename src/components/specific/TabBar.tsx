@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     },
     materialTopBar: {
         elevation: 0,
-        height: 52,
+        height: 56,
         width: "100%"
     }
 })

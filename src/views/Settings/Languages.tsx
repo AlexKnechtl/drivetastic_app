@@ -41,13 +41,13 @@ const Languages = enhance(({ navigation, userData, dispatchUpdateUserData }: pro
 
 const styles = StyleSheet.create({
     view: {
-        flex: 1,
-        padding: 14
+        flex: 1
     },
     title: {
         fontSize: 16,
         color: '#AFAFAF',
-        marginBottom: 12,
+        marginTop: 14,
+        marginBottom: 9,
         width: "100%",
         textAlign: "center"
     }

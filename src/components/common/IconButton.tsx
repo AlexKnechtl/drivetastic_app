@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     icon: {
-        height: "70%"
+        height: "80%"
     },
     text: {
         color: '#fff',
