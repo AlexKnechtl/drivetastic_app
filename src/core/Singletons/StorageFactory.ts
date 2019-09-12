@@ -8,26 +8,26 @@ import { MockStoredDataProvider } from "core/providers/MockStoredDataProvider";
 import { User, TypedEvent } from "core/entities";
 import { IDataBaseQuestionStoreService, FirebaseQuestionStoreService } from "core/services/firebaseQuestionStoreService";
 import { StoredDataProvider } from "core/providers/StoredDataProvider";
-function createMockSummary(){
-    var wk: {[day: string]:WeeklySummary} = {};
+function createMockSummary() {
+    var wk: { [day: string]: WeeklySummary } = {};
     var today = new Date();
     for (let index = 0; index < 10; index++) {
         today.setDate(today.getDate() - 1);
-        var date = today.getFullYear().toString()+today.getMonth().toString()+today.getDate().toString();
-        wk[date] = {questionsLearned: Math.floor(Math.random()*100)};
+        var date = today.getFullYear().toString() + today.getMonth().toString() + today.getDate().toString();
+        wk[date] = { questionsLearned: Math.floor(Math.random() * 100) };
     }
     return wk;
 }
-export class StorageFactory{
+export class StorageFactory {
 
-    private static instance: StorageFactory|null = null;
-    constructor(clearInstance = false){
-        if(!StorageFactory.instance || clearInstance){
+    private static instance: StorageFactory | null = null;
+    constructor(clearInstance = false) {
+        if (!StorageFactory.instance || clearInstance) {
             StorageFactory.instance = this;
         }
         return StorageFactory.instance;
     }
-    
+
     private _QuestionService: IQuestionService = new QuestionProvider();
     private questionProvider: IQuestionProvider = new MockQuestionProvider();
     private tokenService: DeviceTokenService = new DeviceTokenService(true);
@@ -36,53 +36,51 @@ export class StorageFactory{
     private statisticsProvider!: StatisticsProvider;
     private databaseQuestionStoreService: IDataBaseQuestionStoreService = new FirebaseQuestionStoreService();
     private finishedInitialization = false;
-    private userdata: UserDataType|undefined;
-    
-    onInitFinished = new TypedEvent<{sender: StorageFactory}>()
+    private userdata: UserDataType | undefined;
 
-    public get QuestionService(): IQuestionService|undefined{
+    onInitFinished = new TypedEvent<{ sender: StorageFactory }>()
+
+    public get QuestionService(): IQuestionService | undefined {
         return this._QuestionService;
     }
-    
-    public get FinishedInit() : boolean {
+
+    public get FinishedInit(): boolean {
         return this.finishedInitialization
     }
-        
-    public get UserData() : UserDataType|undefined {
+
+    public get UserData(): UserDataType | undefined {
         return this.userdata;
     }
-    
-    public get StatisticsProvider(): StatisticsProvider{
+
+    public get StatisticsProvider(): StatisticsProvider {
         return this.statisticsProvider;
     }
 
-    updateUserData(userData: UserDataType){
+    updateUserData(userData: UserDataType) {
         this.firebaseDataService.updateUserData(userData);
         this.storedDataProvider.setUserData(userData);
     }
 
 
     async init(tokenProvider: ITokenProvider) {
-        try{
         var promises: Promise<any>[] = [];
-        var qp =  this.questionProvider.loadQuestions();
-        var qsip = qp.then(qs=> this._QuestionService.init(qs));
+        var qp = this.questionProvider.loadQuestions();
+        var qsip = qp.then(qs => this._QuestionService.init(qs));
         promises.push(qsip);
         var currDevToken = tokenProvider.getToken();
-        if(await this.tokenService.hasTokenChanged(currDevToken)){
+        if (await this.tokenService.hasTokenChanged(currDevToken)) {
             console.log("TOKEN CHANGED!!");
-            
+
             promises.push(this.tokenService.setDeviceToken(currDevToken));
             this.userdata = await this.firebaseDataService.getUserData();
             await qsip;
             this._QuestionService.updateLearnStates(await this.databaseQuestionStoreService.fetchQuestionData())
             this.storedDataProvider.setUserData(this.userdata);
         }
-        else{
+        else {
             console.log("TOKEN NOT CHANGED!!");
             var ud = await this.storedDataProvider.getUserData();
-            if(!ud)
-            {
+            if (!ud) {
                 ud = await this.firebaseDataService.getUserData();
                 this.storedDataProvider.setUserData(ud);
             }
@@ -93,12 +91,6 @@ export class StorageFactory{
         this.databaseQuestionStoreService.subscribeToQuestionChange(await qp);
 
         await Promise.all(promises);
-    }
-    catch (e) {
-        console.log(e);
-        console.log("ERROR!!!!!!!!!!!!!!!!!!!!!!");
-        
-    }
-        this.onInitFinished.emit({sender: this});
+        this.onInitFinished.emit({ sender: this });
     }
 }

@@ -61,6 +61,7 @@ export const Reg_DriveCode = enhance(class Reg_DriveCode extends Component<props
                         <View style={{ flex: 1, justifyContent: "flex-start", alignItems: "center" }}>
                             <View style={{ width: Dimensions.get("screen").width * 0.5, height: Dimensions.get("screen").width * 0.5 }}>
                                 <QRCodeScanner fadeIn={false}
+                                    //@ts-ignore
                                     cameraStyle={styles.cameraStyle}
                                     cameraProps={{ ratio: "1:1" }}
                                     onRead={(e) => { this.setState({ driveCode: e.data, showQrcodeReader: false }); this.props.dispatchCheckToken(e.data) }}
