@@ -27,7 +27,7 @@ const Home = enhance(({ navigation, moduleStats }: props) => {
         <ScrollView>
             <StatusBar barStyle="dark-content"/>
             <View style={styles.view}>
-                <LearnButton onPress={() => navigation.navigate("Question")} />
+                <LearnButton onPress={() => navigation.navigate("QuestionView")} />
                 <View style={styles.buttonLayout}>
                     <IconButton onPress={() => navigation.navigate("TrainingView")} color={colors.lightBlue} icon={icons.Training} text={t("training", { defaultValue: "Training" })} />
                     <IconButton onPress={() => navigation.navigate("ExamView")} color={colors.lightPurple} icon={icons.Exam} text={t("exam", { defaultValue: "Prüfung" })} />
