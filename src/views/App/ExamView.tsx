@@ -35,8 +35,7 @@ const ExamView = ({ navigation }: NavigationScreenProps) => {
 
 const styles = StyleSheet.create({
     safeArea: {
-        flex: 1,
-        backgroundColor: "white"
+        flex: 1
     },
     buttonLayout: {
         flexDirection: "row",

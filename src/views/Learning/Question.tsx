@@ -47,7 +47,7 @@ export class QuestionView extends Component {
                             {/* <TransparentLayout onPress={() => this.setState({ imageZoom: !this.state.imageZoom })} visible={true} /> */}
                             <TouchThroughView style={{ height: Dimensions.get('window').width * 0.66, width: "100%" }} />
                             <QuestionLayout count={question.Id} text={question.question} difficulty={question.difficulty} />
-                            <View style={{ flex: 1, padding: 14, backgroundColor: '#fff' }}>
+                            <View style={{ flex: 1, padding: 14}}>
                                 {question.answers.map((a, i) =>
                                     <AnswerView key={i}
                                         answer={a}
@@ -76,7 +76,6 @@ export class QuestionView extends Component {
 const styles = StyleSheet.create({
     view: {
         flex: 1,
-        backgroundColor: '#fff'
     },
     fabContainer: {
         flexDirection: "row-reverse",

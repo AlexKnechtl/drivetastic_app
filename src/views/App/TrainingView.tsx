@@ -9,7 +9,7 @@ const TrainingView = () => {
     return (
         <View style={styles.safeArea}>
             <ColoredIconHeader text="Training" color={colors.lightBlue} icon={icons.Training} />
-            <ScrollView style={{ backgroundColor: "white" }}>
+            <ScrollView >
                 <View style={styles.view}>
                     <Text style={styles.title}>Empfehlungen</Text>
                     {/* TODO: Implement */}
@@ -27,7 +27,6 @@ const TrainingView = () => {
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
-        backgroundColor: "white"
     },
     view: {
         flex: 1,

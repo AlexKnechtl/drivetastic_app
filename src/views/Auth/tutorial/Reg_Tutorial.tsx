@@ -21,8 +21,7 @@ export const Reg_Tutorial1 = ({ navigation }: NavigationScreenProps) => {
 
 const styles = StyleSheet.create({
     view: {
-        flex: 1,
-        backgroundColor: "white"
+        flex: 1
     },
     bottomLayout: {
         width: "100%",

@@ -33,7 +33,6 @@ const Statistics = enhance(({weeklySummary} : props) => {
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
-        backgroundColor: "white"
     },
 });
 
