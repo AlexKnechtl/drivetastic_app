@@ -37,7 +37,9 @@ export type colorType = {
     questionLightGreen: string,
     questionGreenAccent: string,
     questionRedAccent: string,
-    mainBG: string
+    mainBG: string,
+    black: string,
+    white: string
 }
 
 
@@ -71,7 +73,9 @@ export const colorsLight: colorType = {
     questionLightGreen: 'rgba(46, 177, 116, 0.15)',
     questionGreenAccent: '#258056',
     questionRedAccent: '#7B1111',
-    mainBG: '#D5D5D5'
+    mainBG: '#D5D5D5',
+    black: "#000",
+    white: "#fff"
 }
 
 export const colorsDark: colorType = {
@@ -104,7 +108,9 @@ export const colorsDark: colorType = {
     questionLightGreen: 'rgba(46, 177, 116, 0.15)',
     questionGreenAccent: '#258056',
     questionRedAccent: '#7B1111',
-    mainBG: "#121212"
+    mainBG: "#121212",
+    black: "#fff",
+    white: "#000"
 }
 
 export const ThemeContext = React.createContext(colorsLight);
