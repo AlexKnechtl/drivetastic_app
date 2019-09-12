@@ -15,34 +15,32 @@ const mapStateToProps = (state: StateType) => ({
 type props = NavigationScreenProps & ReturnType<typeof mapStateToProps>;
 
 // @(connect(mapStateToProps) as any)
-class Start extends Component<props> {
-    render() {
-        this.props.user && this.props.navigation.navigate("home");
-        const colors = useContext(ThemeContext);
-        return (
-            <View style={styles.view}>
-                <StatusBar animated={true} translucent={true} backgroundColor="#0000" barStyle="light-content" />
-                <SafeAreaView />
-                <View style={styles.bottomLayout}>
-                    <IconButton onPress={()=> this.props.navigation.navigate("signup")} color={colors.lightBlue} icon={icons.AddPeople} text="Neu hier?" />
-                    <IconButton onPress={()=> this.props.navigation.navigate("login")} color={colors.lightPurple} icon={icons.HighFive} text="Einloggen" />
-                </View>
-                <ImageBg image={BackgroundMain} colorFilter="#0002">
-                    <View style={{ backgroundColor: colors.lightBlue, borderRadius: 10, paddingHorizontal: 26, paddingVertical: 8 }}>
-                        <Text>
-                            <Text style={styles.logoTextBold}>Drive</Text>
-                            <Text style={styles.logoText}>tastic</Text>
-                        </Text>
-                        <View style={styles.row}>
-                            <Image style={styles.icon} resizeMode="contain" source={icons.Motorcycle}/>
-                            <Image style={styles.icon} resizeMode="contain" source={icons.Car}/>
-                            <Image style={styles.icon} resizeMode="contain" source={icons.Truck}/>
-                        </View>
-                    </View>
-                </ImageBg>
+const Start = ({ navigation, user }: props) => {
+    user && navigation.navigate("home");
+    const colors = useContext(ThemeContext);
+    return (
+        <View style={styles.view}>
+            <StatusBar animated={true} translucent={true} backgroundColor="#0000" barStyle="light-content" />
+            <SafeAreaView />
+            <View style={styles.bottomLayout}>
+                <IconButton onPress={() => navigation.navigate("signup")} color={colors.lightBlue} icon={icons.AddPeople} text="Neu hier?" />
+                <IconButton onPress={() => navigation.navigate("login")} color={colors.lightPurple} icon={icons.HighFive} text="Einloggen" />
             </View>
-        )
-    }
+            <ImageBg image={BackgroundMain} colorFilter="#0002">
+                <View style={{ backgroundColor: colors.lightBlue, borderRadius: 10, paddingHorizontal: 26, paddingVertical: 8 }}>
+                    <Text>
+                        <Text style={styles.logoTextBold}>Drive</Text>
+                        <Text style={styles.logoText}>tastic</Text>
+                    </Text>
+                    <View style={styles.row}>
+                        <Image style={styles.icon} resizeMode="contain" source={icons.Motorcycle} />
+                        <Image style={styles.icon} resizeMode="contain" source={icons.Car} />
+                        <Image style={styles.icon} resizeMode="contain" source={icons.Truck} />
+                    </View>
+                </View>
+            </ImageBg>
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({
@@ -80,4 +78,4 @@ const styles = StyleSheet.create({
     }
 });
 const x = connect(mapStateToProps)(Start)
-export {x as Start};
+export { x as Start };

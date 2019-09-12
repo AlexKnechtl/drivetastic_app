@@ -6,6 +6,7 @@ import './i18n';
 //@ts-ignore
 import { setCustomText } from 'react-native-global-props';
 import { ThemeContext, colorsDark, colorsLight } from 'base';
+import { View } from 'react-native';
 
 const customTextProps = {
   style: {
@@ -27,7 +28,9 @@ const enhance = connect(mapStateToProps);
 
 const themeWrapper: React.FunctionComponent<props> = ({darkmode, children})=>(
   <ThemeContext.Provider value={darkmode ? colorsDark : colorsLight}>
-    {children}
+    <View style={{backgroundColor: darkmode? colorsDark.mainBG : colorsLight.mainBG, flex: 1}}>
+      {children}
+    </View>
   </ThemeContext.Provider>
 )
 
