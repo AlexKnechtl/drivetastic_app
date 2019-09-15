@@ -1,35 +1,33 @@
 import React, { Component, useState, useContext } from 'react';
 import { View, StyleSheet, ScrollView, Text } from 'react-native';
-import { MainProgress, BereichProgress, Explanation } from '../../components'
+import { BereichProgress, Explanation } from '../../components'
 import { icons } from 'icons';
 import { StateType } from 'core';
+import { ModuleProgress } from 'components/specific/ModuleProgress';
 import { NavigationScreenProps } from 'react-navigation';
 import { connect } from 'react-redux';
 import { useTranslation, Trans } from 'react-i18next';
 import { ThemeContext } from 'base';
 
-
 const mapStateToProps = (state: StateType) => ({
     moduleStats: state.statistics.modules
 })
 
-const mapDispatchToProps = {
-}
+const mapDispatchToProps = {}
 type props = NavigationScreenProps & ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps;
 const enhance = connect(mapStateToProps, mapDispatchToProps);
 
-const Bereiche = ({moduleStats,}:props) => {
+const Bereiche = ({ moduleStats, }: props) => {
     const [t, i18n] = useTranslation();
     const modules = Object.entries(moduleStats);
     const [ProgressExplanationVisible, setProgressExplanationVisible] = useState(false);
     const colors = useContext(ThemeContext);
     const [SuccessPropabilityExplanationVisible, setSuccessPropabilityExplanationVisible] = useState(false);
     return (
-        <ScrollView>
+        <ScrollView style={{ backgroundColor: colors.background }}>
             <View style={styles.view}>
                 {/* TODO: Start */}
-                <MainProgress onPress={() => setProgressExplanationVisible(!ProgressExplanationVisible)} color={colors.fortschritt} title="Fortschritt" percentage={0.2} icon={icons.Fortschritt} unfilled={colors.fortschrittUnfilled} />
-                <MainProgress onPress={() => setSuccessPropabilityExplanationVisible(!SuccessPropabilityExplanationVisible)} color={colors.erfolgschance} title="Erfolgschance" percentage={0.1} icon={icons.Erfolgschance} unfilled={colors.erfolgschanceUnfilled} />
+                {Object.entries(moduleStats).map(([id, stats]) => <ModuleProgress text1={t(id, id)} percentage={stats.statistics.progress} />)}
                 {/* TODO: END TODO */}
                 {modules.map(([id, { statistics, sections }]) => (
                     <>

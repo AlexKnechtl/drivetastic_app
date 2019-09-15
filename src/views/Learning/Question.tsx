@@ -10,6 +10,7 @@ import { InstagramProvider, ElementContainer } from "@postillon/react-native-ins
 import { TouchThroughWrapper, TouchThroughView } from "react-native-touch-through-view";
 import { Question as QuestionEntity } from 'core';
 import { useTranslation } from 'react-i18next';
+import { colorsDark } from 'base';
 
 interface State {
     answerStates: { selected: boolean }[],
@@ -30,24 +31,23 @@ export class QuestionView extends Component {
         const question: QuestionEntity = new core.Question("Wie werden Sie sich hier verhalten?", "3981", [
             new core.Answer("Ich muss hier anhalten", false),
             new core.Answer("Bis zu den Personen fahre ich auf Gefahrensicht", true),
-            new core.Answer("Ich muss hier aufgrund der Kinder mein Tempo auf Schrittgeschwindigkeit reduzieren und den Dick in die Hand nehmen.", false),
+            new core.Answer("Ich muss hier aufgrund der Kinder mein Tempo auf Schrittgeschwindigkeit reduzieren.", false),
             new core.Answer("Noch eine geile Antwort", false)
         ], 2, "B", "4", "Hard");
         if (this.state.answerStates.length < question.answers.length)
             this.setState({ answerStates: question.answers.map(a => ({ selected: false })) });
         return (
-            <View style={styles.view}>
-                <StatusBar barStyle="light-content"/>
+            <View style={{ flex: 1, backgroundColor: colorsDark.background }}>
+                <StatusBar barStyle="light-content" />
                 <InstagramProvider>
                     <ElementContainer style={{ position: "absolute" }}>
                         <QuestionPicture image={Bild} />
                     </ElementContainer>
                     <TouchThroughWrapper style={{ flex: 1 }} >
                         <ScrollView style={{ flex: 1 }} >
-                            {/* <TransparentLayout onPress={() => this.setState({ imageZoom: !this.state.imageZoom })} visible={true} /> */}
                             <TouchThroughView style={{ height: Dimensions.get('window').width * 0.66, width: "100%" }} />
                             <QuestionLayout count={question.Id} text={question.question} difficulty={question.difficulty} />
-                            <View style={{ flex: 1, padding: 14}}>
+                            <View style={{ flex: 1, padding: 14 }}>
                                 {question.answers.map((a, i) =>
                                     <AnswerView key={i}
                                         answer={a}

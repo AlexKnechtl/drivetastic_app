@@ -6,12 +6,13 @@ type ButtonProps = {
     icon: object,
     text: string,
     iconWidth?: string,
+    marginHorizontal?: number,
     onPress: () => void
 }
 
-const IconButton = ({ color, icon, text, onPress = () => null, iconWidth = "35%" }: ButtonProps) => {
+const IconButton = ({ color, icon, marginHorizontal = 7, text, onPress = () => null, iconWidth = "35%" }: ButtonProps) => {
     return (
-        <TouchableOpacity onPress={onPress} activeOpacity={.8} style={{ ...styles.buttton, backgroundColor: color }}>
+        <TouchableOpacity onPress={onPress} activeOpacity={.8} style={{ ...styles.buttton, backgroundColor: color, marginHorizontal: marginHorizontal }}>
             <Text style={styles.text}>{text}</Text>
             <View style={styles.view}>
                 <Image resizeMode="contain" style={{ ...styles.icon, width: iconWidth }} source={icon} />
@@ -25,8 +26,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         flex: 1,
         paddingVertical: 6,
-        flexDirection: "column-reverse",
-        marginHorizontal: 7
+        flexDirection: "column-reverse"
     },
     view: {
         justifyContent: "center",

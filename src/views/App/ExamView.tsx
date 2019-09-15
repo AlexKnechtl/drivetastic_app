@@ -9,14 +9,16 @@ import { ThemeContext } from 'base';
 const ExamView = ({ navigation }: NavigationScreenProps) => {
     const colors = useContext(ThemeContext);
     return (
-        <ScrollView style={styles.safeArea}>
+        <ScrollView style={{ flex: 1, backgroundColor: colors.background }}>
             <ColoredIconHeader text="Prüfung" color={colors.lightPurple} icon={icons.Exam} />
             <Text style={styles.title}>Module</Text>
             <View style={{ marginHorizontal: 14 }}>
-                {/* TODO: Implement */}
+                {/* TODO: Implement what?! */}
                 <LongIconButton title="Alle Bereiche" text="Volle Prüfungssimulation" bgColor={colors.lightPurple} icon={icons.Test} onPress={() => null} />
-                <IconButton onPress={() => navigation.navigate("TrainingView")} color={colors.grundwissen} icon={icons.Grundwissen} text="Grundwissen" />
-                <IconButton onPress={() => navigation.navigate("ExamView")} color={colors.bFührerschein} icon={icons.Car} text="Bereich B" />
+                <View style={styles.buttonLayout}>
+                    <IconButton marginHorizontal={0} onPress={() => navigation.navigate("TrainingView")} color={colors.grundwissen} icon={icons.Grundwissen} text="Grundwissen" />
+                    <IconButton onPress={() => navigation.navigate("ExamView")} color={colors.bFührerschein} icon={icons.Car} text="Bereich B" />
+                </View>
             </View>
             <Text style={styles.title}>Beste Ergebnisse</Text>
             <BestResult title="Grundwissen" color={colors.grundwissen} score={0.2} />
@@ -40,8 +42,7 @@ const styles = StyleSheet.create({
     buttonLayout: {
         flexDirection: "row",
         width: "100%",
-        height: 95,
-        paddingHorizontal: 7
+        height: 95
     },
     title: {
         fontSize: 16,

@@ -37,8 +37,7 @@ const languageSelector = createStackNavigator({
     selectLanguage: Reg_Languages,
     multiLanguage: Reg_Multilanguage
 }, {
-        headerMode: "none",
-        transparentCard: true
+        headerMode: "none"
     });
 
 
@@ -50,8 +49,7 @@ const auth = createStackNavigator({
     tutorial,
     enterDetails: Reg_UserData
 }, {
-        headerMode: "none",
-        transparentCard: true
+        headerMode: "none"
     });
 
 
@@ -61,8 +59,7 @@ const learning = createStackNavigator({
     QuestionView
 },
     {
-        headerMode: "none",
-        transparentCard: true
+        headerMode: "none"
     });
 
 const Account = createStackNavigator({
@@ -74,8 +71,7 @@ const Account = createStackNavigator({
     Modules,
     Languages
 }, {
-        headerMode: "none",
-        transparentCard: true
+        headerMode: "none"
     });
 
 const home = createMaterialTopTabNavigator({
@@ -107,8 +103,7 @@ const main = createStackNavigator({
     learning
 },
     {
-        headerMode: "none",
-        transparentCard: true
+        headerMode: "none"
     });
 
 const DebugNav = createMaterialTopTabNavigator({

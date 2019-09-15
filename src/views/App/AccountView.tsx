@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react'
 import { StyleSheet, ScrollView, View } from 'react-native';
 import { SettingsCategory } from 'components/common/SettingsCategory';
 import { icons } from 'icons';
 import { NavigationScreenProps } from 'react-navigation';
+import { ThemeContext } from 'base';
 
 class AccountView extends Component<NavigationScreenProps> {
     constructor(props: any) {
@@ -11,7 +12,7 @@ class AccountView extends Component<NavigationScreenProps> {
 
     render() {
         return (
-            <ScrollView>
+            <ScrollView >
                 <View style={styles.view}>
                     <SettingsCategory onPress={() => this.props.navigation.navigate("AccountSettings")} title="Persönliche Daten" text="Account-Daten überarbeiten" icon={icons.Settings1} />
                     <SettingsCategory onPress={() => this.props.navigation.navigate("LearnAlgorithm")} title="Lernerfahrung" text="Lernalgorithmus überarbeiten" icon={icons.Settings2} />

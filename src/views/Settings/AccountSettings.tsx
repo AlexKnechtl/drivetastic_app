@@ -18,18 +18,18 @@ const mapDispatchToProps = {
 type props = NavigationScreenProps & ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps;
 
 
-const AccountSettings = connect(mapStateToProps, mapDispatchToProps)(({navigation, dispatchLogout, user, userData}: props) => {
+const AccountSettings = connect(mapStateToProps, mapDispatchToProps)(({ navigation, dispatchLogout, user, userData }: props) => {
     const [t, i18n] = useTranslation();
     const colors = useContext(ThemeContext);
     return (
         <View style={styles.view}>
             <DismissKeyboard>
                 <Text style={styles.title}>Persönliche Daten</Text>
-                <InputWithTitle title={t("Name", "Name")} value={user?user.name:""} />
-                {/*TODO: PLEASE DETERMINE THIS*/}
-                <InputWithTitle title="Other something" value="" />
-                <InputWithTitle title="Really?Passwort" value="*********" />
-                <TouchableOpacity onPress={() => { dispatchLogout(); navigation.navigate("auth"); }} activeOpacity={.8} style={[styles.logout, {backgroundColor: colors.middleGray}]}>
+                <InputWithTitle title={t("Name", "Name")} value={user ? user.name : ""} />
+                {/*TODO: This is determined.*/}
+                <InputWithTitle title="E-Mail" value="" />
+                <InputWithTitle title="Passwort" value="*********" />
+                <TouchableOpacity onPress={() => { dispatchLogout(); navigation.navigate("auth"); }} activeOpacity={.8} style={[styles.logout, { backgroundColor: colors.middleGray }]}>
                     <Text style={styles.logoutText}>Logout</Text>
                 </TouchableOpacity>
             </DismissKeyboard>

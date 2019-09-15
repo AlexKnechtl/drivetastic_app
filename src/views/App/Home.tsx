@@ -1,7 +1,7 @@
-import React, { Component, useContext } from 'react';
+import React, { Component, useState, useContext } from 'react';
 import { View, StyleSheet, Text, ScrollView, TouchableOpacity, ImageBackground, StatusBar } from 'react-native';
 import { icons } from '../../icons';
-import { IconButton, LearnButton } from '../../components';
+import { IconButton, LearnButton, Explanation, MainProgress } from '../../components';
 import { ModuleProgress } from 'components/specific/ModuleProgress';
 import { NavigationScreenProps } from 'react-navigation';
 import { Trans, useTranslation } from 'react-i18next';
@@ -13,26 +13,25 @@ const mapStateToProps = (state: StateType) => ({
     moduleStats: state.statistics.modules
 })
 
-const mapDispatchToProps = {
-}
+const mapDispatchToProps = {}
 type props = NavigationScreenProps & ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps;
 const enhance = connect(mapStateToProps, mapDispatchToProps);
 
 const Home = enhance(({ navigation, moduleStats }: props) => {
-    // const moduleName = "Grundwissen";
-    // const ModulePercentage = 0.7365;
     const [t, i18n] = useTranslation();
     const colors = useContext(ThemeContext);
+    const [ProgressExplanationVisible, setProgressExplanationVisible] = useState(false);
+    const [SuccessPropabilityExplanationVisible, setSuccessPropabilityExplanationVisible] = useState(false);
     return (
-        <ScrollView>
-            <StatusBar barStyle="dark-content"/>
+        <ScrollView style={{ backgroundColor: colors.background }}>
+            <StatusBar barStyle="dark-content" />
             <View style={styles.view}>
                 <LearnButton onPress={() => navigation.navigate("QuestionView")} />
                 <View style={styles.buttonLayout}>
                     <IconButton onPress={() => navigation.navigate("TrainingView")} color={colors.lightBlue} icon={icons.Training} text={t("training", { defaultValue: "Training" })} />
                     <IconButton onPress={() => navigation.navigate("ExamView")} color={colors.lightPurple} icon={icons.Exam} text={t("exam", { defaultValue: "Prüfung" })} />
                 </View>
-                <View style={[styles.statisticsView, {backgroundColor: colors.lightGreen}]}>
+                <View style={[styles.statisticsView, { backgroundColor: colors.lightGreen }]}>
                     <View style={{ flexDirection: "row", marginBottom: 8, paddingLeft: 12 }}>
                         <ImageBackground source={icons.Statistic} style={{ aspectRatio: 1, marginVertical: 7 }} />
                         <View style={{ marginLeft: 12 }}>
@@ -40,12 +39,23 @@ const Home = enhance(({ navigation, moduleStats }: props) => {
                             <Text style={{ ...styles.statisticText, fontSize: 30 }}><Trans>Lern-Statistik</Trans></Text>
                         </View>
                     </View>
-                    {Object.entries(moduleStats).map(([id, stats])=> <ModuleProgress text1={t(id, id)} percentage={stats.statistics.progress} />)}
+                    <MainProgress onPress={() => setProgressExplanationVisible(!ProgressExplanationVisible)} color={'#fff'} title="Fortschritt" percentage={0.2} icon={icons.FortschrittWhite} unfilled={colors.fortschrittUnfilled} />
+                    <MainProgress onPress={() => setSuccessPropabilityExplanationVisible(!SuccessPropabilityExplanationVisible)} color={'#fff'} title="Erfolgschance" percentage={0.1} icon={icons.ErfolgschanceWhite} unfilled={colors.erfolgschanceUnfilled} />
                     <TouchableOpacity onPress={() => navigation.navigate("Statistics")} style={styles.button}>
-                        <Text style={[styles.buttonText, {color: colors.lightGreen}]}><Trans i18nKey="moreInfos">Mehr erfahren</Trans></Text>
+                        <Text style={[styles.buttonText, { color: colors.lightGreen }]}><Trans i18nKey="moreInfos">Mehr erfahren</Trans></Text>
                     </TouchableOpacity>
                 </View>
             </View>
+            <Explanation onPress={() => setProgressExplanationVisible(!ProgressExplanationVisible)} visible={ProgressExplanationVisible}
+                icon={icons.FortschrittWhite} color={colors.fortschritt}
+                title="Lernfortschritt"
+                text1="Der Lernfortschritt zeigt dir deinen Fortschritt im Bezug auf Richtig beantwortete Fragen innerhalb eines Bereichs."
+                text2="Sobald du alle Fragen eines Bereiches einmal richtig beantwortet hast erreichst du 100%." />
+            <Explanation onPress={() => setSuccessPropabilityExplanationVisible(!SuccessPropabilityExplanationVisible)} visible={SuccessPropabilityExplanationVisible}
+                icon={icons.StrategyWhite} color={colors.erfolgschance}
+                title="Erfolgschance"
+                text1="Die Erfolgschance gibt dir einen groben Überblick auf die Wahrscheinlichkeit deines Prüfungserfolges."
+                text2="Diese Kennzahl wird anhand deiner richtig beantworteten Fragen und Prüfungen berechnet." />
         </ScrollView>
     )
 })

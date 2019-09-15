@@ -6,8 +6,8 @@ export const dimensions = {
     fullWidth: Dimensions.get('window').width
 }
 
-
 export type colorType = {
+    background: string,
     lightBlue: string,
     turquoise: string,
     lightPurple: string,
@@ -37,6 +37,7 @@ export type colorType = {
     questionLightGreen: string,
     questionGreenAccent: string,
     questionRedAccent: string,
+    questionText: string,
     mainBG: string,
     black: string,
     white: string
@@ -44,6 +45,7 @@ export type colorType = {
 
 
 export const colorsLight: colorType = {
+    background: '#fff',
     lightBlue: '#70B2AE',
     turquoise: "#547876",
     lightPurple: '#9196C3',
@@ -73,44 +75,47 @@ export const colorsLight: colorType = {
     questionLightGreen: 'rgba(46, 177, 116, 0.15)',
     questionGreenAccent: '#258056',
     questionRedAccent: '#7B1111',
+    questionText: '#000',
     mainBG: '#D5D5D5',
     black: "#000",
     white: "#fff"
 }
 
 export const colorsDark: colorType = {
-    lightBlue: '#4C7D7A',
-    turquoise: "#2D403F",
-    lightPurple: '#4D5069',
-    accentGreen: '#447054',
-    lightGreen: '#547350',
-    darkerGray: '#bbb',
-    middleGray: "#999",
+    background: '#656565',
+    lightBlue: '#70B2AE',
+    turquoise: "#547876",
+    lightPurple: '#9196C3',
+    accentGreen: '#6AAE82',
+    lightGreen: '#83B47E',
+    darkerGray: '#5B5B5B',
+    middleGray: "#858585",
     settingsGray: "#AFAFAF",
-    grundwissen: "#6B4769",
-    bFührerschein: "#4A516B",
-    alleBereiche: "#435C40",
-    softGray: '#121212',
-    bgGray: '#222',
+    grundwissen: "#AE73AB",
+    bFührerschein: "#7884AE",
+    alleBereiche: "#7EAC79",
+    softGray: '#D5D5D5',
+    bgGray: '#EFEFEF',
     errorRed: "#a00",
     darkRed: "#900",
-    fortschritt: '#4D755C',
-    fortschrittUnfilled: 'rgba(91, 138, 108, 0.3)',
-    fortschrittDark: '#3D634A',
-    erfolgschance: '#365958',
+    fortschritt: '#7EBE95',
+    fortschrittUnfilled: 'rgba(126, 190, 149, 0.3)',
+    fortschrittDark: '#6AAE82',
+    erfolgschance: '#578E8B',
     erfolgschanceUnfilled: 'rgba(87, 142, 139, 0.3)',
-    erfolgschanceDark: '#2B4F4D',
-    questionBG: "#454545",
+    erfolgschanceDark: '#427A77',
+    questionBG: "#fff2",
     questionSelcted: '#BFBFBF',
-    questionRight: '#1E734B',
-    questionWrong: '#5C2A2A',
+    questionRight: '#2EB174',
+    questionWrong: '#B85555',
     questionLightRed: 'rgba(164, 35, 35, 0.15)',
     questionLightGreen: 'rgba(46, 177, 116, 0.15)',
-    questionGreenAccent: '#174F35',
-    questionRedAccent: '#450A0A',
-    mainBG: "#1B1B1B",
-    black: "#fff",
-    white: "#000"
+    questionGreenAccent: '#258056',
+    questionRedAccent: '#7B1111',
+    questionText: '#fff',
+    mainBG: '#D5D5D5',
+    black: "#000",
+    white: "#fff"
 }
 
 export const ThemeContext = React.createContext(colorsLight);

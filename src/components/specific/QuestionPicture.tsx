@@ -1,7 +1,6 @@
 import React from 'react'
 import { StyleSheet, ImageBackground, View, Dimensions, Image } from 'react-native';
 import ImageViewer from 'react-native-image-zoom-viewer';
-import {  InstagramProvider, ElementContainer } from "react-native-instagram-zoomable";
 
 type HeadlineProps = {
     image: object
@@ -35,6 +34,7 @@ const styles = StyleSheet.create({
     background: {
         aspectRatio: 1 / 0.66,
         width: Dimensions.get('window').width,
+        height: Dimensions.get('window').width * 0.66
     },
     iconContainer: {
         position: "absolute",

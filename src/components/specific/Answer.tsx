@@ -14,7 +14,7 @@ type HeadlineProps = {
 
 const Answer = ({ onPress, selected = false, shouldValidate, answer }: HeadlineProps) => {
     const colors = useContext(ThemeContext);
-    let background = colors.questionBG, icon = undefined, borderWidth = 0, fontColor = "#000", iconSize = 24;
+    let background = colors.questionBG, icon = undefined, borderWidth = 0, fontColor = colors.questionText, iconSize = 24;
 
     if (selected) {
         background = colors.questionSelcted;
