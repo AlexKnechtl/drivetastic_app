@@ -10,7 +10,7 @@ interface GenericSEState {
 
 interface DataState {
   token: string,
-  user: User|null
+  user: User | null
 }
 
 const initialGenericSeState: GenericSEState = {
@@ -19,20 +19,20 @@ const initialGenericSeState: GenericSEState = {
 }
 
 const initialDataState: DataState = {
-  token:'',
+  token: '',
   user: null
 }
 
 function loginReducer(
   state = initialGenericSeState,
   action: AuthActionTypes
-): GenericSEState{
+): GenericSEState {
   switch (action.type) {
     case LOGIN_SUCCESS:
       return { ...state, success: true, error: "" };
-    case ERROR: 
-      return action.errorType =="signin"? {...state, success: false, error: action.error.message }: state;
-    case LOGOUT: 
+    case ERROR:
+      return action.errorType == "signin" ? { ...state, success: false, error: action.error.message } : state;
+    case LOGOUT:
       return initialGenericSeState;
     default:
       return state;
@@ -42,13 +42,13 @@ function loginReducer(
 function signUpReducer(
   state = initialGenericSeState,
   action: AuthActionTypes
-): GenericSEState{
+): GenericSEState {
   switch (action.type) {
     case SIGNUP_SUCCESS:
-        return { ...state, success: true, error: "" };
-    case ERROR: 
-      return action.errorType =="signup"? {...state, success: false, error: action.error.message }: state;
-    case LOGOUT: 
+      return { ...state, success: true, error: "" };
+    case ERROR:
+      return action.errorType == "signup" ? { ...state, success: false, error: action.error.message } : state;
+    case LOGOUT:
       return initialGenericSeState;
     default:
       return state;
@@ -58,13 +58,13 @@ function signUpReducer(
 function checkTokenReducer(
   state = initialGenericSeState,
   action: AuthActionTypes
-): GenericSEState{
+): GenericSEState {
   switch (action.type) {
     case CHECK_DRIVECODE_SUCCESS:
-        return { ...state, success: true, error: "" };
-    case ERROR: 
-      return action.errorType =="checktoken"? {...state, success: false, error: action.error.message }: state;
-    case LOGOUT: 
+      return { ...state, success: true, error: "" };
+    case ERROR:
+      return action.errorType == "checktoken" ? { ...state, success: false, error: action.error.message } : state;
+    case LOGOUT:
       return initialGenericSeState;
     default:
       return state;
@@ -74,15 +74,15 @@ function checkTokenReducer(
 function emailResetReduer(
   state = initialGenericSeState,
   action: AuthActionTypes
-): GenericSEState{
+): GenericSEState {
   switch (action.type) {
-    case SEND_PASSWORD_RESET_EMAIL: 
-      return {...state, success: false, error: ""};
-    case SEND_PASSWORD_RESET_EMAIL_SUCCESS: 
-      return {...state, success: true, error: ""};
-    case ERROR: 
-      return action.errorType =="checktoken"? {...state, success: false, error: action.error.message }: state;
-    case LOGOUT: 
+    case SEND_PASSWORD_RESET_EMAIL:
+      return { ...state, success: false, error: "" };
+    case SEND_PASSWORD_RESET_EMAIL_SUCCESS:
+      return { ...state, success: true, error: "" };
+    case ERROR:
+      return action.errorType == "checktoken" ? { ...state, success: false, error: action.error.message } : state;
+    case LOGOUT:
       return initialGenericSeState;
     default:
       return state;
@@ -96,11 +96,11 @@ function dataReducer(
   switch (action.type) {
     case START_CHECK_DRIVECODE:
       return { ...state, token: action.token };
-    case LOGIN_SUCCESS: 
-      return {...state, user: action.user };
-    case SIGNUP_SUCCESS: 
-      return {...state, user: action.user}
-    case LOGOUT: 
+    case LOGIN_SUCCESS:
+      return { ...state, user: action.user };
+    case SIGNUP_SUCCESS:
+      return { ...state, user: action.user }
+    case LOGOUT:
       return initialDataState;
     default:
       return state;

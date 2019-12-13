@@ -19,7 +19,7 @@ class Impressum extends Component {
                 </View>
                 <ScrollView >
                     <TransparentLayout />
-                    <View style={{ flex: 1, paddingHorizontal: 14, paddingVertical: 36, }}>
+                    <View style={{ flex: 1, paddingHorizontal: 14, paddingVertical: 36, backgroundColor: '#fff' }}>
                         <View style={{ flexDirection: "row-reverse", width: '100%', marginBottom: 36 }}>
                             <Image resizeMode="contain" style={{ width: '35%', height: dimensions.fullWidth * 0.29 }} source={icons.CodingMagic} />
                             <View style={{ flex: 1 }}>

@@ -82,7 +82,7 @@ export const colorsLight: colorType = {
 }
 
 export const colorsDark: colorType = {
-    background: '#656565',
+    background: 'rgba(56, 56, 56, 1)',
     lightBlue: '#70B2AE',
     turquoise: "#547876",
     lightPurple: '#9196C3',

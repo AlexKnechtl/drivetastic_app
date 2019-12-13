@@ -39,8 +39,8 @@ const Home = enhance(({ navigation, moduleStats }: props) => {
                             <Text style={{ ...styles.statisticText, fontSize: 30 }}><Trans>Lern-Statistik</Trans></Text>
                         </View>
                     </View>
-                    <MainProgress onPress={() => setProgressExplanationVisible(!ProgressExplanationVisible)} color={'#fff'} title="Fortschritt" percentage={0.2} icon={icons.FortschrittWhite} unfilled={colors.fortschrittUnfilled} />
-                    <MainProgress onPress={() => setSuccessPropabilityExplanationVisible(!SuccessPropabilityExplanationVisible)} color={'#fff'} title="Erfolgschance" percentage={0.1} icon={icons.ErfolgschanceWhite} unfilled={colors.erfolgschanceUnfilled} />
+                    <MainProgress onPress={() => setProgressExplanationVisible(!ProgressExplanationVisible)} color={'#fff'} title="Fortschritt" percentage={0.2} icon={icons.FortschrittWhite} unfilled={'#fff2'} />
+                    <MainProgress onPress={() => setSuccessPropabilityExplanationVisible(!SuccessPropabilityExplanationVisible)} color={'#fff'} title="Erfolgschance" percentage={0.1} icon={icons.ErfolgschanceWhite} unfilled={'#fff2'} />
                     <TouchableOpacity onPress={() => navigation.navigate("Statistics")} style={styles.button}>
                         <Text style={[styles.buttonText, { color: colors.lightGreen }]}><Trans i18nKey="moreInfos">Mehr erfahren</Trans></Text>
                     </TouchableOpacity>

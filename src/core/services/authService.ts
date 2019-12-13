@@ -4,7 +4,7 @@ import { User } from "core";
 export class AuthService {
   async signInWithCredential(email: string, password: string): Promise<User> {
     try {
-      var u = await new Promise<firebase.auth.UserCredential>((resolve, reject)=> {firebase.auth().signInWithEmailAndPassword(email, password).then(v => resolve(v)).catch(r=> reject(r));});
+      var u = await new Promise<firebase.auth.UserCredential>((resolve, reject) => { firebase.auth().signInWithEmailAndPassword(email, password).then(v => resolve(v)).catch(r => reject(r)); });
       if (u.user) {
         var name = (await firebase
           .database()
@@ -47,7 +47,7 @@ export class AuthService {
     name: string,
     token: string
   ): Promise<{ success: boolean; message: string, user?: User }> {
-    if(!name || name.length<3)
+    if (!name || name.length < 3)
       throw new Error("Name cannot be shorter than 3 characters!")
     token = token.replace(/[\W\-_ ]/g, "").toUpperCase();
     var url = "https://drivetastic-cb039.web.app/api/v1/users/signup";
@@ -70,7 +70,7 @@ export class AuthService {
       return { success: true, message: text, user: await this.signInWithCredential(email, password) };
     }
     var val = JSON.parse(text);
-    if(val.message)
+    if (val.message)
       return { success: false, message: val.message };
     return { success: false, message: text };
   }
@@ -97,6 +97,6 @@ export class AuthService {
   }
 
   async sendPasswordResetEmail(email: string) {
-    return new Promise<firebase.auth.UserCredential>((resolve, reject)=> {firebase.auth().sendPasswordResetEmail(email).then(v => resolve()).catch(r=> reject(r));});
+    return new Promise<firebase.auth.UserCredential>((resolve, reject) => { firebase.auth().sendPasswordResetEmail(email).then(v => resolve()).catch(r => reject(r)); });
   }
 }

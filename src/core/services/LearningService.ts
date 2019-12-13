@@ -15,7 +15,6 @@ export class LearningService {
 
     private learningQueue: Question[] = [];
 
-
     private learningQueueLength = 10;
     private learningQueueIndex = -1;
 

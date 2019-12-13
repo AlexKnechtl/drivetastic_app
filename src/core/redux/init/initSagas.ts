@@ -30,7 +30,6 @@ function* initializeFactory({user}: ReturnType<typeof LoginSuccessAction> | Retu
     catch (e) {
         console.log(e);
         console.log("ERROR!!!!!!!!!!!!!!!!!!!!!!");
-        
     }
 }
 
